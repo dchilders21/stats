@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<summary generated="2016-07-06T21:50:12Z" xmlns="http://feed.elasticstats.com/schema/soccer/sr/v2/matches-summary.xsd">
+  <matches>
+    <match id="bf5741c3-00ee-41dd-8704-cb566fd33ced" status="closed" period="P2" scheduled="2016-05-25T23:30:00Z" clock="" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="sr:match:8697530">
+      <coverage lineups="2" tactical_lineups="true" corner_facts="true" extended_facts="true" deep_facts="true" statistics="true"/>
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" reference_id="sr:tournamentgroup:242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" type="group" reference_id="sr:tournament:18"/>
+      <referee id="f6112fc6-78bb-40f4-aabc-f6c0c89c5ac8" first_name="Sorin" last_name="Stoica" country_code="USA" country="United States" reference_id="sr:referee:316120"/>
+      <round type="table" number="13" week="21"/>
+      <home id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" name="Orlando" full_name="Orlando City SC" alias="OSC" country_code="USA" country="United States" type="team" reference_id="sr:team:52237" formation="4-2-3-1" score="2" regular_score="2" penalty_score="" winner="draw">
+        <scoring>
+          <half points="0" number="1"/>
+          <half points="2" number="2"/>
+        </scoring>
+        <manager id="fe39be62-cf86-4b7d-b58a-c877b6fa3ce2" first_name="Adrian" last_name="Heath" country_code="ENG" country="England" reference_id="sr:manager:801806"/>
+        <players>
+          <player id="066f0cd4-57bc-4e76-b266-a9adcb28616b" first_name="Julio" last_name="Baptista" country_code="BRA" country="Brazil" reference_id="sr:player:4423" full_first_name="Julio Cesar" full_last_name="Baptista" position="F" started="false" jersey_number="19">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="0bac13c9-050d-47c7-8677-97f3acd74d6f" first_name="Brek" last_name="Shea" country_code="USA" country="United States" reference_id="sr:player:48963" full_first_name="Dane Brekken" full_last_name="Shea" position="M" started="true" jersey_number="20" tactical_position="4" tactical_order="5">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" first_name="Kaka" last_name="" country_code="BRA" country="Brazil" reference_id="sr:player:1770" full_first_name="Ricardo" full_last_name="Izecson dos Santos Leite" position="M" started="true" jersey_number="10" tactical_position="6" tactical_order="9">
+            <statistics goal="0" goal_assist="1" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="284c2fbd-8522-4445-9a34-32909a72fb9f" first_name="Adrian" last_name="Winter" country_code="CHE" country="Switzerland" reference_id="sr:player:37786" position="M" started="true" jersey_number="32" tactical_position="5" tactical_order="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="3503e2e7-2289-4bd8-86a5-104856d41bf2" first_name="Carlos" last_name="Rivas" country_code="COL" country="Colombia" reference_id="sr:player:285851" full_first_name="Carlos Augusto" full_last_name="Rivas Murillo" position="F" started="true" jersey_number="11" tactical_position="7" tactical_order="10">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="42082210-f422-4345-8c41-3e29c57266b0" first_name="Antonio" last_name="Nocerino" country_code="ITA" country="Italy" reference_id="sr:player:14375" position="M" started="false" jersey_number="22">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="4e1e8750-db2f-40bc-9a7f-02b55557f865" first_name="Cyle" last_name="Larin" country_code="CAN" country="Canada" reference_id="sr:player:756754" position="F" started="true" jersey_number="9" tactical_position="8" tactical_order="11">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="5efd11d0-4370-4c44-a4c5-f43363a4ad59" first_name="Hadji" last_name="Barry" country_code="GIN" country="Guinea" reference_id="sr:player:951316" position="F" started="false" jersey_number="13">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="70999bf0-4750-4cd5-a555-2c9a3714c95b" first_name="Earl" last_name="Edwards Jr" country_code="USA" country="United States" reference_id="sr:player:805200" full_first_name="Earl William" full_last_name="Edwards Jr" position="G" started="false" jersey_number="36">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="8c494062-9ba3-4bb5-a312-4e9e4f98062c" first_name="Tommy" last_name="Redding" country_code="USA" country="United States" reference_id="sr:player:805210" full_first_name="Thomas" full_last_name="Redding" position="D" started="true" jersey_number="29" tactical_position="3" tactical_order="3">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="8ce5a6f4-6d2f-4b1e-b57e-11c4b61281cc" first_name="Joe" last_name="Bendik" country_code="USA" country="United States" reference_id="sr:player:112659" full_first_name="Joseph T." full_last_name="Bendik" position="G" started="true" jersey_number="1" tactical_position="1" tactical_order="1">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="a0f8f02d-8f8f-4b9e-8b4b-b8974b8ff6c2" first_name="Kevin" last_name="Alston" country_code="USA" country="United States" reference_id="sr:player:48891" full_first_name="Kevin Lawrence" full_last_name="Alston" position="D" started="true" jersey_number="12" tactical_position="2" tactical_order="2">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="b36b9266-4dfd-46b4-8cde-043a80ee00b6" first_name="Cristian" last_name="Higuita" country_code="COL" country="Colombia" reference_id="sr:player:329589" full_first_name="Cristian Andres" full_last_name="Higuita Beltran" position="M" started="true" jersey_number="7" tactical_position="6" tactical_order="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="b3d33b9b-6937-4484-a93b-3bf07bea09ae" first_name="David" last_name="Mateos" country_code="ESP" country="Spain" reference_id="sr:player:106704" full_first_name="David" full_last_name="Mateos Ramajo" position="D" started="true" jersey_number="44" tactical_position="3" tactical_order="4">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="1" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="be59693b-49f8-4e53-9105-408153b0d76d" first_name="Kevin" last_name="Molino" country_code="TTO" country="Trinidad and Tobago" reference_id="sr:player:200804" position="M" started="false" jersey_number="18">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="cbe97747-81cc-44a7-b236-a62431db3ca6" first_name="Luke" last_name="Boden" country_code="ENG" country="England" reference_id="sr:player:16791" position="D" started="false" jersey_number="14">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="d1309656-031c-4e01-a379-d4e692644fcb" first_name="Servando" last_name="Carrasco" country_code="USA" country="United States" reference_id="sr:player:149008" position="M" started="true" jersey_number="5" tactical_position="6" tactical_order="7">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="f712bd12-ab05-401e-bb82-8b41c9cfa4ba" first_name="Harrison" last_name="Heath" country_code="ENG" country="England" reference_id="sr:player:805202" full_first_name="Harrison William" full_last_name="Heath" position="M" started="false" jersey_number="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+        </players>
+      </home>
+      <away id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" name="Philadelphia" full_name="Philadelphia Union" alias="PHI" country_code="USA" country="United States" type="team" reference_id="sr:team:39833" formation="4-2-3-1" score="2" regular_score="2" penalty_score="" winner="draw">
+        <scoring>
+          <half points="0" number="1"/>
+          <half points="2" number="2"/>
+        </scoring>
+        <manager id="dca0ddbf-0ab2-401f-a299-de60242104dd" first_name="Jim" last_name="Curtin" country_code="USA" country="United States" reference_id="sr:manager:48837"/>
+        <players>
+          <player id="00faf4ba-2c76-496d-a540-ad83ab2e95ae" first_name="Fabian" last_name="Herbers" country_code="DEU" country="Germany" reference_id="sr:player:169375" position="M" started="false" jersey_number="11">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="0300b1f4-4128-491f-a154-b6eb6ca4ba1d" first_name="Brian" last_name="Carroll" country_code="USA" country="United States" reference_id="sr:player:13858" position="M" started="true" jersey_number="7" tactical_position="6" tactical_order="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="0cfda03b-cc43-4008-849a-b915b9d058c8" first_name="Richie" last_name="Marquez" country_code="USA" country="United States" reference_id="sr:player:757928" position="D" started="true" jersey_number="16" tactical_position="3" tactical_order="4">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="0fd31308-18a2-4547-a6bb-4b4373d4146e" first_name="Fabinho" last_name="" country_code="BRA" country="Brazil" reference_id="sr:player:184789" full_first_name="Fabio" full_last_name="Alves Macedo" position="D" started="true" jersey_number="33" tactical_position="4" tactical_order="5">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="126a0f6f-ea7b-460d-bf9e-1d6d24a0482e" first_name="Chris" last_name="Pontius" country_code="USA" country="United States" reference_id="sr:player:48761" full_first_name="Christopher Richard" full_last_name="Pontius" position="M" started="true" jersey_number="13" tactical_position="7" tactical_order="10">
+            <statistics goal="0" goal_assist="1" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" first_name="Tranquillo" last_name="Barnetta" country_code="CHE" country="Switzerland" reference_id="sr:player:356" position="M" started="true" jersey_number="10" tactical_position="6" tactical_order="9">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="23b9a7f9-a159-4861-976f-045ec3c82d27" first_name="Warren" last_name="Creavalle" country_code="USA" country="United States" reference_id="sr:player:255655" position="D" started="true" jersey_number="2" tactical_position="6" tactical_order="7">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="3005f7a3-111e-423e-b900-f4adbfa85a4d" first_name="C.J." last_name="Sapong" country_code="USA" country="United States" reference_id="sr:player:149313" full_first_name="Charles Nana Kwabena" full_last_name="Sapong" position="F" started="true" jersey_number="17" tactical_position="8" tactical_order="11">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="44f206c1-2c45-4774-832d-c845ff61a913" first_name="Walter" last_name="Restrepo" country_code="COL" country="Colombia" reference_id="sr:player:822966" full_first_name="Walter" full_last_name="Restrepo Uribe" position="M" started="false" jersey_number="20">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="4b076180-b8a1-47db-80f2-28e24738721a" first_name="Leo" last_name="Fernandes" country_code="BRA" country="Brazil" reference_id="sr:player:317613" full_first_name="Leonardo" full_last_name="Fernandes" position="M" started="false" jersey_number="22">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="51aafd42-4b99-4c8f-988f-c338847f9385" first_name="Sebastien" last_name="Le Toux" country_code="FRA" country="France" reference_id="sr:player:48782" position="F" started="true" jersey_number="9" tactical_position="5" tactical_order="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="55e3fe0a-ca0b-4d8f-b293-1edd764bea65" first_name="Raymon" last_name="Gaddis" country_code="USA" country="United States" reference_id="sr:player:224902" position="D" started="false" jersey_number="28">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="6003ccc3-2554-41c9-bc61-8cd54fdb2833" first_name="Matt" last_name="Jones" country_code="ENG" country="England" reference_id="sr:player:78693" full_first_name="Matthew Robert" full_last_name="Jones" position="G" started="false" jersey_number="24">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="6a9b2488-7511-4367-9b4e-88c8d5d72a24" first_name="Ken" last_name="Tribbett" country_code="USA" country="United States" reference_id="sr:player:967091" position="D" started="false" jersey_number="4">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="9ea66333-fd2a-45c6-927c-fcdf0566e960" first_name="Keegan" last_name="Rosenberry" country_code="USA" country="United States" reference_id="sr:player:951330" position="D" started="true" jersey_number="12" tactical_position="2" tactical_order="2">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="bc0969ce-0dae-45ae-82df-201e30079475" first_name="Roland" last_name="Alberg" country_code="NLD" country="Netherlands" reference_id="sr:player:122659" full_first_name="Roland Romario" full_last_name="Alberg" position="M" started="false" jersey_number="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="e008d17d-10ca-43f3-844a-af8b319c7d2f" first_name="Joshua" last_name="Yaro" country_code="USA" country="United States" reference_id="sr:player:951326" position="D" started="true" jersey_number="15" tactical_position="3" tactical_order="3">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="e25e15c3-e15c-4f2b-926d-6ca74d9e4c9f" first_name="Andre" last_name="Blake" country_code="JAM" country="Jamaica" reference_id="sr:player:331411" full_first_name="Andre Jason" full_last_name="Blake" position="G" started="true" jersey_number="1" tactical_position="1" tactical_order="1">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+        </players>
+      </away>
+      <venue id="9c33b523-0eaa-4347-833f-c0b300f2e172" name="Camping World Stadium" country_code="USA" country="United States" city="Orlando" capacity="65000" coordinates="28.539167,-81.402778" reference_id="sr:venue:15674"/>
+      <facts>
+        <fact id="35d0893d-b716-4202-8c6e-4bf40c9f9f17" type="about_to_start" time="2016-05-25T23:37:57Z" updated_time="2016-05-25T23:37:57Z" scratch="false" reference_id="sr:fact:224167433" clock="0"/>
+        <fact id="dfa9c062-8f2c-4c81-87dd-30427f65ad4a" type="match_started" time="2016-05-25T23:38:26Z" updated_time="2016-05-25T23:38:25Z" scratch="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224167467" clock="1">
+          <description>The whistle has gone to start the match.</description>
+        </fact>
+        <fact id="c709fb1b-2c72-40c3-8de1-2fe86f9beb10" type="period_started" time="2016-05-25T23:38:26Z" updated_time="2016-05-25T23:38:26Z" scratch="false" reference_id="sr:fact:224167469" period="P1" clock="1"/>
+        <fact id="492ef8d9-3507-4ad9-89a3-314a4997ffa5" type="shot_on_target" time="2016-05-25T23:39:08Z" updated_time="2016-05-25T23:42:30Z" scratch="false" x="88" y="46" clock="1" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" reference_id="sr:fact:224167541" period="P1">
+          <description>In Orlando Orlando drive forward through Kaka. His shot is on target but it's saved.</description>
+        </fact>
+        <fact id="9b8b276f-c51c-4791-a8d2-a74667412d96" type="keeper_save" time="2016-05-25T23:39:08Z" updated_time="2016-05-25T23:39:08Z" scratch="false" clock="1" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167547" period="P1"/>
+        <fact id="1c1a3793-718e-46fd-9b79-3f2c1189111b" type="throwin" time="2016-05-25T23:39:29Z" updated_time="2016-05-25T23:39:29Z" scratch="false" x="20" y="96" clock="2" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167575" period="P1">
+          <description>Philadelphia have a dangerous throw-in.</description>
+        </fact>
+        <fact id="15f6f8cf-1cd2-4f61-ba50-6792849102b7" type="throwin" time="2016-05-25T23:40:24Z" updated_time="2016-05-25T23:40:24Z" scratch="false" x="39" y="97" clock="2" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167649" period="P1">
+          <description>Sorin Stoica signals a Philadelphia throw-in in Orlando's half.</description>
+        </fact>
+        <fact id="3048bbf3-d9d0-4887-ae16-d1cf05e55a13" type="throwin" time="2016-05-25T23:41:10Z" updated_time="2016-05-25T23:41:10Z" scratch="false" x="82" y="4" clock="3" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167689" period="P1">
+          <description>Throw-in for Philadelphia at Camping World Stadium.</description>
+        </fact>
+        <fact id="f2300ab3-d0b5-47ee-9e21-0a54eff621a4" type="corner_kick" time="2016-05-25T23:42:22Z" updated_time="2016-05-25T23:42:22Z" scratch="false" x="95" y="90" clock="4" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224167753" period="P1">
+          <description>Orlando have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="be40cc9a-aa9d-4b2f-9675-ffc3280f2695" type="goal_kick" time="2016-05-25T23:42:26Z" updated_time="2016-05-25T23:42:26Z" scratch="false" x="95" y="50" clock="5" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167761" period="P1">
+          <description>Philadelphia have a goal kick.</description>
+        </fact>
+        <fact id="31257075-fd01-4f7a-a946-53ebe9ce23b2" type="free_kick" time="2016-05-25T23:43:17Z" updated_time="2016-05-25T23:43:17Z" scratch="false" x="41" y="22" clock="5" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167805" period="P1">
+          <description>Sorin Stoica signals a free kick to Philadelphia.</description>
+        </fact>
+        <fact id="d7ae62da-82ca-47b3-ab61-31ab57fe811d" type="throwin" time="2016-05-25T23:43:29Z" updated_time="2016-05-25T23:43:29Z" scratch="false" x="20" y="4" clock="6" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224167829" period="P1">
+          <description>Orlando awarded a throw-in in their own half.</description>
+        </fact>
+        <fact id="97e06d89-f916-4d2f-ba5f-ab44f40f02c8" type="free_kick" time="2016-05-25T23:43:59Z" updated_time="2016-05-25T23:43:59Z" scratch="false" x="56" y="80" clock="6" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224167845" period="P1">
+          <description>Free kick for Orlando in the half of Philadelphia.</description>
+        </fact>
+        <fact id="b223c3ab-317c-40b8-bb20-6e729f25a202" type="throwin" time="2016-05-25T23:45:12Z" updated_time="2016-05-25T23:45:12Z" scratch="false" x="68" y="4" clock="7" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224167927" period="P1">
+          <description>A throw-in for the home team on the opposite half.</description>
+        </fact>
+        <fact id="3ca7b74d-bbf5-4817-8858-0c5cd49003e3" type="throwin" time="2016-05-25T23:45:36Z" updated_time="2016-05-25T23:45:36Z" scratch="false" x="62" y="4" clock="8" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167955" period="P1">
+          <description>Throw-in for Philadelphia in their own half.</description>
+        </fact>
+        <fact id="45251abc-6fa9-4373-b172-560a22a7bcb4" type="corner_kick" time="2016-05-25T23:46:46Z" updated_time="2016-05-25T23:47:00Z" scratch="false" x="5" y="5" clock="9" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224167997" period="P1">
+          <description>Corner awarded to Philadelphia.</description>
+        </fact>
+        <fact id="747ac90f-eac9-46ec-aa30-1f9e3d963bff" type="throwin" time="2016-05-25T23:46:56Z" updated_time="2016-05-25T23:46:56Z" scratch="false" x="18" y="96" clock="9" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168013" period="P1">
+          <description>Ball safe as Orlando is awarded a throw-in in their half.</description>
+        </fact>
+        <fact id="00d3e0fc-f085-4292-b9c1-f17d73284261" type="throwin" time="2016-05-25T23:47:25Z" updated_time="2016-05-25T23:47:25Z" scratch="false" x="63" y="97" clock="9" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168055" period="P1">
+          <description>Throw-in for Orlando in the half of Philadelphia.</description>
+        </fact>
+        <fact id="ccee6d32-26ef-4a68-9967-07ffea48fa69" type="free_kick" time="2016-05-25T23:48:01Z" updated_time="2016-05-25T23:48:01Z" scratch="false" x="28" y="68" clock="10" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168087" period="P1">
+          <description>Sorin Stoica signals a free kick to Orlando in their own half.</description>
+        </fact>
+        <fact id="d6fae858-b0d3-4dba-8e41-a90aee46352c" type="free_kick" time="2016-05-25T23:49:43Z" updated_time="2016-05-25T23:49:43Z" scratch="false" x="55" y="29" clock="12" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168191" period="P1">
+          <description>Philadelphia awarded a free kick in their own half.</description>
+        </fact>
+        <fact id="ed297bdc-1f18-43da-b293-5b1b7b15c259" type="goal_kick" time="2016-05-25T23:51:55Z" updated_time="2016-05-25T23:51:55Z" scratch="false" x="95" y="50" clock="14" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168297" period="P1">
+          <description>Ball goes out of play for a Philadelphia goal kick.</description>
+        </fact>
+        <fact id="3dc941b9-a945-4887-a224-cfe344bdeb2d" type="free_kick" time="2016-05-25T23:52:33Z" updated_time="2016-05-25T23:52:33Z" scratch="false" x="33" y="79" clock="15" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168321" period="P1">
+          <description>In Orlando a free kick has been awarded the away team.</description>
+        </fact>
+        <fact id="05492df7-7566-41c6-9881-2f215b4f4c8a" type="throwin" time="2016-05-25T23:55:11Z" updated_time="2016-05-25T23:55:11Z" scratch="false" x="44" y="95" clock="17" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168423" period="P1">
+          <description>Philadelphia to take a throw-in in Orlando territory.</description>
+        </fact>
+        <fact id="78176275-e64d-405b-9abe-32f215657b96" type="throwin" time="2016-05-25T23:55:24Z" updated_time="2016-05-25T23:55:24Z" scratch="false" x="40" y="97" clock="17" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168431" period="P1">
+          <description>Can Philadelphia get the ball into an attacking position from this throw-in in Orlando's half?</description>
+        </fact>
+        <fact id="17ed1d01-ef0b-4249-aeda-9c442c2498e5" type="free_kick" time="2016-05-25T23:57:15Z" updated_time="2016-05-25T23:57:15Z" scratch="false" x="60" y="48" clock="19" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168497" period="P1">
+          <description>Free kick Orlando.</description>
+        </fact>
+        <fact id="6ed2a2e6-dbb4-499e-9c2f-2d1954086fdd" type="goal_kick" time="2016-05-25T23:58:17Z" updated_time="2016-05-25T23:58:17Z" scratch="false" x="95" y="50" clock="20" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168535" period="P1">
+          <description>Goal kick for Philadelphia at Camping World Stadium.</description>
+        </fact>
+        <fact id="ccecd1ca-5a0c-46ab-bc61-239d797e4378" type="throwin" time="2016-05-25T23:58:51Z" updated_time="2016-05-25T23:58:51Z" scratch="false" x="57" y="97" clock="21" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168563" period="P1">
+          <description>Throw-in Philadelphia.</description>
+        </fact>
+        <fact id="77503289-37b6-4135-b3f1-51863a3556b8" type="free_kick" time="2016-05-25T23:59:06Z" updated_time="2016-05-25T23:59:06Z" scratch="false" x="77" y="86" clock="21" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168569" period="P1">
+          <description>Free kick Orlando.</description>
+        </fact>
+        <fact id="44e5cf68-b6c7-4113-9db5-f1673d7709db" type="goal_kick" time="2016-05-26T00:00:32Z" updated_time="2016-05-26T00:00:32Z" scratch="false" x="95" y="50" clock="23" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168641" period="P1">
+          <description>It's a goal kick for the away team in Orlando.</description>
+        </fact>
+        <fact id="19b2f93a-db86-41c0-bffd-0c19fd214d9a" type="throwin" time="2016-05-26T00:01:19Z" updated_time="2016-05-26T00:01:19Z" scratch="false" x="16" y="96" clock="23" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168681" period="P1">
+          <description>Sorin Stoica awards the home team a throw-in.</description>
+        </fact>
+        <fact id="51332d05-ea40-48c8-b4ab-9df612a4b29f" type="free_kick" time="2016-05-26T00:02:13Z" updated_time="2016-05-26T00:02:13Z" scratch="false" x="21" y="68" clock="24" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168725" period="P1">
+          <description>Free kick for Orlando in their own half.</description>
+        </fact>
+        <fact id="d25f50b1-f736-4dbb-802b-517dcf3d54a8" type="throwin" time="2016-05-26T00:02:33Z" updated_time="2016-05-26T00:02:33Z" scratch="false" x="41" y="95" clock="25" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168741" period="P1">
+          <description>Philadelphia to take a throw-in in Orlando territory.</description>
+        </fact>
+        <fact id="54a6a2f3-1f63-4bfd-b473-5e3389b912af" type="throwin" time="2016-05-26T00:03:12Z" updated_time="2016-05-26T00:03:12Z" scratch="false" x="23" y="96" clock="25" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168789" period="P1">
+          <description>Throw-in for Philadelphia in the half of Orlando.</description>
+        </fact>
+        <fact id="daec311d-8dd2-4ea1-8c41-d992ea057608" type="free_kick" time="2016-05-26T00:03:35Z" updated_time="2016-05-26T00:03:35Z" scratch="false" x="18" y="79" clock="26" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168805" period="P1">
+          <description>Free kick for Orlando in their own half.</description>
+        </fact>
+        <fact id="073cd02c-d259-4e8b-8ab5-099586828f51" type="throwin" time="2016-05-26T00:04:04Z" updated_time="2016-05-26T00:04:04Z" scratch="false" x="62" y="96" clock="26" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168837" period="P1">
+          <description>Philadelphia awarded a throw-in in their own half.</description>
+        </fact>
+        <fact id="a2863808-c2d4-470f-89c8-8a2e733b3e6a" type="throwin" time="2016-05-26T00:04:18Z" updated_time="2016-05-26T00:04:18Z" scratch="false" x="75" y="97" clock="26" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168855" period="P1">
+          <description>Sorin Stoica signals a Orlando throw-in in Philadelphia's half.</description>
+        </fact>
+        <fact id="e84a1fb0-1f35-4d03-bd18-e60e55944f07" type="throwin" time="2016-05-26T00:04:45Z" updated_time="2016-05-26T00:04:45Z" scratch="false" x="77" y="96" clock="27" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168905" period="P1">
+          <description>Can Orlando get the ball into an attacking position from this throw-in in Philadelphia's half?</description>
+        </fact>
+        <fact id="a14128af-b2d6-430d-b3f7-81dc2d765642" type="free_kick" time="2016-05-26T00:05:05Z" updated_time="2016-05-26T00:05:05Z" scratch="false" x="62" y="85" clock="27" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168917" period="P1">
+          <description>In Orlando a free kick has been awarded the home team.</description>
+        </fact>
+        <fact id="0b2a8536-310d-4814-a086-6088db6a3560" type="shot_off_target" time="2016-05-26T00:05:21Z" updated_time="2016-05-26T00:05:37Z" scratch="false" x="81" y="65" clock="27" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" reference_id="sr:fact:224168931" period="P1">
+          <description>Orlando's Kaka misses with an attempt on goal.</description>
+        </fact>
+        <fact id="7b1651ee-7fdd-403e-a495-b08eda3c4bf3" type="goal_kick" time="2016-05-26T00:05:21Z" updated_time="2016-05-26T00:05:21Z" scratch="false" x="95" y="50" clock="27" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224168935" period="P1">
+          <description>Sorin Stoica awards Philadelphia a goal kick.</description>
+        </fact>
+        <fact id="8cb996f4-39b9-4f9c-9860-b9f5e708d326" type="throwin" time="2016-05-26T00:06:05Z" updated_time="2016-05-26T00:06:05Z" scratch="false" x="38" y="97" clock="28" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224168983" period="P1">
+          <description>Throw-in Orlando.</description>
+        </fact>
+        <fact id="04d23e71-db25-40fe-a91d-94f3f9d3698b" type="throwin" time="2016-05-26T00:08:18Z" updated_time="2016-05-26T00:08:18Z" scratch="false" x="56" y="4" clock="30" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169113" period="P1">
+          <description>Throw-in for Philadelphia in their own half.</description>
+        </fact>
+        <fact id="b9db86de-2ecc-4423-b342-e0d97555ecc1" type="free_kick" time="2016-05-26T00:09:30Z" updated_time="2016-05-26T00:09:30Z" scratch="false" x="70" y="62" clock="32" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169235" period="P1">
+          <description>Sorin Stoica signals a free kick to Philadelphia in their own half.</description>
+        </fact>
+        <fact id="214837c6-0442-4f8e-bc2e-05f60453ae82" type="card" time="2016-05-26T00:09:41Z" updated_time="2016-05-26T00:09:41Z" scratch="false" clock="32" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" reference_id="sr:fact:224169247" period="P1">
+          <description>Kaka for Orlando has been booked by Sorin Stoica and receives a first yellow card.</description>
+        </fact>
+        <fact id="6d2fe5f2-a189-47f5-a9e7-d6c5ea70dc5c" type="injury" time="2016-05-26T00:10:05Z" updated_time="2016-05-26T00:10:05Z" scratch="false" x="70" y="62" clock="32" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="51aafd42-4b99-4c8f-988f-c338847f9385" reference_id="sr:fact:224169273" period="P1">
+          <description>Play has been interrupted briefly in Orlando to check on Sebastien Le Toux, who is grimacing with pain.</description>
+        </fact>
+        <fact id="7a1a3103-ed16-4e3d-aa4a-b915fb74168a" type="card" time="2016-05-26T00:17:27Z" updated_time="2016-05-26T11:51:48Z" scratch="false" clock="33" card="Y" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="51aafd42-4b99-4c8f-988f-c338847f9385" reference_id="sr:fact:224169927" period="P1">
+          <description>Sebastien Le Toux (Philadelphia) has received a yellow card from Sorin Stoica.</description>
+        </fact>
+        <fact id="63233a9a-417a-4517-bf52-209e8b6fa7b5" type="game_resumed" time="2016-05-26T00:11:42Z" updated_time="2016-05-26T00:11:42Z" scratch="false" clock="34" reference_id="sr:fact:224169395" period="P1">
+          <description>Sorin Stoica has blown to resume play in Orlando.</description>
+        </fact>
+        <fact id="b4f862e4-0cbf-4241-a365-894ef4a3738d" type="free_kick" time="2016-05-26T00:12:37Z" updated_time="2016-05-26T00:12:37Z" scratch="false" x="31" y="49" clock="35" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169441" period="P1">
+          <description>Sorin Stoica signals a free kick to Philadelphia.</description>
+        </fact>
+        <fact id="ad44a6ab-2dd4-47da-9714-01bad71d5af9" type="injury_return" time="2016-05-26T00:13:11Z" updated_time="2016-05-26T00:13:11Z" scratch="false" clock="35" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="51aafd42-4b99-4c8f-988f-c338847f9385" reference_id="sr:fact:224169511" period="P1">
+          <description>Sebastien Le Toux returns to the field for Philadelphia after picking up a slight injury.</description>
+        </fact>
+        <fact id="da8393da-12f8-40b9-96ad-38fd59c10236" type="corner_kick" time="2016-05-26T00:13:45Z" updated_time="2016-05-26T00:13:45Z" scratch="false" x="5" y="5" clock="36" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169607" period="P1">
+          <description>Corner awarded to Philadelphia.</description>
+        </fact>
+        <fact id="01da286a-93ed-4756-bc0b-d7bae6663fe1" type="penalty_awarded" time="2016-05-26T00:14:34Z" updated_time="2016-05-26T00:14:34Z" scratch="false" clock="37" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169645" period="P1">
+          <description>Orlando have been awarded a penalty...</description>
+        </fact>
+        <fact id="0bbb906d-a270-43b7-aec9-afc2fe89be0f" type="penalty_missed" time="2016-05-26T00:15:22Z" updated_time="2016-05-26T00:15:22Z" scratch="false" x="91" y="36" clock="37" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169715" period="P1">
+          <description>Kaka (Orlando) had a chance from the penalty spot but missed!</description>
+        </fact>
+        <fact id="0da814fc-1982-4449-a8a2-e1a83ee2cdf9" type="corner_kick" time="2016-05-26T00:15:38Z" updated_time="2016-05-26T00:15:38Z" scratch="false" x="95" y="5" clock="38" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169791" period="P1">
+          <description>Orlando have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="d248b9d2-a8ad-412e-8a39-7fe53c92a641" type="throwin" time="2016-05-26T00:16:12Z" updated_time="2016-05-26T00:16:12Z" scratch="false" x="21" y="96" clock="38" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169829" period="P1">
+          <description>A throw-in for the away team on the opposite half.</description>
+        </fact>
+        <fact id="4f4740ec-5c74-489f-956f-2504a8bf07dd" type="goal_kick" time="2016-05-26T00:16:25Z" updated_time="2016-05-26T00:16:25Z" scratch="false" x="5" y="50" clock="38" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169833" period="P1">
+          <description>Sorin Stoica awards Orlando a goal kick.</description>
+        </fact>
+        <fact id="46d70580-45da-44b5-b437-0f9e44d8a42b" type="corner_kick" time="2016-05-26T00:17:13Z" updated_time="2016-05-26T00:46:38Z" scratch="false" x="95" y="5" clock="39" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169895" period="P1">
+          <description>Orlando have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="cf1be108-f398-4ee7-855d-039945bdf2b6" type="corner_kick" time="2016-05-26T00:17:41Z" updated_time="2016-05-26T00:46:40Z" scratch="false" x="95" y="90" clock="40" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224169943" period="P1">
+          <description>Corner awarded to Orlando.</description>
+        </fact>
+        <fact id="8de177d1-d875-44ea-bf4b-4bf9c099c32a" type="throwin" time="2016-05-26T00:17:54Z" updated_time="2016-05-26T00:17:54Z" scratch="false" x="86" y="96" clock="40" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224169959" period="P1">
+          <description>Sorin Stoica awards the away team a throw-in.</description>
+        </fact>
+        <fact id="009557a8-996a-4057-9f6c-e734cb380197" type="shot_on_target" time="2016-05-26T00:18:37Z" updated_time="2016-05-26T00:47:10Z" scratch="false" x="14" y="41" clock="41" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" reference_id="sr:fact:224170023" period="P1">
+          <description>Philadelphia drive forward and Tranquillo Barnetta gets in a shot. Without netting, however.</description>
+        </fact>
+        <fact id="9d96fd06-1fce-4e42-909b-d4b2a40082a7" type="keeper_save" time="2016-05-26T00:18:37Z" updated_time="2016-05-26T00:18:37Z" scratch="false" clock="41" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224170029" period="P1"/>
+        <fact id="be715af3-2d6c-449d-9fdd-f32b37720c9e" type="injury" time="2016-05-26T00:21:24Z" updated_time="2016-05-26T00:22:01Z" scratch="false" x="70" y="29" clock="43" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="e008d17d-10ca-43f3-844a-af8b319c7d2f" reference_id="sr:fact:224170309" period="P1">
+          <description>Play has been temporarily suspended for attention to Joshua Yaro for Philadelphia who is writhing in pain on the pitch.</description>
+        </fact>
+        <fact id="6ebf3d01-aaad-4099-a6bf-88a82a27d319" type="game_resumed" time="2016-05-26T00:22:16Z" updated_time="2016-05-26T00:22:16Z" scratch="false" clock="44" reference_id="sr:fact:224170379" period="P1">
+          <description>The match in Orlando is underway once more.</description>
+        </fact>
+        <fact id="cefecb26-119e-4c3c-9b3f-a7a50ae41345" type="injury" time="2016-05-26T00:23:08Z" updated_time="2016-05-26T00:24:06Z" scratch="false" x="59" y="5" clock="44" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="e008d17d-10ca-43f3-844a-af8b319c7d2f" reference_id="sr:fact:224170439" period="P1">
+          <description>Sorin Stoica waits before resuming play because Joshua Yaro for Philadelphia is still down.</description>
+        </fact>
+        <fact id="4eec01f4-787f-4619-8d08-36fff2d3127a" type="throwin" time="2016-05-26T00:22:54Z" updated_time="2016-05-26T00:22:54Z" scratch="false" x="59" y="5" clock="45" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224170421" period="P1">
+          <description>Ball safe as Philadelphia is awarded a throw-in in their half.</description>
+        </fact>
+        <fact id="a6b36695-50c3-4571-b2bc-bac0c468e596" type="injury_return" time="2016-05-26T00:23:01Z" updated_time="2016-05-26T00:23:01Z" scratch="false" clock="45" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="e008d17d-10ca-43f3-844a-af8b319c7d2f" reference_id="sr:fact:224170429" period="P1">
+          <description>Philadelphia’s Joshua Yaro is on his feet again at Camping World Stadium.</description>
+        </fact>
+        <fact id="e203507a-1d42-4342-9815-f9e263ad67ec" type="injury_time" time="2016-05-26T00:23:43Z" updated_time="2016-05-26T00:23:43Z" scratch="false" clock="45" injury_time="3" reference_id="sr:fact:224170483" period="">
+          <description>3 minutes will be added to the 1st half.</description>
+        </fact>
+        <fact id="7df98907-b754-4741-9f5c-b6ade2d2df1c" type="game_resumed" time="2016-05-26T00:23:59Z" updated_time="2016-05-26T00:23:59Z" scratch="false" clock="45" injury_time="1" reference_id="sr:fact:224170493" period="P1">
+          <description>Play has been resumed.</description>
+        </fact>
+        <fact id="a5b32816-e0fc-41ce-921f-6e168553969d" type="substitution" time="2016-05-26T00:24:06Z" updated_time="2016-05-26T00:24:06Z" scratch="false" clock="45" injury_time="1" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_out_id="e008d17d-10ca-43f3-844a-af8b319c7d2f" reference_id="sr:fact:224170505" player_in_id="6a9b2488-7511-4367-9b4e-88c8d5d72a24" period="P1">
+          <description>Jim Curtin (Philadelphia) is making a first change, with Ken Tribbett replacing the possibly injured Joshua Yaro.</description>
+        </fact>
+        <fact id="7375d571-7db7-40f6-b1db-b1a97f907745" type="throwin" time="2016-05-26T00:24:10Z" updated_time="2016-05-26T00:24:10Z" scratch="false" x="31" y="98" clock="45" injury_time="1" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224170513" period="P1">
+          <description>Throw-in for Orlando at Camping World Stadium.</description>
+        </fact>
+        <fact id="6c467a6a-5bd3-445a-8fa0-7ad91265b4ee" type="throwin" time="2016-05-26T00:24:40Z" updated_time="2016-05-26T00:24:40Z" scratch="false" x="44" y="3" clock="45" injury_time="2" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224170587" period="P1">
+          <description>Orlando awarded a throw-in in their own half.</description>
+        </fact>
+        <fact id="3636ada5-bb54-4b65-aaf4-68ed19e88636" type="goal_kick" time="2016-05-26T00:26:18Z" updated_time="2016-05-26T00:26:18Z" scratch="false" x="95" y="50" clock="45" injury_time="3" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224170683" period="P1">
+          <description>Philadelphia have a goal kick.</description>
+        </fact>
+        <fact id="18e2f32a-d09f-488a-ae11-4aa7e59a5f0a" type="period_over" time="2016-05-26T00:27:02Z" updated_time="2016-05-26T00:27:02Z" scratch="false" home_score="0" away_score="0" reference_id="sr:fact:224170713" period="P1" clock="45">
+          <description>The first-half has ended.</description>
+        </fact>
+        <fact id="c8bf9701-96aa-4d5c-a0a5-2f3347a57999" type="period_started" time="2016-05-26T00:27:02Z" updated_time="2016-05-26T00:27:02Z" scratch="false" reference_id="sr:fact:224170715" period="H" clock="46"/>
+        <fact id="a4d4b655-61dd-4cd4-a1c1-e2b0c6961b91" type="period_started" time="2016-05-26T00:42:22Z" updated_time="2016-05-26T00:42:22Z" scratch="false" reference_id="sr:fact:224171697" period="P2" clock="46"/>
+        <fact id="13a504c0-26b6-4df0-a1be-9ef8ad2a3d9d" type="throwin" time="2016-05-26T00:42:28Z" updated_time="2016-05-26T00:42:28Z" scratch="false" x="22" y="96" clock="46" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224171701" period="P2">
+          <description>Ball safe as Orlando is awarded a throw-in in their half.</description>
+        </fact>
+        <fact id="32771e9e-fab6-476c-b55f-e8d5ee61a2d9" type="free_kick" time="2016-05-26T00:42:39Z" updated_time="2016-05-26T00:42:39Z" scratch="false" x="54" y="85" clock="46" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224171713" period="P2">
+          <description>Free kick for Orlando in the half of Philadelphia.</description>
+        </fact>
+        <fact id="43a62510-7730-48be-97ae-010976709bc7" type="goal_kick" time="2016-05-26T00:43:29Z" updated_time="2016-05-26T00:43:29Z" scratch="false" x="95" y="50" clock="47" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224171783" period="P2">
+          <description>Ball goes out of play for a Philadelphia goal kick.</description>
+        </fact>
+        <fact id="581842e8-2fdf-487f-82e3-cbb2c181a017" type="free_kick" time="2016-05-26T00:45:12Z" updated_time="2016-05-26T00:45:12Z" scratch="false" x="23" y="46" clock="48" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224171895" period="P2">
+          <description>Orlando awarded a free kick in their own half.</description>
+        </fact>
+        <fact id="328b1e93-055e-40a9-943b-8b8dd1b8bad0" type="shot_off_target" time="2016-05-26T00:46:17Z" updated_time="2016-05-26T00:46:27Z" scratch="false" x="75" y="58" clock="49" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="284c2fbd-8522-4445-9a34-32909a72fb9f" reference_id="sr:fact:224171993" period="P2">
+          <description>Orlando are pushing forward but Adrian Winter's finish is wide of the goal.</description>
+        </fact>
+        <fact id="edb06f66-16f3-4838-a337-65bf7a58b90e" type="goal_kick" time="2016-05-26T00:46:17Z" updated_time="2016-05-26T00:46:17Z" scratch="false" x="95" y="50" clock="49" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224171999" period="P2">
+          <description>It's a goal kick for the away team in Orlando.</description>
+        </fact>
+        <fact id="af1d0c61-afb0-4926-805d-f18ac2ee2442" type="shot_off_target" time="2016-05-26T00:47:24Z" updated_time="2016-05-26T00:47:31Z" scratch="false" x="80" y="40" clock="51" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" reference_id="sr:fact:224172105" period="P2">
+          <description>Kaka of Orlando gets in a strike, but is off target.</description>
+        </fact>
+        <fact id="20b49c63-5ecd-4e98-86d8-540c55352216" type="goal_kick" time="2016-05-26T00:47:24Z" updated_time="2016-05-26T00:47:24Z" scratch="false" x="95" y="50" clock="51" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172109" period="P2">
+          <description>Goal kick for Philadelphia at Camping World Stadium.</description>
+        </fact>
+        <fact id="0bfac014-cda8-4333-a9f4-99fc41629431" type="free_kick" time="2016-05-26T00:48:14Z" updated_time="2016-05-26T00:48:14Z" scratch="false" x="41" y="16" clock="51" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172173" period="P2">
+          <description>Free kick for Philadelphia in the half of Orlando.</description>
+        </fact>
+        <fact id="d19e0755-087b-4030-8755-0db15f5baafd" type="goal" time="2016-05-26T00:49:18Z" updated_time="2016-05-26T00:49:24Z" scratch="false" x="5" y="37" clock="52" home_score="0" away_score="1" penalty="false" owngoal="false" header="false" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" reference_id="sr:fact:224172261" assist1_id="126a0f6f-ea7b-460d-bf9e-1d6d24a0482e" period="P2">
+          <description>Goal! The away team take a 0-1 lead through Tranquillo Barnetta.</description>
+        </fact>
+        <fact id="163a594a-3c03-4e28-b55b-22cd225af7f8" type="throwin" time="2016-05-26T00:49:40Z" updated_time="2016-05-26T00:49:40Z" scratch="false" x="64" y="97" clock="53" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172297" period="P2">
+          <description>Throw-in for Philadelphia at Camping World Stadium.</description>
+        </fact>
+        <fact id="fb22b3f1-4ad9-4091-b540-107352caf3e2" type="free_kick" time="2016-05-26T00:50:08Z" updated_time="2016-05-26T00:50:08Z" scratch="false" x="25" y="52" clock="53" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172351" period="P2">
+          <description>Sorin Stoica signals a free kick to Philadelphia.</description>
+        </fact>
+        <fact id="220d9abc-f879-4b97-bc79-58fa99ca959e" type="corner_kick" time="2016-05-26T00:51:54Z" updated_time="2016-05-26T00:51:54Z" scratch="false" x="5" y="90" clock="55" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172531" period="P2">
+          <description>Corner awarded to Philadelphia.</description>
+        </fact>
+        <fact id="bcaad933-023b-4dcf-8e79-735e01a821cc" type="shot_on_target" time="2016-05-26T00:53:41Z" updated_time="2016-05-26T00:54:03Z" scratch="false" x="10" y="47" clock="57" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="3005f7a3-111e-423e-b900-f4adbfa85a4d" reference_id="sr:fact:224172643" period="P2">
+          <description>Philadelphia's C.J. Sapong gets in a shot on goal at Camping World Stadium. But the effort is unsuccessful.</description>
+        </fact>
+        <fact id="47b7a4ac-c36e-4622-b989-a2886e7001e8" type="keeper_save" time="2016-05-26T00:53:41Z" updated_time="2016-05-26T00:53:41Z" scratch="false" clock="57" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224172645" period="P2"/>
+        <fact id="5cc1694c-37bc-4d2a-8a61-1c7eb44b56b3" type="free_kick" time="2016-05-26T00:53:54Z" updated_time="2016-05-26T00:53:54Z" scratch="false" x="38" y="79" clock="57" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172663" period="P2">
+          <description>In Orlando a free kick has been awarded the away team.</description>
+        </fact>
+        <fact id="12a39649-ca57-4931-8f6e-fb3a7a0e4d37" type="shot_blocked" time="2016-05-26T00:54:27Z" updated_time="2016-05-26T00:54:27Z" scratch="false" x="18" y="53" clock="58" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172697" period="P2"/>
+        <fact id="f41a74f0-9262-4e79-8ac5-80c4f7fb366a" type="free_kick" time="2016-05-26T00:54:31Z" updated_time="2016-05-26T00:54:31Z" scratch="false" x="24" y="64" clock="58" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224172705" period="P2">
+          <description>Orlando awarded a free kick in their own half.</description>
+        </fact>
+        <fact id="89664c08-25a9-4e68-ab9e-4dbdc451f122" type="injury" time="2016-05-26T00:55:41Z" updated_time="2016-05-26T00:56:00Z" scratch="false" x="63" y="69" clock="59" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="b36b9266-4dfd-46b4-8cde-043a80ee00b6" reference_id="sr:fact:224172787" period="P2">
+          <description>The match at Camping World Stadium has been interrupted briefly for a check on Cristian Higuita, who is down injured.</description>
+        </fact>
+        <fact id="fa16cb35-1932-4732-927c-5046d32fe9b9" type="injury" time="2016-05-26T00:55:48Z" updated_time="2016-05-26T00:55:48Z" scratch="false" x="63" y="69" clock="59" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="126a0f6f-ea7b-460d-bf9e-1d6d24a0482e" reference_id="sr:fact:224172795" period="P2">
+          <description>Attention is being given to Philadelphia’s Chris Pontius and play has been suspended briefly.</description>
+        </fact>
+        <fact id="f7e91c65-89f0-418f-892e-f29b9b7ab55c" type="game_resumed" time="2016-05-26T00:57:29Z" updated_time="2016-05-26T00:57:29Z" scratch="false" clock="61" reference_id="sr:fact:224172907" period="P2">
+          <description>The match at Camping World Stadium is underway again.</description>
+        </fact>
+        <fact id="eb23b8ab-6b25-463d-9adf-86c62b752f70" type="shot_off_target" time="2016-05-26T00:58:23Z" updated_time="2016-05-26T00:58:23Z" scratch="false" x="11" y="46" clock="62" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" reference_id="sr:fact:224172965" period="P2">
+          <description>Philadelphia are coming forward and Tranquillo Barnetta gets in a strike, it misses the target, however.</description>
+        </fact>
+        <fact id="e524e9c4-0eea-49a2-adf7-f61b615e8cba" type="goal_kick" time="2016-05-26T00:58:23Z" updated_time="2016-05-26T00:58:23Z" scratch="false" x="5" y="50" clock="62" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224172969" period="P2">
+          <description>Ball goes out of play for a Orlando goal kick.</description>
+        </fact>
+        <fact id="ff065b25-d49a-42fc-abe5-89ffafae56b1" type="offside" time="2016-05-26T00:58:33Z" updated_time="2016-05-26T00:58:33Z" scratch="false" x="42" y="29" clock="62" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224172981" period="P2">
+          <description>Philadelphia push upfield but Sorin Stoica quickly pulls them for offside.</description>
+        </fact>
+        <fact id="b65a16d2-4ce0-4041-a3f8-2444cd3f64b6" type="injury_return" time="2016-05-26T00:58:39Z" updated_time="2016-05-26T00:58:39Z" scratch="false" clock="62" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="126a0f6f-ea7b-460d-bf9e-1d6d24a0482e" reference_id="sr:fact:224172993" period="P2">
+          <description>Philadelphia's Chris Pontius looks ok and returns to the pitch.</description>
+        </fact>
+        <fact id="f5b0cca6-c293-4b0e-9d57-528980bf8b6d" type="injury_return" time="2016-05-26T00:58:42Z" updated_time="2016-05-26T00:58:42Z" scratch="false" clock="62" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="b36b9266-4dfd-46b4-8cde-043a80ee00b6" reference_id="sr:fact:224173001" period="P2">
+          <description>Cristian Higuita for Orlando is back on the field again.</description>
+        </fact>
+        <fact id="d8e1f75c-0d77-4038-bb1c-167910ca8b72" type="throwin" time="2016-05-26T00:59:00Z" updated_time="2016-05-26T00:59:00Z" scratch="false" x="69" y="4" clock="62" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173025" period="P2">
+          <description>Can Orlando get the ball into an attacking position from this throw-in in Philadelphia's half?</description>
+        </fact>
+        <fact id="24f74cc2-d922-48d2-8c96-33151bddceea" type="free_kick" time="2016-05-26T00:59:16Z" updated_time="2016-05-26T00:59:16Z" scratch="false" x="53" y="65" clock="62" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173047" period="P2">
+          <description>Sorin Stoica signals a free kick to Philadelphia in their own half.</description>
+        </fact>
+        <fact id="67513ea1-d7e6-4f7a-93d1-15dfddfd9d7a" type="free_kick" time="2016-05-26T00:59:58Z" updated_time="2016-05-26T00:59:58Z" scratch="false" x="34" y="64" clock="63" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173105" period="P2">
+          <description>Free kick for Orlando in their own half.</description>
+        </fact>
+        <fact id="dd77d36d-31de-451f-940e-a5d43aa0a9d7" type="throwin" time="2016-05-26T01:00:37Z" updated_time="2016-05-26T01:00:37Z" scratch="false" x="67" y="4" clock="64" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173145" period="P2">
+          <description>A throw-in for the home team on the opposite half.</description>
+        </fact>
+        <fact id="72762d77-80b3-45be-959d-e6bd62fd4ef2" type="free_kick" time="2016-05-26T01:00:52Z" updated_time="2016-05-26T01:00:52Z" scratch="false" x="57" y="38" clock="64" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173153" period="P2">
+          <description>Sorin Stoica signals a free kick to Philadelphia in their own half.</description>
+        </fact>
+        <fact id="b02fac64-3548-4607-a510-e79d44f014d3" type="card" time="2016-05-26T01:01:04Z" updated_time="2016-05-26T01:01:21Z" scratch="false" clock="64" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="3503e2e7-2289-4bd8-86a5-104856d41bf2" reference_id="sr:fact:224173163" period="P2">
+          <description>Carlos Rivas is booked for the home team.</description>
+        </fact>
+        <fact id="f03c7979-7b34-40c6-bf2e-a6cd7f1e0ba6" type="throwin" time="2016-05-26T01:02:11Z" updated_time="2016-05-26T01:02:11Z" scratch="false" x="94" y="96" clock="65" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173243" period="P2">
+          <description>Throw-in for Orlando close to the penalty box.</description>
+        </fact>
+        <fact id="815793ba-ec1f-4e11-bebf-65b081a3b91b" type="free_kick" time="2016-05-26T01:03:45Z" updated_time="2016-05-26T01:03:45Z" scratch="false" x="58" y="79" clock="67" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173327" period="P2">
+          <description>Free kick Orlando.</description>
+        </fact>
+        <fact id="d95d515c-9787-440c-a747-4d6c8d060db5" type="free_kick" time="2016-05-26T01:03:49Z" updated_time="2016-05-26T01:03:49Z" scratch="false" x="64" y="76" clock="67" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173329" period="P2">
+          <description>Free kick for Philadelphia in their own half.</description>
+        </fact>
+        <fact id="1ce957d6-0bee-43a9-9369-699925efcac4" type="substitution" time="2016-05-26T01:04:06Z" updated_time="2016-05-26T01:04:06Z" scratch="false" clock="67" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="3503e2e7-2289-4bd8-86a5-104856d41bf2" reference_id="sr:fact:224173351" player_in_id="066f0cd4-57bc-4e76-b266-a9adcb28616b" period="P2">
+          <description>Julio Baptista is replacing Carlos Rivas for the home team.</description>
+        </fact>
+        <fact id="a0641465-dbfe-4cd4-b6a0-28f439f41446" type="substitution" time="2016-05-26T01:04:14Z" updated_time="2016-05-26T01:04:14Z" scratch="false" clock="67" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="284c2fbd-8522-4445-9a34-32909a72fb9f" reference_id="sr:fact:224173363" player_in_id="be59693b-49f8-4e53-9105-408153b0d76d" period="P2">
+          <description>The home team replace Adrian Winter with Kevin Molino.</description>
+        </fact>
+        <fact id="8d92d12e-5b8b-4d90-873d-221e93bec5f2" type="goal" time="2016-05-26T01:05:15Z" updated_time="2016-05-26T01:05:45Z" scratch="false" x="88" y="49" clock="68" home_score="1" away_score="1" penalty="false" owngoal="false" header="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="be59693b-49f8-4e53-9105-408153b0d76d" reference_id="sr:fact:224173473" period="P2">
+          <description>Kevin Molino is on target to level the scores at 1-1.</description>
+        </fact>
+        <fact id="7a880bca-88c0-447f-877d-f0d44d3ae152" type="substitution" time="2016-05-26T01:06:38Z" updated_time="2016-05-26T01:07:17Z" scratch="false" clock="70" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_out_id="126a0f6f-ea7b-460d-bf9e-1d6d24a0482e" reference_id="sr:fact:224173561" player_in_id="00faf4ba-2c76-496d-a540-ad83ab2e95ae" period="P2">
+          <description>Chris Pontius, who was grimacing earlier, has been substituted. Fabian Herbers is the substitute for Philadelphia.</description>
+        </fact>
+        <fact id="14a595da-4736-4eb3-bce2-e8c5788fd4fd" type="throwin" time="2016-05-26T01:07:37Z" updated_time="2016-05-26T01:07:37Z" scratch="false" x="79" y="3" clock="71" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224173629" period="P2">
+          <description>Sorin Stoica signals a Orlando throw-in in Philadelphia's half.</description>
+        </fact>
+        <fact id="be897744-dacc-431d-b21a-3b2490462325" type="goal" time="2016-05-26T01:08:38Z" updated_time="2016-05-26T01:09:03Z" scratch="false" x="91" y="46" clock="71" home_score="2" away_score="1" penalty="false" owngoal="false" header="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="4e1e8750-db2f-40bc-9a7f-02b55557f865" reference_id="sr:fact:224173715" assist1_id="14256b40-3f5b-4000-a56c-1cb4ce39fa99" period="P2">
+          <description>Orlando take a 2-1 lead thanks to Cyle Larin.</description>
+        </fact>
+        <fact id="4b2aa48f-3e4b-4d9e-b143-9e4ac75303cb" type="card" time="2016-05-26T01:09:22Z" updated_time="2016-05-26T01:11:03Z" scratch="false" clock="72" card="Y" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" reference_id="sr:fact:224173773" period="P2">
+          <description>Tranquillo Barnetta (Philadelphia) has received a first yellow card.</description>
+        </fact>
+        <fact id="7e80504f-d396-4f04-b317-261a47be6856" type="free_kick" time="2016-05-26T01:10:02Z" updated_time="2016-05-26T01:10:02Z" scratch="false" x="46" y="31" clock="73" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173821" period="P2">
+          <description>Free kick Philadelphia.</description>
+        </fact>
+        <fact id="1b1a6329-7609-47f7-9d7a-79378f3145b7" type="throwin" time="2016-05-26T01:10:46Z" updated_time="2016-05-26T01:10:46Z" scratch="false" x="40" y="98" clock="74" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173875" period="P2">
+          <description>Throw-in for Philadelphia in the half of Orlando.</description>
+        </fact>
+        <fact id="f25d38f0-7145-41e2-a8b4-3a84d653b526" type="corner_kick" time="2016-05-26T01:11:36Z" updated_time="2016-05-26T01:11:36Z" scratch="false" x="5" y="5" clock="75" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224173931" period="P2">
+          <description>Philadelphia have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="58df9a47-d783-4c1b-8b85-ad5a5a5d8d23" type="goal" time="2016-05-26T01:12:08Z" updated_time="2016-05-26T01:12:37Z" scratch="false" x="10" y="46" clock="75" home_score="2" away_score="2" penalty="false" owngoal="false" header="false" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="6a9b2488-7511-4367-9b4e-88c8d5d72a24" reference_id="sr:fact:224173969" period="P2">
+          <description>Goal! The away team draw level at 2-2 through Ken Tribbett.</description>
+        </fact>
+        <fact id="ba677058-9251-42be-a350-872834b6db4e" type="free_kick" time="2016-05-26T01:12:58Z" updated_time="2016-05-26T01:12:58Z" scratch="false" x="86" y="82" clock="76" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174161" period="P2">
+          <description>Philadelphia awarded a free kick in their own half.</description>
+        </fact>
+        <fact id="3bc378fc-1224-462e-aac0-b6a6013e1075" type="card" time="2016-05-26T01:13:23Z" updated_time="2016-05-26T01:13:46Z" scratch="false" clock="76" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="d1309656-031c-4e01-a379-d4e692644fcb" reference_id="sr:fact:224174191" period="P2">
+          <description>Orlando's Servando Carrasco has been booked in Orlando.</description>
+        </fact>
+        <fact id="ec741922-d6b6-4261-a73b-2b27e0edc946" type="corner_kick" time="2016-05-26T01:14:25Z" updated_time="2016-05-26T01:14:25Z" scratch="false" x="95" y="90" clock="78" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224174267" period="P2">
+          <description>Orlando have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="8f025b5d-1963-4c73-840c-f50f832d6826" type="shot_off_target" time="2016-05-26T01:14:34Z" updated_time="2016-05-26T01:14:45Z" scratch="false" x="93" y="61" clock="78" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224174275" period="P2"/>
+        <fact id="a3fe0ddb-42e9-4293-b202-dbaf69c5839c" type="goal_kick" time="2016-05-26T01:14:34Z" updated_time="2016-05-26T01:14:34Z" scratch="false" x="95" y="50" clock="78" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174277" period="P2">
+          <description>Goal kick for Philadelphia at Camping World Stadium.</description>
+        </fact>
+        <fact id="1d77e02c-ac4e-467f-8631-11f05e128984" type="shot_on_target" time="2016-05-26T01:16:54Z" updated_time="2016-05-26T01:17:35Z" scratch="false" x="3" y="6" clock="80" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="00faf4ba-2c76-496d-a540-ad83ab2e95ae" reference_id="sr:fact:224174433" period="P2">
+          <description>Fabian Herbers for Philadelphia drives towards goal at Camping World Stadium. But the finish is unsuccessful.</description>
+        </fact>
+        <fact id="cd1ce4c5-eba7-42bd-86a5-4af5e127072c" type="keeper_save" time="2016-05-26T01:16:54Z" updated_time="2016-05-26T01:16:54Z" scratch="false" clock="80" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224174435" period="P2"/>
+        <fact id="a912d677-306b-4321-b063-854b5e54a3a8" type="corner_kick" time="2016-05-26T01:17:23Z" updated_time="2016-05-26T01:17:23Z" scratch="false" x="5" y="5" clock="81" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174467" period="P2">
+          <description>Corner awarded to Philadelphia.</description>
+        </fact>
+        <fact id="6f3e4bf0-a971-4fcc-a4e5-5cbbed4001d6" type="throwin" time="2016-05-26T01:17:32Z" updated_time="2016-05-26T01:17:32Z" scratch="false" x="24" y="2" clock="81" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174487" period="P2">
+          <description>Philadelphia to take a throw-in in Orlando territory.</description>
+        </fact>
+        <fact id="30d0c3ee-d896-4695-a4f4-865d65e7606d" type="free_kick" time="2016-05-26T01:18:35Z" updated_time="2016-05-26T01:18:35Z" scratch="false" x="19" y="57" clock="82" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174573" period="P2">
+          <description>Sorin Stoica signals a free kick to Philadelphia just outside Orlando's area.</description>
+        </fact>
+        <fact id="ebd32d62-5205-4dd8-a079-65d6b316738f" type="shot_on_target" time="2016-05-26T01:19:41Z" updated_time="2016-05-26T01:19:41Z" scratch="false" x="3" y="92" clock="83" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174645" period="P2"/>
+        <fact id="58d2ff4f-3dce-48dc-94b0-7fb963e87734" type="keeper_save" time="2016-05-26T01:19:41Z" updated_time="2016-05-26T01:19:41Z" scratch="false" clock="83" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224174647" period="P2"/>
+        <fact id="7d05c601-9cfc-466e-b7d3-36fddebe677a" type="corner_kick" time="2016-05-26T01:20:01Z" updated_time="2016-05-26T01:20:01Z" scratch="false" x="5" y="90" clock="83" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174675" period="P2">
+          <description>Philadelphia have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="04abb94b-ba7d-4acf-80f5-b0c847f5d95c" type="free_kick" time="2016-05-26T01:20:13Z" updated_time="2016-05-26T01:20:13Z" scratch="false" x="24" y="50" clock="83" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224174687" period="P2">
+          <description>In Orlando a free kick has been awarded the away team.</description>
+        </fact>
+        <fact id="dc6519be-78f4-4287-a623-314fc3a344ac" type="substitution" time="2016-05-26T01:20:50Z" updated_time="2016-05-26T01:20:50Z" scratch="false" clock="84" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="4e1e8750-db2f-40bc-9a7f-02b55557f865" reference_id="sr:fact:224174739" player_in_id="5efd11d0-4370-4c44-a4c5-f43363a4ad59" period="P2">
+          <description>Hadji Barry is on a sub for Cyle Larin for Orlando.</description>
+        </fact>
+        <fact id="35e2e696-a2c6-4394-820b-44e932998d85" type="throwin" time="2016-05-26T01:21:57Z" updated_time="2016-05-26T01:21:57Z" scratch="false" x="7" y="98" clock="85" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224174833" period="P2">
+          <description>Sorin Stoica awards the home team a throw-in.</description>
+        </fact>
+        <fact id="5b1d160f-87b2-41f4-8f59-164b88d51e41" type="shot_off_target" time="2016-05-26T01:22:51Z" updated_time="2016-05-26T01:22:58Z" scratch="false" x="89" y="48" clock="86" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="be59693b-49f8-4e53-9105-408153b0d76d" reference_id="sr:fact:224175039" period="P2">
+          <description>Orlando are pushing forward but Kevin Molino's finish is wide of the goal.</description>
+        </fact>
+        <fact id="a9d8afcf-6939-4f46-9987-12d5317af495" type="goal_kick" time="2016-05-26T01:22:51Z" updated_time="2016-05-26T01:22:51Z" scratch="false" x="95" y="50" clock="86" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224175041" period="P2">
+          <description>It's a goal kick for the away team in Orlando.</description>
+        </fact>
+        <fact id="e8d89572-f907-4404-a957-e33a58897c7c" type="corner_kick" time="2016-05-26T01:23:53Z" updated_time="2016-05-26T01:23:53Z" scratch="false" x="95" y="90" clock="87" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224175125" period="P2">
+          <description>Corner awarded to Orlando.</description>
+        </fact>
+        <fact id="65ee30dd-09db-4520-8f69-2d5630eee20b" type="corner_kick" time="2016-05-26T01:24:33Z" updated_time="2016-05-26T01:24:33Z" scratch="false" x="95" y="5" clock="88" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224175179" period="P2">
+          <description>Corner awarded to Orlando.</description>
+        </fact>
+        <fact id="7563df17-9b00-4b82-93b4-4270e8d8493f" type="corner_kick" time="2016-05-26T01:24:48Z" updated_time="2016-05-26T01:24:48Z" scratch="false" x="95" y="5" clock="88" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224175203" period="P2">
+          <description>Orlando have been awarded a corner by Sorin Stoica.</description>
+        </fact>
+        <fact id="5bd92258-62d5-4738-9e04-85f811be8567" type="goal_kick" time="2016-05-26T01:24:52Z" updated_time="2016-05-26T01:24:52Z" scratch="false" x="95" y="50" clock="88" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224175207" period="P2">
+          <description>Philadelphia have a goal kick.</description>
+        </fact>
+        <fact id="c04c8beb-bb64-4ce7-8464-2ccd2835f67d" type="free_kick" time="2016-05-26T01:25:45Z" updated_time="2016-05-26T01:25:45Z" scratch="false" x="20" y="61" clock="89" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224175279" period="P2">
+          <description>It's getting dangerous! Free kick for Philadelphia close to the penalty box.</description>
+        </fact>
+        <fact id="0e27d904-b319-459e-baf4-66f42fcc4f26" type="card" time="2016-05-26T01:25:56Z" updated_time="2016-05-26T01:26:07Z" scratch="false" clock="89" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="b36b9266-4dfd-46b4-8cde-043a80ee00b6" reference_id="sr:fact:224175321" period="P2">
+          <description>At Camping World Stadium, Cristian Higuita has been yellow-carded for the home team.</description>
+        </fact>
+        <fact id="55a2e489-5c21-47d0-bb4f-d06ea4827194" type="goal_kick" time="2016-05-26T01:26:52Z" updated_time="2016-05-26T01:26:52Z" scratch="false" x="5" y="50" clock="90" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224175383" period="P2">
+          <description>Sorin Stoica awards Orlando a goal kick.</description>
+        </fact>
+        <fact id="3dd60867-7b9d-4e4b-b6be-edea0eb1a693" type="injury_time" time="2016-05-26T01:27:28Z" updated_time="2016-05-26T01:27:28Z" scratch="false" clock="90" injury_time="4" reference_id="sr:fact:224175433" period="">
+          <description>4 minutes of injury time will be added to the 2nd half.</description>
+        </fact>
+        <fact id="53a456d2-9a5c-4007-827d-eba4608cfbc5" type="free_kick" time="2016-05-26T01:29:06Z" updated_time="2016-05-26T01:29:06Z" scratch="false" x="63" y="43" clock="90" injury_time="2" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224175563" period="P2">
+          <description>Free kick for Philadelphia in their own half.</description>
+        </fact>
+        <fact id="fbbdd0f7-cb64-485a-ad1c-a0eef59bb6a8" type="substitution" time="2016-05-26T01:29:35Z" updated_time="2016-05-26T11:51:48Z" scratch="false" clock="90" injury_time="3" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_out_id="51aafd42-4b99-4c8f-988f-c338847f9385" reference_id="sr:fact:224175603" player_in_id="4b076180-b8a1-47db-80f2-28e24738721a" period="P2">
+          <description>Philadelphia make their third substitution with Leo Fernandes replacing Sebastien Le Toux.</description>
+        </fact>
+        <fact id="a42484f2-b8c3-49e4-9066-3b2681a5694a" type="card" time="2016-05-26T01:30:29Z" updated_time="2016-05-26T11:51:48Z" scratch="false" clock="90" injury_time="3" card="R" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="b3d33b9b-6937-4484-a93b-3bf07bea09ae" reference_id="sr:fact:224175677" period="P2">
+          <description>At Camping World Stadium, David Mateos is shown a red card and sent off.</description>
+        </fact>
+        <fact id="ba3079d5-93de-43cd-a71c-f757eb5caa4e" type="free_kick" time="2016-05-26T01:30:23Z" updated_time="2016-05-26T01:30:23Z" scratch="false" x="17" y="40" clock="90" injury_time="4" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" reference_id="sr:fact:224175673" period="P2">
+          <description>Can Philadelphia capitalize from this dangerous free kick?</description>
+        </fact>
+        <fact id="be7c9e24-1e9e-4e03-b5cd-5371b88e202a" type="shot_off_target" time="2016-05-26T01:31:26Z" updated_time="2016-05-26T01:31:33Z" scratch="false" x="17" y="40" clock="90" injury_time="5" team_id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" player_id="1cc043af-4310-41ff-85c8-b0bb415e4ca5" reference_id="sr:fact:224175755" period="P2">
+          <description>Philadelphia's Tranquillo Barnetta gets his shot away but it misses the target.</description>
+        </fact>
+        <fact id="dfc3067b-b420-48ad-a246-ad13923534d8" type="goal_kick" time="2016-05-26T01:31:26Z" updated_time="2016-05-26T01:31:26Z" scratch="false" x="5" y="50" clock="90" injury_time="5" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:224175757" period="P2">
+          <description>Goal kick for Orlando at Camping World Stadium.</description>
+        </fact>
+        <fact id="456d60c6-5bb4-40c8-867f-49985472da85" type="period_over" time="2016-05-26T01:31:59Z" updated_time="2016-05-26T01:31:59Z" scratch="false" home_score="2" away_score="2" reference_id="sr:fact:224175805" period="P2" clock="90">
+          <description>The second-half is over. The match ends 2-2.</description>
+        </fact>
+        <fact id="15582a5c-9f0f-4cbc-beb6-6ac67e0bf77a" type="match_ended" time="2016-05-26T01:31:59Z" updated_time="2016-05-26T01:31:59Z" scratch="false" home_score="2" away_score="2" winner_id="" draw="true" reference_id="sr:fact:224175807" clock="90"/>
+      </facts>
+      <!-- 8697530/52237/39833 -->
+    </match>
+  </matches>
+</summary>

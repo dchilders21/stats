@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schedule generated="2016-06-07T19:02:22Z" xmlns="http://feed.elasticstats.com/schema/soccer/sr/v2/matches-schedule.xsd">
+  <matches>
+    <match id="fbe97bdc-d425-4baf-a03e-0e30b9d5573d" status="closed" scheduled="2016-03-06T00:30:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662332">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="d7944e9d-8785-4dda-a2eb-b9d863eb6726" name="Queretaro" alias="QRO" country_code="MEX" country="Mexico" type="team" reference_id="1951"/>
+      <away id="ae86d852-2b72-476e-aac1-204c94d7c234" name="G. Chivas" alias="GDC" country_code="MEX" country="Mexico" type="team" reference_id="1938"/>
+      <venue id="471a7fb9-f6f3-4ef4-8513-8b5e94121d56" name="Estadio La Corregidora" country_code="MEX" country="Mexico" city="Santiago de Queretaro" capacity="33758" coordinates="20.577551,-100.366341" reference_id="2048"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="NONE" ballspotting="false" cornersonly="false" multicast="false" liveodds="false" deeper="false" tactical="false" stats="true"/>
+      <!-- 8662332/1951/1938 -->
+    </match>
+    <match id="4c549fc7-abdd-4b5d-ac96-7887eb018080" status="closed" scheduled="2016-03-06T01:00:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662338">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="7bd1840c-37f9-431a-ae1f-86dd23f0cc2e" name="Monterrey" alias="MTY" country_code="MEX" country="Mexico" type="team" reference_id="1932"/>
+      <away id="d733c2ab-d2fd-4ee2-9025-e3b9b9f051e4" name="Tigres" alias="TIG" country_code="MEX" country="Mexico" type="team" reference_id="1940"/>
+      <venue id="148eea38-cdb9-4071-864e-adc95100ca82" name="Estadio BBVA Bancomer" country_code="MEX" country="Mexico" city="Monterrey" capacity="51000" coordinates="25.670172,-100.243700" reference_id="16526"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="0" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8662338/1932/1940 -->
+    </match>
+    <match id="ef934cd8-d262-475c-8270-f31eae303f45" status="closed" scheduled="2016-03-06T02:06:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662340">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="429e7aec-82e3-4b37-8651-7611cbbf7eb5" name="Pachuca" alias="PAC" country_code="MEX" country="Mexico" type="team" reference_id="1936"/>
+      <away id="55ef247e-b9d0-4789-bc84-6a933fc01d35" name="Dorados" alias="DRD" country_code="MEX" country="Mexico" type="team" reference_id="5291"/>
+      <venue id="f46c970f-5901-4a16-90db-e4fb1ea8f2e7" name="Estadio Miguel Hidalgo" country_code="MEX" country="Mexico" city="Pachuca de Soto" capacity="30000" coordinates="20.105331,-98.756706" reference_id="2044"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="0" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8662340/1936/5291 -->
+    </match>
+    <match id="21bc998d-71fc-45fb-b9a0-ccb68359fe51" status="closed" scheduled="2016-03-06T02:30:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662342">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="b0524ead-bdc4-4231-a6eb-49c153ced098" name="Atlas" alias="ATS" country_code="MEX" country="Mexico" type="team" reference_id="1949"/>
+      <away id="5dd96f68-1a54-4b31-93c2-e7c2a70cc0b1" name="Santos" alias="SNT" country_code="MEX" country="Mexico" type="team" reference_id="1948"/>
+      <venue id="d191a32a-703e-43d8-8158-35290ae62201" name="Estadio Jalisco" country_code="MEX" country="Mexico" city="Guadalajara" capacity="63163" coordinates="20.705000,-103.328056" reference_id="985"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="VENUE" ballspotting="false" cornersonly="true" multicast="false" liveodds="true" deeper="false" tactical="false" stats="true"/>
+      <!-- 8662342/1949/1948 -->
+    </match>
+    <match id="1816eed9-a622-4530-a66d-df4bb5fc668e" status="closed" scheduled="2016-03-06T03:00:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662344">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="7f5ef57a-02a4-4165-9b39-a3453f9cdf03" name="Jaguares" alias="RSL" country_code="MEX" country="Mexico" type="team" reference_id="1953"/>
+      <away id="9eee39ac-f6f5-4876-b69a-b61707eb21d1" name="Toluca" alias="TOL" country_code="MEX" country="Mexico" type="team" reference_id="1931"/>
+      <venue id="e2aaea71-6e31-4af3-91a1-c6975eca2367" name="Estadio Victor Manuel Reyna" country_code="MEX" country="Mexico" city="Tuxtla Gutierrez" capacity="28900" coordinates="16.762798,-93.096497" reference_id="2246"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="0" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8662344/1953/1931 -->
+    </match>
+    <match id="1546ba3e-c897-476c-8a9a-0ed1a8e7bab2" status="closed" scheduled="2016-03-06T18:00:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662346">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="68a406c2-fc04-427a-95d0-d37d582f81df" name="Unam Pumas" alias="PUM" country_code="MEX" country="Mexico" type="team" reference_id="1933"/>
+      <away id="9ca06516-f133-42f7-931f-157bbba82999" name="Cruz Azul" alias="CAZ" country_code="MEX" country="Mexico" type="team" reference_id="1947"/>
+      <venue id="3155a138-6894-49ce-bca1-768b8aba1a51" name="Estadio Olimpico Universitario" country_code="MEX" country="Mexico" city="Mexico City" capacity="52000" coordinates="19.331928,-99.192106" reference_id="4560"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="0" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8662346/1933/1947 -->
+    </match>
+    <match id="5b588cba-c03f-4864-8a81-f9e941fd016a" status="closed" scheduled="2016-03-06T18:30:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693700">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="443f4c7c-4a1e-4062-b04d-d3fcfec9838b" name="New York" alias="NYRB" country_code="USA" country="United States" type="team" reference_id="2506"/>
+      <away id="71e60dd4-b0b1-4771-821b-09200d5c8874" name="Toronto" alias="TOR" country_code="USA" country="United States" type="team" reference_id="7080"/>
+      <venue id="53f95d31-bcac-4e49-b6e8-10f50954340d" name="Red Bull Arena" country_code="USA" country="United States" city="Harrison" capacity="25000" coordinates="40.736851,-74.150360" reference_id="1822"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693700/2506/7080 -->
+    </match>
+    <match id="b8e0647b-72ad-44b5-95b9-832e32015ce9" status="closed" scheduled="2016-03-06T19:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693702">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" name="Orlando" alias="OSC" country_code="USA" country="United States" type="team" reference_id="52237"/>
+      <away id="b78b9f61-0697-4347-a1b6-b7685a130eb1" name="Salt Lake" alias="SAL" country_code="USA" country="United States" type="team" reference_id="5133"/>
+      <venue id="9c33b523-0eaa-4347-833f-c0b300f2e172" name="Camping World Stadium" country_code="USA" country="United States" city="Orlando" capacity="65000" coordinates="28.539167,-81.402778" reference_id="15674"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="false" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693702/52237/5133 -->
+    </match>
+    <match id="a180040e-0c00-40b3-81a0-78f87fb44521" status="closed" scheduled="2016-03-06T19:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693704">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="7de6b0a1-e7c7-4a24-b04d-d0e00db01aeb" name="Chicago Fire" alias="CHI" country_code="USA" country="United States" type="team" reference_id="2505"/>
+      <away id="dfb39488-8712-4336-9fc2-74b70607f05e" name="NYC FC" alias="NYC" country_code="USA" country="United States" type="team" reference_id="167510"/>
+      <venue id="eeab196b-2cf1-4e71-ac01-5f3acf5aba50" name="Toyota Park" country_code="USA" country="United States" city="Bridgeview" capacity="20000" coordinates="41.764828,-87.806145" reference_id="2299"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="NONE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693704/2505/167510 -->
+    </match>
+    <match id="bec8b334-a19e-4039-95af-d1893e22c910" status="closed" scheduled="2016-03-06T20:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693708">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="0a9ec7c8-37d8-4213-a2fa-4e6416969409" name="Houston" alias="HOU" country_code="USA" country="United States" type="team" reference_id="2508"/>
+      <away id="bf1354b5-e5b2-4818-b1f6-a8584104bbfd" name="New England" alias="NEE" country_code="USA" country="United States" type="team" reference_id="2511"/>
+      <venue id="4e74d253-2d54-4824-baf8-30b4c4bdf39e" name="BBVA Compass Stadium" country_code="USA" country="United States" city="Houston" capacity="22000" coordinates="29.752058,-95.352371" reference_id="4454"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="NONE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693708/2508/2511 -->
+    </match>
+    <match id="4207873d-8cb1-4ae3-84eb-1ee657583fc9" status="closed" scheduled="2016-03-06T20:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693710">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="3660ff77-4d9c-4bfc-bb53-39356c29f9eb" name="San Jose" alias="SJE" country_code="USA" country="United States" type="team" reference_id="21825"/>
+      <away id="5d539702-77f2-4fb1-80e5-94f4bd71c560" name="Colorado" alias="COL" country_code="USA" country="United States" type="team" reference_id="2510"/>
+      <venue id="a4cee3dc-f2e3-475e-9d44-139e13a6d2eb" name="Avaya Stadium" country_code="USA" country="United States" city="San Jose" capacity="18000" coordinates="37.351389,-121.925000" reference_id="15670"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693710/21825/2510 -->
+    </match>
+    <match id="8fff1e2e-db9c-45a4-80ff-b0a16482f9e7" status="closed" scheduled="2016-03-06T20:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693706">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="b4c42dd9-9405-4f6f-861e-931d744a3be8" name="Dallas" alias="DAL" country_code="USA" country="United States" type="team" reference_id="2512"/>
+      <away id="ca2ff256-706c-41cb-b0db-6c2e611c2bb7" name="Philadelphia" alias="PHI" country_code="USA" country="United States" type="team" reference_id="39833"/>
+      <venue id="be2c2421-9b4d-487d-af6b-069d631d021f" name="Toyota Stadium" country_code="USA" country="United States" city="Frisco" capacity="20500" coordinates="33.154327,-96.835213" reference_id="2298"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693706/2512/39833 -->
+    </match>
+    <match id="1b5a9163-229b-4200-bfd3-ae249335cd3d" status="closed" scheduled="2016-03-06T21:30:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693712">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="33fa3d0b-22a2-4e9d-b2dd-68057548ff06" name="Portland" alias="POR" country_code="USA" country="United States" type="team" reference_id="22007"/>
+      <away id="80c3d4fd-a3e8-4c97-a559-bf95e92a24e7" name="Columbus Crew" alias="COC" country_code="USA" country="United States" type="team" reference_id="2504"/>
+      <venue id="bb228539-599c-42c7-9a7f-e656284b33dc" name="Providence Park" country_code="USA" country="United States" city="Portland" capacity="20323" coordinates="45.521492,-122.691811" reference_id="2303"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693712/22007/2504 -->
+    </match>
+    <match id="6352759b-c544-4086-9289-f6abdb2690bf" status="closed" scheduled="2016-03-06T22:30:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="8693714">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="18"/>
+      <home id="b9df6f63-ba46-4df9-afbd-f925bce7b012" name="Vancouver" alias="VAN" country_code="USA" country="United States" type="team" reference_id="22010"/>
+      <away id="c6c59cc6-d4b7-40d0-bf4a-ca044d75cbb4" name="Montreal" alias="MON" country_code="USA" country="United States" type="team" reference_id="22006"/>
+      <venue id="2c0d4057-2a1a-4102-b058-4d68b9ecacec" name="BC Place" country_code="CAN" country="Canada" city="Vancouver" capacity="21000" coordinates="49.276667,-123.111944" reference_id="2293"/>
+      <round type="table" number="1" week="10"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8693714/22010/22006 -->
+    </match>
+    <match id="63fcacb0-44eb-4c2a-ab70-619fe6ed6c75" status="closed" scheduled="2016-03-06T23:00:00Z" scratched="false" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" reference_id="8662348">
+      <category id="ab5bfdbe-ed48-45e8-a6b9-eda3a8aaad3b" name="Mexico" country_code="MEX" country="Mexico" reference_id="12"/>
+      <tournament_group id="3baac5eb-2bd1-4561-ab76-b96d267dfe2a" name="Primera Division" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" reference_id="352"/>
+      <tournament id="09422c44-3adc-4238-993e-845080a86cc2" name="Primera Division, Clausura" season_id="deb1c2fc-4239-41d9-9b9f-82a561b7a3dd" season_start="2015-07-23T22:00:00Z" season_end="2016-06-20T21:59:00Z" season="2015" type="group" reference_id="16753"/>
+      <home id="a054937f-3368-4723-8e5f-e15c15643f85" name="Puebla" alias="PUE" country_code="MEX" country="Mexico" type="team" reference_id="1941"/>
+      <away id="96df6275-2e8c-4639-8315-df560bd9b3de" name="Veracruz" alias="VER" country_code="MEX" country="Mexico" type="team" reference_id="1942"/>
+      <venue id="93fe6321-74eb-4f75-9a7a-70e4f1626b94" name="Estadio Cuauhtemoc" country_code="MEX" country="Mexico" city="Puebla" capacity="42648" coordinates="19.078056,-98.164444" reference_id="4952"/>
+      <round type="table" number="9" week="9"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="VENUE" ballspotting="true" cornersonly="true" multicast="false" liveodds="true" deeper="false" tactical="false" stats="true"/>
+      <!-- 8662348/1941/1942 -->
+    </match>
+  </matches>
+</schedule>

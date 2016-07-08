@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<summary generated="2016-07-08T08:13:38Z" xmlns="http://feed.elasticstats.com/schema/soccer/sr/v2/matches-summary.xsd">
+  <matches>
+    <match id="b8e0647b-72ad-44b5-95b9-832e32015ce9" status="closed" period="P2" scheduled="2016-03-06T19:00:00Z" clock="" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="sr:match:8693702">
+      <coverage lineups="2" tactical_lineups="true" corner_facts="true" extended_facts="true" deep_facts="true" statistics="true"/>
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" reference_id="sr:tournamentgroup:242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" type="group" reference_id="sr:tournament:18"/>
+      <referee id="fe391b27-2946-410b-8837-788d14e8100b" first_name="Chris" last_name="Penso" country_code="USA" country="United States" reference_id="sr:referee:314522"/>
+      <round type="table" number="1" week="10"/>
+      <home id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" name="Orlando" full_name="Orlando City SC" alias="OSC" country_code="USA" country="United States" type="team" reference_id="sr:team:52237" formation="4-3-3" score="2" regular_score="2" penalty_score="" winner="draw">
+        <scoring>
+          <half points="0" number="1"/>
+          <half points="2" number="2"/>
+        </scoring>
+        <statistics ball_safe="45" corner_kicks="12" dangerous_attacks="49" fouls="14" free_kicks="12" goal_attempts="14" goal_kicks="4" offsides="4" red_card="1" saves="6" substitutions="2" throw_ins="28" yellow_card="2" yellow_red_card="0" shots_on_target="7" shots_off_target="7" shots_total="14" possessions="50"/>
+        <manager id="fe39be62-cf86-4b7d-b58a-c877b6fa3ce2" first_name="Adrian" last_name="Heath" country_code="ENG" country="England" reference_id="sr:manager:801806"/>
+        <players>
+          <player id="0bac13c9-050d-47c7-8677-97f3acd74d6f" first_name="Brek" last_name="Shea" country_code="USA" country="United States" reference_id="sr:player:48963" full_first_name="Dane Brekken" full_last_name="Shea" position="M" started="true" jersey_number="20" tactical_position="8" tactical_order="11">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="2051d6e8-e223-49d9-985e-e9bea9fcb97f" first_name="Richie" last_name="Laryea" country_code="CAN" country="Canada" reference_id="sr:player:950636" full_first_name="Richmond" full_last_name="Laryea" position="M" started="false" jersey_number="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="284c2fbd-8522-4445-9a34-32909a72fb9f" first_name="Adrian" last_name="Winter" country_code="CHE" country="Switzerland" reference_id="sr:player:37786" position="M" started="false" jersey_number="32">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="4c2c2bfa-d538-4545-b40d-011f740a59d3" first_name="Rafael" last_name="Ramos" country_code="PRT" country="Portugal" reference_id="sr:player:352862" full_first_name="Rafael Antonio" full_last_name="Figueiredo Ramos" position="D" started="true" jersey_number="27" tactical_position="2" tactical_order="2">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="4e1e8750-db2f-40bc-9a7f-02b55557f865" first_name="Cyle" last_name="Larin" country_code="CAN" country="Canada" reference_id="sr:player:756754" position="F" started="true" jersey_number="9" tactical_position="8" tactical_order="10">
+            <statistics goal="1" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="5efd11d0-4370-4c44-a4c5-f43363a4ad59" first_name="Hadji" last_name="Barry" country_code="GIN" country="Guinea" reference_id="sr:player:951316" position="F" started="false" jersey_number="13">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="6bd5eb26-801f-4d94-a96b-25ef2bbde567" first_name="Aurelien" last_name="Collin" country_code="FRA" country="France" reference_id="sr:player:27643" position="D" started="false" jersey_number="78">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="70999bf0-4750-4cd5-a555-2c9a3714c95b" first_name="Earl" last_name="Edwards Jr" country_code="USA" country="United States" reference_id="sr:player:805200" full_first_name="Earl William" full_last_name="Edwards Jr" position="G" started="false" jersey_number="36">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="83a2df77-6d79-4b9d-ae0e-e1c2eb2a57c6" first_name="Pedro" last_name="Ribeiro" country_code="BRA" country="Brazil" reference_id="sr:player:539874" full_first_name="Pedro Nezio" full_last_name="de Araujo Lopes Ribeiro" position="M" started="true" jersey_number="15" tactical_position="6" tactical_order="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="8c494062-9ba3-4bb5-a312-4e9e4f98062c" first_name="Tommy" last_name="Redding" country_code="USA" country="United States" reference_id="sr:player:805210" full_first_name="Thomas" full_last_name="Redding" position="D" started="true" jersey_number="29" tactical_position="3" tactical_order="3">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="8ce5a6f4-6d2f-4b1e-b57e-11c4b61281cc" first_name="Joe" last_name="Bendik" country_code="USA" country="United States" reference_id="sr:player:112659" full_first_name="Joseph T." full_last_name="Bendik" position="G" started="true" jersey_number="1" tactical_position="1" tactical_order="1">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="a0f8f02d-8f8f-4b9e-8b4b-b8974b8ff6c2" first_name="Kevin" last_name="Alston" country_code="USA" country="United States" reference_id="sr:player:48891" full_first_name="Kevin Lawrence" full_last_name="Alston" position="D" started="false" jersey_number="12">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="be59693b-49f8-4e53-9105-408153b0d76d" first_name="Kevin" last_name="Molino" country_code="TTO" country="Trinidad and Tobago" reference_id="sr:player:200804" position="M" started="true" jersey_number="18" tactical_position="8" tactical_order="9">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="cbe97747-81cc-44a7-b236-a62431db3ca6" first_name="Luke" last_name="Boden" country_code="ENG" country="England" reference_id="sr:player:16791" position="D" started="true" jersey_number="14" tactical_position="4" tactical_order="5">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="d1309656-031c-4e01-a379-d4e692644fcb" first_name="Servando" last_name="Carrasco" country_code="USA" country="United States" reference_id="sr:player:149008" position="M" started="true" jersey_number="5" tactical_position="6" tactical_order="7">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="f19526a9-3d3a-44a5-aa0d-68c169bc881e" first_name="Darwin" last_name="Ceren" country_code="SLV" country="El Salvador" reference_id="sr:player:284217" full_first_name="Darwin Adelso" full_last_name="Ceren Delgado" position="M" started="true" jersey_number="17" tactical_position="6" tactical_order="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="1" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="f712bd12-ab05-401e-bb82-8b41c9cfa4ba" first_name="Harrison" last_name="Heath" country_code="ENG" country="England" reference_id="sr:player:805202" full_first_name="Harrison William" full_last_name="Heath" position="M" started="false" jersey_number="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="fa11e77e-f66d-497a-9aea-cace9016f86a" first_name="Seb" last_name="Hines" country_code="ENG" country="England" reference_id="sr:player:14386" full_first_name="Sebastian Tony" full_last_name="Hines" position="D" started="true" jersey_number="3" tactical_position="3" tactical_order="4">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+        </players>
+      </home>
+      <away id="b78b9f61-0697-4347-a1b6-b7685a130eb1" name="Salt Lake" full_name="Real Salt Lake" alias="SAL" country_code="USA" country="United States" type="team" reference_id="sr:team:5133" formation="4-2-3-1" score="2" regular_score="2" penalty_score="" winner="draw">
+        <scoring>
+          <half points="1" number="1"/>
+          <half points="1" number="2"/>
+        </scoring>
+        <statistics ball_safe="50" corner_kicks="2" dangerous_attacks="34" fouls="11" free_kicks="18" goal_attempts="8" goal_kicks="7" offsides="1" red_card="0" saves="5" substitutions="3" throw_ins="19" yellow_card="2" yellow_red_card="1" shots_on_target="4" shots_off_target="4" shots_total="8" possessions="50"/>
+        <manager id="c0456c5f-51a0-4d12-996f-e3b2a1c7945c" first_name="Jeff" last_name="Cassar" country_code="USA" country="United States" reference_id="sr:manager:539898"/>
+        <players>
+          <player id="20437cc7-925c-45a6-8a48-abae08f58e8f" first_name="Nick" last_name="Rimando" country_code="USA" country="United States" reference_id="sr:player:48822" full_first_name="Nicholas Paul" full_last_name="Rimando" position="G" started="true" jersey_number="18" tactical_position="1" tactical_order="1">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="20b1b1ad-6307-41ba-acb6-747b24c923d8" first_name="Tony" last_name="Beltran" country_code="USA" country="United States" reference_id="sr:player:48812" full_first_name="Anthony Benjamin" full_last_name="Beltran" position="D" started="true" jersey_number="2" tactical_position="2" tactical_order="2">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="2aeacd39-3f9c-42af-957e-9df8573973c4" first_name="Kyle" last_name="Beckerman" country_code="USA" country="United States" reference_id="sr:player:26195" full_first_name="Kyle Robert" full_last_name="Beckerman" position="M" started="true" jersey_number="5" tactical_position="6" tactical_order="6">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="2f86e946-794e-4d55-b0f8-1e0c93c276be" first_name="Olmes" last_name="Garcia" country_code="COL" country="Colombia" reference_id="sr:player:314094" full_first_name="Olmes Fernando" full_last_name="Garcia Florez" position="F" started="false" jersey_number="80">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="48f547e6-d981-40c1-a591-c320a88aedd2" first_name="Jordan" last_name="Allen" country_code="USA" country="United States" reference_id="sr:player:539918" position="M" started="false" jersey_number="70">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="640f8388-9feb-4142-933f-204aecb7ae9f" first_name="Justen" last_name="Glad" country_code="USA" country="United States" reference_id="sr:player:583670" position="D" started="false" jersey_number="15">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="65b20b8e-dc46-4a1b-afb3-2f52527e37ae" first_name="Javier" last_name="Morales" country_code="ARG" country="Argentina" reference_id="sr:player:48816" full_first_name="Javier Damian" full_last_name="Morales" position="M" started="true" jersey_number="11" tactical_position="6" tactical_order="9">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="704d57e9-57ed-4e40-9292-2709aee4cd7d" first_name="Jamison" last_name="Olave" country_code="COL" country="Colombia" reference_id="sr:player:48813" full_first_name="Jamison" full_last_name="Olave Mosquera" position="M" started="true" jersey_number="4" tactical_position="3" tactical_order="3">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="7d00d395-2ef5-42d4-b24d-3e5fd5621e20" first_name="Jeff" last_name="Attinella" country_code="USA" country="United States" reference_id="sr:player:318929" position="G" started="false" jersey_number="24">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="84dcc8b0-10f1-4b05-b3f0-505abfb53253" first_name="Demar" last_name="Phillips" country_code="JAM" country="Jamaica" reference_id="sr:player:965651" position="D" started="true" jersey_number="17" tactical_position="4" tactical_order="5">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="1" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="86b087bf-f7d9-483c-a195-4721c2b19610" first_name="Aaron" last_name="Maund" country_code="USA" country="United States" reference_id="sr:player:224604" full_first_name="Aaron Michael Thomas" full_last_name="Maund" position="D" started="true" jersey_number="21" tactical_position="3" tactical_order="4">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="899f5625-9a82-42df-8bc7-f5c74c042c10" first_name="Sunny" last_name="" country_code="ESP" country="Spain" reference_id="sr:player:28172" full_first_name="Stephen Obayan" full_last_name="Sunday" position="M" started="true" jersey_number="8" tactical_position="6" tactical_order="7">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="8ff29d0d-6559-4152-a396-892b81214863" first_name="Devon" last_name="Sandoval" country_code="USA" country="United States" reference_id="sr:player:314102" position="F" started="false" jersey_number="49">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+          <player id="9ddcb968-6051-48b1-8573-1ed639ade3fe" first_name="Chris" last_name="Wingert" country_code="USA" country="United States" reference_id="sr:player:48819" full_first_name="Christopher" full_last_name="Wingert" position="D" started="false" jersey_number="16">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="1" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="ae53140b-f95d-4bae-a15a-2fa58aa4a3a6" first_name="Luke" last_name="Mulholland" country_code="ENG" country="England" reference_id="sr:player:539900" position="M" started="false" jersey_number="19">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="1"/>
+          </player>
+          <player id="b0454c98-c159-41d2-bf4f-f6f044969a8e" first_name="Juan" last_name="Martinez" country_code="ARG" country="Argentina" reference_id="sr:player:80899" full_first_name="Juan Manuel" full_last_name="Martinez" position="F" started="true" jersey_number="7" tactical_position="5" tactical_order="8">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="fe06eeee-5961-4998-9d69-9472a78ec85b" first_name="Joao" last_name="Plata" country_code="ECU" country="Ecuador" reference_id="sr:player:139039" full_first_name="Joao Jimmy" full_last_name="Plata Cotera" position="F" started="true" jersey_number="10" tactical_position="7" tactical_order="10">
+            <statistics goal="2" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="1" substitution_in="0"/>
+          </player>
+          <player id="ffeafe8e-ce83-4e05-b3a3-b8187c39a8a9" first_name="Yura" last_name="Movsisyan" country_code="ARM" country="Armenia" reference_id="sr:player:48818" position="F" started="true" jersey_number="14" tactical_position="8" tactical_order="11">
+            <statistics goal="0" goal_assist="0" own_goal="0" yellow_card="0" yellow_red_card="0" red_card="0" substitution_out="0" substitution_in="0"/>
+          </player>
+        </players>
+      </away>
+      <venue id="9c33b523-0eaa-4347-833f-c0b300f2e172" name="Camping World Stadium" country_code="USA" country="United States" city="Orlando" capacity="65000" coordinates="28.539167,-81.402778" reference_id="sr:venue:15674"/>
+      <facts>
+        <fact id="45fc0f84-363c-48ff-963d-0b099bca3bb2" type="about_to_start" time="2016-03-06T19:07:29Z" updated_time="2016-03-06T19:07:29Z" scratch="false" reference_id="sr:fact:205249747" clock="0"/>
+        <fact id="f7845e1a-8b54-4eb1-a848-e1a78fdcdb09" type="match_started" time="2016-03-06T19:08:34Z" updated_time="2016-03-06T19:08:11Z" scratch="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205249961" clock="1">
+          <description>Today's referee, Chris Penso, has blown to start the match.</description>
+        </fact>
+        <fact id="edac4035-a7db-4ed1-b99a-b07354486f60" type="period_started" time="2016-03-06T19:08:34Z" updated_time="2016-03-06T19:08:34Z" scratch="false" reference_id="sr:fact:205249963" period="P1" clock="1"/>
+        <fact id="64136fca-0780-4217-85fb-5ca7df6aea44" type="corner_kick" time="2016-03-06T19:10:05Z" updated_time="2016-03-06T19:10:05Z" scratch="false" clock="2" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205250277" period="P1"/>
+        <fact id="3de00d0e-10a5-4a18-9989-61cbf9a79fb2" type="corner_kick" time="2016-03-06T19:14:33Z" updated_time="2016-03-06T19:14:33Z" scratch="false" clock="7" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205251285" period="P1"/>
+        <fact id="39c1d93e-345a-4945-91db-d9f5293c8cb3" type="card" time="2016-03-06T19:19:06Z" updated_time="2016-03-06T19:25:19Z" scratch="false" clock="11" card="Y" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_id="84dcc8b0-10f1-4b05-b3f0-505abfb53253" reference_id="sr:fact:205252535" period="P1">
+          <description>Demar Phillips for Salt Lake has been booked by Chris Penso and receives a first yellow card.</description>
+        </fact>
+        <fact id="1dc7277d-2d95-494c-b0c6-b16436ddb27d" type="corner_kick" time="2016-03-06T19:22:31Z" updated_time="2016-03-06T19:22:31Z" scratch="false" clock="15" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" reference_id="sr:fact:205253237" period="P1"/>
+        <fact id="1aa01859-0b08-4b01-810c-3f5844d79df3" type="corner_kick" time="2016-03-06T19:26:38Z" updated_time="2016-03-06T19:26:38Z" scratch="false" clock="19" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" reference_id="sr:fact:205253937" period="P1"/>
+        <fact id="579d6527-f2d7-41cf-afab-700ed6cbb57b" type="card" time="2016-03-06T19:29:12Z" updated_time="2016-03-06T19:50:16Z" scratch="false" clock="20" card="YR" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_id="84dcc8b0-10f1-4b05-b3f0-505abfb53253" reference_id="sr:fact:205254619" period="P1">
+          <description>Demar Phillips has been booked for the second time in this match - the red card is coming out!</description>
+        </fact>
+        <fact id="ae9e9b08-5e0b-436c-8854-1ce688abbdd4" type="substitution" time="2016-03-06T19:58:02Z" updated_time="2016-03-06T20:01:37Z" scratch="false" clock="24" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_out_id="899f5625-9a82-42df-8bc7-f5c74c042c10" reference_id="sr:fact:205259531" player_in_id="9ddcb968-6051-48b1-8573-1ed639ade3fe" period="P1">
+          <description>Chris Wingert is replacing Sunny for the away team.</description>
+        </fact>
+        <fact id="20683ed9-c88d-4d19-8732-bef41d6341a8" type="corner_kick" time="2016-03-06T19:32:25Z" updated_time="2016-03-06T19:32:25Z" scratch="false" clock="25" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205255381" period="P1"/>
+        <fact id="66c9b6f0-7118-42c3-8faf-332ceba12e57" type="penalty_awarded" time="2016-03-06T19:33:52Z" updated_time="2016-03-06T19:33:52Z" scratch="false" clock="26" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" reference_id="sr:fact:205255623" period="P1">
+          <description>Salt Lake have been awarded a penalty in Orlando...</description>
+        </fact>
+        <fact id="4592e72d-7116-471d-b5d0-f67efd1bd367" type="goal" time="2016-03-06T19:34:22Z" updated_time="2016-03-06T21:09:57Z" scratch="false" clock="26" home_score="0" away_score="1" penalty="true" owngoal="false" header="false" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_id="fe06eeee-5961-4998-9d69-9472a78ec85b" reference_id="sr:fact:205255731" period="P1">
+          <description>Joao Plata smashes in a penalty at Orlando Citrus Bowl Stadium. The score is now 0-1.</description>
+        </fact>
+        <fact id="32939ede-66c5-4696-a7ba-677bbb6f9d74" type="card" time="2016-03-06T19:40:28Z" updated_time="2016-03-08T07:57:23Z" scratch="false" clock="32" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="83a2df77-6d79-4b9d-ae0e-e1c2eb2a57c6" reference_id="sr:fact:205256835" period="P1">
+          <description>Pedro Ribeiro (Orlando) gets a yellow card.</description>
+        </fact>
+        <fact id="369c8309-410c-40ae-a3b6-8673327fd4c2" type="corner_kick" time="2016-03-06T19:41:52Z" updated_time="2016-03-06T19:41:52Z" scratch="false" clock="34" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205257063" period="P1"/>
+        <fact id="583b2643-f1ea-455f-bc1b-e173bf9815f1" type="corner_kick" time="2016-03-06T19:47:28Z" updated_time="2016-03-06T19:47:28Z" scratch="false" clock="40" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205258009" period="P1"/>
+        <fact id="c606d160-7294-4746-b21d-fb83cd70726f" type="corner_kick" time="2016-03-06T19:51:54Z" updated_time="2016-03-06T19:51:54Z" scratch="false" clock="44" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205258739" period="P1"/>
+        <fact id="ef00c41b-76fe-4eb5-b96b-770b090f4221" type="injury_time" time="2016-03-06T19:53:32Z" updated_time="2016-03-06T19:53:32Z" scratch="false" clock="45" injury_time="3" reference_id="sr:fact:205258917" period="">
+          <description>3 minutes of injury time will be added to the 1st half.</description>
+        </fact>
+        <fact id="1f687094-9619-49e8-936f-bd7ba971c8f7" type="period_over" time="2016-03-06T19:57:57Z" updated_time="2016-03-06T19:57:57Z" scratch="false" home_score="0" away_score="1" reference_id="sr:fact:205259525" period="P1" clock="45">
+          <description>The first-half has ended.</description>
+        </fact>
+        <fact id="fea4ef7c-3cde-4ca7-8355-3377d7045e0d" type="card" time="2016-03-06T19:27:40Z" updated_time="2016-03-06T19:56:43Z" scratch="false" clock="45" injury_time="2" card="R" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="f19526a9-3d3a-44a5-aa0d-68c169bc881e" reference_id="sr:fact:205254129">
+          <description>Darwin Ceren (Orlando) is red-carded and dismissed.</description>
+        </fact>
+        <fact id="52cf103c-c938-46eb-b88a-a16c78c1cb3c" type="period_started" time="2016-03-06T19:57:57Z" updated_time="2016-03-06T19:57:57Z" scratch="false" reference_id="sr:fact:205259527" period="H" clock="46"/>
+        <fact id="45557088-b7d5-4e9d-988e-766d532a02dc" type="period_started" time="2016-03-06T20:14:02Z" updated_time="2016-03-06T20:14:02Z" scratch="false" reference_id="sr:fact:205261825" period="P2" clock="46"/>
+        <fact id="32d8196a-814a-438d-8fe7-263501f2b1b1" type="corner_kick" time="2016-03-06T20:18:17Z" updated_time="2016-03-06T20:18:17Z" scratch="false" clock="50" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205262621" period="P2"/>
+        <fact id="c72d9295-15fd-4f5d-b9d7-bc60827d1447" type="corner_kick" time="2016-03-06T20:22:01Z" updated_time="2016-03-06T20:22:01Z" scratch="false" clock="53" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205263299" period="P2"/>
+        <fact id="a427a716-2c78-43cc-a2fb-294e25bc54db" type="corner_kick" time="2016-03-06T20:22:03Z" updated_time="2016-03-06T20:22:03Z" scratch="false" clock="54" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205263301" period="P2"/>
+        <fact id="e69f0798-8804-440c-bd67-e921b309717a" type="substitution" time="2016-03-06T20:31:38Z" updated_time="2016-03-06T20:31:38Z" scratch="false" clock="61" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="" reference_id="sr:fact:205264573" player_in_id="" period="P2">
+          <description>A.Winter is replacing L.Boden for Orlando at Orlando Citrus Bowl Stadium.</description>
+        </fact>
+        <fact id="e1ea054e-8438-43a4-b472-3aaa7af2dfed" type="substitution" time="2016-03-06T20:31:38Z" updated_time="2016-03-08T07:57:23Z" scratch="false" clock="61" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="cbe97747-81cc-44a7-b236-a62431db3ca6" reference_id="sr:fact:205462951" player_in_id="284c2fbd-8522-4445-9a34-32909a72fb9f" period="P2"/>
+        <fact id="56bedf5f-26c8-4be5-94d2-d2567d42acb6" type="corner_kick" time="2016-03-06T20:32:35Z" updated_time="2016-03-06T20:32:35Z" scratch="false" clock="64" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205264737" period="P2"/>
+        <fact id="4d3855a8-fa8b-466e-92c3-579c4b704418" type="goal" time="2016-03-06T20:34:54Z" updated_time="2016-03-06T20:36:11Z" scratch="false" clock="66" home_score="0" away_score="2" penalty="false" owngoal="false" header="false" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_id="fe06eeee-5961-4998-9d69-9472a78ec85b" reference_id="sr:fact:205265071" period="P2">
+          <description>Salt Lake take a comfortable 0-2 lead thanks to Joao Plata.</description>
+        </fact>
+        <fact id="885c3270-ad47-4b7c-9f5a-d56d54f3b76f" type="card" time="2016-03-06T20:42:19Z" updated_time="2016-03-06T20:44:14Z" scratch="false" clock="74" card="Y" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_id="9ddcb968-6051-48b1-8573-1ed639ade3fe" reference_id="sr:fact:205266029" period="P2">
+          <description>Chris Wingert (Salt Lake) has been booked and must now be careful not to get a second yellow card.</description>
+        </fact>
+        <fact id="5c62cba1-7901-4725-9e93-c509ad4ff857" type="card" time="2016-03-06T20:44:34Z" updated_time="2016-03-06T20:45:53Z" scratch="false" clock="76" card="Y" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="fa11e77e-f66d-497a-9aea-cace9016f86a" reference_id="sr:fact:205266367" period="P2">
+          <description>Orlando's Seb Hines has been booked in Orlando.</description>
+        </fact>
+        <fact id="1f2497b9-0ce2-4cd1-ba5b-f21a519b08a2" type="substitution" time="2016-03-06T20:48:00Z" updated_time="2016-03-06T20:48:00Z" scratch="false" clock="77" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_out_id="" reference_id="sr:fact:205266863" player_in_id="" period="P2">
+          <description>Salt Lake make their second substitution with L.Mulholland replacing J.Plata.</description>
+        </fact>
+        <fact id="0febdf61-3a6a-4c34-be6c-d5977a01d7c4" type="substitution" time="2016-03-06T20:48:00Z" updated_time="2016-03-08T07:57:23Z" scratch="false" clock="77" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_out_id="fe06eeee-5961-4998-9d69-9472a78ec85b" reference_id="sr:fact:205462953" player_in_id="ae53140b-f95d-4bae-a15a-2fa58aa4a3a6" period="P2"/>
+        <fact id="dcbd6598-e2cb-48c3-84e7-e60b64689d16" type="substitution" time="2016-03-06T20:49:00Z" updated_time="2016-03-08T07:57:23Z" scratch="false" clock="77" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="be59693b-49f8-4e53-9105-408153b0d76d" reference_id="sr:fact:205462955" player_in_id="5efd11d0-4370-4c44-a4c5-f43363a4ad59" period="P2"/>
+        <fact id="945b8e35-4f06-4b34-aee4-3b5ed3c2324d" type="substitution" time="2016-03-06T20:49:00Z" updated_time="2016-03-06T20:49:00Z" scratch="false" clock="80" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_out_id="" reference_id="sr:fact:205267001" player_in_id="" period="P2">
+          <description>Adrian Heath is making the team's second substitution at Orlando Citrus Bowl Stadium with H.Barry replacing K.Molino.</description>
+        </fact>
+        <fact id="12ec57d3-05f7-446a-9f3c-26573138025f" type="corner_kick" time="2016-03-06T20:52:29Z" updated_time="2016-03-06T20:52:29Z" scratch="false" clock="84" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205267461" period="P2"/>
+        <fact id="0b1d4d42-f520-40f4-96e5-5433d9be4a5f" type="substitution" time="2016-03-06T20:57:38Z" updated_time="2016-03-06T20:57:38Z" scratch="false" clock="87" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_out_id="" reference_id="sr:fact:205267923" player_in_id="" period="P2">
+          <description>The away team have replaced J.Martinez with O.Garcia. This is the third substitution made today by Jeff Cassar.</description>
+        </fact>
+        <fact id="c790900b-70b6-4f4e-9e64-baa21b7843c3" type="substitution" time="2016-03-06T20:57:38Z" updated_time="2016-03-08T07:57:23Z" scratch="false" clock="87" team_id="b78b9f61-0697-4347-a1b6-b7685a130eb1" player_out_id="b0454c98-c159-41d2-bf4f-f6f044969a8e" reference_id="sr:fact:205462957" player_in_id="2f86e946-794e-4d55-b0f8-1e0c93c276be" period="P2"/>
+        <fact id="7029fcde-135d-4a98-af98-3d7ec00023ba" type="corner_kick" time="2016-03-06T20:59:10Z" updated_time="2016-03-06T20:59:10Z" scratch="false" clock="90" injury_time="1" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" reference_id="sr:fact:205268005" period="P2"/>
+        <fact id="48125d68-2073-4058-8851-316bd78fac16" type="injury_time" time="2016-03-06T20:59:30Z" updated_time="2016-03-06T20:59:30Z" scratch="false" clock="90" injury_time="4" reference_id="sr:fact:205268021" period="">
+          <description>Chris Penso will wait an extra 4 minutes before blowing the whistle to end the 2nd half.</description>
+        </fact>
+        <fact id="2240f08e-12d9-4b3f-897d-f486eeb0ad85" type="goal" time="2016-03-06T21:02:36Z" updated_time="2016-03-06T21:03:54Z" scratch="false" clock="90" injury_time="4" home_score="1" away_score="2" penalty="false" owngoal="false" header="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="4e1e8750-db2f-40bc-9a7f-02b55557f865" reference_id="sr:fact:205268293" period="P2">
+          <description>Goal! Cyle Larin pulls one back for Orlando to make it 1-2.</description>
+        </fact>
+        <fact id="eed9257d-edd6-47f7-91bf-ee756e3667f9" type="goal" time="2016-03-06T21:03:41Z" updated_time="2016-03-06T21:04:51Z" scratch="false" clock="90" injury_time="5" home_score="2" away_score="2" penalty="false" owngoal="false" header="false" team_id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" player_id="284c2fbd-8522-4445-9a34-32909a72fb9f" reference_id="sr:fact:205268379" period="P2">
+          <description>Goal! Orlando go level at 2-2 through Adrian Winter in Orlando.</description>
+        </fact>
+        <fact id="f9e273e1-c7e7-4c94-a38b-d27037031d67" type="period_over" time="2016-03-06T21:04:53Z" updated_time="2016-03-06T21:04:53Z" scratch="false" home_score="2" away_score="2" reference_id="sr:fact:205268441" period="P2" clock="90">
+          <description>Chris Penso blows to end the match. The final score is 2-2.</description>
+        </fact>
+        <fact id="0e8c02cc-ae73-4f21-bb60-52bca8b5be75" type="match_ended" time="2016-03-06T21:04:53Z" updated_time="2016-03-06T21:04:53Z" scratch="false" home_score="2" away_score="2" winner_id="" draw="true" reference_id="sr:fact:205268443" clock="90"/>
+      </facts>
+      <!-- 8693702/52237/5133 -->
+    </match>
+  </matches>
+</summary>
