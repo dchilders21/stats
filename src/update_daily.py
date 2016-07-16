@@ -12,7 +12,7 @@ cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/07/12"
+DATE = "2016/07/13"
 
 add_team = ("INSERT INTO matches "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
@@ -26,14 +26,14 @@ matches = soup.find_all('match')
 
 for match in matches:
     league = match.find('tournament_group')
-    if ((league["name"] == "Major League Soccer") and (match['status'] == 'closed')):
+    if (league["name"] == "Major League Soccer") and (match['status'] == 'closed'):
         print(match['id'])
 
         query = ("SELECT id FROM matches "
                  "WHERE stats_id = %(match_id)s")
         cursor.execute(query, {'match_id': match["id"]})
 
-        if (cursor.rowcount != 0):
+        if cursor.rowcount != 0:
             print("Match ID already exists in DB")
         else:
             home = match.find("home")["id"]
