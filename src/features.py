@@ -13,11 +13,8 @@ match_details = pd.read_sql('SELECT * FROM home_away_coverage',  cnx)
 query = "SELECT id FROM teams"
 cursor.execute(query)
 
-recent_performance = 3
-week = 19
-
-
 # MLS broken out WEEKLY even though teams don't always play a game the same week
+# Off of the schedule from Google
 schedule_2016 = {
     1: datetime.datetime(2016, 3, 6, 23),
     2: datetime.datetime(2016, 3, 13, 23),
@@ -38,9 +35,14 @@ schedule_2016 = {
     17: datetime.datetime(2016, 7, 6, 23),
     18: datetime.datetime(2016, 7, 10, 23),
     19: datetime.datetime(2016, 7, 13, 23),
-    20: datetime.datetime(2016, 7, 16, 23)
+    20: datetime.datetime(2016, 7, 17, 23),
+    21: datetime.datetime(2016, 7, 24, 23),
 }
 
+recent_performance = 3
+week = 20
+adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
+prev_week = (schedule_2016[week-1] + datetime.timedelta(hours=7))
 
 def calculate_games(team_id, date, stats):
 
@@ -66,8 +68,8 @@ def calculate_games(team_id, date, stats):
     opp_goals_at_home = 0  # Opponent goals when CURRENT team is AT Home
     opp_goals_at_away = 0  # Opponent goals when CURRENT team is Away
 
-    home_possession = 0
-    away_possession = 0
+    # home_possession = 0
+    # away_possession = 0
 
     # attacks
     # dangerous attacks
@@ -81,19 +83,19 @@ def calculate_games(team_id, date, stats):
 
     # Sometimes the weeks are even so just subtract 7 days for now
     matches = match_details.loc[((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
-                                (match_details['scheduled'] < (schedule_2016[week-1]))]
+                                (match_details['scheduled'] < adjusted_time)]
 
     total_games = len(matches)
     recent = False
 
     for index, game in matches.iterrows():
-
         if (total_games - recent_performance) < count:
             recent = True
 
         # Home Wins and Road Losses are .8 while Road Wins and Home Losses are 1.2 / Draws remain the same
         if team_id == game['home_id']:
             isHome = True
+            team_name = game["home_team"]
             home_played += 1
             if game['home_points'] == 3:
                 if recent:
@@ -130,7 +132,7 @@ def calculate_games(team_id, date, stats):
 
         else:
             away_played += 1
-
+            team_name = game["away_team"]
             if game['away_points'] == 3:
                 if recent:
                     recent_wins += 1.2
@@ -167,9 +169,9 @@ def calculate_games(team_id, date, stats):
         count += 1
 
     played = home_played + away_played
-    print(" ========================== ")
-    print("Team Id : {}".format(team_id))
     if stats:
+        print(" ========================== ")
+        print("Team Id : {} - Name : {}".format(team_id, team_name))
         print("Prev Opponent Ids : {}".format(opp))
         print("Total Points : {}".format(total_points))
         print("Win Points : {}".format(win))
@@ -192,47 +194,41 @@ def calculate_games(team_id, date, stats):
 
     return win, loss, played, opp, recent_wins, recent_losses
 
-# Iterating through all the Teams in the DB
-for team in cursor:
+upcoming_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'scheduled'", cnx)
 
-    # Need to find the current match(es) first
-    current_match = match_details.loc[((match_details['home_id'] == team['id']) |
-        (match_details['away_id'] == team['id'])) & ((match_details['scheduled'] < (schedule_2016[week]))
-                                    & (match_details['scheduled'] > (schedule_2016[week-1])))]
+print("From {} to {}".format((schedule_2016[week-1] + datetime.timedelta(hours=7)), adjusted_time))
+# Assuming a team only plays once in the previous 7 days
 
-    # Assuming a team only plays once in the previous 7 days
-    if len(current_match) > 0:
-        for i, cur_match in current_match.iterrows():
-            if team['id'] == cur_match['home_id']:
-                opp_id = cur_match['away_id']
-            else:
-                opp_id = cur_match['home_id']
+if len(upcoming_matches) > 0:
+    for i, cur_match in upcoming_matches.iterrows():
+        team_id = cur_match['home_id']
+        opp_id = cur_match['away_id']
 
-            # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
-            games_won, games_lost, games_played, _, recent_games_won, recent_games_lost = calculate_games(team['id'],
-                                                                            week, True)
+        # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
+        games_won, games_lost, games_played, _, recent_games_won, recent_games_lost = calculate_games(team_id,
+                                                                        week, True)
 
-            # Calculate the Opponents Winning Percentage
-            print('Current Opponent ID : {0}'.format(opp_id))
+        # Calculate the Opponents Winning Percentage
+        print('Current Opponent ID : {0}'.format(opp_id))
 
-            opp_games_won, opp_games_lost, opp_games_played, opp_opp, opp_recent_wins, opp_recent_losses = calculate_games(
-                opp_id, week, True)
-            print('Opp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
-                opp_games_won, opp_games_lost, opp_recent_wins, opp_recent_wins))
+        opp_games_won, opp_games_lost, opp_games_played, opp_opp, opp_recent_wins, opp_recent_losses = calculate_games(
+            opp_id, week, True)
+        print('Opp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
+            opp_games_won, opp_games_lost, opp_recent_wins, opp_recent_wins))
 
-            opp_opp_won_total = 0
-            opp_opp_lost_total = 0
+        opp_opp_won_total = 0
+        opp_opp_lost_total = 0
 
-            for opp_opp_id in opp_opp:
-                opp_opp_games_won, opp_opp_games_losses, _, _, _, _ = calculate_games(
-                    opp_opp_id, week, False)
-                opp_opp_won_total += opp_opp_games_won
-                opp_opp_lost_total += opp_opp_games_losses
+        for opp_opp_id in opp_opp:
+            opp_opp_games_won, opp_opp_games_losses, _, _, _, _ = calculate_games(
+                opp_opp_id, week, False)
+            opp_opp_won_total += opp_opp_games_won
+            opp_opp_lost_total += opp_opp_games_losses
 
-            print("--------------------------------------------")
+        print("--------------------------------------------")
 
-            print('Opp Opp Won {0} : Opp Opp Lost {1}'.format(opp_opp_won_total, opp_opp_lost_total))
+        print('Opp Opp Won {0} : Opp Opp Lost {1}'.format(opp_opp_won_total, opp_opp_lost_total))
 
-            print("++++++++++++++++++++++++++++++++++++++++++++")
-            print("++++++++++++++++++++++++++++++++++++++++++++")
-            print("++++++++++++++++++++++++++++++++++++++++++++")
+        print("++++++++++++++++++++++++++++++++++++++++++++")
+        print("++++++++++++++++++++++++++++++++++++++++++++")
+        print("++++++++++++++++++++++++++++++++++++++++++++")

@@ -12,7 +12,7 @@ cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/07/13"
+DATE = "2016/07/17"
 
 add_team = ("INSERT INTO matches "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
@@ -26,7 +26,7 @@ matches = soup.find_all('match')
 
 for match in matches:
     league = match.find('tournament_group')
-    if (league["name"] == "Major League Soccer") and (match['status'] == 'closed'):
+    if (league["name"] == "Major League Soccer"):
         print(match['id'])
 
         query = ("SELECT id FROM matches "
