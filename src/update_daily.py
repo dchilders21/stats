@@ -8,57 +8,66 @@ import time
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
                               database='mls')
-cursor = cnx.cursor()
+cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/07/06"
+DATE = "2016/07/12"
 
 add_team = ("INSERT INTO matches "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-#r = requests.get("http://api.sportradar.us/soccer-" + VERSION + "/na/matches/" + DATE + "/schedule.xml?api_key=" + API_KEY)
+r = requests.get("http://api.sportradar.us/soccer-" + VERSION + "/na/matches/" + DATE + "/schedule.xml?api_key=" + API_KEY)
 soup = BeautifulSoup(r.content, "html.parser")
-#soup = BeautifulSoup(open("./xml/.xml"), "html.parser")
+#soup = BeautifulSoup(open("./xml/07-10.xml"), "html.parser")
 
 matches = soup.find_all('match')
 
 for match in matches:
     league = match.find('tournament_group')
-    if (league["name"] == "Major League Soccer"):
-        print(league)
-        home = match.find("home")["id"]
-        away = match.find("away")["id"]
-        venue = match.find("venue")["id"]
-        round_number = match.find("round")["number"]
-        round_week = match.find("round")["week"]
+    if ((league["name"] == "Major League Soccer") and (match['status'] == 'closed')):
+        print(match['id'])
 
-        schedule = match["scheduled"][:-1]
-        dt = datetime.strptime(schedule, "%Y-%m-%dT%H:%M:%S")
+        query = ("SELECT id FROM matches "
+                 "WHERE stats_id = %(match_id)s")
+        cursor.execute(query, {'match_id': match["id"]})
 
-        scratched = int(match["scratched"] == 'true')
+        if (cursor.rowcount != 0):
+            print("Match ID already exists in DB")
+        else:
+            home = match.find("home")["id"]
+            away = match.find("away")["id"]
+            venue = match.find("venue")["id"]
+            round_number = match.find("round")["number"]
+            round_week = match.find("round")["week"]
 
-        query = ("SELECT id FROM teams "
-                 "WHERE stats_id = %(home_id)s")
-        cursor.execute(query, {'home_id': home})
+            schedule = match["scheduled"][:-1]
+            dt = datetime.strptime(schedule, "%Y-%m-%dT%H:%M:%S")
 
-        for id in cursor:
-            home_id = id[0]
+            scratched = int(match["scratched"] == 'true')
 
-        query = ("SELECT id FROM teams "
-                     "WHERE stats_id = %(away_id)s")
-        cursor.execute(query, {'away_id': away})
+            query = ("SELECT id FROM teams "
+                     "WHERE stats_id = %(home_id)s")
 
-        for id in cursor:
-            away_id = id[0]
+            cursor.execute(query, {'home_id': home})
 
-        data_team = (
-            match["id"], match["status"], dt, scratched, home_id,
-            away_id, match["id"], round_number, round_week)
+            for id in cursor:
+                home_id = id[0]
 
-        cursor.execute(add_team, data_team)
-        cnx.commit()
+            query = ("SELECT id FROM teams "
+                         "WHERE stats_id = %(away_id)s")
+            cursor.execute(query, {'away_id': away})
+
+            for id in cursor:
+                away_id = id[0]
+
+            data_team = (
+                match["id"], match["status"], dt, scratched, home_id,
+                away_id, match["id"], round_number, round_week)
+
+            cursor.execute(add_team, data_team)
+            cnx.commit()
 
 
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schedule generated="2016-07-13T04:13:39Z" xmlns="http://feed.elasticstats.com/schema/soccer/sr/v2/matches-schedule.xsd">
+  <matches>
+    <match id="5fca1076-4954-47fe-9813-9652610d885c" status="closed" scheduled="2016-07-10T02:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="sr:match:8697644">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="sr:tournamentgroup:242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="sr:tournament:18"/>
+      <home id="b78b9f61-0697-4347-a1b6-b7685a130eb1" name="Salt Lake" full_name="Real Salt Lake" alias="SAL" country_code="USA" country="United States" type="team" reference_id="sr:team:5133"/>
+      <away id="c6c59cc6-d4b7-40d0-bf4a-ca044d75cbb4" name="Montreal" full_name="Montreal Impact" alias="MON" country_code="USA" country="United States" type="team" reference_id="sr:team:22006"/>
+      <venue id="45715ae7-c817-495c-baf9-7ebbe8585092" name="Rio Tinto Stadium" country_code="USA" country="United States" city="Sandy" capacity="20008" coordinates="40.582905,-111.893349" reference_id="sr:venue:2304"/>
+      <round type="table" number="18" week="27"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8697644/5133/22006 -->
+    </match>
+    <match id="a4043dba-d654-4860-a09d-fd4804c46f50" status="closed" scheduled="2016-07-10T02:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="sr:match:8697638">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="sr:tournamentgroup:242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="sr:tournament:18"/>
+      <home id="b9df6f63-ba46-4df9-afbd-f925bce7b012" name="Vancouver" full_name="Vancouver Whitecaps FC" alias="VAN" country_code="USA" country="United States" type="team" reference_id="sr:team:22010"/>
+      <away id="5d539702-77f2-4fb1-80e5-94f4bd71c560" name="Colorado" full_name="Colorado Rapids" alias="COL" country_code="USA" country="United States" type="team" reference_id="sr:team:2510"/>
+      <venue id="2c0d4057-2a1a-4102-b058-4d68b9ecacec" name="BC Place" country_code="CAN" country="Canada" city="Vancouver" capacity="21000" coordinates="49.276667,-123.111944" reference_id="sr:venue:2293"/>
+      <round type="table" number="18" week="27"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8697638/22010/2510 -->
+    </match>
+    <match id="0b0cfa16-ef18-450f-a43e-513e08baafdb" status="closed" scheduled="2016-07-10T02:30:00Z" scratched="false" season_id="abb85d78-e6da-4a9b-9409-05a7b0ed85a5" reference_id="sr:match:8952613">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="ea86ac27-8e64-48bd-a578-e1d263f98d6b" name="National Womens Soccer League" season_start="2016-04-15T22:00:00Z" season_end="2016-10-02T21:59:00Z" season="2016" reference_id="sr:tournamentgroup:1690"/>
+      <tournament id="2631d63d-f7ba-49f1-af80-b01a89fb0bcc" name="National Women's Soccer League" season_id="abb85d78-e6da-4a9b-9409-05a7b0ed85a5" season_start="2016-04-15T22:00:00Z" season_end="2016-10-02T21:59:00Z" season="2016" type="group" reference_id="sr:tournament:26540"/>
+      <home id="c3aab3de-0e94-48ce-a1e1-436eef7a0565" name="Portland Thorns" full_name="Portland Thorns FC" alias="PTH" country_code="UNK" country="Unknown" type="team" reference_id="sr:team:151008"/>
+      <away id="eaaf32ef-6309-44ec-87bf-da099badb2fe" name="Kansas City" full_name="FC Kansas City" alias="KSC" country_code="UNK" country="Unknown" type="team" reference_id="sr:team:151004"/>
+      <venue id="bb228539-599c-42c7-9a7f-e656284b33dc" name="Providence Park" country_code="USA" country="United States" city="Portland" capacity="20323" coordinates="45.521492,-122.691811" reference_id="sr:venue:2303"/>
+      <round type="table" number="12" week="27"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="NONE" ballspotting="false" cornersonly="false" multicast="false" liveodds="false" deeper="false" tactical="false" stats="true"/>
+      <!-- 8952613/151008/151004 -->
+    </match>
+    <match id="cf980ee8-debd-4374-b0a7-5f7d946380cb" status="closed" scheduled="2016-07-10T21:00:00Z" scratched="false" season_id="abb85d78-e6da-4a9b-9409-05a7b0ed85a5" reference_id="sr:match:8952619">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="ea86ac27-8e64-48bd-a578-e1d263f98d6b" name="National Womens Soccer League" season_start="2016-04-15T22:00:00Z" season_end="2016-10-02T21:59:00Z" season="2016" reference_id="sr:tournamentgroup:1690"/>
+      <tournament id="2631d63d-f7ba-49f1-af80-b01a89fb0bcc" name="National Women's Soccer League" season_id="abb85d78-e6da-4a9b-9409-05a7b0ed85a5" season_start="2016-04-15T22:00:00Z" season_end="2016-10-02T21:59:00Z" season="2016" type="group" reference_id="sr:tournament:26540"/>
+      <home id="ca39c1ef-3ae3-42cb-a208-bac2b1e8319f" name="Orlando" full_name="Orlando Pride" alias="OPR" country_code="UNK" country="Unknown" type="team" reference_id="sr:team:245093"/>
+      <away id="66f6cafd-45ef-4e43-a4ec-95b97be4c424" name="Boston" full_name="Boston Breakers" alias="BOS" country_code="UNK" country="Unknown" type="team" reference_id="sr:team:2514"/>
+      <venue id="9c33b523-0eaa-4347-833f-c0b300f2e172" name="Camping World Stadium" country_code="USA" country="United States" city="Orlando" capacity="65000" coordinates="28.539167,-81.402778" reference_id="sr:venue:15674"/>
+      <round type="table" number="12" week="27"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="NONE" ballspotting="false" cornersonly="false" multicast="false" liveodds="false" deeper="false" tactical="false" stats="true"/>
+      <!-- 8952619/245093/2514 -->
+    </match>
+    <match id="101bfa2d-62a4-40f2-9fcf-fd6375261251" status="closed" scheduled="2016-07-10T22:00:00Z" scratched="false" season_id="34913769-58a6-487d-aa7a-1883c8f87909" reference_id="sr:match:8697646">
+      <category id="dfc18161-31f9-4fca-8d6b-8d6df641c6fc" name="USA" country_code="USA" country="United States" reference_id="sr:category:26"/>
+      <tournament_group id="b4360831-aaa9-46a4-8319-62006d308eb6" name="Major League Soccer" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" reference_id="sr:tournamentgroup:242"/>
+      <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" season_start="2016-03-05T23:00:00Z" season_end="2016-12-11T22:59:00Z" season="2016" type="group" reference_id="sr:tournament:18"/>
+      <home id="443f4c7c-4a1e-4062-b04d-d3fcfec9838b" name="New York" full_name="NY Red Bulls" alias="NYRB" country_code="USA" country="United States" type="team" reference_id="sr:team:2506"/>
+      <away id="33fa3d0b-22a2-4e9d-b2dd-68057548ff06" name="Portland" full_name="Portland Timbers" alias="POR" country_code="USA" country="United States" type="team" reference_id="sr:team:22007"/>
+      <venue id="53f95d31-bcac-4e49-b6e8-10f50954340d" name="Red Bull Arena" country_code="USA" country="United States" city="Harrison" capacity="25000" coordinates="40.736851,-74.150360" reference_id="sr:venue:1822"/>
+      <round type="table" number="18" week="27"/>
+      <coverage lineup="CONFIRMED" formations="0" injuries="1" scout="VENUE" ballspotting="true" cornersonly="false" multicast="true" liveodds="true" deeper="true" tactical="true" stats="true"/>
+      <!-- 8697646/2506/22007 -->
+    </match>
+    <match id="dcc512db-f8d1-42c3-9943-8592dbc6255b" status="closed" scheduled="2016-07-10T22:30:00Z" scratched="false" season_id="388cd6b3-a4ff-4aed-8a1b-82869e139263" reference_id="sr:match:9446861">
+      <category id="843cfbca-4acf-48ca-a291-6ed9356570a6" name="Canada" country_code="CAN" country="Canada" reference_id="sr:category:388"/>
+      <tournament_group id="f77f2995-ab27-4330-a62f-67eca79774e6" name="Canadian Soccer League" season_start="2016-05-20T22:00:00Z" season_end="2016-11-06T22:59:00Z" season="2016" reference_id="sr:tournamentgroup:482"/>
+      <tournament id="5091c40e-0c9c-4ff9-ae84-980ee5a303ec" name="Canadian Soccer League" season_id="388cd6b3-a4ff-4aed-8a1b-82869e139263" season_start="2016-05-20T22:00:00Z" season_end="2016-11-06T22:59:00Z" season="2016" type="group" reference_id="sr:tournament:4707"/>
+      <home id="0ca3fa50-d769-4c02-ba7f-87260c89f219" name="Shooters" full_name="Region Shooters" alias="YRS" country_code="CAN" country="Canada" type="team" reference_id="sr:team:22777"/>
+      <away id="5ce091e3-068f-4228-9069-d73bc1e58caa" name="Milton" full_name="Milton SC" alias="MIL" country_code="UNK" country="Unknown" type="team" reference_id="sr:team:202449"/>
+      <venue id="265782fc-26bf-4fd8-8fc3-110e82873ae6" name="St. Joan Of Arc Turf Field" country_code="CAN" country="Canada" city="Maple" capacity="1000" coordinates="43.861538,-79.516834" reference_id="sr:venue:4164"/>
+      <round type="table" number="1" week="27"/>
+      <coverage lineup="NONE" formations="0" injuries="0" scout="NONE" ballspotting="false" cornersonly="false" multicast="false" liveodds="true" deeper="false" tactical="false" stats="true"/>
+      <!-- 9446861/22777/202449 -->
+    </match>
+  </matches>
+</schedule>

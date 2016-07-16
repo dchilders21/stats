@@ -8,7 +8,7 @@
       <tournament id="cdc8c40c-684a-4dfa-980d-a54e18231574" name="Major League Soccer" season_id="34913769-58a6-487d-aa7a-1883c8f87909" type="group" reference_id="sr:tournament:18"/>
       <referee id="fe391b27-2946-410b-8837-788d14e8100b" first_name="Chris" last_name="Penso" country_code="USA" country="United States" reference_id="sr:referee:314522"/>
       <round type="table" number="1" week="10"/>
-      <home id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" name="Orlando" full_name="Orlando City SC" alias="OSC" country_code="USA" country="United States" type="team" reference_id="sr:team:52237" formation="4-3-3" score="2" regular_score="2" penalty_score="" winner="draw">
+      <home id="ac3cbdd4-ccf8-449d-88b7-7ce21ff2455d" name="Orlando" full_name="Orlando City SC" alias="OSC" country_code="USA" country="United States" type="team" reference_id="sr:team:52237" formation="4-3-3" score="2" regular_score="2" penalty_score="" winner="true">
         <scoring>
           <half points="0" number="1"/>
           <half points="2" number="2"/>
@@ -72,7 +72,7 @@
           </player>
         </players>
       </home>
-      <away id="b78b9f61-0697-4347-a1b6-b7685a130eb1" name="Salt Lake" full_name="Real Salt Lake" alias="SAL" country_code="USA" country="United States" type="team" reference_id="sr:team:5133" formation="4-2-3-1" score="2" regular_score="2" penalty_score="" winner="draw">
+      <away id="b78b9f61-0697-4347-a1b6-b7685a130eb1" name="Salt Lake" full_name="Real Salt Lake" alias="SAL" country_code="USA" country="United States" type="team" reference_id="sr:team:5133" formation="4-2-3-1" score="2" regular_score="2" penalty_score="" winner="false">
         <scoring>
           <half points="1" number="1"/>
           <half points="1" number="2"/>
