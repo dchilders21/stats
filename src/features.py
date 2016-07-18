@@ -2,7 +2,10 @@ import pandas as pd
 import mysql.connector
 import datetime
 from datetime import timedelta
-import numpy
+import math
+import random
+import numpy as np
+import statsmodels.api as sm
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -47,7 +50,6 @@ features = {}
 
 def calculate_stats(team_id, current_matches, prev_matches, stats):
 
-
     # Features
     home_played = 0
     away_played = 0
@@ -55,7 +57,8 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
     loss = 0
     recent_wins = 0
     recent_losses = 0
-    opp = []
+    prev_opp = []
+    current_opp = 0
     total_goals = 0
     goal_diff = 0
     total_points = 0
@@ -86,7 +89,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
     # opp_SOS
     total_games = len(prev_matches)
     recent = False
-
     # Pulling Data for PREVIOUS Matches
     for index, game in prev_matches.iterrows():
         if (total_games - recent_performance) < count:
@@ -126,9 +128,9 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
             goals_home += game['home_points']
             opp_goals_at_away += game['away_points']
 
-            # home_possession += game['home_possession']
+            prev_opp.append(game['away_id'])
 
-            opp.append(game['away_id'])
+            # home_possession += game['home_possession']
 
         else:
             away_played += 1
@@ -164,9 +166,9 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
             goals_away += game['away_points']
             opp_goals_at_home += game['home_points']
-            # away_possession += game['away_possession']
 
-            opp.append(game['home_id'])
+            prev_opp.append(game['home_id'])
+            # away_possession += game['away_possession']
 
         count += 1
 
@@ -177,6 +179,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
         if team_id == cur_game['home_id']:
             is_home = True
             team_name = cur_game["home_team"]
+            current_opp = cur_game['away_id']
 
             # Targets
             points = cur_game['home_points']
@@ -187,6 +190,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
             is_home = False
             team_name = cur_game["away_team"]
+            current_opp = cur_game['home_id']
 
             # Targets
             points = cur_game['away_points']
@@ -197,8 +201,8 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
     if stats:
         print(" ========================== ")
-        # print("Team Id : {} - Name : {}".format(team_id, team_name))
-        print("Prev Opponent Ids : {}".format(opp))
+        print("Team Id : {} - Name : {}".format(team_id, team_name))
+        print("Prev Opponent Ids : {}".format(prev_opp))
         print("FEATURES (Stats from * Previous Matches)")
         print("Total Points : {}".format(total_points))
         # print("Win Points : {}".format(win))
@@ -208,7 +212,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
         # print("Away Played : {}".format(away_played))
         print("Recent Wins : {} out of {}".format(recent_wins, recent_performance))
         print("Goal Diff : {}".format(goal_diff))
-        print("Margin : {}".format(numpy.divide(goal_diff, played)))
+        print("Margin : {}".format(np.divide(goal_diff, played)))
         # Goals Allowed
         # print("1st H Goals : {}".format(first_half_goals))
         # print("2nd H Goals : {}".format(sec_half_goals))
@@ -226,80 +230,187 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
         print("Goals : {}".format(goals))
         print("Opp_Goals : {}".format(opp_goals))
 
-
-    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, opp, points, goals, opp_goals
+    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, prev_opp, current_opp, points, goals, opp_goals
 
 upcoming_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'scheduled'", cnx)
 previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
 
 # print("From {} to {} \n".format((schedule_2016[week-1] + datetime.timedelta(hours=7)), adjusted_time))
 
+
 # Assuming a team only plays once in the previous 7 days
+def create_match(team_id, current_matches, previous_matches):
 
-def create_match(team_id, week):
+    # if not current_matches.empty:
+        # for i, cur_match in current_matches.iterrows():
 
-    print("WEEK {} :: TEAM {}".format(week, team_id))
+    # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
+    match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, _, opp_id, points, goals, opp_goals = calculate_stats(team_id, current_matches, previous_matches, True)
+    print("")
 
-    adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
+    # Calculate the Opponents Winning Percentage
+    print('Current Opponent ID : {0}'.format(opp_id))
 
-    if week > 1:
-        prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
+    opp_match_id, opp_team_id, opp_team_name, scheduled, opp_is_home, opp_total_points, opp_total_goals, opp_goal_diff, \
+    opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _ = calculate_stats(opp_id, current_matches, previous_matches, True)
+    print('\nOpp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
+        opp_win, opp_loss, opp_recent_wins, opp_recent_wins))
+
+    opp_opp_won_total = 0
+    opp_opp_lost_total = 0
+
+    for opp_opp_id in opp_opp:
+        opp_opp_match_id, opp_opp_team_id, opp_opp_team_name, scheduled, opp_opp_is_home, opp_opp_total_points, opp_opp_total_goals, opp_opp_goal_diff, \
+        opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_recent_wins, opp_opp_recent_losses,  _, _, _, _, _= calculate_stats(opp_opp_id, current_matches, previous_matches, False)
+        opp_opp_won_total += opp_opp_win
+        opp_opp_lost_total += opp_opp_loss
+
+    print('Opp Opp Won {0} : Opp Opp Lost {1} \n'.format(opp_opp_won_total, opp_opp_lost_total))
+
+    feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id, 'opp_name': opp_team_name, 'scheduled': scheduled, 'is_home':
+                is_home, 'avg_points': np.divide(total_points, played), 'avg_goals': np.divide(total_goals, played), 'margin': np.divide(goal_diff, played),
+                'goal_diff': goal_diff, 'win_percentage': np.divide(win, (win+loss)), 'sos': (2*np.divide(opp_win, (opp_win+opp_loss))) + np.divide(opp_opp_won_total, (opp_opp_won_total+opp_opp_lost_total))/3,
+                'opp_is_home': opp_is_home, 'opp_avg_points': np.divide(opp_total_points, opp_played), 'opp_avg_goals': np.divide(opp_total_goals, opp_played),
+                'opp_margin': np.divide(opp_goal_diff, opp_played), 'opp_goal_diff': opp_goal_diff,
+                'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'points': points } # 'goals': goals, 'opp_goals': opp_goals
+
+    print("//////////////////////////////////////////////////")
+
+    return feature
+
+
+L1_ALPHA = 16.0
+
+
+def build_model_logistic(target, data, acc=0.00000001, alpha=L1_ALPHA):
+    """ Trains a logistic regresion model. target is the target.
+        data is a dataframe of samples for training. The length of
+        target must match the number of rows in data.
+    """
+    data = data.copy()
+    logit = sm.Logit(target, data, disp=False)
+    return logit.fit_regularized(maxiter=1024, alpha=alpha, acc=acc, disp=False)
+
+
+def _clone_and_drop(data, drop_cols):
+    """ Returns a copy of a dataframe that doesn't have certain columns. """
+    clone = data.copy()
+    for col in drop_cols:
+        if col in clone.columns:
+            del clone[col]
+    return clone
+
+
+def _coerce_types(vals):
+    """ Makes sure all of the values in a list are floats. """
+    return [1.0 * val for val in vals]
+
+
+def _coerce(data):
+    """ Coerces a dataframe to all floats, and standardizes the values. """
+    return _standardize(data.apply(_coerce_types))
+
+
+def _standardize_col(col):
+    """ Standardizes a single column (subtracts mean and divides by std
+        dev).
+    """
+    std = np.std(col)
+    mean = np.mean(col)
+
+    if abs(std) > 0.001:
+        return col.apply(lambda val: (val - mean)/std)
     else:
-        prev_week = (schedule_2016[week] + datetime.timedelta(hours=7)) - datetime.timedelta(days=7)
+        return col
 
-    current_matches = match_details.loc[((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
-                                ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]
 
-    previous_matches = match_details.loc[((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
-                                         (match_details['scheduled'] < prev_week)]
+def _standardize_target_col(col):
+    max = np.amax(col)
+    min = np.amin(col)
 
-    if not current_matches.empty:
-        for i, cur_match in current_matches.iterrows():
-            team_id = cur_match['home_id']
-            opp_id = cur_match['away_id']
+    return col.apply(lambda val: ((val - min)/(max - min)))
 
-            # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
-            match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, _, points, goals, opp_goals = calculate_stats(team_id, current_matches, previous_matches, True)
-            print("")
 
-            # Calculate the Opponents Winning Percentage
-            print('Current Opponent ID : {0}'.format(opp_id))
+def _standardize(data):
+    """ Standardizes a dataframe. All fields must be numeric. """
+    return data.apply(_standardize_target_col)
 
-            opp_match_id, opp_team_id, opp_team_name, scheduled, opp_is_home, opp_total_points, opp_total_goals, opp_goal_diff, \
-            opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _ = calculate_stats(opp_id, current_matches, previous_matches, True)
-            print('\nOpp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
-                opp_win, opp_loss, opp_recent_wins, opp_recent_wins))
 
-            opp_opp_won_total = 0
-            opp_opp_lost_total = 0
+def _extract_target(data, target_col):
+    """ Removes the target column from a data frame, returns the target
+        col and a new data frame minus the target. """
+    target = data[target_col]
+    train_df = data.copy()
+    del train_df[target_col]
+    return target, train_df
 
-            for opp_opp_id in opp_opp:
-                opp_opp_match_id, opp_opp_team_id, opp_opp_team_name, scheduled, opp_opp_is_home, opp_opp_total_points, opp_opp_total_goals, opp_opp_goal_diff, \
-                opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_recent_wins, opp_opp_recent_losses, _, _, _, _= calculate_stats(opp_opp_id, current_matches, previous_matches, False)
-                opp_opp_won_total += opp_opp_win
-                opp_opp_lost_total += opp_opp_loss
 
-            print('Opp Opp Won {0} : Opp Opp Lost {1} \n'.format(opp_opp_won_total, opp_opp_lost_total))
+def split(data, test_proportion=0.4):
+    """ Splits a dataframe into a training set and a test set.
+        Must be careful because back-to-back rows are expeted to
+        represent the same game, so they both must go in the
+        test set or both in the training set.
+    """
 
-            feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id, 'opp_name': opp_team_name, 'scheduled': scheduled, 'is_home':
-                        is_home, 'avg_points': numpy.divide(total_points, played), 'avg_goals': numpy.divide(total_goals, played), 'margin': numpy.divide(goal_diff, played),
-                        'goal_diff': goal_diff, 'win_percentage': numpy.divide(win, (win+loss)), 'sos': (2*numpy.divide(opp_win, (opp_win+opp_loss))) + numpy.divide(opp_opp_won_total, (opp_opp_won_total+opp_opp_lost_total))/3,
-                        'opp_is_home': opp_is_home, 'opp_avg_points': numpy.divide(opp_total_points, opp_played), 'opp_avg_goals': numpy.divide(opp_total_goals, opp_played),
-                        'opp_margin': numpy.divide(opp_goal_diff, opp_played), 'opp_goal_diff': opp_goal_diff,
-                        'opp_win_percentage': numpy.divide(opp_win, (opp_win+opp_loss)), 'points': points, 'goals': goals, 'opp_goals': opp_goals}
+    train_vec = []
+    if len(data) % 2 != 0:
+        raise Exception('Unexpected data length')
+    while len(train_vec) < len(data):
+        rnd = random.random()
+        train_vec.append(rnd > test_proportion)
+        train_vec.append(rnd > test_proportion)
 
-            print("//////////////////////////////////////////////////")
+    test_vec = [not val for val in train_vec]
+    train = data[train_vec]
+    test = data[test_vec]
+    if len(train) % 2 != 0:
+        raise Exception('Unexpected train length')
+    if len(test) % 2 != 0:
+        raise Exception('Unexpected test length')
+    return (train, test)
 
-            return feature
+
+def predict_model(model, test, ignore_cols):
+    """ Runs a simple predictor that will predict if we expect a team to
+        win.
+    """
+
+    x = _clone_and_drop(test, ignore_cols)
+    (y_test, x_test) = _extract_target(x, target_col)
+    predicted = model.predict(x_test)
+    result = test.copy()
+    result['predicted'] = predicted
+    return result
+
 
 training_list = []
-
 for team in cursor:
-    print("TEAM ID : {}".format(team["id"]))
-    for i in range(week):
-        match_result = create_match(team["id"], i+1)
-        if match_result is not None:
-            training_list.append(match_result)
+
+    for i in range(2, week):
+
+        print("WEEK {} :: TEAM ID {}".format(i, team["id"]))
+        adjusted_time = (schedule_2016[i] + datetime.timedelta(hours=7))
+
+        prev_week = (schedule_2016[i - 1] + datetime.timedelta(hours=7))
+
+        cur_matches = match_details.loc[
+            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
+            ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]
+
+        prev_matches = match_details.loc[
+            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
+            (match_details['scheduled'] < prev_week)]
+
+        if not cur_matches.empty:
+            for i, cur_match in cur_matches.iterrows():
+                """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
+                # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
+                temp = pd.DataFrame([])
+                df = temp.append(cur_match, ignore_index=True)
+                match_result = create_match(team["id"], df, prev_matches)
+
+                if match_result is not None:
+                    training_list.append(match_result)
 
 columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled',
            # Non-Feature Columns
@@ -307,10 +418,35 @@ columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled'
            'win_percentage',
            'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
            'opp_goal_diff', 'opp_win_percentage',
-           'points', 'goals', 'opp_goals']  # Target Columns)
+           'points']  # Target Columns - #'goals', 'opp_goals'
 
 training_data = pd.DataFrame(training_list, columns=columns)
 
-print(training_data)
+target_col = 'points'
+ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
+
+td = _clone_and_drop(training_data, ignore_cols)
+
+""" max = np.amax(td['points'])
+min = np.amin(td['points'])
+standardizer = lambda x: ((x - min)/(max - min)) """
+
+(train, test) = split(td)
+(y_train, x_train) = _extract_target(train, target_col)
+# y_train = y_train.apply(standardizer)
+
+# model = build_model_logistic(y_train, x_train, alpha=8.0)
+
+# results = predict_model(model, test, ignore_cols)
+
+
+
+print(test)
+
+
+print(results['predicted'])
+
+
+
 
 
