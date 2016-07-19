@@ -6,6 +6,9 @@ import math
 import random
 import numpy as np
 import statsmodels.api as sm
+from sklearn.tree import DecisionTreeRegressor
+from sklearn import grid_search
+from sklearn.metrics import make_scorer, mean_absolute_error, mean_squared_error
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -432,19 +435,27 @@ min = np.amin(td['points'])
 standardizer = lambda x: ((x - min)/(max - min)) """
 
 (train, test) = split(td)
-(y_train, x_train) = _extract_target(train, target_col)
+(y_train, x_train) = _extract_target(test, target_col)
+(y_test, x_test) = _extract_target(test, target_col)
 # y_train = y_train.apply(standardizer)
 
 # model = build_model_logistic(y_train, x_train, alpha=8.0)
 
 # results = predict_model(model, test, ignore_cols)
 
+regressor = DecisionTreeRegressor()
+parameters = {'max_depth':(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}
 
+regressor.fit(x_train, y_train)
 
-print(test)
+reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_squared_error, greater_is_better=False))
 
+reg.fit(x_train, y_train)
+print(x_test)
 
-print(results['predicted'])
+print(reg.predict(x_test))
+
+print(y_test)
 
 
 
