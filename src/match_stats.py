@@ -1,57 +1,13 @@
-import pandas as pd
-import mysql.connector
-import datetime
-from datetime import timedelta
-import math
-import random
 import numpy as np
-import statsmodels.api as sm
-from sklearn.tree import DecisionTreeRegressor
-from sklearn import grid_search
-from sklearn.metrics import make_scorer, mean_absolute_error, mean_squared_error
 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='mls')
-cursor = cnx.cursor(dictionary=True, buffered=True)
-
-match_details = pd.read_sql('SELECT * FROM home_away_coverage',  cnx)
-query = "SELECT id FROM teams LIMIT 1"
-cursor.execute(query)
-
-# MLS broken out WEEKLY even though teams don't always play a game the same week
-# Off of the schedule from Google
-schedule_2016 = {
-    1: datetime.datetime(2016, 3, 6, 23),
-    2: datetime.datetime(2016, 3, 13, 23),
-    3: datetime.datetime(2016, 3, 20, 23),
-    4: datetime.datetime(2016, 4, 3, 23),
-    5: datetime.datetime(2016, 4, 10, 23),
-    6: datetime.datetime(2016, 4, 17, 23),
-    7: datetime.datetime(2016, 4, 24, 23),
-    8: datetime.datetime(2016, 5, 1, 23),
-    9: datetime.datetime(2016, 5, 8, 23),
-    10: datetime.datetime(2016, 5, 15, 23),
-    11: datetime.datetime(2016, 5, 22, 23),
-    12: datetime.datetime(2016, 5, 29, 23),
-    13: datetime.datetime(2016, 6, 2, 23),
-    14: datetime.datetime(2016, 6, 19, 23),
-    15: datetime.datetime(2016, 6, 26, 23),
-    16: datetime.datetime(2016, 7, 3, 23),
-    17: datetime.datetime(2016, 7, 6, 23),
-    18: datetime.datetime(2016, 7, 10, 23),
-    19: datetime.datetime(2016, 7, 13, 23),
-    20: datetime.datetime(2016, 7, 17, 23),
-    21: datetime.datetime(2016, 7, 24, 23),
-}
-
-recent_performance = 3
-week = 20
-adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
-prev_week = (schedule_2016[week-1] + datetime.timedelta(hours=7))
-features = {}
 
 def calculate_stats(team_id, current_matches, prev_matches, stats):
+    """ Calculates the stats of the the current team in the current match
+         and the opponent team in the current match.  Also calculates the
+         previous matches for the current team"""
+
+
+    recent_performance = 3
 
     # Features
     home_played = 0
@@ -79,7 +35,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
     # home_possession = 0
     # away_possession = 0
-
     # attacks
     # dangerous attacks
     # fouls
@@ -90,6 +45,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
     # ball safe ?
     # goal_attempts
     # opp_SOS
+
     total_games = len(prev_matches)
     recent = False
     # Pulling Data for PREVIOUS Matches
@@ -235,17 +191,10 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
     return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, prev_opp, current_opp, points, goals, opp_goals
 
-upcoming_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'scheduled'", cnx)
-previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
-
-# print("From {} to {} \n".format((schedule_2016[week-1] + datetime.timedelta(hours=7)), adjusted_time))
-
 
 # Assuming a team only plays once in the previous 7 days
 def create_match(team_id, current_matches, previous_matches):
-
-    # if not current_matches.empty:
-        # for i, cur_match in current_matches.iterrows():
+    """Finds the matches needed for the given week, opponents and the previous weeks"""
 
     # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
     match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, _, opp_id, points, goals, opp_goals = calculate_stats(team_id, current_matches, previous_matches, True)
@@ -280,182 +229,6 @@ def create_match(team_id, current_matches, previous_matches):
     print("//////////////////////////////////////////////////")
 
     return feature
-
-
-L1_ALPHA = 16.0
-
-
-def build_model_logistic(target, data, acc=0.00000001, alpha=L1_ALPHA):
-    """ Trains a logistic regresion model. target is the target.
-        data is a dataframe of samples for training. The length of
-        target must match the number of rows in data.
-    """
-    data = data.copy()
-    logit = sm.Logit(target, data, disp=False)
-    return logit.fit_regularized(maxiter=1024, alpha=alpha, acc=acc, disp=False)
-
-
-def _clone_and_drop(data, drop_cols):
-    """ Returns a copy of a dataframe that doesn't have certain columns. """
-    clone = data.copy()
-    for col in drop_cols:
-        if col in clone.columns:
-            del clone[col]
-    return clone
-
-
-def _coerce_types(vals):
-    """ Makes sure all of the values in a list are floats. """
-    return [1.0 * val for val in vals]
-
-
-def _coerce(data):
-    """ Coerces a dataframe to all floats, and standardizes the values. """
-    return _standardize(data.apply(_coerce_types))
-
-
-def _standardize_col(col):
-    """ Standardizes a single column (subtracts mean and divides by std
-        dev).
-    """
-    std = np.std(col)
-    mean = np.mean(col)
-
-    if abs(std) > 0.001:
-        return col.apply(lambda val: (val - mean)/std)
-    else:
-        return col
-
-
-def _standardize_target_col(col):
-    max = np.amax(col)
-    min = np.amin(col)
-
-    return col.apply(lambda val: ((val - min)/(max - min)))
-
-
-def _standardize(data):
-    """ Standardizes a dataframe. All fields must be numeric. """
-    return data.apply(_standardize_target_col)
-
-
-def _extract_target(data, target_col):
-    """ Removes the target column from a data frame, returns the target
-        col and a new data frame minus the target. """
-    target = data[target_col]
-    train_df = data.copy()
-    del train_df[target_col]
-    return target, train_df
-
-
-def split(data, test_proportion=0.4):
-    """ Splits a dataframe into a training set and a test set.
-        Must be careful because back-to-back rows are expeted to
-        represent the same game, so they both must go in the
-        test set or both in the training set.
-    """
-
-    train_vec = []
-    if len(data) % 2 != 0:
-        raise Exception('Unexpected data length')
-    while len(train_vec) < len(data):
-        rnd = random.random()
-        train_vec.append(rnd > test_proportion)
-        train_vec.append(rnd > test_proportion)
-
-    test_vec = [not val for val in train_vec]
-    train = data[train_vec]
-    test = data[test_vec]
-    if len(train) % 2 != 0:
-        raise Exception('Unexpected train length')
-    if len(test) % 2 != 0:
-        raise Exception('Unexpected test length')
-    return (train, test)
-
-
-def predict_model(model, test, ignore_cols):
-    """ Runs a simple predictor that will predict if we expect a team to
-        win.
-    """
-
-    x = _clone_and_drop(test, ignore_cols)
-    (y_test, x_test) = _extract_target(x, target_col)
-    predicted = model.predict(x_test)
-    result = test.copy()
-    result['predicted'] = predicted
-    return result
-
-
-training_list = []
-for team in cursor:
-
-    for i in range(2, week):
-
-        print("WEEK {} :: TEAM ID {}".format(i, team["id"]))
-        adjusted_time = (schedule_2016[i] + datetime.timedelta(hours=7))
-
-        prev_week = (schedule_2016[i - 1] + datetime.timedelta(hours=7))
-
-        cur_matches = match_details.loc[
-            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-            ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]
-
-        prev_matches = match_details.loc[
-            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-            (match_details['scheduled'] < prev_week)]
-
-        if not cur_matches.empty:
-            for i, cur_match in cur_matches.iterrows():
-                """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
-                # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
-                temp = pd.DataFrame([])
-                df = temp.append(cur_match, ignore_index=True)
-                match_result = create_match(team["id"], df, prev_matches)
-
-                if match_result is not None:
-                    training_list.append(match_result)
-
-columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled',
-           # Non-Feature Columns
-           'is_home', 'avg_points', 'avg_goals', 'margin', 'goal_diff',
-           'win_percentage',
-           'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
-           'opp_goal_diff', 'opp_win_percentage',
-           'points']  # Target Columns - #'goals', 'opp_goals'
-
-training_data = pd.DataFrame(training_list, columns=columns)
-
-target_col = 'points'
-ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
-
-td = _clone_and_drop(training_data, ignore_cols)
-
-""" max = np.amax(td['points'])
-min = np.amin(td['points'])
-standardizer = lambda x: ((x - min)/(max - min)) """
-
-(train, test) = split(td)
-(y_train, x_train) = _extract_target(test, target_col)
-(y_test, x_test) = _extract_target(test, target_col)
-# y_train = y_train.apply(standardizer)
-
-# model = build_model_logistic(y_train, x_train, alpha=8.0)
-
-# results = predict_model(model, test, ignore_cols)
-
-regressor = DecisionTreeRegressor()
-parameters = {'max_depth':(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}
-
-regressor.fit(x_train, y_train)
-
-reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_squared_error, greater_is_better=False))
-
-reg.fit(x_train, y_train)
-print(x_test)
-
-print(reg.predict(x_test))
-
-print(y_test)
 
 
 
