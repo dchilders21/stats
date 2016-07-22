@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8" />
+        <title>STATS</title>
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'/>
+
+        <script src="{{ url_for('static', filename='libs/angular.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </head>
+    <body ng-app="MatchApp" ng-controller="MatchController" ng-init="init('{{ names }}')">
+    	<p>We're in ...</p>
+
+        <ul class="teams">
+          {% for team in teams %}
+          <li> <h2> {{ team }} </h2>
+          </li>
+            {{ teams | safe }}
+            {% endfor %}
+        </ul>
+   	</body>
+</html>
