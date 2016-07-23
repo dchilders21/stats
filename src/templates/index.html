@@ -8,15 +8,61 @@
         <script src="{{ url_for('static', filename='libs/angular.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     </head>
-    <body ng-app="MatchApp" ng-controller="MatchController" ng-init="init('{{ names }}')">
-    	<p>We're in ...</p>
-
-        <ul class="teams">
+    <body>
+        <h1>Teams</h1>
+        <select id="teams" name="team">
           {% for team in teams %}
-          <li> <h2> {{ team }} </h2>
-          </li>
-            {{ teams | safe }}
-            {% endfor %}
-        </ul>
+              <option value="{{ team.id }}">{{ team.full_name }}</option>
+          {% endfor %}
+        </select>
+        <h1>Current Games</h1>
+        {% for current in current_list %}
+            <p>{{ current.home_team }} vs {{ current.away_team }} (match id: {{ current.id }} and scheduled: {{ current.scheduled }} )</p>
+        {% endfor %}
+        <h1>Previous Games</h1>
+        {% for previous in previous_list %}
+            <h2>{{ previous.home_team }} vs {{ previous.away_team }} (match id: {{ previous.match_id }} and scheduled: {{ previous.scheduled }} )</h2>
+            <table>
+                <tr>
+                    <th>Formation</th><th>Score</th><th>Points</th><th>1st Half Score</th><th>2nd Half Score</th><th>Attacks</th>
+                    <th>Ball Safe</th><th>Corner Kicks</th><th>Dangerous Attacks</th><th>Fouls</th><th>Offsides</th><th>Yellow Cards</th>
+                    <th>Shots on Target</th><th>Shots Total</th><th>Possession</th>
+                </tr>
+              <tr>
+                  <td>{{ previous.home_formation }}</td>
+                  <td>{{ previous.home_score }}</td>
+                  <td>{{ previous.home_points }}</td>
+                  <td>{{ previous.home_first_half_score }}</td>
+                  <td>{{ previous.home_second_half_score }}</td>
+                  <td>{{ previous.home_attacks }}</td>
+                  <td>{{ previous.home_ball_safe }}</td>
+                  <td>{{ previous.home_corner_kicks }}</td>
+                  <td>{{ previous.home_dangerous_attacks }}</td>
+                  <td>{{ previous.home_fouls }}</td>
+                  <td>{{ previous.home_offsides }}</td>
+                  <td>{{ previous.home_yellow_card }}</td>
+                  <td>{{ previous.home_shots_on_target }}</td>
+                  <td>{{ previous.home_shots_total }}</td>
+                  <td>{{ previous.home_possession }}</td>
+              </tr>
+              <tr>
+                  <td>{{ previous.away_formation }}</td>
+                  <td>{{ previous.away_score }}</td>
+                  <td>{{ previous.away_points }}</td>
+                  <td>{{ previous.away_first_half_score }}</td>
+                  <td>{{ previous.away_second_half_score }}</td>
+                  <td>{{ previous.away_attacks }}</td>
+                  <td>{{ previous.away_ball_safe }}</td>
+                  <td>{{ previous.away_corner_kicks }}</td>
+                  <td>{{ previous.away_dangerous_attacks }}</td>
+                  <td>{{ previous.away_fouls }}</td>
+                  <td>{{ previous.away_offsides }}</td>
+                  <td>{{ previous.away_yellow_card }}</td>
+                  <td>{{ previous.away_shots_on_target }}</td>
+                  <td>{{ previous.away_shots_total }}</td>
+                  <td>{{ previous.away_possession }}</td>
+              </tr>
+            </table>
+        {% endfor %}
    	</body>
 </html>

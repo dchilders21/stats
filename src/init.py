@@ -12,6 +12,9 @@ from sklearn.metrics import make_scorer, mean_absolute_error, mean_squared_error
 from sklearn.cross_validation import train_test_split
 from flask import render_template
 from flask import redirect, url_for
+import numpy as np
+
+from collections import namedtuple
 
 from flask import Flask
 app = Flask(__name__)
@@ -56,15 +59,13 @@ schedule_2016 = {
     21: datetime.datetime(2016, 7, 24, 23),
 }
 
-week = 20
+week = 21
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
 
-upcoming_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'scheduled'", cnx)
+upcoming_matches = pd.read_sql("SELECT matches.id, matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'", cnx)
 previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
-
-training_list = []
 
 target_col = 'points'
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
@@ -139,13 +140,61 @@ clf = svm.SVC()
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 train_predict(clf, X_train, y_train, X_test, y_test)"""
 
-cars = ["Volvo","Ferrari","Audi","BMW","Mercedes","Porche","Saab","Avanti"]
+
+def iternamedtuples(df):
+    Row = namedtuple('Row', df.columns)
+    for row in df.itertuples():
+        yield Row(*row[1:])
+
+list_of_teams = list(iternamedtuples(teams))
 
 
 @app.route('/')
-def hello_world():
-    #redirect(url_for('static', filename='libs/angular.min.js'))
-    return render_template("index.html", teams=teams.to_html())
+def init():
+    return render_template("index.html", teams=list_of_teams)
+
+
+@app.route('/<int:id>')
+def matches(id):
+    prev_matches = match_details.loc[
+        ((match_details['home_id'] == id) | (match_details['away_id'] == id)) &
+        (match_details['scheduled'] < prev_week)]
+
+    # Reverses the DF
+    prev_matches = prev_matches.iloc[::-1]
+    prev_matches = prev_matches.sort_index(ascending=True, axis=0)
+    prev_matches = prev_matches.reindex(index=prev_matches.index[::-1])
+    prev_matches.head()
+
+    previous_list = list(iternamedtuples(prev_matches))
+    """for i, prev_match in prev_matches.iterrows():
+        #print(prev_match)
+        temp = pd.DataFrame([])
+        previous_list = temp.append(prev_match, ignore_index=True)
+        print(previous_list)"""
+
+
+    """Only works when training matches that already happened"""
+    """cur_matches = match_details.loc[
+        ((match_details['home_id'] == team[0]) | (match_details['away_id'] == team[0])) &
+        ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]"""
+
+    cur_matches = upcoming_matches.loc[
+        ((upcoming_matches['home_id'] == id) | (upcoming_matches['away_id'] == id)) &
+        ((upcoming_matches['scheduled'] < adjusted_time) & (upcoming_matches['scheduled'] > prev_week))]
+
+    current_list = []
+    if not cur_matches.empty:
+        for i, cur_match in cur_matches.iterrows():
+            temp = pd.DataFrame([])
+            df = temp.append(cur_match, ignore_index=True)
+            print(df)
+            match_result = match_stats.create_match(id, df, prev_matches)
+
+            if match_result is not None:
+                current_list.append(cur_match)
+
+    return render_template("index.html", teams=list_of_teams, previous_list=previous_list, current_list=current_list)
 
 if __name__ == "__main__":
     app.run()

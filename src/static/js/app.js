@@ -1,13 +1,8 @@
-var app = angular.module("MatchApp", []);
+function changeTeam() {
+    location.href = "/" + teams.value;
+}
 
-app.controller("MatchController", function($scope) {
-    console.log('------====---=======----');
-    $scope.greetings = ["Milk", "Bread", "Cheese"];
-
-    $scope.init = function(teams) {
-        console.log(' ========== ');
-        $scope.teams = teams;
-        console.log(typeof($scope.teams))
-    }
-});
-
+window.onload = function() {
+    var teams = document.getElementById("teams");
+    teams.addEventListener("change", changeTeam, false);
+}

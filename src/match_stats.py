@@ -23,6 +23,11 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
     total_points = 0
     count = 1
 
+    # Targets
+    points = 0
+    goals = 0
+    opp_goals = 0
+
     first_half_goals = 0
     sec_half_goals = 0
     opp_first_half_goals = 0
@@ -133,28 +138,28 @@ def calculate_stats(team_id, current_matches, prev_matches, stats):
 
     # Pulling the data for the CURRENT MATCH
     for index, cur_game in current_matches.iterrows():
-        match_id = cur_game["match_id"]
+        match_id = cur_game["id"]
         scheduled = cur_game["scheduled"]
         if team_id == cur_game['home_id']:
             is_home = True
-            team_name = cur_game["home_team"]
+            """team_name = cur_game["home_team"]
             current_opp = cur_game['away_id']
 
             # Targets
             points = cur_game['home_points']
             goals = cur_game['home_score']
-            opp_goals = cur_game['away_score']
+            opp_goals = cur_game['away_score']"""
 
         else:
 
             is_home = False
-            team_name = cur_game["away_team"]
+            """team_name = cur_game["away_team"]
             current_opp = cur_game['home_id']
 
             # Targets
             points = cur_game['away_points']
             goals = cur_game['away_score']
-            opp_goals = cur_game['home_score']
+            opp_goals = cur_game['home_score']"""
 
     played = home_played + away_played
 
