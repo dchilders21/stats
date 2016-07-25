@@ -167,12 +167,6 @@ def matches(id):
     prev_matches.head()
 
     previous_list = list(iternamedtuples(prev_matches))
-    """for i, prev_match in prev_matches.iterrows():
-        #print(prev_match)
-        temp = pd.DataFrame([])
-        previous_list = temp.append(prev_match, ignore_index=True)
-        print(previous_list)"""
-
 
     """Only works when training matches that already happened"""
     """cur_matches = match_details.loc[

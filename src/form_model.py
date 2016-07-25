@@ -44,12 +44,12 @@ schedule_2016 = {
     21: datetime.datetime(2016, 7, 24, 23),
 }
 
-week = 20
+week = 21
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
 
-upcoming_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'scheduled'", cnx)
+upcoming_matches = pd.read_sql("SELECT matches.id as 'match_id', matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'", cnx)
 previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
 
 training_list = []
@@ -76,7 +76,7 @@ for team in cursor:
                 # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
                 temp = pd.DataFrame([])
                 df = temp.append(cur_match, ignore_index=True)
-                match_result = match_stats.create_match(team["id"], df, prev_matches)
+                match_result = match_stats.create_match(team["id"], df, prev_matches, False, True)
 
                 if match_result is not None:
                     training_list.append(match_result)
@@ -96,7 +96,8 @@ ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'schedu
 
 td = model_libs._clone_and_drop(training_data, ignore_cols)
 (y, X) = model_libs._extract_target(td, target_col)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 
 
@@ -113,6 +114,37 @@ parameters = {'max_depth': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}
 regressor.fit(X_train, y_train)
 reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_squared_error, greater_is_better=False))
 reg.fit(X_train, y_train)
-print(reg.predict(X_test))
-print(y_test)
 
+# print(reg.predict(X_test))
+# print(y_test)
+
+upcoming_list = []
+count = 0
+query = "SELECT id FROM teams"
+cursor.execute(query)
+for team in cursor:
+    upcoming_team_matches = upcoming_matches.loc[
+                ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
+    print(upcoming_team_matches)
+    print(' ++++++++++++ ')
+    if not upcoming_team_matches.empty:
+        for i, upcoming_team_match in upcoming_team_matches.iterrows():
+            prev_matches = match_details.loc[
+                ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
+                (match_details['scheduled'] < prev_week)]
+            temp = pd.DataFrame([])
+            df = temp.append(prev_matches, ignore_index=True)
+            upcoming_stats = match_stats.create_match(team["id"], df, prev_matches, False,  False)
+            print(" ********************** ")
+
+            if upcoming_stats is not None:
+                upcoming_list.append(upcoming_stats)
+
+
+upcoming_data = pd.DataFrame(upcoming_list, columns=columns)
+
+ud = model_libs._clone_and_drop(upcoming_data, ignore_cols)
+print(ud)
+(ud_y, ud_X) = model_libs._extract_target(ud, target_col)
+
+print(reg.predict(ud_X))
