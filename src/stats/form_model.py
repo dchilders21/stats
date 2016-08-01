@@ -1,13 +1,14 @@
-import mysql.connector
 import datetime
+
+from stats import match_stats
+import mysql.connector
 import pandas as pd
-import match_stats
-import model_libs
 from sklearn import grid_search
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import make_scorer, mean_absolute_error, mean_squared_error
 from sklearn.cross_validation import train_test_split
-from sklearn import svm
+from sklearn.metrics import make_scorer, mean_squared_error
+from sklearn.tree import DecisionTreeRegressor
+
+from stats import model_libs
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -15,7 +16,7 @@ cnx = mysql.connector.connect(user='root', password='',
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
-query = "SELECT id FROM teams LIMIT 1"
+query = "SELECT id FROM teams"
 cursor.execute(query)
 
 # MLS broken out WEEKLY even though teams don't always play a game the same week
@@ -42,9 +43,11 @@ schedule_2016 = {
     19: datetime.datetime(2016, 7, 13, 23),
     20: datetime.datetime(2016, 7, 17, 23),
     21: datetime.datetime(2016, 7, 24, 23),
+    22: datetime.datetime(2016, 7, 31, 23),
+    23: datetime.datetime(2016, 8, 7, 23)
 }
 
-week = 21
+week = 23
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
@@ -115,6 +118,10 @@ regressor.fit(X_train, y_train)
 reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_squared_error, greater_is_better=False))
 reg.fit(X_train, y_train)
 
+
+def get_model():
+    return reg
+
 # print(reg.predict(X_test))
 # print(y_test)
 
@@ -133,8 +140,8 @@ for team in cursor:
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
                 (match_details['scheduled'] < prev_week)]
             temp = pd.DataFrame([])
-            df = temp.append(prev_matches, ignore_index=True)
-            upcoming_stats = match_stats.create_match(team["id"], df, prev_matches, False,  False)
+            df = temp.append(upcoming_team_match, ignore_index=True)
+            upcoming_stats = match_stats.create_match(team["id"], df, prev_matches, True, False)
             print(" ********************** ")
 
             if upcoming_stats is not None:
