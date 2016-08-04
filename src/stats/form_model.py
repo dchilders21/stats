@@ -7,6 +7,7 @@ from sklearn import grid_search
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import make_scorer, mean_squared_error
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVC
 
 from stats import model_libs
 
@@ -16,7 +17,7 @@ cnx = mysql.connector.connect(user='root', password='',
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
-query = "SELECT id FROM teams"
+query = "SELECT id FROM teams LIMIT 1"
 cursor.execute(query)
 
 # MLS broken out WEEKLY even though teams don't always play a game the same week
@@ -89,7 +90,7 @@ columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled'
            'is_home', 'avg_points', 'avg_goals', 'margin', 'goal_diff',
            'win_percentage',
            'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
-           'opp_goal_diff', 'opp_win_percentage',
+           'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
            'points']  # Target Columns - #'goals', 'opp_goals'
 
 training_data = pd.DataFrame(training_list, columns=columns)
@@ -102,25 +103,21 @@ td = model_libs._clone_and_drop(training_data, ignore_cols)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-
-
-""""(train, test) = model_libs.split(td)
-(y_train, x_train) = model_libs._extract_target(test, target_col)
-(y_test, x_test) = model_libs._extract_target(test, target_col)"""
-# y_train = y_train.apply(standardizer)
-
-# model = build_model_logistic(y_train, x_train, alpha=8.0)
-# results = predict_model(model, test, ignore_cols, target_col)
-
-regressor = DecisionTreeRegressor()
+# Regression Model
+"""regressor = DecisionTreeRegressor()
 parameters = {'max_depth': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)}
 regressor.fit(X_train, y_train)
 reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_squared_error, greater_is_better=False))
-reg.fit(X_train, y_train)
+reg.fit(X_train, y_train)"""
+
+# SVM Model
+clf = SVC()
+predictor_model = clf.fit(X_train, y_train)
+
 
 
 def get_model():
-    return reg
+    return predictor_model
 
 # print(reg.predict(X_test))
 # print(y_test)
@@ -154,4 +151,4 @@ ud = model_libs._clone_and_drop(upcoming_data, ignore_cols)
 print(ud)
 (ud_y, ud_X) = model_libs._extract_target(ud, target_col)
 
-print(reg.predict(ud_X))
+print(predictor_model.predict(ud_X))

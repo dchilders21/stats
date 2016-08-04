@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8" />
+        <title>STATS</title>
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'/>
+
+        <script src="{{ url_for('static', filename='libs/angular.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </head>
+    <body>
+        <h1>Rankings List</h1>
+
+        {% for ranking in rankings %}
+            <p>{{ ranking.0 }} - {{ ranking.1 }}</p>
+        {% endfor %}
+   	</body>
+</html>

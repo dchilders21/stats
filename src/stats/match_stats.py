@@ -231,7 +231,7 @@ def create_match(team_id, current_matches, previous_matches, stats, targets):
                 'goal_diff': goal_diff, 'win_percentage': np.divide(win, (win+loss)), 'sos': (2*np.divide(opp_win, (opp_win+opp_loss))) + np.divide(opp_opp_won_total, (opp_opp_won_total+opp_opp_lost_total))/3,
                 'opp_is_home': opp_is_home, 'opp_avg_points': np.divide(opp_total_points, opp_played), 'opp_avg_goals': np.divide(opp_total_goals, opp_played),
                 'opp_margin': np.divide(opp_goal_diff, opp_played), 'opp_goal_diff': opp_goal_diff,
-                'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'points': points } # 'goals': goals, 'opp_goals': opp_goals
+                'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'opp_opp_record': np.divide(opp_opp_win, (opp_opp_win+opp_opp_loss)), 'points': points } # 'goals': goals, 'opp_goals': opp_goals
 
     print("//////////////////////////////////////////////////")
 

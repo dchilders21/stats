@@ -52,9 +52,11 @@ schedule_2016 = {
     19: datetime.datetime(2016, 7, 13, 23),
     20: datetime.datetime(2016, 7, 17, 23),
     21: datetime.datetime(2016, 7, 24, 23),
+    22: datetime.datetime(2016, 7, 31, 23),
+    23: datetime.datetime(2016, 8, 7, 23)
 }
 
-week = 21
+week = 23
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
@@ -91,7 +93,7 @@ columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled'
            'is_home', 'avg_points', 'avg_goals', 'margin', 'goal_diff',
            'win_percentage',
            'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
-           'opp_goal_diff', 'opp_win_percentage',
+           'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
            'points']  # Target Columns - #'goals', 'opp_goals'
 
 
@@ -130,9 +132,6 @@ def matches(id):
 
     if not upcoming_team_matches.empty:
         for i, upcoming_team_match in upcoming_team_matches.iterrows():
-            prev_matches = match_details.loc[
-                ((match_details['home_id'] == id) | (match_details['away_id'] == id)) &
-                (match_details['scheduled'] < prev_week)]
             temp = pd.DataFrame([])
             df = temp.append(upcoming_team_match, ignore_index=True)
 
@@ -144,9 +143,7 @@ def matches(id):
 
 
             reg_model = form_model.get_model()
-
             upcoming_data = pd.DataFrame(upcoming_list, columns=columns)
-
             ud = model_libs._clone_and_drop(upcoming_data, ignore_cols)
             (ud_y, ud_X) = model_libs._extract_target(ud, target_col)
             print(ud)
@@ -154,5 +151,31 @@ def matches(id):
 
     return render_template("index.html", teams=list_of_teams, previous_list=previous_list, current_list=current_list)
 
-# if __name__ == "__main__":
-    # app.run()
+
+@app.route('/rankings/<int:week>')
+def rankings(week):
+    power_list = []
+    power_rankings = pd.DataFrame()
+    temp_list = []
+
+    # Creating Fake Values for an Upcoming Match since we don't need for Ranking List
+    temp_list.append([0, 0, 0, 0, 0, 0])
+    temp_df = pd.DataFrame(temp_list, columns=['away_id', 'away_team', 'home_id', 'home_team', 'match_id', 'scheduled'])
+
+    for i, team in teams.iterrows():
+
+        temp_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
+
+        prev_matches = match_details.loc[
+            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
+            (match_details['scheduled'] < temp_week)]
+
+        upcoming_stats = match_stats.create_match(team["id"], temp_df, prev_matches, True, False)
+        s = pd.Series([team["id"], upcoming_stats['sos']])
+        power_rankings = power_rankings.append(s, ignore_index=True)
+        power_rankings = power_rankings.sort_values(1, ascending=False)
+
+    for i, power in power_rankings.iterrows():
+        power_list.append(power)
+
+    return render_template("rankings.html", rankings=power_list)
