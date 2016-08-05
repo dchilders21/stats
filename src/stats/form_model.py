@@ -18,7 +18,7 @@ cnx = mysql.connector.connect(user='root', password='',
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
-query = "SELECT id FROM teams"
+query = "SELECT id FROM teams LIMIT 1"
 cursor.execute(query)
 
 # MLS broken out WEEKLY even though teams don't always play a game the same week
@@ -112,13 +112,14 @@ reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_s
 reg.fit(X_train, y_train)"""
 
 # SVM Model
+# pm = SVC()
+# predictor_model = pm.fit(X_train, y_train)
+
 clf = SVC()
-predictor_model = clf.fit(X_train, y_train)
-
-
 
 def train_classifier(clf, X_train, y_train):
     clf.fit(X_train, y_train)
+
 
 def predict_labels(clf, features, target):
     y_pred = clf.predict(features)
@@ -128,6 +129,7 @@ def predict_labels(clf, features, target):
     print(' ~~~~~~~~~~~~~~~~~~~~~~~ ')
     return f1_score(target.values, y_pred)
 
+
 def train_predict(clf, X_train, y_train, X_test, y_test):
     train_classifier(clf, X_train, y_train)
     train_f1_score = predict_labels(clf, X_train, y_train)
@@ -135,10 +137,14 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
 
     return train_f1_score, test_f1_score
 
+
+# Need to iterate over a different PERCENTAGE of the data and make sure the train data isn't the same rows
+# Also need to try different mehtods
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
 train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
 print("F1 score for training set: {}".format(train_f1_score))
 print("F1 score for test set: {}".format(test_f1_score))
-
 
 
 def get_model():
