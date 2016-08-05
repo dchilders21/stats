@@ -8,6 +8,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.metrics import make_scorer, mean_squared_error
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVC
+from sklearn.metrics import f1_score
 
 from stats import model_libs
 
@@ -17,7 +18,7 @@ cnx = mysql.connector.connect(user='root', password='',
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
-query = "SELECT id FROM teams LIMIT 1"
+query = "SELECT id FROM teams"
 cursor.execute(query)
 
 # MLS broken out WEEKLY even though teams don't always play a game the same week
@@ -113,6 +114,30 @@ reg.fit(X_train, y_train)"""
 # SVM Model
 clf = SVC()
 predictor_model = clf.fit(X_train, y_train)
+
+
+
+def train_classifier(clf, X_train, y_train):
+    clf.fit(X_train, y_train)
+
+def predict_labels(clf, features, target):
+    y_pred = clf.predict(features)
+    print(' ~~~~~~~~~~~~~~~~~~~~~~~ ')
+    print(y_pred)
+    print(target.values)
+    print(' ~~~~~~~~~~~~~~~~~~~~~~~ ')
+    return f1_score(target.values, y_pred)
+
+def train_predict(clf, X_train, y_train, X_test, y_test):
+    train_classifier(clf, X_train, y_train)
+    train_f1_score = predict_labels(clf, X_train, y_train)
+    test_f1_score = predict_labels(clf, X_test, y_test)
+
+    return train_f1_score, test_f1_score
+
+train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
+print("F1 score for training set: {}".format(train_f1_score))
+print("F1 score for test set: {}".format(test_f1_score))
 
 
 

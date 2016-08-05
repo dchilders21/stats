@@ -1,6 +1,7 @@
 import datetime
 import os
 from collections import namedtuple
+import random
 
 import mysql.connector
 import pandas as pd
@@ -179,3 +180,38 @@ def rankings(week):
         power_list.append(power)
 
     return render_template("rankings.html", rankings=power_list)
+
+@app.route('/random')
+def random_trials():
+    """ For every team runs through every match they've played and randomly chooses the result
+        Then we compare that with the actual result of the match """
+
+    num_of_iterations = 100
+    possible_results = (0, 1, 3)
+    accuracy_average = []
+
+    for x in range(num_of_iterations):
+        prediction_list = []  # '0' equals wrong, '1' equals correct
+        accuracy_list = []
+        for i, team in teams.iterrows():
+            prev_matches = match_details.loc[
+                ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"]))]
+            accuracy_list.append(prev_matches.shape[0])
+            predicted_result = random.choice(possible_results)
+            for i, p in prev_matches.iterrows():
+                if p["home_id"] == team["id"]:
+                    if p["home_points"] == predicted_result:
+                        prediction_list.append(1)
+                    else:
+                        prediction_list.append(0)
+                else:
+                    if p["away_points"] == predicted_result:
+                        prediction_list.append(1)
+                    else:
+                        prediction_list.append(0)
+
+        accuracy_average.append(sum(prediction_list)/sum(accuracy_list))
+
+    accuracy = sum(accuracy_average)/num_of_iterations
+
+    return render_template("random.html", accuracy=accuracy)
