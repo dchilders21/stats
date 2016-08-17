@@ -17,7 +17,7 @@
         </select>
         <h1>Current Games</h1>
         {% for current in current_list %}
-            <p>{{ current.home_team }} vs {{ current.away_team }} (match id: {{ current.id }} and scheduled: {{ current.scheduled }} )</p>
+            <p>{{ current.home_team }} vs {{ current.away_team }} (match id: {{ current.match_id }} and scheduled: {{ current.scheduled }} )</p>
         {% endfor %}
         <h1>Previous Games</h1>
         {% for previous in previous_list %}

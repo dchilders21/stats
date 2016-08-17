@@ -54,10 +54,12 @@ schedule_2016 = {
     20: datetime.datetime(2016, 7, 17, 23),
     21: datetime.datetime(2016, 7, 24, 23),
     22: datetime.datetime(2016, 7, 31, 23),
-    23: datetime.datetime(2016, 8, 7, 23)
+    23: datetime.datetime(2016, 8, 7, 23),
+    24: datetime.datetime(2016, 8, 14, 23),
+    25: datetime.datetime(2016, 8, 21, 23)
 }
 
-week = 23
+week = 25
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
@@ -117,7 +119,7 @@ def matches(id):
         ((match_details['home_id'] == id) | (match_details['away_id'] == id)) &
         (match_details['scheduled'] < prev_week)]
 
-    # Reverses the DF
+    # Reverses the prev_matches DF
     prev_matches = prev_matches.iloc[::-1]
     prev_matches = prev_matches.sort_index(ascending=True, axis=0)
     prev_matches = prev_matches.reindex(index=prev_matches.index[::-1])
@@ -136,7 +138,7 @@ def matches(id):
             temp = pd.DataFrame([])
             df = temp.append(upcoming_team_match, ignore_index=True)
 
-            upcoming_stats = match_stats.create_match(id, df, prev_matches, True, False)
+            upcoming_stats = match_stats.create_match(id, df, match_details, prev_week, True, False)
 
             if upcoming_stats is not None:
                 upcoming_list.append(upcoming_stats)
@@ -171,7 +173,7 @@ def rankings(week):
             ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
             (match_details['scheduled'] < temp_week)]
 
-        upcoming_stats = match_stats.create_match(team["id"], temp_df, prev_matches, True, False)
+        upcoming_stats = match_stats.create_match(team["id"], temp_df, match_details, prev_week, True, False)
         s = pd.Series([team["id"], upcoming_stats['sos']])
         power_rankings = power_rankings.append(s, ignore_index=True)
         power_rankings = power_rankings.sort_values(1, ascending=False)

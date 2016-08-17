@@ -3,6 +3,7 @@ import datetime
 from stats import match_stats
 import mysql.connector
 import pandas as pd
+import numpy as np
 from sklearn import grid_search
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import make_scorer, mean_squared_error
@@ -18,7 +19,7 @@ cnx = mysql.connector.connect(user='root', password='',
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
-query = "SELECT id FROM teams LIMIT 1"
+query = "SELECT id FROM teams"
 cursor.execute(query)
 
 # MLS broken out WEEKLY even though teams don't always play a game the same week
@@ -46,10 +47,12 @@ schedule_2016 = {
     20: datetime.datetime(2016, 7, 17, 23),
     21: datetime.datetime(2016, 7, 24, 23),
     22: datetime.datetime(2016, 7, 31, 23),
-    23: datetime.datetime(2016, 8, 7, 23)
+    23: datetime.datetime(2016, 8, 7, 23),
+    24: datetime.datetime(2016, 8, 14, 23),
+    25: datetime.datetime(2016, 8, 21, 23)
 }
 
-week = 23
+week = 25
 adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
 prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
 features = {}
@@ -71,17 +74,13 @@ for team in cursor:
             ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
             ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]
 
-        prev_matches = match_details.loc[
-            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-            (match_details['scheduled'] < prev_week)]
-
         if not cur_matches.empty:
             for i, cur_match in cur_matches.iterrows():
                 """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
                 # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
                 temp = pd.DataFrame([])
                 df = temp.append(cur_match, ignore_index=True)
-                match_result = match_stats.create_match(team["id"], df, prev_matches, False, True)
+                match_result = match_stats.create_match(team["id"], df, match_details, prev_week, True, True)
 
                 if match_result is not None:
                     training_list.append(match_result)
@@ -89,9 +88,13 @@ for team in cursor:
 columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled',
            # Non-Feature Columns
            'is_home', 'avg_points', 'avg_goals', 'margin', 'goal_diff',
-           'win_percentage',
-           'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
+           'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
            'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
+           # Extended Feature Columns
+           'home_possession', 'away_possession', 'home_attacks', 'away_attacks', 'home_fouls', 'away_fouls',
+           'home_yellow_card', 'away_yellow_card', 'home_corner_kicks', 'away_corner_kicks',
+           'home_shots_on_target', 'away_shots_on_target', 'home_ball_safe', 'away_ball_safe',
+           'home_shots_total', 'away_shots_total',
            'points']  # Target Columns - #'goals', 'opp_goals'
 
 training_data = pd.DataFrame(training_list, columns=columns)
@@ -100,6 +103,11 @@ target_col = 'points'
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
 
 td = model_libs._clone_and_drop(training_data, ignore_cols)
+print(np.any(np.isnan(td)))
+print(np.all(np.isfinite(td)))
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', len(td))
+print(td)
 (y, X) = model_libs._extract_target(td, target_col)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -112,8 +120,8 @@ reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_s
 reg.fit(X_train, y_train)"""
 
 # SVM Model
-# pm = SVC()
-# predictor_model = pm.fit(X_train, y_train)
+pm = SVC()
+predictor_model = pm.fit(X_train, y_train)
 
 clf = SVC()
 
@@ -127,7 +135,7 @@ def predict_labels(clf, features, target):
     print(y_pred)
     print(target.values)
     print(' ~~~~~~~~~~~~~~~~~~~~~~~ ')
-    return f1_score(target.values, y_pred)
+    return f1_score(target.values, y_pred, average="macro")
 
 
 def train_predict(clf, X_train, y_train, X_test, y_test):
@@ -160,16 +168,14 @@ cursor.execute(query)
 for team in cursor:
     upcoming_team_matches = upcoming_matches.loc[
                 ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
+    print('Upcoming Team Matches')
     print(upcoming_team_matches)
     print(' ++++++++++++ ')
     if not upcoming_team_matches.empty:
         for i, upcoming_team_match in upcoming_team_matches.iterrows():
-            prev_matches = match_details.loc[
-                ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-                (match_details['scheduled'] < prev_week)]
             temp = pd.DataFrame([])
             df = temp.append(upcoming_team_match, ignore_index=True)
-            upcoming_stats = match_stats.create_match(team["id"], df, prev_matches, True, False)
+            upcoming_stats = match_stats.create_match(team["id"], df, match_details, prev_week, True, False)
             print(" ********************** ")
 
             if upcoming_stats is not None:

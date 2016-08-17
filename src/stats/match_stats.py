@@ -23,6 +23,29 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     total_points = 0
     count = 1
 
+    # Extended Features
+    home_possession = []
+    away_possession = []
+    home_attacks = []
+    away_attacks = []
+    home_dangerous_attacks = []
+    away_dangerous_attacks = []
+    home_fouls = []
+    away_fouls = []
+    home_yellow_card = []
+    away_yellow_card = []
+    home_corner_kicks = []
+    away_corner_kicks = []
+    home_shots_on_target = []
+    away_shots_on_target = []
+    home_shots_total = []
+    away_shots_total = []
+    # home_saves = 0
+    # away_saves = 0
+    home_ball_safe = []
+    away_ball_safe = []
+    # opp_SOS
+
     # Targets
     points = 0
     goals = 0
@@ -37,19 +60,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     goals_away = 0
     opp_goals_at_home = 0  # Opponent goals when CURRENT team is AT Home
     opp_goals_at_away = 0  # Opponent goals when CURRENT team is Away
-
-    # home_possession = 0
-    # away_possession = 0
-    # attacks
-    # dangerous attacks
-    # fouls
-    # yellow_cards
-    # corners
-    # shots on target
-    # saves
-    # ball safe ?
-    # goal_attempts
-    # opp_SOS
 
     total_games = len(prev_matches)
     recent = False
@@ -94,7 +104,18 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
             prev_opp.append(game['away_id'])
 
-            # home_possession += game['home_possession']
+            # Extended Home Features
+            home_possession.append(game['home_possession'])
+            home_attacks.append(game['home_attacks'])
+            home_dangerous_attacks.append(game['home_dangerous_attacks'])
+            home_fouls.append(game['home_fouls'])
+            home_yellow_card.append(game['home_yellow_card'])
+            home_corner_kicks.append(game['home_corner_kicks'])
+            home_shots_on_target.append(game['home_shots_on_target'])
+            home_shots_total.append(game['home_shots_total'])
+            # home_saves.append(game['home_saves'])
+            home_ball_safe.append(game['home_ball_safe'])
+
 
         else:
             away_played += 1
@@ -132,7 +153,18 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             opp_goals_at_home += game['home_points']
 
             prev_opp.append(game['home_id'])
-            # away_possession += game['away_possession']
+
+            # Extended Away Features
+            away_possession.append(game['away_possession'])
+            away_attacks.append(game['away_attacks'])
+            away_dangerous_attacks.append(game['away_dangerous_attacks'])
+            away_fouls.append(game['away_fouls'])
+            away_yellow_card.append(game['away_yellow_card'])
+            away_corner_kicks.append(game['away_corner_kicks'])
+            away_shots_on_target.append(game['away_shots_on_target'])
+            away_shots_total.append(game['away_shots_total'])
+            # away_saves.append(game['away_saves'])
+            away_ball_safe.append(game['away_ball_safe'])
 
         count += 1
 
@@ -165,6 +197,108 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
     played = home_played + away_played
 
+    home_possession = np.array(home_possession)
+    away_possession = np.array(away_possession)
+    home_attacks = np.array(home_attacks)
+    away_attacks = np.array(away_attacks)
+    home_fouls = np.array(home_fouls)
+    away_fouls = np.array(away_fouls)
+    home_yellow_card = np.array(home_yellow_card)
+    away_yellow_card = np.array(away_yellow_card)
+    home_corner_kicks = np.array(home_corner_kicks)
+    away_corner_kicks = np.array(away_corner_kicks)
+    home_shots_on_target = np.array(home_shots_on_target)
+    away_shots_on_target = np.array(away_shots_on_target)
+    home_ball_safe = np.array(home_ball_safe)
+    away_ball_safe = np.array(away_ball_safe)
+    home_shots_total = np.array(home_shots_total)
+    away_shots_total = np.array(away_shots_total)
+
+    if home_possession.size != 0:
+        home_possession = np.nanmean(home_possession)
+    else:
+        home_possession = 0
+
+    if away_possession.size != 0:
+        away_possession = np.nanmean(away_possession)
+    else:
+        away_possession = 0
+
+    if home_attacks.size > 0:
+        home_attacks = np.nanmean(home_attacks)
+        if np.isnan(home_attacks):
+            home_attacks = 0
+    else:
+        home_attacks = 0
+
+    if away_attacks.size > 0:
+        away_attacks = np.nanmean(away_attacks)
+        if np.isnan(away_attacks):
+            away_attacks = 0
+    else:
+        away_attacks = 0
+
+    if home_fouls.size != 0:
+        home_fouls = np.nanmean(home_fouls)
+    else:
+        home_fouls = 0
+
+    if away_fouls.size != 0:
+        away_fouls = np.nanmean(away_fouls)
+    else:
+        away_fouls = 0
+
+    if home_yellow_card.size != 0:
+        home_yellow_card = np.nanmean(home_yellow_card)
+    else:
+        home_yellow_card = 0
+
+    if away_yellow_card.size != 0:
+        away_yellow_card = np.nanmean(away_yellow_card)
+    else:
+        away_yellow_card = 0
+
+    if home_corner_kicks.size != 0:
+        home_corner_kicks = np.nanmean(home_corner_kicks)
+    else:
+        home_corner_kicks = 0
+
+    if away_corner_kicks.size != 0:
+        away_corner_kicks = np.nanmean(away_corner_kicks)
+    else:
+        away_corner_kicks = 0
+
+    if home_shots_on_target.size != 0:
+        home_shots_on_target = np.nanmean(home_shots_on_target)
+    else:
+        home_shots_on_target = 0
+
+    if away_shots_on_target.size != 0:
+        away_shots_on_target = np.nanmean(away_shots_on_target)
+    else:
+        away_shots_on_target = 0
+
+    if home_ball_safe.size != 0:
+        home_ball_safe = np.nanmean(home_ball_safe)
+    else:
+        home_ball_safe = 0
+
+    if away_ball_safe.size != 0:
+        away_ball_safe = np.nanmean(away_ball_safe)
+    else:
+        away_ball_safe = 0
+
+    if home_shots_total.size != 0:
+        home_shots_total = np.nanmean(home_shots_total)
+    else:
+        home_shots_total = 0
+
+    if away_shots_total.size != 0:
+        away_shots_total = np.nanmean(away_shots_total)
+    else:
+        away_shots_total = 0
+
+
     if stats:
         print(" ========================== ")
         print("Team Id : {} - Name : {}".format(team_id, team_name))
@@ -188,39 +322,80 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
         # print("Goals Away: {}".format(goals_away))
         # print("Opp Goals @ Home : {}".format(opp_goals_at_home))
         # print("Opp Goals @ Away : {}".format(opp_goals_at_away))
-        # print("Home Possession Avg : {}".format(numpy.float64(home_possession)/home_played))
-        # print("Away Possession Avg : {}".format(numpy.float64(away_possession)/away_played))
+        print("EXTENDED FEATURES")
+        print("Home Possession Avg : {}".format(np.mean(home_possession)))
+        print("Away Possession Avg : {}".format(np.mean(away_possession)))
+        print("Home Attacks Avg : {}".format(np.mean(home_attacks)))
+        print("Away Attacks Avg : {}".format(np.mean(away_attacks)))
+        print("Home Fouls Avg : {}".format(np.mean(home_fouls)))
+        print("Away Fouls Avg : {}".format(np.mean(away_fouls)))
+        print("Home Yellow Cards Avg : {}".format(np.mean(home_yellow_card)))
+        print("Away Yellow Cards Avg : {}".format(np.mean(away_yellow_card)))
+        print("Home Corners Avg : {}".format(np.mean(home_corner_kicks)))
+        print("Away Corners Avg : {}".format(np.mean(away_corner_kicks)))
+        print("Home Shots On Target Avg : {}".format(np.mean(home_shots_on_target)))
+        print("Away Shots On Target Avg : {}".format(np.mean(away_shots_on_target)))
+        # print("Home Saves Avg : {}".format(np.float64(home_saves) / home_played))
+        # print("Away Saves Avg : {}".format(np.float64(away_saves) / away_played))
+        print("Home Ball Safe Avg : {}".format(np.mean(home_ball_safe)))
+        print("Away Ball Safe Avg : {}".format(np.mean(away_ball_safe)))
+        print("Home Goal Attempts Avg : {}".format(np.mean(home_shots_total)))
+        print("Away Goal Attempts Avg : {}".format(np.mean(away_shots_total)))
+
+        # Still can weight games more on most recent games
 
         print("\nTARGETS (RESULTS OF CURRENT MATCH)")
         print("Points : {}".format(points))
         print("Goals : {}".format(goals))
         print("Opp_Goals : {}".format(opp_goals))
 
-    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, prev_opp, current_opp, points, goals, opp_goals
+    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, prev_opp, current_opp, points, goals, opp_goals, \
+           home_possession, away_possession, home_attacks, away_attacks, home_fouls, away_fouls, \
+           home_yellow_card, away_yellow_card, home_corner_kicks, away_corner_kicks, \
+           home_shots_on_target, away_shots_on_target, home_ball_safe, away_ball_safe, \
+           home_shots_total, away_shots_total
 
 
 # Assuming a team only plays once in the previous 7 days
-def create_match(team_id, current_matches, previous_matches, stats, targets):
+def create_match(team_id, current_matches, match_details, prev_week, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous weeks"""
 
-    # For this Match of the the week, calculate the 'Chosen' teams winning percentage so far in the season
-    match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, _, opp_id, points, goals, opp_goals = calculate_stats(team_id, current_matches, previous_matches, stats, targets)
+    previous_matches = match_details.loc[
+        ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
+        (match_details['scheduled'] < prev_week)]
+
+    # For this Match of the the week, calculate the 'Chosen' teams STATS so far in the season
+    match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goal_diff, played, win, loss, recent_wins, recent_losses, _, opp_id, points, goals, opp_goals, home_possession, away_possession, home_attacks, away_attacks, home_fouls, away_fouls, home_yellow_card, away_yellow_card, home_corner_kicks, away_corner_kicks, home_shots_on_target, away_shots_on_target, home_ball_safe, away_ball_safe, home_shots_total, away_shots_total = calculate_stats(team_id, current_matches, previous_matches, stats, targets)
     print("")
 
-    # Calculate the Opponents Winning Percentage
+    # Calculate the Opponents STATS
     print('Current Opponent ID : {0}'.format(opp_id))
 
+    opp_previous_matches = match_details.loc[
+        ((match_details['home_id'] == opp_id) | (match_details['away_id'] == opp_id)) &
+        (match_details['scheduled'] < prev_week)]
+
+
     opp_match_id, opp_team_id, opp_team_name, scheduled, opp_is_home, opp_total_points, opp_total_goals, opp_goal_diff, \
-    opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _ = calculate_stats(opp_id, current_matches, previous_matches, stats, targets)
+    opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = calculate_stats(opp_id, current_matches, opp_previous_matches, stats, targets)
+
+    print('Current Opponents of Opponent ID : {0}'.format(opp_opp))
+
     # print('\nOpp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
         # opp_win, opp_loss, opp_recent_wins, opp_recent_wins))
 
     opp_opp_won_total = 0
     opp_opp_lost_total = 0
 
+    # Calculate Opponents of the Opponents STATS
     for opp_opp_id in opp_opp:
+
+        opp_opp_previous_matches = match_details.loc[
+            ((match_details['home_id'] == opp_opp_id) | (match_details['away_id'] == opp_opp_id)) &
+            (match_details['scheduled'] < prev_week)]
+
         opp_opp_match_id, opp_opp_team_id, opp_opp_team_name, scheduled, opp_opp_is_home, opp_opp_total_points, opp_opp_total_goals, opp_opp_goal_diff, \
-        opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_recent_wins, opp_opp_recent_losses,  _, _, _, _, _= calculate_stats(opp_opp_id, current_matches, previous_matches, False, targets)
+        opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_recent_wins, opp_opp_recent_losses, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = calculate_stats(opp_opp_id, current_matches, opp_opp_previous_matches, False, targets)
         opp_opp_won_total += opp_opp_win
         opp_opp_lost_total += opp_opp_loss
 
@@ -231,7 +406,11 @@ def create_match(team_id, current_matches, previous_matches, stats, targets):
                 'goal_diff': goal_diff, 'win_percentage': np.divide(win, (win+loss)), 'sos': (2*np.divide(opp_win, (opp_win+opp_loss))) + np.divide(opp_opp_won_total, (opp_opp_won_total+opp_opp_lost_total))/3,
                 'opp_is_home': opp_is_home, 'opp_avg_points': np.divide(opp_total_points, opp_played), 'opp_avg_goals': np.divide(opp_total_goals, opp_played),
                 'opp_margin': np.divide(opp_goal_diff, opp_played), 'opp_goal_diff': opp_goal_diff,
-                'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'opp_opp_record': np.divide(opp_opp_win, (opp_opp_win+opp_opp_loss)), 'points': points } # 'goals': goals, 'opp_goals': opp_goals
+                'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'opp_opp_record': np.divide(opp_opp_win, (opp_opp_win+opp_opp_loss)), 'home_possession': home_possession, 'away_possession': away_possession, \
+                'home_attacks': home_attacks, 'away_attacks': away_attacks, 'home_fouls': home_fouls, 'away_fouls': away_fouls, 'home_yellow_card': home_yellow_card, \
+                'away_yellow_card': away_yellow_card, 'home_corner_kicks': home_corner_kicks, 'away_corner_kicks': away_corner_kicks, 'home_shots_on_target': home_shots_on_target, 'away_shots_on_target': away_shots_on_target, \
+                'home_ball_safe': home_ball_safe, 'away_ball_safe': away_ball_safe, 'home_shots_total': home_shots_total, 'away_shots_total': away_shots_total,
+                'points': points } # 'goals': goals, 'opp_goals': opp_goals
 
     print("//////////////////////////////////////////////////")
 
