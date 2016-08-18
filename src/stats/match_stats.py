@@ -298,12 +298,12 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     else:
         away_shots_total = 0
 
-
     if stats:
         print(" ========================== ")
         print("Team Id : {} - Name : {}".format(team_id, team_name))
         print("Prev Opponent Ids : {}".format(prev_opp))
         print("FEATURES (Stats from * Previous Matches)")
+        print("Total Goals : {}".format(total_goals))
         print("Total Points : {}".format(total_points))
         # print("Win Points : {}".format(win))
         # print("Loss Points : {}".format(loss))

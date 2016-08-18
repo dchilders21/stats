@@ -3,15 +3,21 @@ import datetime
 from stats import match_stats
 import mysql.connector
 import pandas as pd
+from pandas.tools.plotting import scatter_matrix
 import numpy as np
 from sklearn import grid_search
 from sklearn.cross_validation import train_test_split
+from sklearn import cross_validation
 from sklearn.metrics import make_scorer, mean_squared_error
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVC
 from sklearn.metrics import f1_score
+from sklearn.decomposition import PCA
+import matplotlib
 
 from stats import model_libs
+
+import sys
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -103,12 +109,19 @@ target_col = 'points'
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
 
 td = model_libs._clone_and_drop(training_data, ignore_cols)
-print(np.any(np.isnan(td)))
-print(np.all(np.isfinite(td)))
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', len(td))
-print(td)
+
+print("Describing the Data")
+print(td.describe)
+# pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_rows', len(td))
+# print(td)
+
+#pd.scatter_matrix(td, alpha=0.3, diagonal='kde')
 (y, X) = model_libs._extract_target(td, target_col)
+
+pca = PCA(n_components=30)
+pca.fit(X)
+print(pca)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
@@ -123,7 +136,11 @@ reg.fit(X_train, y_train)"""
 pm = SVC()
 predictor_model = pm.fit(X_train, y_train)
 
-clf = SVC()
+parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
+# parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4], 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+
+svr = SVC()
+clf = grid_search.GridSearchCV(svr, parameters)
 
 def train_classifier(clf, X_train, y_train):
     clf.fit(X_train, y_train)
@@ -147,12 +164,15 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
 
 
 # Need to iterate over a different PERCENTAGE of the data and make sure the train data isn't the same rows
-# Also need to try different mehtods
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+# Also need to try different methods
 
+
+# X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
 print("F1 score for training set: {}".format(train_f1_score))
 print("F1 score for test set: {}".format(test_f1_score))
+# scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)
 
 
 def get_model():
