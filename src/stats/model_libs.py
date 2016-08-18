@@ -70,7 +70,7 @@ def _extract_target(data, target_col):
 
 def split(data, test_proportion=0.4):
     """ Splits a dataframe into a training set and a test set.
-        Must be careful because back-to-back rows are expeted to
+        Must be careful because back-to-back rows are expected to
         represent the same game, so they both must go in the
         test set or both in the training set.
     """

@@ -18,49 +18,19 @@ import matplotlib
 from stats import model_libs
 
 import sys
+print(sys.path)
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
                               database='mls')
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
-match_details = pd.read_sql('SELECT * FROM home_away_coverage', cnx)
+match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
 query = "SELECT id FROM teams"
 cursor.execute(query)
 
-# MLS broken out WEEKLY even though teams don't always play a game the same week
-# Off of the schedule from Google
-schedule_2016 = {
-    1: datetime.datetime(2016, 3, 6, 23),
-    2: datetime.datetime(2016, 3, 13, 23),
-    3: datetime.datetime(2016, 3, 20, 23),
-    4: datetime.datetime(2016, 4, 3, 23),
-    5: datetime.datetime(2016, 4, 10, 23),
-    6: datetime.datetime(2016, 4, 17, 23),
-    7: datetime.datetime(2016, 4, 24, 23),
-    8: datetime.datetime(2016, 5, 1, 23),
-    9: datetime.datetime(2016, 5, 8, 23),
-    10: datetime.datetime(2016, 5, 15, 23),
-    11: datetime.datetime(2016, 5, 22, 23),
-    12: datetime.datetime(2016, 5, 29, 23),
-    13: datetime.datetime(2016, 6, 2, 23),
-    14: datetime.datetime(2016, 6, 19, 23),
-    15: datetime.datetime(2016, 6, 26, 23),
-    16: datetime.datetime(2016, 7, 3, 23),
-    17: datetime.datetime(2016, 7, 6, 23),
-    18: datetime.datetime(2016, 7, 10, 23),
-    19: datetime.datetime(2016, 7, 13, 23),
-    20: datetime.datetime(2016, 7, 17, 23),
-    21: datetime.datetime(2016, 7, 24, 23),
-    22: datetime.datetime(2016, 7, 31, 23),
-    23: datetime.datetime(2016, 8, 7, 23),
-    24: datetime.datetime(2016, 8, 14, 23),
-    25: datetime.datetime(2016, 8, 21, 23)
-}
 
-week = 25
-adjusted_time = (schedule_2016[week] + datetime.timedelta(hours=7))
-prev_week = (schedule_2016[week - 1] + datetime.timedelta(hours=7))
+round_number = 24
 features = {}
 
 upcoming_matches = pd.read_sql("SELECT matches.id as 'match_id', matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'", cnx)
@@ -69,31 +39,28 @@ previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", 
 training_list = []
 for team in cursor:
 
-    for i in range(2, week):
+    for i in range(2, round_number):
 
-        print("WEEK {} :: TEAM ID {}".format(i, team["id"]))
-        adjusted_time = (schedule_2016[i] + datetime.timedelta(hours=7))
-
-        prev_week = (schedule_2016[i - 1] + datetime.timedelta(hours=7))
+        print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
 
         cur_matches = match_details.loc[
             ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-            ((match_details['scheduled'] < adjusted_time) & (match_details['scheduled'] > prev_week))]
+            (match_details['round'] == i)]
 
         if not cur_matches.empty:
-            for i, cur_match in cur_matches.iterrows():
+            for c, cur_match in cur_matches.iterrows():
                 """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
                 # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
                 temp = pd.DataFrame([])
                 df = temp.append(cur_match, ignore_index=True)
-                match_result = match_stats.create_match(team["id"], df, match_details, prev_week, True, True)
+                match_result = match_stats.create_match(team["id"], df, match_details, i, False, True)
 
                 if match_result is not None:
                     training_list.append(match_result)
 
 columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled',
            # Non-Feature Columns
-           'is_home', 'avg_points', 'avg_goals', 'margin', 'goal_diff',
+           'games_played', 'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
            'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
            'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
            # Extended Feature Columns
@@ -111,7 +78,7 @@ ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'schedu
 td = model_libs._clone_and_drop(training_data, ignore_cols)
 
 print("Describing the Data")
-print(td.describe)
+#print(td.describe)
 # pd.set_option('display.max_columns', None)
 # pd.set_option('display.max_rows', len(td))
 # print(td)
@@ -119,11 +86,11 @@ print(td.describe)
 #pd.scatter_matrix(td, alpha=0.3, diagonal='kde')
 (y, X) = model_libs._extract_target(td, target_col)
 
-pca = PCA(n_components=30)
-pca.fit(X)
-print(pca)
+#pca = PCA(n_components=30)
+#pca.fit(X)
+#print(pca)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 # Regression Model
 """regressor = DecisionTreeRegressor()
@@ -133,8 +100,8 @@ reg = grid_search.GridSearchCV(regressor, parameters, scoring=make_scorer(mean_s
 reg.fit(X_train, y_train)"""
 
 # SVM Model
-pm = SVC()
-predictor_model = pm.fit(X_train, y_train)
+#pm = SVC()
+#predictor_model = pm.fit(X_train, y_train)
 
 parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
 # parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4], 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
