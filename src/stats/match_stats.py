@@ -367,18 +367,17 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 # Assuming a team only plays once in the previous 7 days
 def create_match(team_id, current_matches, match_details, round_number, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous rounds"""
-    print(round_number)
-    print(" ++++++++++++ ")
+
     previous_matches = match_details.loc[
         ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
         (match_details['round'] < round_number)]
 
     # For this Match of the the week, calculate the 'Chosen' teams STATS so far in the season
     match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goals_for, goals_against, goal_diff, played, win, loss, recent_wins, recent_losses, _, opp_id, points, goals, opp_goals, home_possession, away_possession, home_attacks, away_attacks, home_fouls, away_fouls, home_yellow_card, away_yellow_card, home_corner_kicks, away_corner_kicks, home_shots_on_target, away_shots_on_target, home_ball_safe, away_ball_safe, home_shots_total, away_shots_total = calculate_stats(team_id, current_matches, previous_matches, stats, targets)
-    print("")
 
     # Calculate the Opponents STATS
-    print('Current Opponent ID : {0}'.format(opp_id))
+    if stats:
+        print('Current Opponent ID : {0}'.format(opp_id))
 
     opp_previous_matches = match_details.loc[
         ((match_details['home_id'] == opp_id) | (match_details['away_id'] == opp_id)) &
@@ -388,7 +387,8 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     opp_match_id, opp_team_id, opp_team_name, scheduled, opp_is_home, opp_total_points, opp_total_goals, opp_goals_for, opp_goals_against, opp_goal_diff, \
     opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _ = calculate_stats(opp_id, current_matches, opp_previous_matches, stats, targets)
 
-    print('Current Opponents of Opponent ID : {0}'.format(opp_opp))
+    if stats:
+        print('Current Opponents of Opponent ID : {0}'.format(opp_opp))
 
     # print('\nOpp Won {0} : Opp Lost {1} : Opp Recent Wins {2} : Opp Recent Losses {3}'.format(
         # opp_win, opp_loss, opp_recent_wins, opp_recent_wins))
@@ -420,7 +420,8 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
                 'home_ball_safe': home_ball_safe, 'away_ball_safe': away_ball_safe, 'home_shots_total': home_shots_total, 'away_shots_total': away_shots_total,
                 'points': points } # 'goals': goals, 'opp_goals': opp_goals
 
-    print("//////////////////////////////////////////////////")
+    if stats:
+        print("//////////////////////////////////////////////////")
 
     return feature
 

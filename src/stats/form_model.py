@@ -58,9 +58,9 @@ for team in cursor:
                 if match_result is not None:
                     training_list.append(match_result)
 
-columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled',
+columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
            # Non-Feature Columns
-           'games_played', 'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
+           'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
            'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
            'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
            # Extended Feature Columns
@@ -74,6 +74,10 @@ training_data = pd.DataFrame(training_list, columns=columns)
 
 target_col = 'points'
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
+
+
+#This takes forever
+#pd.scatter_matrix(X, alpha=0.3, figsize = (14,8), diagonal = 'kde');
 
 td = model_libs._clone_and_drop(training_data, ignore_cols)
 
@@ -108,6 +112,7 @@ parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
 
 svr = SVC()
 clf = grid_search.GridSearchCV(svr, parameters)
+
 
 def train_classifier(clf, X_train, y_train):
     clf.fit(X_train, y_train)
@@ -155,15 +160,15 @@ cursor.execute(query)
 for team in cursor:
     upcoming_team_matches = upcoming_matches.loc[
                 ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
+
     print('Upcoming Team Matches')
     print(upcoming_team_matches)
-    print(' ++++++++++++ ')
+
     if not upcoming_team_matches.empty:
         for i, upcoming_team_match in upcoming_team_matches.iterrows():
             temp = pd.DataFrame([])
             df = temp.append(upcoming_team_match, ignore_index=True)
-            upcoming_stats = match_stats.create_match(team["id"], df, match_details, prev_week, True, False)
-            print(" ********************** ")
+            upcoming_stats = match_stats.create_match(team["id"], df, match_details, round_number, True, False)
 
             if upcoming_stats is not None:
                 upcoming_list.append(upcoming_stats)
