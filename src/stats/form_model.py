@@ -1,6 +1,7 @@
 import datetime
 
 from stats import match_stats
+from stats import adjusted_match_stats
 import mysql.connector
 import pandas as pd
 from pandas.tools.plotting import scatter_matrix
@@ -16,9 +17,6 @@ from sklearn.decomposition import PCA
 import matplotlib
 
 from stats import model_libs
-
-import sys
-print(sys.path)
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -37,6 +35,7 @@ upcoming_matches = pd.read_sql("SELECT matches.id as 'match_id', matches.schedul
 previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
 
 training_list = []
+
 for team in cursor:
 
     for i in range(2, round_number):
@@ -53,10 +52,15 @@ for team in cursor:
                 # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
                 temp = pd.DataFrame([])
                 df = temp.append(cur_match, ignore_index=True)
-                match_result = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                features, extended_features = adjusted_match_stats.create_match(team["id"], df, match_details, i, True, True)
 
-                if match_result is not None:
-                    training_list.append(match_result)
+                if features is not None:
+                    for key, value in extended_features.items():
+                        for k, v in value.items():
+                            new_key = key + '_' + k
+                            features[new_key] = v
+
+                training_list.append(features)
 
 columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
            # Non-Feature Columns
@@ -70,19 +74,38 @@ columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled'
            'home_shots_total', 'away_shots_total',
            'points']  # Target Columns - #'goals', 'opp_goals'
 
-training_data = pd.DataFrame(training_list, columns=columns)
+adjusted_columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
+           # Non-Feature Columns
+           'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
+           'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
+           'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
+           # Extended Feature Columns
+           'e_f_dangerous_attacks', 'e_f_shots_total', 'e_f_shots_on_target', 'e_f_ball_safe', 'e_f_possession', 'e_f_attacks',
+           'opp_e_f_dangerous_attacks', 'opp_e_f_shots_total', 'opp_e_f_shots_on_target', 'opp_e_f_ball_safe', 'opp_e_f_possession', 'opp_e_f_attacks',
+           'prev_opp_e_f_dangerous_attacks', 'prev_opp_e_f_shots_total', 'prev_opp_e_f_shots_on_target', 'prev_opp_e_f_ball_safe', 'prev_opp_e_f_possession', 'prev_opp_e_f_attacks',
+           'opp_opp_e_f_dangerous_attacks', 'opp_opp_e_f_shots_total', 'opp_opp_e_f_shots_on_target', 'opp_opp_e_f_ball_safe', 'opp_opp_e_f_possession', 'opp_opp_e_f_attacks',
+           'points']  # Target Columns - #'goals', 'opp_goals'
+
+#print(training_list)
+training_data = pd.DataFrame(training_list, columns=adjusted_columns)
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', len(training_data))
+training_data = training_data.fillna(training_data.mean())
 
 target_col = 'points'
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled']
 
 
-#This takes forever
-#pd.scatter_matrix(X, alpha=0.3, figsize = (14,8), diagonal = 'kde');
+# This takes forever
+# pd.scatter_matrix(X, alpha=0.3, figsize = (14,8), diagonal = 'kde');
 
 td = model_libs._clone_and_drop(training_data, ignore_cols)
 
 print("Describing the Data")
-#print(td.describe)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', len(td))
+print(td.describe)
 # pd.set_option('display.max_columns', None)
 # pd.set_option('display.max_rows', len(td))
 # print(td)
@@ -107,8 +130,8 @@ reg.fit(X_train, y_train)"""
 #pm = SVC()
 #predictor_model = pm.fit(X_train, y_train)
 
-parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
-# parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4], 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+#parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
+parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4], 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
 
 svr = SVC()
 clf = grid_search.GridSearchCV(svr, parameters)
@@ -168,7 +191,7 @@ for team in cursor:
         for i, upcoming_team_match in upcoming_team_matches.iterrows():
             temp = pd.DataFrame([])
             df = temp.append(upcoming_team_match, ignore_index=True)
-            upcoming_stats = match_stats.create_match(team["id"], df, match_details, round_number, True, False)
+            upcoming_stats = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
 
             if upcoming_stats is not None:
                 upcoming_list.append(upcoming_stats)
