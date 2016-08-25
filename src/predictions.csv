@@ -1,0 +1,33 @@
+,team_name,opp_name,scheduled,0
+0,FC Dallas,Houston Dynamo,2016-08-28 01:00:00,1.0
+1,Colorado Rapids,Real Salt Lake,2016-08-27 00:00:00,0.0
+2,Real Salt Lake,Colorado Rapids,2016-08-27 00:00:00,3.0
+3,New York City FC,Orlando City SC,2016-08-28 23:00:00,1.0
+4,Philadelphia Union,Columbus Crew,2016-08-24 23:30:00,0.0
+5,Philadelphia Union,Sporting Kansas City,2016-08-27 23:00:00,0.0
+6,LA Galaxy,Chicago Fire,2016-08-25 00:30:00,1.0
+7,LA Galaxy,Vancouver Whitecaps FC,2016-08-28 02:30:00,3.0
+8,Sporting Kansas City,Philadelphia Union,2016-08-27 23:00:00,3.0
+9,Vancouver Whitecaps FC,LA Galaxy,2016-08-28 02:30:00,0.0
+10,Montreal Impact,DC United,2016-08-24 23:30:00,1.0
+11,Montreal Impact,Toronto FC,2016-08-27 23:30:00,1.0
+12,Portland Timbers,Seattle Sounders,2016-08-28 21:00:00,3.0
+13,NY Red Bulls,New England Revolution,2016-08-28 18:30:00,3.0
+14,San Jose Earthquakes,New England Revolution,2016-08-25 02:30:00,3.0
+15,San Jose Earthquakes,Columbus Crew,2016-08-27 23:30:00,0.0
+16,DC United,Montreal Impact,2016-08-24 23:30:00,1.0
+17,DC United,Chicago Fire,2016-08-27 23:00:00,0.0
+18,Toronto FC,Orlando City SC,2016-08-24 23:30:00,1.0
+19,Toronto FC,Montreal Impact,2016-08-27 23:30:00,1.0
+20,Orlando City SC,Toronto FC,2016-08-24 23:30:00,1.0
+21,Orlando City SC,New York City FC,2016-08-28 23:00:00,0.0
+22,New England Revolution,San Jose Earthquakes,2016-08-25 02:30:00,3.0
+23,New England Revolution,NY Red Bulls,2016-08-28 18:30:00,3.0
+24,Seattle Sounders,Houston Dynamo,2016-08-25 01:00:00,0.0
+25,Seattle Sounders,Portland Timbers,2016-08-28 21:00:00,0.0
+26,Houston Dynamo,Seattle Sounders,2016-08-25 01:00:00,3.0
+27,Houston Dynamo,FC Dallas,2016-08-28 01:00:00,3.0
+28,Columbus Crew,Philadelphia Union,2016-08-24 23:30:00,3.0
+29,Columbus Crew,San Jose Earthquakes,2016-08-27 23:30:00,3.0
+30,Chicago Fire,LA Galaxy,2016-08-25 00:30:00,0.0
+31,Chicago Fire,DC United,2016-08-27 23:00:00,0.0
