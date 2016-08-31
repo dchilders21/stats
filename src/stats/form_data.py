@@ -2,8 +2,7 @@ from stats import match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
-from stats import model_libs
-from sklearn.feature_selection import VarianceThreshold
+
 
 def run_data():
 
@@ -16,7 +15,7 @@ def run_data():
     query = "SELECT id FROM teams"
     cursor.execute(query)
 
-    round_number = 25
+    round_number = 26
     training_list = []
 
     for team in cursor:
@@ -60,8 +59,7 @@ def run_data():
                'current_team_away_dangerous_attacks', 'current_team_home_yellow_card', 'current_team_away_yellow_card', 'current_team_home_corner_kicks', 'current_team_away_corner_kicks',
                'current_team_home_shots_on_target', 'current_team_away_shots_on_target', 'current_team_home_shots_total', 'current_team_away_shots_total', 'current_team_home_ball_safe',
                'current_team_away_ball_safe', 'current_team_home_played', 'current_team_away_played',
-               'current_team_home_possession', 'current_team_away_possession', 'current_team_home_attacks',
-               'current_opp_away_attacks', 'current_opp_home_dangerous_attacks',
+               'current_opp_home_attacks', 'current_opp_away_attacks', 'current_opp_home_dangerous_attacks',
                'current_opp_away_dangerous_attacks', 'current_opp_home_yellow_card',
                'current_opp_away_yellow_card', 'current_opp_home_corner_kicks', 'current_opp_away_corner_kicks',
                'current_opp_home_shots_on_target', 'current_opp_away_shots_on_target',

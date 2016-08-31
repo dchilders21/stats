@@ -26,7 +26,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     count = 1
 
     # Home Away Features
-    home_away_features = {'home_possession': [], 'away_possession': [], 'home_attacks':[], 'away_attacks':[],
+    home_away_features = {'home_possession': [], 'away_possession': [], 'home_attacks': [], 'away_attacks': [],
                           'home_dangerous_attacks': [], 'away_dangerous_attacks': [], 'home_yellow_card': [], 'away_yellow_card': [],
                           'home_corner_kicks': [], 'away_corner_kicks': [], 'home_shots_on_target': [], 'away_shots_on_target': [],
                           'home_shots_total': [], 'away_shots_total': [], 'home_ball_safe': [], 'away_ball_safe': [],
