@@ -2,6 +2,8 @@ from stats import match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
+from stats import model_libs
+from sklearn.feature_selection import VarianceThreshold
 
 def run_data():
 
@@ -80,4 +82,3 @@ def run_data():
     data = data.replace(np.nan, data.mean())
 
     return data
-

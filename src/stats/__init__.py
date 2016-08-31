@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_PATH = static_folder_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
 #form_data.run_data()
 
-print(' ============= ')
+print('INITIALIZED...')
 #print(training_data)
 
 

@@ -1,8 +1,24 @@
-def predictions(model):
+def get_upcoming_matches():
+    import mysql.connector
+    import pandas as pd
+
+    cnx = mysql.connector.connect(user='root', password='',
+                                  host='127.0.0.1',
+                                  database='mls')
+
+    upcoming_matches = pd.read_sql(
+        "SELECT matches.id as 'match_id', matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'",
+        cnx)
+
+    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
+
+    return upcoming_matches, match_details
+
+
+def predictions(upcoming_matches, match_details, model):
 
     import mysql.connector
     import pandas as pd
-    import numpy as np
     from stats import match_stats, model_libs
 
     cnx = mysql.connector.connect(user='root', password='',
@@ -10,16 +26,7 @@ def predictions(model):
                                   database='mls')
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    round_number = 24
-
-    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
-    query = "SELECT id FROM teams"
-    cursor.execute(query)
-
-    upcoming_matches = pd.read_sql(
-        "SELECT matches.id as 'match_id', matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'",
-        cnx)
-    previous_matches = pd.read_sql("SELECT * FROM matches WHERE status = 'closed'", cnx)
+    round_number = 26
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
                # Non-Feature Columns

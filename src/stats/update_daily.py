@@ -12,7 +12,7 @@ cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/08/28"
+DATE = "2016/09/04"
 
 add_team = ("INSERT INTO matches "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
