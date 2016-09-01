@@ -7,9 +7,9 @@ from sklearn.metrics import silhouette_score
 from sklearn import grid_search
 from sklearn import cross_validation
 from sklearn.cross_validation import train_test_split
-from stats import model_libs
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 
 
 def train_classifier(clf, X_train, y_train):
@@ -18,7 +18,7 @@ def train_classifier(clf, X_train, y_train):
 
 def predict_labels(clf, features, target):
     y_pred = clf.predict(features)
-    return f1_score(target.values, y_pred, average="binary", pos_label=0)
+    return f1_score(target.values, y_pred, average="macro", pos_label=0)
 
 
 def train_predict(clf, X_train, y_train, X_test, y_test):
@@ -32,7 +32,7 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
 def build_model(X, y, model_type):
 
     if model_type == 'svc':
-        print('Training SVC Modeling')
+        print('Training SVC Model')
         svr = SVC()
         parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
         clf = grid_search.GridSearchCV(svr, parameters)
@@ -43,32 +43,31 @@ def build_model(X, y, model_type):
         print('Finished SVC Modeling')
         return clf
     elif model_type == 'gmm':
+        print(' ========================== ')
         print('Training GMM Modeling')
         sil_scores = []
-        clf = mixture.GMM(n_components=3, covariance_type='full')
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
-        print("F1 score for training set: {}".format(train_f1_score))
-        print("F1 score for test set: {}".format(test_f1_score))
-        preds = clf.predict(X)
-        # centers = np.round(clf.means_, 2)
-        score = silhouette_score(X, preds)
-        sil_scores.append(score)
-        print('Scores :', sil_scores)
+        for i in range(2, 5):
+            clf = mixture.GMM(n_components=i, covariance_type='full')
+            clf.fit(X)
+            preds = clf.predict(X)
+            # centers = np.round(clf.means_, 2)
+            score = silhouette_score(X, preds)
+            sil_scores.append(score)
+            print('Silhouette Score :: {} for {} Clusters'.format(score, i))
         print('Finished GMM Modeling')
         return clf
-    elif model_type == 'kmeans':
-        print('Training K-Means Modeling')
-        clf = KMeans(init='k-means++', n_clusters=3, n_init=10)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
-        print("F1 score for training set: {}".format(train_f1_score))
-        print("F1 score for test set: {}".format(test_f1_score))
-        print('Finished SVC Modeling')
+    elif model_type == 'knn':
+        print(' ========================== ')
+        print('Training K Neighbors Classifier Model')
+        neigh = KNeighborsClassifier(n_neighbors=3)
+        neigh.fit(X, y)
+        score = neigh.score(X, y)
+        print('KNN Score :: {}'.format(score))
         print('Finished K-Means Modeling')
-        return clf
+        return neigh
     elif model_type == 'gnb':
-        print('Training Gaussian NB Modeling')
+        print(' ========================== ')
+        print('Training Gaussian NB Model')
         clf = GaussianNB()
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
@@ -92,35 +91,50 @@ def build_tuned_model(X, y, model_type):
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         print('Finished SVC Modeling')
     elif model_type == 'gmm':
+        print(' ========================== ')
         print('Training and Tuning GMM Model')
         co_types = ['spherical', 'tied', 'diag', 'full']
-        skf = StratifiedKFold(y, n_folds=2, random_state=22)
+        skf = StratifiedKFold(y, n_folds=5, random_state=22)
         for train_index, test_index in skf:
-            print("Shuffle")
             X_train, X_test = X.loc[train_index], X.loc[test_index]
             y_train, y_test = y.loc[train_index], y.loc[test_index]
             for co_type in co_types:
                 print("W/ Covariance Type :: {}".format(co_type))
-                sil_scores = []
-                clf = mixture.GMM(n_components=3, covariance_type=co_type, random_state=34)
-                clf.fit(X_train)
-                preds = clf.predict(X_train)
-                score = silhouette_score(X_train, preds)
-                sil_scores.append(score)
-                print('Scores :', sil_scores)
+                train_sils = []
+                test_sils = []
+                for i in range(2, 5):
+                    print('# of Components :: {}'.format(i))
+                    clf = mixture.GMM(n_components=i, covariance_type=co_type, random_state=34)
+                    clf.fit(X_train)
+                    train_preds = clf.predict(X_train)
+                    train_score = silhouette_score(X_train, train_preds)
+                    test_preds = clf.predict(X_test)
+                    test_score = silhouette_score(X_test, test_preds)
+                    train_sils.append(train_score)
+                    test_sils.append(test_score)
+                    print('Silhouette Score :: {} for Training'.format(train_score))
+                    print('Silhouette Score :: {} for Testing'.format(test_score))
+
         print('Finished GMM Modeling')
 
-    elif model_type == 'kmeans':
-        print('Training K-Means Modeling')
-        clf = KMeans(init='k-means++', n_clusters=3, n_init=10)
-        X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
-        scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)
-        print(scores)
-        print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+    elif model_type == 'knn':
+        print(' ========================== ')
+        print('Training K-Means Model')
+        skf = StratifiedKFold(y, n_folds=5, random_state=22)
+        for train_index, test_index in skf:
+            X_train, X_test = X.loc[train_index], X.loc[test_index]
+            y_train, y_test = y.loc[train_index], y.loc[test_index]
+            neigh = KNeighborsClassifier(n_neighbors=3)
+            neigh.fit(X_train, y_train)
+            train_score = neigh.score(X_train, y_train)
+            test_score = neigh.score(X_test, y_test)
+            print('KNN Score :: {} for Training'.format(train_score))
+            print('KNN Score :: {} for Testing'.format(test_score))
         print('Finished K-Means Modeling')
 
     elif model_type == 'gnb':
-        print('Training Gaussian NB Modeling')
+        print(' ========================== ')
+        print('Training Gaussian NB Model')
         clf = GaussianNB()
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
         scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)

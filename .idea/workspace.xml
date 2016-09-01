@@ -2,11 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/round26.csv" afterPath="$PROJECT_DIR$/src/round26.csv" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_01.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_02.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_03.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_04.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_05.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_06.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_07.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_08.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_09.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_10.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_11.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_12.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_13.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_14.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_15.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_16.npy" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_10.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_10.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_12.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_12.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_13.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_13.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/predictions_26.csv" afterPath="$PROJECT_DIR$/src/predictions_26.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_data.py" afterPath="$PROJECT_DIR$/src/stats/form_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/match_stats.py" afterPath="$PROJECT_DIR$/src/stats/match_stats.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/predict_matches.py" afterPath="$PROJECT_DIR$/src/stats/predict_matches.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/stats.ipynb" afterPath="$PROJECT_DIR$/src/stats/stats.ipynb" />
     </list>
     <ignored path="stats.iws" />
@@ -48,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_data.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="57" column="44" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="44" />
+            <state relative-caret-position="808">
+              <caret line="72" column="66" selection-start-line="51" selection-start-column="4" selection-end-line="72" selection-end-column="66" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -63,18 +97,18 @@
       <file leaf-file-name="match_stats.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+            <state relative-caret-position="272">
+              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_model.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+            <state relative-caret-position="418">
+              <caret line="109" column="53" selection-start-line="109" selection-start-column="53" selection-end-line="109" selection-end-column="53" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -95,8 +129,8 @@
       <file leaf-file-name="predict_matches.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+            <state relative-caret-position="394">
+              <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -157,19 +191,19 @@
         <option value="$PROJECT_DIR$/src/stats/renders.py" />
         <option value="$PROJECT_DIR$/src/stats/update_match.py" />
         <option value="$PROJECT_DIR$/src/stats/update_daily.py" />
-        <option value="$PROJECT_DIR$/src/stats/predict_matches.py" />
         <option value="$PROJECT_DIR$/src/stats/model_libs.py" />
         <option value="$PROJECT_DIR$/src/stats/__init__.py" />
-        <option value="$PROJECT_DIR$/src/stats/form_model.py" />
         <option value="$PROJECT_DIR$/src/stats/match_stats.py" />
         <option value="$PROJECT_DIR$/src/stats/form_data.py" />
+        <option value="$PROJECT_DIR$/src/stats/predict_matches.py" />
+        <option value="$PROJECT_DIR$/src/stats/form_model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1223" />
-    <option name="y" value="23" />
-    <option name="width" value="1334" />
+    <option name="x" value="1020" />
+    <option name="y" value="24" />
+    <option name="width" value="1497" />
     <option name="height" value="1413" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -548,10 +582,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1223" y="23" width="1334" height="1413" extended-state="0" />
+    <frame x="1020" y="24" width="1497" height="1413" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19115442" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17034069" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43892047" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -773,32 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -809,10 +817,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="57" column="44" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="44" />
+        <state relative-caret-position="808">
+          <caret line="72" column="66" selection-start-line="51" selection-start-column="4" selection-end-line="72" selection-end-column="66" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="109" column="53" selection-start-line="109" selection-start-column="53" selection-end-line="109" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
