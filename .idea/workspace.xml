@@ -2,31 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_01.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_02.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_03.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_04.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_05.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_06.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_07.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_08.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_09.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_10.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_11.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_12.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_13.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_14.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_15.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/round26.csv_16.npy" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_06.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_09.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_01.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_05.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" />
@@ -37,10 +33,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/predictions_26.csv" afterPath="$PROJECT_DIR$/src/predictions_26.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/predict_matches.py" afterPath="$PROJECT_DIR$/src/stats/predict_matches.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/stats.ipynb" afterPath="$PROJECT_DIR$/src/stats/stats.ipynb" />
     </list>
     <ignored path="stats.iws" />
@@ -107,8 +101,8 @@
       <file leaf-file-name="form_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="109" column="53" selection-start-line="109" selection-start-column="53" selection-end-line="109" selection-end-column="53" />
+            <state relative-caret-position="690">
+              <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -843,8 +837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="109" column="53" selection-start-line="109" selection-start-column="53" selection-end-line="109" selection-end-column="53" />
+        <state relative-caret-position="690">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

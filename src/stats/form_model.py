@@ -43,10 +43,10 @@ def build_model(X, y, model_type):
         print('Finished SVC Modeling')
         return clf
     elif model_type == 'gmm':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training GMM Modeling')
         sil_scores = []
-        for i in range(2, 5):
+        for i in range(2, 4):
             clf = mixture.GMM(n_components=i, covariance_type='full')
             clf.fit(X)
             preds = clf.predict(X)
@@ -57,7 +57,7 @@ def build_model(X, y, model_type):
         print('Finished GMM Modeling')
         return clf
     elif model_type == 'knn':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training K Neighbors Classifier Model')
         neigh = KNeighborsClassifier(n_neighbors=3)
         neigh.fit(X, y)
@@ -66,7 +66,7 @@ def build_model(X, y, model_type):
         print('Finished K-Means Modeling')
         return neigh
     elif model_type == 'gnb':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training Gaussian NB Model')
         clf = GaussianNB()
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -86,12 +86,12 @@ def build_tuned_model(X, y, model_type):
         parameters = [{'kernel': ['rbf'], 'gamma': gamma_range, 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100,1000]}]
         clf = grid_search.GridSearchCV(svr, parameters)
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
-        scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)
+        scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=2)
         print(scores)
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         print('Finished SVC Modeling')
     elif model_type == 'gmm':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training and Tuning GMM Model')
         co_types = ['spherical', 'tied', 'diag', 'full']
         skf = StratifiedKFold(y, n_folds=5, random_state=22)
@@ -118,7 +118,7 @@ def build_tuned_model(X, y, model_type):
         print('Finished GMM Modeling')
 
     elif model_type == 'knn':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training K-Means Model')
         skf = StratifiedKFold(y, n_folds=5, random_state=22)
         for train_index, test_index in skf:
@@ -133,7 +133,7 @@ def build_tuned_model(X, y, model_type):
         print('Finished K-Means Modeling')
 
     elif model_type == 'gnb':
-        print(' ========================== ')
+        print('-----------------------------------')
         print('Training Gaussian NB Model')
         clf = GaussianNB()
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
