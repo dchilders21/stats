@@ -1,13 +1,13 @@
 ,scheduled,team_name,opp_name,SVC,KNN,GMM,GNB
-0,2016-09-04 01:00:00,FC Dallas,Portland Timbers,3.0,3.0,1.0,3.0
-6,2016-09-04 01:00:00,Portland Timbers,FC Dallas,0.0,0.0,1.0,0.0
-1,2016-09-03 23:30:00,Colorado Rapids,New England Revolution,0.0,0.0,3.0,0.0
-9,2016-09-03 23:30:00,New England Revolution,Colorado Rapids,0.0,3.0,3.0,0.0
-2,2016-09-01 23:00:00,New York City FC,DC United,3.0,3.0,1.0,3.0
-8,2016-09-01 23:00:00,DC United,New York City FC,0.0,0.0,1.0,0.0
-3,2016-09-04 00:30:00,Philadelphia Union,Chicago Fire,0.0,3.0,1.0,0.0
-11,2016-09-04 00:30:00,Chicago Fire,Philadelphia Union,3.0,0.0,1.0,3.0
-4,2016-09-04 02:30:00,LA Galaxy,Columbus Crew,3.0,3.0,1.0,0.0
-10,2016-09-04 02:30:00,Columbus Crew,LA Galaxy,0.0,0.0,1.0,0.0
-5,2016-09-03 23:00:00,Vancouver Whitecaps FC,NY Red Bulls,3.0,3.0,3.0,0.0
-7,2016-09-03 23:00:00,NY Red Bulls,Vancouver Whitecaps FC,0.0,0.0,2.0,0.0
+0,2016-09-04 01:00:00,FC Dallas,Portland Timbers,3.0,3.0,0.0,3.0
+6,2016-09-04 01:00:00,Portland Timbers,FC Dallas,0.0,0.0,0.0,0.0
+1,2016-09-03 23:30:00,Colorado Rapids,New England Revolution,0.0,0.0,1.0,0.0
+9,2016-09-03 23:30:00,New England Revolution,Colorado Rapids,0.0,3.0,2.0,0.0
+2,2016-09-01 23:00:00,New York City FC,DC United,3.0,3.0,0.0,3.0
+8,2016-09-01 23:00:00,DC United,New York City FC,0.0,0.0,0.0,0.0
+3,2016-09-04 00:30:00,Philadelphia Union,Chicago Fire,0.0,3.0,0.0,0.0
+11,2016-09-04 00:30:00,Chicago Fire,Philadelphia Union,3.0,0.0,0.0,3.0
+4,2016-09-04 02:30:00,LA Galaxy,Columbus Crew,3.0,3.0,0.0,0.0
+10,2016-09-04 02:30:00,Columbus Crew,LA Galaxy,0.0,0.0,0.0,0.0
+5,2016-09-03 23:00:00,Vancouver Whitecaps FC,NY Red Bulls,3.0,3.0,2.0,0.0
+7,2016-09-03 23:00:00,NY Red Bulls,Vancouver Whitecaps FC,0.0,0.0,1.0,0.0

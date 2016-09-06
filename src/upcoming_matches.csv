@@ -1,13 +1,7 @@
-,team_name,opp_name,scheduled,0
-0,FC Dallas,Portland Timbers,2016-09-04 01:00:00,1.0
-1,Colorado Rapids,New England Revolution,2016-09-03 23:30:00,3.0
-2,New York City FC,DC United,2016-09-01 23:00:00,1.0
-3,Philadelphia Union,Chicago Fire,2016-09-04 00:30:00,0.0
-4,LA Galaxy,Columbus Crew,2016-09-04 02:30:00,3.0
-5,Vancouver Whitecaps FC,NY Red Bulls,2016-09-03 23:00:00,3.0
-6,Portland Timbers,FC Dallas,2016-09-04 01:00:00,1.0
-7,NY Red Bulls,Vancouver Whitecaps FC,2016-09-03 23:00:00,0.0
-8,DC United,New York City FC,2016-09-01 23:00:00,1.0
-9,New England Revolution,Colorado Rapids,2016-09-03 23:30:00,3.0
-10,Columbus Crew,LA Galaxy,2016-09-04 02:30:00,0.0
-11,Chicago Fire,Philadelphia Union,2016-09-04 00:30:00,3.0
+,match_id,scheduled,home_id,away_id,home_team,away_team
+0,486,2016-09-01 23:00:00,24,33,New York City FC,DC United
+1,487,2016-09-03 23:00:00,28,31,Vancouver Whitecaps FC,NY Red Bulls
+2,488,2016-09-03 23:30:00,36,22,New England Revolution,Colorado Rapids
+3,489,2016-09-04 00:30:00,40,25,Chicago Fire,Philadelphia Union
+4,490,2016-09-04 01:00:00,21,30,FC Dallas,Portland Timbers
+5,491,2016-09-04 02:30:00,26,39,LA Galaxy,Columbus Crew
