@@ -14,7 +14,7 @@ API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
 
 cursor = cnx.cursor(buffered=True)
-query = ("SELECT id, stats_id FROM matches WHERE stats_id='77d4df35-0585-4780-8d12-968372a3044c'")
+query = ("SELECT id, stats_id FROM matches WHERE stats_id='22d4ddde-eb85-4669-aadd-b1813e1342c6'")
 cursor.execute(query)
 
 matches = cursor.fetchall()

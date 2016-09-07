@@ -10,8 +10,8 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     recent_performance = 3
 
     # Features
-    home_played = 0
-    away_played = 0
+    home_played = float(0)
+    away_played = float(0)
     win = 0
     loss = 0
     recent_wins = 0
@@ -79,8 +79,8 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
                 loss += 1.2
 
             total_goals += game['home_score']
-            goals_for = game['home_score']
-            goals_against = game['away_score']
+            goals_for += game['home_score']
+            goals_against += game['away_score']
             goal_diff += game['home_score'] - game['away_score']
             total_points += game['home_points']
 
@@ -135,8 +135,8 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
                 loss += .8
 
             total_goals += game['away_score']
-            goals_for = game['away_score']
-            goals_against = game['home_score']
+            goals_for += game['away_score']
+            goals_against += game['home_score']
             goal_diff += game['away_score'] - game['home_score']
             total_points += game['away_points']
 
@@ -237,7 +237,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
         print("Goals : {}".format(goals))
         print("Opp_Goals : {}".format(opp_goals))
 
-    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, total_goals, \
+    return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, \
            goals_for, goals_against, goal_diff, played, win, loss, recent_wins, recent_losses, prev_opp, \
            current_opp, points, goals, opp_goals, home_away_features, extended_features
 
@@ -251,7 +251,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         (match_details['round'] < round_number)]
 
     # Find CUR_TEAM's stats
-    match_id, team_id, team_name, scheduled, is_home, total_points, total_goals, goals_for, goals_against, goal_diff, \
+    match_id, team_id, team_name, scheduled, is_home, total_points, goals_for, goals_against, goal_diff, \
         played, win, loss, recent_wins, recent_losses, prev_opp, opp_id, points, goals, opp_goals, \
         home_away_features, extended_features = calculate_stats(team_id, current_matches, previous_matches, stats, targets)
 
@@ -264,7 +264,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         ((match_details['home_id'] == opp_id) | (match_details['away_id'] == opp_id)) &
         (match_details['round'] < round_number)]
 
-    _, opp_team_id, opp_team_name, _, opp_is_home, opp_total_points, opp_total_goals, opp_goals_for, opp_goals_against, opp_goal_diff, \
+    _, opp_team_id, opp_team_name, _, opp_is_home, opp_total_points, opp_goals_for, opp_goals_against, opp_goal_diff, \
     opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _, opp_home_away_features, opp_extended_features = calculate_stats(opp_id, current_matches, opp_previous_matches, stats, targets)
 
     if stats:
@@ -275,7 +275,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
             ((match_details['home_id'] == prev_opp_id) | (match_details['away_id'] == prev_opp_id)) &
             (match_details['round'] < round_number)]
 
-        _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, \
+        _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, \
         prev_opp_extended_features = calculate_stats(prev_opp_id, current_matches, prev_opp_previous_matches, False, targets)
 
     opp_opp_won_total = 0
@@ -291,7 +291,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
             ((match_details['home_id'] == opp_opp_id) | (match_details['away_id'] == opp_opp_id)) &
             (match_details['round'] < round_number)]
 
-        opp_opp_match_id, opp_opp_team_id, opp_opp_team_name, scheduled, opp_opp_is_home, opp_opp_total_points, opp_opp_total_goals, opp_opp_goals_for, opp_opp_goals_against, opp_opp_goal_diff, \
+        opp_opp_match_id, opp_opp_team_id, opp_opp_team_name, scheduled, opp_opp_is_home, opp_opp_total_points, opp_opp_goals_for, opp_opp_goals_against, opp_opp_goal_diff, \
         opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_recent_wins, opp_opp_recent_losses, _, _, _, _, _, _, opp_opp_extended_features = calculate_stats(opp_opp_id, current_matches, opp_opp_previous_matches, False, targets)
         opp_opp_won_total += opp_opp_win
         opp_opp_lost_total += opp_opp_loss
@@ -309,9 +309,9 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         print(opp_opp_extended_features)
 
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id, 'opp_name': opp_team_name, 'scheduled': scheduled, 'games_played': played, 'is_home':
-                is_home, 'avg_points': np.divide(total_points, played), 'goals_for': goals_for, 'goals_against': goals_against, 'avg_goals': np.divide(total_goals, played), 'margin': np.divide(goal_diff, played),
+                is_home, 'avg_points': np.divide(total_points, played), 'avg_goals_for': np.divide(goals_for, played), 'avg_goals_against': np.divide(goals_against, played), 'margin': np.divide(goal_diff, played),
                 'goal_diff': goal_diff, 'win_percentage': np.divide(win, (win+loss)), 'sos': (2*np.divide(opp_win, (opp_win+opp_loss))) + np.divide(opp_opp_won_total, (opp_opp_won_total+opp_opp_lost_total))/3,
-                'opp_is_home': opp_is_home, 'opp_avg_points': np.divide(opp_total_points, opp_played), 'opp_avg_goals': np.divide(opp_total_goals, opp_played),
+                'opp_is_home': opp_is_home, 'opp_avg_points': np.divide(opp_total_points, opp_played), 'opp_avg_goals': np.divide(opp_goals_for, opp_played),
                 'opp_margin': np.divide(opp_goal_diff, opp_played), 'opp_goal_diff': opp_goal_diff,
                 'opp_win_percentage': np.divide(opp_win, (opp_win+opp_loss)), 'opp_opp_record': np.divide(opp_opp_win, (opp_opp_win+opp_opp_loss)),
                 'points': points} # 'goals': goals, 'opp_goals': opp_goals

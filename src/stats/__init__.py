@@ -13,6 +13,7 @@ STATIC_PATH = static_folder_root = os.path.join(os.path.dirname(os.path.abspath(
 #form_data.run_data()
 
 print('INITIALIZED...')
+
 #print(training_data)
 
 

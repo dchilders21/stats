@@ -51,7 +51,7 @@ def run_data():
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
                # Non-Feature Columns
-               'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
+               'is_home', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
                'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
                'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
                # Home Away Feature Columns
