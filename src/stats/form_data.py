@@ -4,6 +4,16 @@ import pandas as pd
 import numpy as np
 
 
+def get_coverage():
+    cnx = mysql.connector.connect(user='root', password='',
+                                  host='127.0.0.1',
+                                  database='mls')
+
+    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
+
+    return match_details
+
+
 def run_data():
 
     cnx = mysql.connector.connect(user='root', password='',
@@ -11,7 +21,8 @@ def run_data():
                                   database='mls')
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
+    match_details = get_coverage()
+
     query = "SELECT id FROM teams"
     cursor.execute(query)
 
@@ -51,8 +62,8 @@ def run_data():
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
                # Non-Feature Columns
-               'is_home', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
-               'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
+               'is_home', 'current_formation', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
+               'win_percentage', 'sos', 'opp_is_home', 'opp_formation', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
                'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
                # Home Away Feature Columns
                'current_team_home_possession', 'current_team_away_possession', 'current_team_home_attacks', 'current_team_away_attacks', 'current_team_home_dangerous_attacks',
@@ -70,7 +81,7 @@ def run_data():
                'opp_e_f_dangerous_attacks', 'opp_e_f_shots_total', 'opp_e_f_shots_on_target', 'opp_e_f_ball_safe', 'opp_e_f_possession', 'opp_e_f_attacks',
                'prev_opp_e_f_dangerous_attacks', 'prev_opp_e_f_shots_total', 'prev_opp_e_f_shots_on_target', 'prev_opp_e_f_ball_safe', 'prev_opp_e_f_possession', 'prev_opp_e_f_attacks',
                'opp_opp_e_f_dangerous_attacks', 'opp_opp_e_f_shots_total', 'opp_opp_e_f_shots_on_target', 'opp_opp_e_f_ball_safe', 'opp_opp_e_f_possession', 'opp_opp_e_f_attacks',
-               'points']  # Target Columns - #'goals', 'opp_goals'
+               'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     data = pd.DataFrame(training_list, columns=columns)
 

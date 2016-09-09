@@ -2,14 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/gmm_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/26/gnb_round_26.pk1_05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_06.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/26/knn_round_26.pk1_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_06.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_07.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_08.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_10.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_10.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_12.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_12.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_13.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_13.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_14.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" afterPath="$PROJECT_DIR$/src/models/26/svc_round_26.pk1_15.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/round26.csv" afterPath="$PROJECT_DIR$/src/round26.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/ML – Capstone Project.docx" afterPath="$PROJECT_DIR$/src/stats/ML – Capstone Project.docx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/match_details.csv" afterPath="$PROJECT_DIR$/src/match_details.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/predictions_26.csv" afterPath="$PROJECT_DIR$/src/predictions_26.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/stats-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/__init__.py" afterPath="$PROJECT_DIR$/src/stats/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_data.py" afterPath="$PROJECT_DIR$/src/stats/form_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/match_stats.py" afterPath="$PROJECT_DIR$/src/stats/match_stats.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/predict_matches.py" afterPath="$PROJECT_DIR$/src/stats/predict_matches.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/stats.ipynb" afterPath="$PROJECT_DIR$/src/stats/stats.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/update_daily.py" afterPath="$PROJECT_DIR$/src/stats/update_daily.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/update_match.py" afterPath="$PROJECT_DIR$/src/stats/update_match.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/upcoming_matches.csv" afterPath="$PROJECT_DIR$/src/upcoming_matches.csv" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,16 +63,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,8 +78,8 @@
       <file leaf-file-name="form_data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="39" column="68" selection-start-line="39" selection-start-column="68" selection-end-line="39" selection-end-column="68" />
+            <state relative-caret-position="690">
+              <caret line="76" column="59" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -64,41 +87,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update_daily.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/stats/update_daily.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update_match.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/stats/update_match.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="42" column="78" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="match_stats.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3037">
-              <caret line="295" column="36" selection-start-line="295" selection-start-column="36" selection-end-line="295" selection-end-column="36" />
+            <state relative-caret-position="513">
+              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_model.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1247">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="629">
+              <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -109,8 +112,8 @@
       <file leaf-file-name="model_libs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="62" column="29" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="29" />
+            <state relative-caret-position="521">
+              <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -119,8 +122,8 @@
       <file leaf-file-name="predict_matches.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+            <state relative-caret-position="578">
+              <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -180,20 +183,20 @@
         <option value="$PROJECT_DIR$/src/stats/stats.ipynb" />
         <option value="$PROJECT_DIR$/src/stats/renders.py" />
         <option value="$PROJECT_DIR$/src/stats/model_libs.py" />
+        <option value="$PROJECT_DIR$/src/stats/__init__.py" />
+        <option value="$PROJECT_DIR$/src/stats/update_match.py" />
+        <option value="$PROJECT_DIR$/src/stats/update_daily.py" />
         <option value="$PROJECT_DIR$/src/stats/predict_matches.py" />
         <option value="$PROJECT_DIR$/src/stats/form_model.py" />
         <option value="$PROJECT_DIR$/src/stats/form_data.py" />
         <option value="$PROJECT_DIR$/src/stats/match_stats.py" />
-        <option value="$PROJECT_DIR$/src/stats/__init__.py" />
-        <option value="$PROJECT_DIR$/src/stats/update_match.py" />
-        <option value="$PROJECT_DIR$/src/stats/update_daily.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="992" />
+    <option name="x" value="1025" />
     <option name="y" value="23" />
-    <option name="width" value="1437" />
+    <option name="width" value="1593" />
     <option name="height" value="1413" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -572,10 +575,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="992" y="23" width="1437" height="1413" extended-state="0" />
+    <frame x="1025" y="23" width="1593" height="1413" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17745303" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16007534" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43892047" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2953869" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -747,43 +750,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/stats.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/renders.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="62" column="29" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/match_details.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -793,16 +763,6 @@
         <state relative-caret-position="17">
           <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1247">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -816,10 +776,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/stats.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/renders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="57" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/update_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="222" column="44" selection-start-line="222" selection-start-column="44" selection-end-line="222" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/update_daily.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="39" column="68" selection-start-line="39" selection-start-column="68" selection-end-line="39" selection-end-column="68" />
+        <state relative-caret-position="690">
+          <caret line="76" column="59" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -828,25 +837,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3037">
-          <caret line="295" column="36" selection-start-line="295" selection-start-column="36" selection-end-line="295" selection-end-column="36" />
+        <state relative-caret-position="513">
+          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/update_match.py">
+    <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="42" column="78" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/update_daily.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="629">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

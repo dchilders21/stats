@@ -30,7 +30,7 @@ def predictions(upcoming_matches, match_details, model):
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
                # Non-Feature Columns
-               'is_home', 'avg_points', 'goals_for', 'goals_against', 'avg_goals', 'margin', 'goal_diff',
+               'is_home', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
                'win_percentage', 'sos', 'opp_is_home', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
                'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
                # Home Away Feature Columns
@@ -71,7 +71,7 @@ def predictions(upcoming_matches, match_details, model):
 
         if not upcoming_team_matches.empty:
             for i, upcoming_team_match in upcoming_team_matches.iterrows():
-                #print(upcoming_team_match)
+                # print(upcoming_team_match)
                 temp = pd.DataFrame([])
                 df = temp.append(upcoming_team_match, ignore_index=True)
                 features, home_away_features, extended_features = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
@@ -94,6 +94,7 @@ def predictions(upcoming_matches, match_details, model):
     upcoming_data = pd.DataFrame(upcoming_list, columns=columns)
     ud = model_libs._clone_and_drop(upcoming_data, ignore_cols)
     (ud_y, ud_X) = model_libs._extract_target(ud, target_col)
+
     results = model.predict(ud_X)
 
     return results, upcoming_data

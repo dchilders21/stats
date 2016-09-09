@@ -6,6 +6,8 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn import grid_search
 from sklearn import cross_validation
+from sklearn import linear_model
+from sklearn.metrics import roc_auc_score
 from sklearn.cross_validation import train_test_split
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.naive_bayes import GaussianNB
@@ -31,7 +33,19 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
 
 def build_model(X, y, model_type):
 
-    if model_type == 'svc':
+    if model_type == 'log':
+        print('Training LOG REG Model')
+        logreg = linear_model.LogisticRegression(C=1e5)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        logreg.fit(X_train, y_train)
+        train_scores = logreg.score(X_train, y_train)
+        print('Score on Training Set :: {}'.format(train_scores))
+        test_scores = logreg.score(X_test, y_test)
+        print('Score on Test Set :: {}'.format(test_scores))
+        print('Finished LOG REG Modeling')
+        return logreg
+    elif model_type == 'svc':
+        print('-----------------------------------')
         print('Training SVC Model')
         svr = SVC()
         parameters = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
