@@ -10,11 +10,14 @@ cnx = mysql.connector.connect(user='root', password='',
                               database='mls')
 cursor = cnx.cursor()
 
+# NA key - b99x88uxzrfbvm9kxtfmabth
+# EU key - au5hqx7j6uag8zrryy5ubh6b
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
 
 cursor = cnx.cursor(buffered=True)
-query = ("SELECT id, stats_id FROM matches WHERE stats_id='22d4ddde-eb85-4669-aadd-b1813e1342c6'")
+query = ("SELECT id, stats_id FROM matches WHERE stats_id='267e27fc-1f20-4629-aa1c-9b5f628a713a'")
+# query = ("SELECT id, stats_id FROM matches WHERE status='closed'")
 cursor.execute(query)
 
 matches = cursor.fetchall()
@@ -149,7 +152,7 @@ for id, stats_id in matches:
         ### Home/Away Players
 
 
-        home_players = home.find_all("player")
+        """home_players = home.find_all("player")
         away_players = away.find_all("player")
 
         add_home_player= ("INSERT INTO home_players "
@@ -209,11 +212,11 @@ for id, stats_id in matches:
 
             cursor.execute(add_away_player, data_away_player)
 
-        cnx.commit()
+        cnx.commit()"""
 
         ### Match Facts
 
-        facts = soup.find_all('fact')
+        """facts = soup.find_all('fact')
 
         for fact in facts:
             query = "INSERT INTO match_facts ("
@@ -258,7 +261,7 @@ for id, stats_id in matches:
             data_facts = (results)
             cursor.execute(add_facts, data_facts)
 
-        cnx.commit()
+        cnx.commit()"""
 
 
 

@@ -4,6 +4,8 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from datetime import datetime, date, time
 import time
+import sys
+import os
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -12,7 +14,7 @@ cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/09/09"
+DATE = "2016/09/12"
 
 add_team = ("INSERT INTO matches "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
@@ -20,13 +22,17 @@ add_team = ("INSERT INTO matches "
 
 r = requests.get("http://api.sportradar.us/soccer-" + VERSION + "/na/matches/" + DATE + "/schedule.xml?api_key=" + API_KEY)
 soup = BeautifulSoup(r.content, "html.parser")
-#soup = BeautifulSoup(open("./xml/07-10.xml"), "html.parser")
+#soup = BeautifulSoup(open("schedule_eu.xml"), "html.parser")
 
 matches = soup.find_all('match')
 
 for match in matches:
+    #category = match.find('category')
     league = match.find('tournament_group')
-    if (league["name"] == "Major League Soccer"):
+
+    #if category["name"] == "France":
+
+    if league["name"] == "Major League Soccer":
         print(match['id'])
 
         query = ("SELECT id FROM matches "

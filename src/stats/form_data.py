@@ -3,18 +3,17 @@ import mysql.connector
 import pandas as pd
 import numpy as np
 
-
 def get_coverage():
     cnx = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
                                   database='mls')
 
-    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
+    match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 
     return match_details
 
 
-def run_data():
+def run_data(round_number):
 
     cnx = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
@@ -26,20 +25,20 @@ def run_data():
     query = "SELECT id FROM teams"
     cursor.execute(query)
 
-    round_number = 26
     training_list = []
 
     for team in cursor:
 
         for i in range(2, round_number):
 
-            print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
-
             cur_matches = match_details.loc[
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
                 (match_details['round'] == i)]
 
             if not cur_matches.empty:
+
+                print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
+
                 for c, cur_match in cur_matches.iterrows():
                     """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
                     # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """

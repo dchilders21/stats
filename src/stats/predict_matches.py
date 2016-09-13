@@ -10,7 +10,7 @@ def get_upcoming_matches():
         "SELECT matches.id as 'match_id', matches.scheduled, matches.home_id, matches.away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM matches LEFT JOIN teams teams1 ON matches.home_id = teams1.id LEFT JOIN teams teams2 ON matches.away_id = teams2.id WHERE status = 'scheduled'",
         cnx)
 
-    match_details = pd.read_sql('SELECT * FROM home_away_coverage_2', cnx)
+    match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 
     return upcoming_matches, match_details
 

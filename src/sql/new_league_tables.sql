@@ -1,0 +1,5 @@
+CREATE TABLE match_coverage_primera_division LIKE mls.match_coverage;
+CREATE TABLE away_team_coverage_primera_division LIKE mls.away_team_coverage;
+CREATE TABLE home_team_coverage_primera_division LIKE mls.home_team_coverage;
+CREATE TABLE home_manager_primera_division LIKE mls.home_manager;
+CREATE TABLE away_manager_primera_division LIKE mls.away_manager;
