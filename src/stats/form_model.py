@@ -73,7 +73,7 @@ def build_model(X, y, model_type):
     elif model_type == 'knn':
         print('-----------------------------------')
         print('Training K Neighbors Classifier Model')
-        neigh = KNeighborsClassifier(n_neighbors=3)
+        neigh = KNeighborsClassifier(n_neighbors=2)
         neigh.fit(X, y)
         score = neigh.score(X, y)
         print('KNN Score :: {}'.format(score))

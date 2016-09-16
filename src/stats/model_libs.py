@@ -104,3 +104,59 @@ def predict_model(model, test, ignore_cols, target_col):
     result = test.copy()
     result['predicted'] = predicted
     return result
+
+
+def reformat_formation(data, current, opponent):
+    """ Reads all the formations in the current_formation and then compares to opp_formation to see if any formation
+        is missing.  Returns all unique formations.
+    """
+
+    formations = []
+
+    for name in data.groupby('current_formation').groups:
+        formations.append(name)
+
+    nd = np.array(formations)
+
+    for name in data.groupby('opp_formation').groups:
+        if name not in nd:
+            nd.append(name)
+
+    return nd
+
+
+def rename_column(label):
+    if label.count('_home_') > 0:
+        new_name = label.replace('_home_', '_')
+    elif label.count('_away_') > 0:
+        new_name = label.replace('_away_', '_')
+    return new_name
+
+
+def pick_column(home, away):
+    if np.isnan(home):
+        return away
+    elif np.isnan(away):
+        return home
+
+
+def predictions_diff(pred, actual):
+    """0 if No, 1 if Yes"""
+    if (pred - actual) == 0:
+        return 1
+    else:
+        return 0
+
+
+def check_category(pred, actual):
+    """0 if No, 1 if Yes"""
+    if pred >= 2:
+        if actual >= 2:
+            return 1
+        else:
+            return 0
+    else:
+        if actual < 2:
+            return 1
+        else:
+            return 0
