@@ -2,42 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/Extended_Features_SP.docx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/ML – Capstone Project.docx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/schedule_eu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/stats.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/stats_09_13_2016.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/stats_bk.ipynb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_02.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/gmm_round_27.pk1_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/27/gnb_round_27.pk1_05.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_05.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_06.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_09.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_04.npy" afterPath="$PROJECT_DIR$/src/models/27/log_round_27.pk1_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_07.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_07.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_08.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_08.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_09.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_10.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_10.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_12.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_12.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_13.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_13.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_14.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_14.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_15.npy" afterPath="$PROJECT_DIR$/src/models/27/svc_round_27.pk1_15.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/model_libs.py" afterPath="$PROJECT_DIR$/src/stats/model_libs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/converted_goals.csv" afterPath="$PROJECT_DIR$/src/converted_goals.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/goals-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/goals-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_data.py" afterPath="$PROJECT_DIR$/src/stats/form_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/goals.ipynb" afterPath="$PROJECT_DIR$/src/stats/goals.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/predict_matches.py" afterPath="$PROJECT_DIR$/src/stats/predict_matches.py" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="form_data.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+            <state relative-caret-position="849">
+              <caret line="74" column="69" selection-start-line="74" selection-start-column="69" selection-end-line="74" selection-end-column="69" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -70,10 +43,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="match_stats.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2227">
+              <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="form_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
+            <state relative-caret-position="1003">
               <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -82,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model_libs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="model_libs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
+            <state relative-caret-position="826">
               <caret line="142" column="20" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="20" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -104,21 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="match_stats.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2941">
-              <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="predict_matches.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+            <state relative-caret-position="486">
+              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -127,7 +100,7 @@
       <file leaf-file-name="update_all_leagues.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stats/update_all_leagues.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="204">
               <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
@@ -195,17 +168,18 @@
         <option value="$PROJECT_DIR$/src/stats/update_daily.py" />
         <option value="$PROJECT_DIR$/src/stats/update_match.py" />
         <option value="$PROJECT_DIR$/src/stats/update_all_leagues.py" />
-        <option value="$PROJECT_DIR$/src/stats/predict_matches.py" />
-        <option value="$PROJECT_DIR$/src/stats/form_data.py" />
         <option value="$PROJECT_DIR$/src/stats/model_libs.py" />
         <option value="$PROJECT_DIR$/src/stats/form_model.py" />
+        <option value="$PROJECT_DIR$/src/stats/predict_matches.py" />
+        <option value="$PROJECT_DIR$/src/stats/form_data.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="773" />
+    <option name="x" value="567" />
+    <option name="y" value="36" />
+    <option name="width" value="1993" />
+    <option name="height" value="1349" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -248,7 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -292,6 +265,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -583,26 +557,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <frame x="567" y="36" width="1993" height="1349" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19921875" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17461114" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43892047" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2953869" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41477272" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24140625" sideWeight="0.5056818" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41477272" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2953869" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -709,29 +683,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/adjusted_match_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="198" column="39" selection-start-line="198" selection-start-column="39" selection-end-line="198" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/form_model_bk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2955">
-          <caret line="197" column="34" selection-start-line="197" selection-start-column="18" selection-end-line="197" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/adjusted_match_stats.py" />
+    <entry file="file://$PROJECT_DIR$/src/stats/form_model_bk.py" />
     <entry file="file://$PROJECT_DIR$/src/stats/__init__bk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -739,7 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -747,7 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -763,26 +717,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/stats.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/stats.ipynb" />
     <entry file="file://$PROJECT_DIR$/src/stats/renders.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,7 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-340">
           <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,9 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="56" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/update_all_leagues.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="204">
           <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
@@ -826,29 +764,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
+    <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2941">
-          <caret line="173" column="18" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="826">
+          <caret line="142" column="20" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
+        <state relative-caret-position="1003">
           <caret line="59" column="52" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -856,22 +787,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
+    <entry file="file://$PROJECT_DIR$/src/stats/match_stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2227">
+          <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/model_libs.py">
+    <entry file="file://$PROJECT_DIR$/src/stats/predict_matches.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="142" column="20" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="20" />
+        <state relative-caret-position="486">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/form_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="849">
+          <caret line="74" column="69" selection-start-line="74" selection-start-column="69" selection-end-line="74" selection-end-column="69" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
