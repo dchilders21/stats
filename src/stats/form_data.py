@@ -2,6 +2,8 @@ from stats import match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
+from stats import model_libs
+
 
 def get_coverage():
     cnx = mysql.connector.connect(user='root', password='',
@@ -13,7 +15,7 @@ def get_coverage():
     return match_details
 
 
-def run_data(round_number):
+def run_data():
 
     cnx = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
@@ -22,68 +24,67 @@ def run_data(round_number):
 
     match_details = get_coverage()
 
-    query = "SELECT id FROM teams"
+    query = "SELECT id, country_code FROM teams"
     cursor.execute(query)
 
     training_list = []
 
     for team in cursor:
 
-        for i in range(2, round_number):
+        round_number = model_libs.get_team_round(team["country_code"])
+
+        for i in range(4, round_number):
 
             cur_matches = match_details.loc[
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
                 (match_details['round'] == i)]
 
-            if not cur_matches.empty:
+            """ Holding out on Bundesliga since they don't have enough rounds yet - minimum is 4"""
+            if 61 > team["id"] or team["id"] > 80:
 
-                print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
+                if not cur_matches.empty:
 
-                for c, cur_match in cur_matches.iterrows():
-                    """ Better Solution for this?  Basically pulling out a Series but the create_match function is expecting a DF
-                    # have to convert it back to a DF in order to not pull the same entry if there are multiple games in the week """
-                    temp = pd.DataFrame([])
-                    df = temp.append(cur_match, ignore_index=True)
-                    features, home_away_features, extended_features = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                    print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
 
-                    if features is not None:
-                        for key, value in extended_features.items():
-                            for k, v in value.items():
-                                new_key = key + '_' + k
-                                features[new_key] = v
+                    for c, cur_match in cur_matches.iterrows():
+                        df = pd.DataFrame([]).append(cur_match, ignore_index=True)
+                        features, game_features = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                        
+                        if features is not None:
+                            for key, value in game_features.items():
+                                for k, v in value.items():
+                                    new_key = key + '_' + k
+                                    features[new_key] = v
 
-                        for key, value in home_away_features.items():
-                            for k, v in value.items():
-                                new_key = key + '_' + k
-                                features[new_key] = v
+                        #print('Current Team SOS :: {} ').format(features['sos'])
+                        training_list.append(features)
 
-                    training_list.append(features)
+                        if team["id"] == cur_match['home_id']:
+                            """ Opponent is the Away Team - Find their SOS """
+                            opp_features, _ = match_stats.create_match(cur_match['away_id'], df, match_details, i,
+                                                                       False, True)
+                        elif team["id"] == cur_match['away_id']:
+                            opp_features, _ = match_stats.create_match(cur_match['home_id'], df, match_details, i,
+                                                                       False, True)
+                        #print("Opp SOS :: {} ").format(opp_features['sos'])
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
                # Non-Feature Columns
                'is_home', 'current_formation', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
                'win_percentage', 'sos', 'opp_is_home', 'opp_formation', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
                'opp_goal_diff', 'opp_win_percentage', 'opp_opp_record',
-               # Home Away Feature Columns
-               'current_team_home_possession', 'current_team_away_possession', 'current_team_home_attacks',
-               'current_team_away_attacks', 'current_team_home_dangerous_attacks',
-               'current_team_away_dangerous_attacks', 'current_team_home_yellow_card', 'current_team_away_yellow_card',
-               'current_team_home_corner_kicks', 'current_team_away_corner_kicks',
-               'current_team_home_shots_on_target', 'current_team_away_shots_on_target',
-               'current_team_home_shots_total', 'current_team_away_shots_total', 'current_team_home_ball_safe',
-               'current_team_away_ball_safe', 'current_team_home_played', 'current_team_away_played',
-               'current_opp_home_possession', 'current_opp_away_possession', 'current_opp_home_attacks',
-               'current_opp_away_attacks', 'current_opp_home_dangerous_attacks',
-               'current_opp_away_dangerous_attacks', 'current_opp_home_yellow_card',
-               'current_opp_away_yellow_card', 'current_opp_home_corner_kicks', 'current_opp_away_corner_kicks',
-               'current_opp_home_shots_on_target', 'current_opp_away_shots_on_target',
-               'current_opp_home_shots_total', 'current_opp_away_shots_total', 'current_opp_home_ball_safe',
-               'current_opp_away_ball_safe', 'current_opp_home_played', 'current_opp_away_played',
-               # Extended Feature Columns
-               'e_f_dangerous_attacks', 'e_f_shots_total', 'e_f_shots_on_target', 'e_f_ball_safe', 'e_f_possession', 'e_f_attacks',
-               'opp_e_f_dangerous_attacks', 'opp_e_f_shots_total', 'opp_e_f_shots_on_target', 'opp_e_f_ball_safe', 'opp_e_f_possession', 'opp_e_f_attacks',
-               'prev_opp_e_f_dangerous_attacks', 'prev_opp_e_f_shots_total', 'prev_opp_e_f_shots_on_target', 'prev_opp_e_f_ball_safe', 'prev_opp_e_f_possession', 'prev_opp_e_f_attacks',
-               'opp_opp_e_f_dangerous_attacks', 'opp_opp_e_f_shots_total', 'opp_opp_e_f_shots_on_target', 'opp_opp_e_f_ball_safe', 'opp_opp_e_f_possession', 'opp_opp_e_f_attacks',
+               # Game Feature Columns
+               'current_team_possession', 'current_team_attacks',
+               'current_team_dangerous_attacks', 'current_team_yellow_cards',
+               'current_team_corner_kicks', 'current_team_shots_on_target', 'current_team_shots_total',
+               'current_team_ball_safe', 'current_team_goal_attempts',
+               'current_team_saves', 'current_team_first_half_goals',
+               'current_team_sec_half_goals', 'current_team_goal_kicks',
+               'opp_team_possession', 'opp_team_attacks', 'opp_team_dangerous_attacks', 'opp_team_yellow_card',
+               'opp_team_corner_kicks', 'opp_team_shots_on_target', 'opp_team_shots_total',
+               'opp_team_ball_safe', 'opp_team_goal_attempts',
+               'opp_team_saves', 'opp_team_first_half_goals',
+               'opp_team_sec_half_goals', 'opp_team_goal_kicks',
                'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     data = pd.DataFrame(training_list, columns=columns)

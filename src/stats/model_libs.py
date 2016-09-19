@@ -160,3 +160,16 @@ def check_category(pred, actual):
             return 1
         else:
             return 0
+
+def get_team_round(team_country):
+    """ Calls in a Team ID and returns the current round that league is in"""
+    if team_country == 'USA':
+        return 27
+    elif team_country == 'ENG':
+        return 5
+    elif team_country == 'DEU':
+        return 3
+    elif team_country == 'ESP':
+        return 4
+    elif team_country == 'FRA':
+        return 4
