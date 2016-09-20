@@ -90,7 +90,7 @@ def run_data():
 
                         training_list.append(features)
 
-    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played',
+    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
                'is_home', 'current_formation', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
                'goal_efficiency', 'win_percentage', 'sos', 'rpi', 'opp_is_home', 'opp_formation', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',

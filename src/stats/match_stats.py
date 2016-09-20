@@ -295,7 +295,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         print("OPP SOS : {}".format(opp_sos))
 
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
-               'opp_name': opp_team_name, 'scheduled': scheduled, 'games_played': played, 'is_home':
+               'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played, 'is_home':
                    is_home, 'current_formation': current_formation, 'avg_points': np.divide(total_points, played),
                'avg_goals_for': np.divide(goals_for, played), 'avg_goals_against': np.divide(goals_against, played),
                'margin': np.divide(goal_diff, played),
