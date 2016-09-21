@@ -93,8 +93,8 @@ def run_data():
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
                'is_home', 'current_formation', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin', 'goal_diff',
-               'goal_efficiency', 'win_percentage', 'sos', 'rpi', 'opp_is_home', 'opp_formation', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
-               'opp_goal_diff', 'opp_goal_efficiency', 'opp_win_percentage', 'opp_sos', 'opp_rpi',
+               'goal_efficiency', 'win_percentage', 'sos', 'rpi', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
+               'opp_goal_efficiency', 'opp_win_percentage', 'opp_sos', 'opp_rpi',
                # Ratios
                'goals_op_ratio', 'ball_safe_op_ratio', 'goal_attempts_op_ratio',
                # Game Feature Columns
