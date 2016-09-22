@@ -68,27 +68,24 @@ def run_data():
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
                 (match_details['round'] == i)]
 
-            """ Holding out on Bundesliga since they don't have enough rounds yet - minimum is 4"""
-            if 61 > team["id"] or team["id"] > 80:
+            if not cur_matches.empty:
 
-                if not cur_matches.empty:
+                print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
 
-                    print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
+                for c, cur_match in cur_matches.iterrows():
+                    df = pd.DataFrame([]).append(cur_match, ignore_index=True)
+                    features, game_features, ratios = match_stats.create_match(team["id"], df, match_details, i, False, True)
 
-                    for c, cur_match in cur_matches.iterrows():
-                        df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-                        features, game_features, ratios = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                    if features is not None:
+                        for key, value in game_features.items():
+                            for k, v in value.items():
+                                new_key = key + '_' + k
+                                features[new_key] = v
 
-                        if features is not None:
-                            for key, value in game_features.items():
-                                for k, v in value.items():
-                                    new_key = key + '_' + k
-                                    features[new_key] = v
+                    for key, value in ratios.items():
+                        features[key] = value
 
-                        for key, value in ratios.items():
-                            features[key] = value
-
-                        training_list.append(features)
+                    training_list.append(features)
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns

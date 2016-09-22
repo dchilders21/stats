@@ -7,7 +7,7 @@ import time
 
 # ligue_1, epl, primera_division, bundesliga
 rounds = [4]
-leagues = ['epl']
+leagues = ['primera_division']
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -167,6 +167,8 @@ for r in range(len(rounds)):
             query = ("UPDATE " + table + " SET status = 'closed' WHERE stats_id = %(stats_id)s")
 
             cursor.execute(query, {'stats_id': stats_id})
+
+            cnx.commit()
 
 
 
