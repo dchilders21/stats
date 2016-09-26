@@ -1,5 +1,6 @@
 import statsmodels.api as sm
 import numpy as np
+import pandas as pd
 import random
 
 L1_ALPHA = 16.0
@@ -148,6 +149,47 @@ def predictions_diff(pred, actual):
         return 0
 
 
+def set_group(goals):
+    if goals >= 2:
+        return 1
+    elif goals < 2:
+        return 0
+
+
+def set_rpi_quartile(round_number, data, isCur):
+    power_rankings = pd.DataFrame()
+    power_list = []
+
+    if isCur:
+        rpi = 'rpi'
+        team_id = 'team_id'
+    else:
+        rpi = 'opp_rpi'
+        team_id = 'opp_id'
+
+    td = data.loc[(data["round"] == round_number)]
+
+    if not td.empty:
+        s = td.loc[:, [team_id, rpi]]
+        power_rankings = power_rankings.append(s, ignore_index=False)
+        power_rankings = power_rankings.sort_values(rpi, ascending=False)
+        for i, power in power_rankings.iterrows():
+            power_list.append(power)
+
+        pr = np.array(power_rankings.loc[:, rpi])
+        qqs = np.percentile(pr, [25, 50, 75, 100])
+        quartiles = [0, .3333, .6666, 1]
+        idx = len(pr)
+        for i in range(len(qqs)):
+            a = np.where(pr[0:idx] <= qqs[i])
+            pr[a] = quartiles[i]
+            idx = a[0][0]
+
+        return pr, power_rankings.index
+    else:
+        return None, None
+
+
 def check_category(pred, actual):
     """0 if No, 1 if Yes"""
     if pred >= 2:
@@ -161,11 +203,17 @@ def check_category(pred, actual):
         else:
             return 0
 
+
+def get_leagues_rounds():
+    leagues = {"mls": 28, "epl": 6, "bundesliga": 5, "primera_division": 5, "ligue_1": 7}
+    return leagues
+
+
 def get_team_round(team_country):
-    """ Calls in a Team ID and returns the current round that league is in"""
+    """ Calls in a Team Country Code and returns the current round that league is in"""
     # Last round 'closed' + 1
     if team_country == 'USA':
-        return 27
+        return 28
     elif team_country == 'ENG':
         return 6
     elif team_country == 'DEU':
@@ -174,3 +222,29 @@ def get_team_round(team_country):
         return 5
     elif team_country == 'FRA':
         return 7
+
+def convert_sos_rpi(leagues, leagues_data, teams):
+
+    all_leagues_data = pd.DataFrame([])
+
+    for i in leagues:
+        team_ids = teams.loc[teams["country_code"] == i]
+        data = leagues_data[leagues_data["team_id"].isin(team_ids["id"])]
+        data['rpi_quartiled'] = pd.Series(None, index=data.index)
+        data_min = data['round'].min()
+        data_max = data['round'].max() + 1
+
+        for x in range(data_min, data_max):
+
+            power_rankings, idx = set_rpi_quartile(x, data, True)
+            opp_power_rankings, opp_idx = set_rpi_quartile(x, data, False)
+
+            if idx is not None:
+                data.loc[idx, "rpi_quartiled"] = power_rankings
+
+            if opp_idx is not None:
+                data.loc[opp_idx, "opp_rpi_quartiled"] = opp_power_rankings
+
+        all_leagues_data = all_leagues_data.append(data)
+
+    return all_leagues_data

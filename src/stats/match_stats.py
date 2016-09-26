@@ -65,6 +65,9 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             goals_home += game['home_points']
             opp_goals_at_away += game['away_points']
 
+            current_formation = game['home_formation']
+            opp_formation = game['away_formation']
+
             prev_opp.append(game['away_id'])
 
             goal_efficiency = np.divide(game['home_score'], game['home_goal_attempts'])
@@ -105,6 +108,9 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             goals_away += game['away_points']
             opp_goals_at_home += game['home_points']
 
+            current_formation = game['away_formation']
+            opp_formation = game['home_formation']
+
             prev_opp.append(game['home_id'])
 
             goal_efficiency = np.divide(game['away_score'], game['away_goal_attempts'])
@@ -135,8 +141,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             is_home = True
             team_name = cur_game["home_team"]
             current_opp = cur_game['away_id']
-            current_formation = cur_game['home_formation']
-            opp_formation = cur_game['away_formation']
 
             if targets:
                 # Targets
@@ -149,8 +153,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             is_home = False
             team_name = cur_game["away_team"]
             current_opp = cur_game['home_id']
-            current_formation = cur_game['away_formation']
-            opp_formation = cur_game['home_formation']
 
             if targets:
                 # Targets
@@ -188,7 +190,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
     return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, \
            goals_for, goals_against, goal_diff, goal_efficiency, played, win, loss, recent_wins, recent_losses, prev_opp, \
-           current_opp, points, goals, opp_goals, current_formation, opp_formation, game_features
+           current_opp, total_points, total_goals, opp_goals, current_formation, opp_formation, game_features
 
 
 # Assuming a team only plays once in the previous 7 days
@@ -238,7 +240,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
 
         _, _, _, _, _, _, prev_opp_goals_for, prev_opp_goals_against, prev_opp_goal_diff, prev_opp_goal_efficiency, \
         prev_opp_played, prev_opp_win, prev_opp_loss, _, _, opp_prev_opp, _, prev_opp_points, prev_opp_goals, opp_prev_opp_goals, _, _, \
-        prev_opp_game_features = calculate_stats(prev_opp_id, current_matches, prev_opp_previous_matches, stats, True)
+        prev_opp_game_features = calculate_stats(prev_opp_id, current_matches, prev_opp_previous_matches, False, False)
 
         prev_opp_won_total += prev_opp_win
         prev_opp_lost_total += prev_opp_loss

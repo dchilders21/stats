@@ -16,7 +16,7 @@ API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
 
 cursor = cnx.cursor(buffered=True)
-query = ("SELECT id, stats_id FROM matches WHERE stats_id='267e27fc-1f20-4629-aa1c-9b5f628a713a'")
+query = ("SELECT id, stats_id FROM matches WHERE stats_id='ac24cb5c-77f2-4abb-905f-651c1d8550ce'")
 # query = ("SELECT id, stats_id FROM matches WHERE status='closed'")
 cursor.execute(query)
 
@@ -26,7 +26,7 @@ for id, stats_id in matches:
 
     print(id)
     #Checking to see if the match (match_id) has already been added to match_coverage
-    query = ("SELECT id FROM match_coverage "
+    query = ("SELECT id FROM match_coverage_mls "
              "WHERE match_id = %(match_id)s")
     cursor.execute(query, {'match_id': id})
 
@@ -42,7 +42,7 @@ for id, stats_id in matches:
         #soup = BeautifulSoup(open("./xml/game_summary.xml"), "html.parser")
 
         ### Match_Coverage
-        add_coverage = ("INSERT INTO match_coverage "
+        add_coverage = ("INSERT INTO match_coverage_mls "
                     "(lineups, tactical_lineups, corner_facts, extended_facts, deep_facts, statistics, referee_id, match_id) "
                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
@@ -69,11 +69,11 @@ for id, stats_id in matches:
         home = soup.find('home')
         away = soup.find('away')
 
-        add_home_manager = ("INSERT INTO home_manager "
+        add_home_manager = ("INSERT INTO home_manager_mls "
                         "(stats_id, match_id) "
                         "VALUES (%s, %s)")
 
-        add_away_manager = ("INSERT INTO away_manager "
+        add_away_manager = ("INSERT INTO away_manager_mls "
                             "(stats_id, match_id) "
                             "VALUES (%s, %s)")
 
@@ -115,7 +115,7 @@ for id, stats_id in matches:
 
 
 
-        add_home_team_coverage = ("INSERT INTO home_team_coverage "
+        add_home_team_coverage = ("INSERT INTO home_team_coverage_mls "
                         "(stats_id, formation, score, regular_score, penalty_score, winner, first_half_score, second_half_score, attacks, ball_safe, "
                                   "corner_kicks, dangerous_attacks, fouls, free_kicks, goal_attempts, goal_kicks, offsides, saves, substitutions, throw_ins,"
                                   " yellow_card, shots_on_target, shots_off_target, shots_total, possessions, match_id) "
@@ -128,7 +128,7 @@ for id, stats_id in matches:
             home_stats.get("saves"), home_stats.get("substitutions"), home_stats.get("throw_ins"), home_stats.get("yellow_card"), home_stats.get("shots_on_target"),
             home_stats.get("shots_off_target"), home_stats.get("shots_total"), home_stats.get("possessions"), id)
 
-        add_away_team_coverage = ("INSERT INTO away_team_coverage "
+        add_away_team_coverage = ("INSERT INTO away_team_coverage_mls "
                                   "(stats_id, formation, score, regular_score, penalty_score, winner, first_half_score, second_half_score, attacks, ball_safe, "
                                   "corner_kicks, dangerous_attacks, fouls, free_kicks, goal_attempts, goal_kicks, offsides, saves, substitutions, throw_ins,"
                                   " yellow_card, shots_on_target, shots_off_target, shots_total, possessions, match_id) "

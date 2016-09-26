@@ -1,6 +1,7 @@
 from sklearn.metrics import f1_score
 from sklearn import mixture
 import numpy as np
+import os
 from sklearn.svm import SVC
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
@@ -8,10 +9,12 @@ from sklearn import grid_search
 from sklearn import cross_validation
 from sklearn import linear_model
 from sklearn.metrics import roc_auc_score
+from sklearn.externals import joblib
 from sklearn.cross_validation import train_test_split
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 
 def train_classifier(clf, X_train, y_train):
@@ -29,6 +32,76 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
     test_f1_score = predict_labels(clf, X_test, y_test)
 
     return train_f1_score, test_f1_score
+
+
+def train_models(round_num, X, y, models):
+    if os.path.isdir("/models/" + str(round_num)):
+        print('Making New Directory for the Round')
+        os.chdir('/Users/senzari/Machine_Learning/stats/src/models')
+        os.makedirs(str(round_num))
+        os.chdir('/Users/senzari/Machine_Learning/stats/src')
+
+    finished_models = []
+
+    for i in models:
+
+        model_round = 'models/' + str(round_num) + '/' + str(i) + '_round_' + str(round_num) + '.pk1'
+
+        if i == 'log':
+            log = build_model(X, y, i)
+            joblib.dump(log, model_round)
+            finished_models.append(log)
+        elif i == 'svc':
+            svc = build_model(X, y, i)
+            joblib.dump(svc, model_round)
+            finished_models.append(svc)
+        elif i == 'gmm':
+            gmm = build_model(X, y, i)
+            joblib.dump(gmm, model_round)
+            finished_models.append(gmm)
+        elif i == 'knn':
+            kmeans = build_model(X, y, i)
+            joblib.dump(kmeans, model_round)
+            finished_models.append(kmeans)
+        elif i == 'gnb':
+            gnb = build_model(X, y, i)
+            joblib.dump(gnb, model_round)
+            finished_models.append(gnb)
+        elif i == 'randomForest':
+            rF = build_model(X, y, i)
+            joblib.dump(rF, model_round)
+            finished_models.append(rF)
+
+    return finished_models
+
+
+def load_models(models):
+    loaded_models = []
+
+    for i in models:
+        model_round = 'models/tuned/' + str(i)
+        if i == 'log':
+            log = joblib.load(model_round)
+            loaded_models.append(log)
+        if i == 'svc':
+            svc = joblib.load(model_round)
+            loaded_models.append(svc)
+        elif i == 'gmm':
+            gmm = joblib.load(model_round)
+            loaded_models.append(gmm)
+        elif i == 'knn':
+            kmeans = joblib.load(model_round)
+            loaded_models.append(kmeans)
+        elif i == 'gnb':
+            gnb = joblib.load(model_round)
+            loaded_models.append(gnb)
+        elif i == 'randomForest':
+            rf = joblib.load(model_round)
+            loaded_models.append(rf)
+
+        print("Success :: Loaded - " + str(i))
+
+    return loaded_models
 
 
 def build_model(X, y, model_type):
@@ -74,9 +147,10 @@ def build_model(X, y, model_type):
         print('-----------------------------------')
         print('Training K Neighbors Classifier Model')
         neigh = KNeighborsClassifier(n_neighbors=2)
-        neigh.fit(X, y)
-        score = neigh.score(X, y)
-        print('KNN Score :: {}'.format(score))
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        neigh.fit(X_train, y_train)
+        print('KNN Score on Training Set :: {}'.format(neigh.score(X_train, y_train)))
+        print('KNN Score on Test Set:: {}'.format(neigh.score(X_test, y_test)))
         print('Finished K-Means Modeling')
         return neigh
     elif model_type == 'gnb':
@@ -89,21 +163,38 @@ def build_model(X, y, model_type):
         print("F1 score for test set: {}".format(test_f1_score))
         print('Finished Gaussian NB Modeling')
         return clf
+    elif model_type == 'randomForest':
+        print('-----------------------------------')
+        print('Random Forest Classifier Model')
+        clf = RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        train_f1_score, test_f1_score = train_predict(clf, X_train, y_train, X_test, y_test)
+        print("Training set: {}".format(train_f1_score))
+        print("Test set: {}".format(test_f1_score))
+        print('Finished Random Forest Classifier Modeling')
+        return clf
 
 
 def build_tuned_model(X, y, model_type):
+
+    finished_models = []
+
+    tuned_folder = 'models/tuned/' + str(model_type)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')
         svr = SVC()
         gamma_range = np.logspace(-9, 3, 13)
-        parameters = [{'kernel': ['rbf'], 'gamma': gamma_range, 'C': [1, 10, 100, 1000]}, {'kernel': ['linear'], 'C': [1, 10, 100,1000]}]
+        parameters = [{'kernel': ['rbf'], 'C': [1, 10, 100]}, {'kernel': ['linear'], 'C': [1, 10, 100]}]
         clf = grid_search.GridSearchCV(svr, parameters)
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
         scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=2)
         print(scores)
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         print('Finished SVC Modeling')
+        clf.fit(X_train, y_train)
+        joblib.dump(clf, tuned_folder)
+        finished_models.append(clf)
     elif model_type == 'gmm':
         print('-----------------------------------')
         print('Training and Tuning GMM Model')
@@ -130,6 +221,8 @@ def build_tuned_model(X, y, model_type):
                     print('Silhouette Score :: {} for Testing'.format(test_score))
 
         print('Finished GMM Modeling')
+        joblib.dump(clf, tuned_folder)
+        finished_models.append(clf)
 
     elif model_type == 'knn':
         print('-----------------------------------')
@@ -138,13 +231,15 @@ def build_tuned_model(X, y, model_type):
         for train_index, test_index in skf:
             X_train, X_test = X.loc[train_index], X.loc[test_index]
             y_train, y_test = y.loc[train_index], y.loc[test_index]
-            neigh = KNeighborsClassifier(n_neighbors=3)
+            neigh = KNeighborsClassifier(n_neighbors=2)
             neigh.fit(X_train, y_train)
             train_score = neigh.score(X_train, y_train)
             test_score = neigh.score(X_test, y_test)
             print('KNN Score :: {} for Training'.format(train_score))
             print('KNN Score :: {} for Testing'.format(test_score))
         print('Finished K-Means Modeling')
+        joblib.dump(neigh, tuned_folder)
+        finished_models.append(neigh)
 
     elif model_type == 'gnb':
         print('-----------------------------------')
@@ -155,3 +250,22 @@ def build_tuned_model(X, y, model_type):
         print(scores)
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         print('Finished Gaussian NB Modeling')
+        clf.fit(X_train, y_train)
+        joblib.dump(clf, tuned_folder)
+        finished_models.append(clf)
+
+    elif model_type == 'randomForest':
+        print('-----------------------------------')
+        print('Training Random Forest Model')
+        #for i in range(1, 2):
+        clf = RandomForestClassifier(max_depth=5, n_estimators=11, max_features=2)
+        X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
+        scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)
+        print(scores)
+        print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+        print('Finished Random Forest Modeling')
+        clf.fit(X_train, y_train)
+        joblib.dump(clf, tuned_folder)
+        finished_models.append(clf)
+
+    return finished_models

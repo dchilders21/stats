@@ -44,6 +44,16 @@ def get_coverage():
     return match_details
 
 
+def get_teams():
+    cnx = mysql.connector.connect(user='root', password='',
+                                  host='127.0.0.1',
+                                  database='mls')
+
+    teams = pd.read_sql('SELECT id, country_code FROM teams', cnx)
+
+    return teams
+
+
 def run_data():
 
     cnx = mysql.connector.connect(user='root', password='',
@@ -62,7 +72,7 @@ def run_data():
 
         round_number = model_libs.get_team_round(team["country_code"])
 
-        for i in range(4, round_number):
+        for i in range(4, round_number+1):
 
             cur_matches = match_details.loc[
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
