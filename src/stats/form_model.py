@@ -184,8 +184,7 @@ def build_tuned_model(X, y, model_type):
     if model_type == 'svc':
         print('Training and Tuning SVC Model')
         svr = SVC()
-        gamma_range = np.logspace(-9, 3, 13)
-        parameters = [{'kernel': ['rbf'], 'C': [1, 10, 100]}, {'kernel': ['linear'], 'C': [1, 10, 100]}]
+        parameters = [{'kernel': ['rbf'], 'C': [1, 10, 100]}]
         clf = grid_search.GridSearchCV(svr, parameters)
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
         scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=2)

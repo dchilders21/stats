@@ -347,20 +347,19 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
 
     goal_efficiency = np.subtract(np.square(goals_for), np.square(np.sum(game_features['goal_attempts'])))
     opp_defensive_goal_efficiency = np.subtract(np.square(opp_goals_against), np.square(np.sum(opp_opp_game_features['goal_attempts'])))
-    ratio_of_attacks = np.divide(np.sum(game_features["dangerous_attacks"]), np.sum(game_features['attacks']))
-    opp_ratio_of_attacks = np.divide(np.sum(opp_opp_game_features["dangerous_attacks"]), np.sum(opp_opp_game_features['attacks']))
-    ratio_ball_safe_to_dangerous_attacks = np.divide(np.sum(game_features["attacks"]), np.sum(game_features['ball_safe']))
-    opp_ratio_ball_safe_to_dangerous_attacks = np.divide(np.sum(opp_opp_game_features["attacks"]), np.sum(opp_opp_game_features['ball_safe']))
+    ratio_of_attacks = np.subtract(np.square(np.sum(game_features["dangerous_attacks"])), np.square(np.sum(game_features['attacks'])))
+    opp_ratio_of_attacks = np.subtract(np.square(np.sum(opp_opp_game_features["dangerous_attacks"])), np.square(np.sum(opp_opp_game_features['attacks'])))
+    ratio_ball_safe_to_dangerous_attacks = np.subtract(np.square(np.sum(game_features["attacks"])), np.square(np.sum(game_features['ball_safe'])))
+    opp_ratio_ball_safe_to_dangerous_attacks = np.subtract(np.square(np.sum(opp_opp_game_features["attacks"])), np.square(np.sum(opp_opp_game_features['ball_safe'])))
 
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
                'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
-               'is_home':is_home, 'current_formation': current_formation, 'goals_for': goals_for,
+               'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for,
                'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
                'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
                'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
                'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks, 'goals': goals, 'points': points }
                 # 'opp_goals': opp_goals
-
 
     game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }
 
