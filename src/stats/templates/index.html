@@ -10,6 +10,8 @@
     </head>
     <body>
         <h1>Teams</h1>
+
+
         <select id="teams" name="team">
           {% for team in teams %}
               <option value="{{ team.id }}">{{ team.full_name }}</option>

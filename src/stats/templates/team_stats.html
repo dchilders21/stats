@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8" />
+        <title>TEAM STATS</title>
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'/>
+
+        <script src="{{ url_for('static', filename='libs/angular.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </head>
+    <body>
+        <h1>TEAM STATS</h1>
+
+        <select id="league" name="league">
+          {% for league in leagues %}
+              <option value="{{ league }}">{{ league }}</option>
+          {% endfor %}
+        </select>
+
+        <select id="team" name="team">
+            {% for team in teams %}
+              <option value="{{ team.0 }}">{{ team.2 }}</option>
+            {% endfor %}
+
+        </select>
+        <h2>Upcoming Matches</h2>
+        {{ upcoming_matches|safe }}
+        <br />
+            {% for key, value in features_breakdown.items() %}
+              <p>{{ key }} :: {{ value }}</p>
+            {% endfor %}
+        <h2>Previous Matches</h2>
+        {{ previous_matches|safe }}
+
+   	</body>
+</html>

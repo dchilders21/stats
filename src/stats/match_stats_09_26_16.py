@@ -70,7 +70,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
             prev_opp.append(game['away_id'])
 
-            #goal_efficiency = np.divide(game['home_score'], game['home_goal_attempts'])
+            goal_efficiency = np.divide(game['home_score'], game['home_goal_attempts'])
 
             game_features['possession'].append(game['home_possession'])
             game_features['attacks'].append(game['home_attacks'])
@@ -113,7 +113,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
             prev_opp.append(game['home_id'])
 
-            #goal_efficiency = np.divide(game['away_score'], game['away_goal_attempts'])
+            goal_efficiency = np.divide(game['away_score'], game['away_goal_attempts'])
 
             game_features['possession'].append(game['away_possession'])
             game_features['attacks'].append(game['away_attacks'])
@@ -190,7 +190,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
     return match_id, team_id, team_name, scheduled, int(is_home == True), total_points, \
            goals_for, goals_against, goal_diff, goal_efficiency, played, win, loss, recent_wins, recent_losses, prev_opp, \
-           current_opp, points, goals, opp_goals, current_formation, opp_formation, game_features
+           current_opp, total_points, total_goals, opp_goals, current_formation, opp_formation, game_features
 
 
 # Assuming a team only plays once in the previous 7 days
@@ -308,7 +308,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         opp_opp_opp_lost_total += opp_opp_opp_loss
 
 
-    '''if stats:
+    if stats:
         print("\nTeam")
         print(game_features)
         print("Opponent")
@@ -322,7 +322,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         print("Opp Win :: {}".format(opp_win))
         print("Opp Loss :: {}".format(opp_loss))
         print("Opp Opp Win :: {}".format(opp_opp_won_total))
-        print("Opp Opp Loss :: {}".format(opp_opp_lost_total))'''
+        print("Opp Opp Loss :: {}".format(opp_opp_lost_total))
 
     current_record = np.divide(win, (win + loss))
     prev_opp_record = np.divide(prev_opp_win, (prev_opp_win + prev_opp_loss))
@@ -336,38 +336,52 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     opp_sos = np.divide((2 * opp_opp_record) + opp_opp_opp_record, 3)
     opp_rpi = (current_opp_record * .25) + (opp_sos * .75)
 
-    '''if stats:
+    if stats:
         print("Current Opponent Record :: {} ".format(current_opp_record))
         print("Opponents Opponents Record :: {} ".format(opp_opp_record))
         print("SOS : {}".format(sos))
 
         print("Current Record :: {} ".format(current_record))
         print("Current Opponent Record :: {} ".format(current_opp_record))
-        print("OPP SOS : {}".format(opp_sos))'''
-
-    goal_efficiency = np.subtract(np.square(goals_for), np.square(np.sum(game_features['goal_attempts'])))
-    opp_defensive_goal_efficiency = np.subtract(np.square(opp_goals_against), np.square(np.sum(opp_opp_game_features['goal_attempts'])))
-    ratio_of_attacks = np.divide(np.sum(game_features["dangerous_attacks"]), np.sum(game_features['attacks']))
-    opp_ratio_of_attacks = np.divide(np.sum(opp_opp_game_features["dangerous_attacks"]), np.sum(opp_opp_game_features['attacks']))
-    ratio_ball_safe_to_dangerous_attacks = np.divide(np.sum(game_features["attacks"]), np.sum(game_features['ball_safe']))
-    opp_ratio_ball_safe_to_dangerous_attacks = np.divide(np.sum(opp_opp_game_features["attacks"]), np.sum(opp_opp_game_features['ball_safe']))
+        print("OPP SOS : {}".format(opp_sos))
 
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
-               'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
-               'is_home':is_home, 'current_formation': current_formation, 'goals_for': goals_for,
-               'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
-               'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
-               'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
-               'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks, 'goals': goals, 'points': points }
-                # 'opp_goals': opp_goals
+               'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played, 'is_home':
+                   is_home, 'current_formation': current_formation, 'avg_points': np.divide(total_points, played),
+               'avg_goals_for': np.divide(goals_for, played), 'avg_goals_against': np.divide(goals_against, played),
+               'margin': np.divide(goal_diff, played),
+               'goal_diff': goal_diff, 'goal_efficiency': goal_efficiency,
+               'win_percentage': np.divide(win, (win + loss)), 'sos': sos, 'rpi': rpi,
+               'opp_avg_points': np.divide(prev_opp_points, prev_opp_played),
+               'opp_avg_goals': np.divide(prev_opp_goals_for, prev_opp_played),
+               'opp_margin': np.divide(prev_opp_goal_diff, prev_opp_played), 'opp_goal_efficiency': prev_opp_goal_efficiency,
+               'opp_win_percentage': np.divide(prev_opp_win, (prev_opp_win + prev_opp_loss)), 'opp_sos': opp_sos, 'opp_rpi': opp_rpi,
+               'goals': goals, 'points': points}  # 'opp_goals': opp_goals
 
+    """ If you set the denominator to zero the result will be infinite.  Might need another way to catch this..."""
+
+    goals_op_ratio = 0
+    if prev_opp_goals_for > 0:
+        goals_op_ratio = np.divide(goals_for, float(prev_opp_goals_for))
+    else:
+        goals_op_ratio = goals_for
+
+    goal_attempts_op_ratio = 0
+    if prev_opp_game_features['goal_attempts'] > 0:
+        goal_attempts_op_ratio = np.divide(game_features['goal_attempts'], float(prev_opp_game_features['goal_attempts']))
+    else:
+        goal_attempts_op_ratio = game_features['goal_attempts']
+
+    ratios = {'goals_op_ratio': goals_op_ratio,
+              'ball_safe_op_ratio': np.divide(game_features['ball_safe'], prev_opp_game_features['ball_safe']),
+              'goal_attempts_op_ratio': goal_attempts_op_ratio}
 
     game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }
 
     if stats:
         print("//////////////////////////////////////////////////")
 
-    return feature, game_features
+    return feature, game_features, ratios
 
 
 

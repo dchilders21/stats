@@ -35,23 +35,10 @@ def predictions(upcoming_matches):
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
-               'is_home', 'current_formation', 'avg_points', 'avg_goals_for', 'avg_goals_against', 'margin',
-               'goal_diff',
-               'goal_efficiency', 'win_percentage', 'sos', 'rpi', 'opp_avg_points', 'opp_avg_goals', 'opp_margin',
-               'opp_goal_efficiency', 'opp_win_percentage', 'opp_sos', 'opp_rpi',
-               # Ratios
-               'goals_op_ratio', 'ball_safe_op_ratio', 'goal_attempts_op_ratio',
-               # Game Feature Columns
-               'current_team_possession', 'current_team_attacks',
-               'current_team_dangerous_attacks', 'current_team_yellow_cards',
-               'current_team_corner_kicks', 'current_team_shots_on_target', 'current_team_shots_total',
-               'current_team_ball_safe', 'current_team_goal_attempts',
-               'current_team_saves', 'current_team_first_half_goals',
-               'current_team_sec_half_goals', 'current_team_goal_kicks',
-               'opp_team_possession', 'opp_team_attacks', 'opp_team_dangerous_attacks', 'opp_team_yellow_cards',
-               'opp_team_corner_kicks', 'opp_team_shots_on_target', 'opp_team_shots_total',
-               'opp_team_ball_safe', 'opp_team_goal_attempts', 'opp_team_saves', 'opp_team_first_half_goals',
-               'opp_team_sec_half_goals', 'opp_team_goal_kicks',
+               'is_home', 'current_formation', 'goals_for', 'opp_goals_allowed', 'goal_efficiency',
+               'opp_defensive_goal_efficiency',
+               'ratio_of_attacks', 'opp_ratio_of_attacks', 'ratio_ball_safe_to_dangerous_attacks',
+               'opp_ratio_ball_safe_to_dangerous_attacks',
                'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     query = "SELECT id, country_code FROM teams"
@@ -71,16 +58,13 @@ def predictions(upcoming_matches):
         if not upcoming_team_matches.empty:
             for i, upcoming_team_match in upcoming_team_matches.iterrows():
                 df = pd.DataFrame([]).append(upcoming_team_match, ignore_index=True)
-                features, game_features, ratios = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
+                features, game_features = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
 
                 if features is not None:
                     for key, value in game_features.items():
                         for k, v in value.items():
                             new_key = key + '_' + k
                             features[new_key] = v
-
-                    for key, value in ratios.items():
-                        features[key] = value
 
                 upcoming_list.append(features)
 

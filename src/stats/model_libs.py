@@ -209,6 +209,11 @@ def get_leagues_rounds():
     return leagues
 
 
+def get_leagues_country_codes():
+    leagues = {"mls": 'USA', "epl": 'ENG', "bundesliga": 'DEU', "primera_division": 'ESP', "ligue_1": 'FRA'}
+    return leagues
+
+
 def get_team_round(team_country):
     """ Calls in a Team Country Code and returns the current round that league is in"""
     # Last round 'closed' + 1
@@ -222,6 +227,7 @@ def get_team_round(team_country):
         return 5
     elif team_country == 'FRA':
         return 7
+
 
 def convert_sos_rpi(leagues, leagues_data, teams):
 
