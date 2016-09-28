@@ -156,40 +156,6 @@ def set_group(goals):
         return 0
 
 
-def set_rpi_quartile(round_number, data, isCur):
-    power_rankings = pd.DataFrame()
-    power_list = []
-
-    if isCur:
-        rpi = 'rpi'
-        team_id = 'team_id'
-    else:
-        rpi = 'opp_rpi'
-        team_id = 'opp_id'
-
-    td = data.loc[(data["round"] == round_number)]
-
-    if not td.empty:
-        s = td.loc[:, [team_id, rpi]]
-        power_rankings = power_rankings.append(s, ignore_index=False)
-        power_rankings = power_rankings.sort_values(rpi, ascending=False)
-        for i, power in power_rankings.iterrows():
-            power_list.append(power)
-
-        pr = np.array(power_rankings.loc[:, rpi])
-        qqs = np.percentile(pr, [25, 50, 75, 100])
-        quartiles = [0, .3333, .6666, 1]
-        idx = len(pr)
-        for i in range(len(qqs)):
-            a = np.where(pr[0:idx] <= qqs[i])
-            pr[a] = quartiles[i]
-            idx = a[0][0]
-
-        return pr, power_rankings.index
-    else:
-        return None, None
-
-
 def check_category(pred, actual):
     """0 if No, 1 if Yes"""
     if pred >= 2:
@@ -229,6 +195,40 @@ def get_team_round(team_country):
         return 7
 
 
+def set_rpi_quartile(round_number, data, isCur):
+    power_rankings = pd.DataFrame()
+    power_list = []
+
+    if isCur:
+        rpi = 'rpi'
+        team_id = 'team_id'
+    else:
+        rpi = 'opp_rpi'
+        team_id = 'opp_id'
+
+    td = data.loc[(data["round"] == round_number)]
+
+    if not td.empty:
+        s = td.loc[:, [team_id, rpi]]
+        power_rankings = power_rankings.append(s, ignore_index=False)
+        power_rankings = power_rankings.sort_values(rpi, ascending=False)
+        for i, power in power_rankings.iterrows():
+            power_list.append(power)
+
+        pr = np.array(power_rankings.loc[:, rpi])
+        qqs = np.percentile(pr, [25, 50, 75, 100])
+        quartiles = [0, .3333, .6666, 1]
+        idx = len(pr)
+        for i in range(len(qqs)):
+            a = np.where(pr[0:idx] <= qqs[i])
+            pr[a] = quartiles[i]
+            idx = a[0][0]
+
+        return pr, power_rankings.index
+    else:
+        return None, None
+
+
 def convert_sos_rpi(leagues, leagues_data, teams):
 
     all_leagues_data = pd.DataFrame([])
@@ -254,3 +254,41 @@ def convert_sos_rpi(leagues, leagues_data, teams):
         all_leagues_data = all_leagues_data.append(data)
 
     return all_leagues_data
+
+
+def quartile_list(ranking, high_best):
+    """ Takes a sorted DF and returns an array with the ranking """
+
+    r = np.array(ranking.loc[:, 2])
+    qqs = np.percentile(r, [25, 50, 75, 100])
+
+    if high_best:
+        quartiles = [0, .33333, .66666, 1]
+        idx = len(r)
+    else:
+        quartiles = [1, .66666, .33333, 0]
+        idx = 0
+
+    marker = 0
+
+    for i in range(len(qqs)):
+
+        if high_best:
+            a = np.where(r[0:idx] <= qqs[i])
+            r[a] = quartiles[i]
+            idx = a[0][0]
+            for x in range(len(a[0])):
+                a[0][x] -= (i * 5)
+        else:
+            a = np.where(r[idx:len(r)] <= qqs[i])
+
+            for x in range(len(a[0])):
+                a[0][x] += marker
+
+            ''' Finds the end of the selected array so knows where to look for the next loop  '''
+            marker = a[0][len(a[0]) - 1] + 1
+            idx += len(a[0])
+            r[a] = quartiles[i]
+
+
+    return r

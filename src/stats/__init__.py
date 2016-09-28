@@ -72,8 +72,22 @@ def team_stats(league, team_id, round_num):
                                               'home_second_half_score', 'home_offsides', 'home_yellow_card', 'away_formation', 'away_first_half_score',
                                               'away_second_half_score', 'away_offsides', 'away_yellow_card'], axis=1)
 
+    leagues = model_libs.get_leagues_country_codes()
+    if league == 'mls':
+        teams = pd.read_sql("SELECT id, full_name FROM teams WHERE id < 41", cnx)
+
+    offensive_rankings = form_data.get_rankings(teams, round_num, "offensive")
+    rankings = model_libs.quartile_list(offensive_rankings, True)
+    offensive_rankings["offensive_rankings_quartiled"] = rankings
+    # print(offensive_rankings)
+
+    defensive_rankings = form_data.get_rankings(teams, round_num, "defensive")
+    rankings = model_libs.quartile_list(defensive_rankings, False)
+    defensive_rankings["defensive_rankings_quartiled"] = rankings
+    # print(defensive_rankings)
+
     features_breakdown = {'score': [], 'opp_score': [], 'points': [], 'attacks': [], 'ball_safe': [], 'corner_kicks': [], 'dangerous_attacks': [], 'fouls': [],
-               'shots_on_target': [], 'shots_total': [], 'possession': [], 'goal_attempts': [], 'saves': [], 'goal_kicks': []}
+               'shots_on_target': [], 'shots_total': [], 'possession': [], 'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'goal_kicks': []}
 
     for index, game in previous_matches.iterrows():
         if team_id == game['home_id']:
@@ -89,6 +103,7 @@ def team_stats(league, team_id, round_num):
             features_breakdown["shots_total"].append(game["home_shots_total"])
             features_breakdown["possession"].append(game["home_possession"])
             features_breakdown["goal_attempts"].append(game["home_goal_attempts"])
+            features_breakdown["goal_attempts_allowed"].append(game["away_goal_attempts"])
             features_breakdown["saves"].append(game["home_saves"])
             features_breakdown["goal_kicks"].append(game["home_goal_kicks"])
         elif team_id == game["away_id"]:
@@ -104,6 +119,7 @@ def team_stats(league, team_id, round_num):
             features_breakdown["shots_total"].append(game["away_shots_total"])
             features_breakdown["possession"].append(game["away_possession"])
             features_breakdown["goal_attempts"].append(game["away_goal_attempts"])
+            features_breakdown["goal_attempts_allowed"].append(game["home_goal_attempts"])
             features_breakdown["saves"].append(game["away_saves"])
             features_breakdown["goal_kicks"].append(game["away_goal_kicks"])
 

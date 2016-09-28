@@ -27,7 +27,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
     # Game Features
     game_features = {'possession': [], 'attacks': [], 'dangerous_attacks': [], 'yellow_cards': [],
                          'corner_kicks': [], 'shots_on_target': [], 'shots_total': [], 'ball_safe': [],
-                        'goal_attempts': [], 'saves': [], 'first_half_goals': [], 'sec_half_goals': [], 'goal_kicks': []}
+                        'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'first_half_goals': [], 'sec_half_goals': [], 'goal_kicks': []}
 
     # Targets
     points = 0
@@ -81,6 +81,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             game_features['shots_total'].append(game['home_shots_total'])
             game_features['ball_safe'].append(game['home_ball_safe'])
             game_features['goal_attempts'].append(game['home_goal_attempts'])
+            game_features['goal_attempts_allowed'].append(game['away_goal_attempts'])
             game_features['saves'].append(game['home_saves'])
             game_features['first_half_goals'].append(game['home_first_half_score'])
             game_features['sec_half_goals'].append(game['home_second_half_score'])
@@ -124,6 +125,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             game_features['shots_total'].append(game['away_shots_total'])
             game_features['ball_safe'].append(game['away_ball_safe'])
             game_features['goal_attempts'].append(game['away_goal_attempts'])
+            game_features['goal_attempts_allowed'].append(game['home_goal_attempts'])
             game_features['saves'].append(game['away_saves'])
             game_features['first_half_goals'].append(game['away_first_half_score'])
             game_features['sec_half_goals'].append(game['away_second_half_score'])
@@ -161,6 +163,10 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
                 opp_goals = cur_game['home_score']
 
     for k, v in game_features.items():
+        if stats:
+            if k == 'goal_attempts_allowed':
+                print(game_features[k])
+
         if len(v) != 0:
             game_features[k] = np.nanmean(np.array(v))
         else:
@@ -197,12 +203,12 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 def create_match(team_id, current_matches, match_details, round_number, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous rounds"""
 
-    previous_matches = match_details.loc[
+    current_previous_matches = match_details.loc[
         ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id)) &
         (match_details['round'] < round_number)]
 
     # Only take the previous 3 matches and sum those stats together
-    previous_matches = previous_matches.iloc[-3:]
+    previous_matches = current_previous_matches.iloc[-3:]
 
     # Find CUR_TEAM's stats
     match_id, team_id, team_name, scheduled, is_home, total_points, goals_for, goals_against, goal_diff, goal_efficiency, \
@@ -222,7 +228,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     opp_previous_matches = opp_previous_matches.iloc[-3:]
 
     _, opp_team_id, opp_team_name, _, opp_is_home, opp_total_points, opp_goals_for, opp_goals_against, opp_goal_diff, opp_goal_efficiency, \
-    opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _, _, _, opp_game_features = calculate_stats(opp_id, current_matches, opp_previous_matches, stats, False)
+    opp_played, opp_win, opp_loss, opp_recent_wins, opp_recent_losses, opp_opp, _, _, _, _, _, _, opp_game_features = calculate_stats(opp_id, current_matches, opp_previous_matches, False, False)
 
     if stats:
         print('Previous Opponents of Current Team : {0}'.format(prev_opp))
@@ -345,16 +351,56 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         print("Current Opponent Record :: {} ".format(current_opp_record))
         print("OPP SOS : {}".format(opp_sos))'''
 
-    goal_efficiency = np.subtract(np.square(goals_for), np.square(np.sum(game_features['goal_attempts'])))
-    opp_defensive_goal_efficiency = np.subtract(np.square(opp_goals_against), np.square(np.sum(opp_opp_game_features['goal_attempts'])))
-    ratio_of_attacks = np.subtract(np.square(np.sum(game_features["dangerous_attacks"])), np.square(np.sum(game_features['attacks'])))
-    opp_ratio_of_attacks = np.subtract(np.square(np.sum(opp_opp_game_features["dangerous_attacks"])), np.square(np.sum(opp_opp_game_features['attacks'])))
-    ratio_ball_safe_to_dangerous_attacks = np.subtract(np.square(np.sum(game_features["attacks"])), np.square(np.sum(game_features['ball_safe'])))
-    opp_ratio_ball_safe_to_dangerous_attacks = np.subtract(np.square(np.sum(opp_opp_game_features["attacks"])), np.square(np.sum(opp_opp_game_features['ball_safe'])))
+    """ There are cases where in the 3 previous matches there is no data for that feature
+         so instead taking the average from all the previous games """
+    ''' [nan, nan, nan] '''
+    ''' Also, the zero for 'goal_attempts assuming is an error from the Stats '''
+
+    if np.isnan(game_features['goal_attempts']) or game_features['goal_attempts'] == 0:
+        season_goal_attempts = []
+        for c, match in current_previous_matches.iterrows():
+            if team_id == match['home_id']:
+                season_goal_attempts.append(match["home_goal_attempts"])
+            else:
+                season_goal_attempts.append(match["away_goal_attempts"])
+
+        goal_attempts = np.nanmean(np.array(season_goal_attempts))
+
+    else:
+        goal_attempts = game_features['goal_attempts']
+
+    if goals_for != 0:
+        goal_efficiency = np.divide(np.divide(goals_for, played), goal_attempts)
+    else:
+        goal_efficiency = 0
+
+    """ Same as above """
+    ''' [nan, nan, nan] '''
+    if np.isnan(opp_game_features['goal_attempts_allowed']) or opp_game_features['goal_attempts_allowed'] == 0:
+        season_opp_goal_attempts_allowed = []
+        for c, match in current_previous_matches.iterrows():
+            if opp_team_id == match['home_id']:
+                season_opp_goal_attempts_allowed.append(match["away_goal_attempts"])
+            else:
+                season_opp_goal_attempts_allowed.append(match["home_goal_attempts"])
+
+        opp_goal_attempts_allowed = np.nanmean(np.array(season_opp_goal_attempts_allowed))
+    else:
+        opp_goal_attempts_allowed = opp_game_features['goal_attempts_allowed']
+
+    if opp_goals_against == 0:
+        opp_defensive_goal_efficiency = 1
+    else:
+        opp_defensive_goal_efficiency = np.divide(np.subtract(opp_goal_attempts_allowed, np.divide(opp_goals_against, played)), opp_goal_attempts_allowed)
+
+    ratio_of_attacks = np.divide(game_features["dangerous_attacks"], game_features['attacks'])
+    opp_ratio_of_attacks = np.divide(opp_opp_game_features["dangerous_attacks"], opp_opp_game_features['attacks'])
+    ratio_ball_safe_to_dangerous_attacks = np.divide(game_features["attacks"], game_features['ball_safe'])
+    opp_ratio_ball_safe_to_dangerous_attacks = np.divide(opp_opp_game_features["attacks"], opp_opp_game_features['ball_safe'])
 
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
                'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
-               'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for,
+               'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for, 'goals_allowed': goals_against,
                'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
                'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
                'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
