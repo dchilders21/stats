@@ -183,7 +183,7 @@ def build_tuned_model(X, y, model_type):
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')
-        svr = SVC()
+        svr = SVC(probability=True, class_weight='balanced')
         parameters = [{'kernel': ['rbf'], 'C': [1, 10, 100]}]
         clf = grid_search.GridSearchCV(svr, parameters)
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
@@ -257,7 +257,7 @@ def build_tuned_model(X, y, model_type):
         print('-----------------------------------')
         print('Training Random Forest Model')
         #for i in range(1, 2):
-        clf = RandomForestClassifier(max_depth=5, n_estimators=11, max_features=2)
+        clf = RandomForestClassifier(max_depth=5, n_estimators=11, max_features=2, class_weight='balanced')
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2, random_state=28)
         scores = cross_validation.cross_val_score(clf, X_train, y_train, cv=5)
         print(scores)
@@ -266,5 +266,18 @@ def build_tuned_model(X, y, model_type):
         clf.fit(X_train, y_train)
         joblib.dump(clf, tuned_folder)
         finished_models.append(clf)
+
+    elif model_type == 'log':
+        print('Training LOG REG Model')
+        logreg = linear_model.LogisticRegression(C=1e5, class_weight='balanced')
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        logreg.fit(X_train, y_train)
+        train_scores = logreg.score(X_train, y_train)
+        print('Score on Training Set :: {}'.format(train_scores))
+        test_scores = logreg.score(X_test, y_test)
+        print('Score on Test Set :: {}'.format(test_scores))
+        print('Finished LOG REG Modeling')
+        joblib.dump(logreg, tuned_folder)
+        finished_models.append(logreg)
 
     return finished_models

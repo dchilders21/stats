@@ -76,15 +76,15 @@ def team_stats(league, team_id, round_num):
     if league == 'mls':
         teams = pd.read_sql("SELECT id, full_name FROM teams WHERE id < 41", cnx)
 
-    offensive_rankings = form_data.get_rankings(teams, round_num, "offensive")
+    offensive_rankings = form_data.get_rankings(teams, round_num, "offensive", False)
     rankings = model_libs.quartile_list(offensive_rankings, True)
     offensive_rankings["offensive_rankings_quartiled"] = rankings
-    # print(offensive_rankings)
+    print(offensive_rankings)
 
-    defensive_rankings = form_data.get_rankings(teams, round_num, "defensive")
+    defensive_rankings = form_data.get_rankings(teams, round_num, "defensive", False)
     rankings = model_libs.quartile_list(defensive_rankings, False)
     defensive_rankings["defensive_rankings_quartiled"] = rankings
-    # print(defensive_rankings)
+    print(defensive_rankings)
 
     features_breakdown = {'score': [], 'opp_score': [], 'points': [], 'attacks': [], 'ball_safe': [], 'corner_kicks': [], 'dangerous_attacks': [], 'fouls': [],
                'shots_on_target': [], 'shots_total': [], 'possession': [], 'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'goal_kicks': []}

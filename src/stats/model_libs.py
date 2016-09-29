@@ -156,6 +156,13 @@ def set_group(goals):
         return 0
 
 
+def set_points(points):
+    if points != 1:
+        return 0
+    else:
+        return 1
+
+
 def check_category(pred, actual):
     """0 if No, 1 if Yes"""
     if pred >= 2:

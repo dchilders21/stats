@@ -2,7 +2,7 @@ from stats import match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
-from stats import model_libs
+from stats import model_libs, predict_matches
 
 
 def get_power_rankings(teams, rd):
@@ -34,9 +34,10 @@ def get_power_rankings(teams, rd):
     return power_rankings
 
 
-def get_rankings(teams, rd, side_of_ball):
+def get_rankings(teams, rd, side_of_ball, upcoming):
 
     match_details = get_coverage()
+    upcoming_matches, match_details = predict_matches.get_upcoming_matches()
     rankings = pd.DataFrame()
     print('Rankings :: {}'.format(side_of_ball))
     for i, team in teams.iterrows():
@@ -50,6 +51,10 @@ def get_rankings(teams, rd, side_of_ball):
             cur_match = match_details.loc[
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
                 (match_details['round'] == rd)]
+
+            if upcoming:
+                cur_match = upcoming_matches.loc[
+                    ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
 
         df = pd.DataFrame([]).append(cur_match, ignore_index=True)
 

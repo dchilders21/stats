@@ -1,0 +1,99 @@
+,scheduled,team_name,opp_name,KNN,RandomForest,GNB,GMM,log,random,SVC
+0,2016-09-25 01:30:00,FC Dallas,Real Salt Lake,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+2,2016-09-25 01:30:00,Real Salt Lake,FC Dallas,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+1,2016-09-24 23:00:00,Colorado Rapids,Vancouver Whitecaps FC,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+7,2016-09-24 23:00:00,Vancouver Whitecaps FC,Colorado Rapids,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+3,2016-09-24 00:00:00,New York City FC,Chicago Fire,0.0,0.0,1.0,0.0,0.0,1.0,0.0
+19,2016-09-24 00:00:00,Chicago Fire,New York City FC,1.0,1.0,2.0,0.0,0.0,1.0,0.0
+4,2016-09-24 21:00:00,Philadelphia Union,Toronto FC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+13,2016-09-24 21:00:00,Toronto FC,Philadelphia Union,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+5,2016-09-25 20:00:00,LA Galaxy,Seattle Sounders,0.0,0.0,2.0,1.0,0.0,0.0,0.0
+16,2016-09-25 20:00:00,Seattle Sounders,LA Galaxy,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+6,2016-09-25 02:30:00,Sporting Kansas City,San Jose Earthquakes,0.0,0.0,1.0,0.0,0.0,1.0,0.0
+11,2016-09-25 02:30:00,San Jose Earthquakes,Sporting Kansas City,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+8,2016-09-24 23:00:00,Montreal Impact,NY Red Bulls,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+10,2016-09-24 23:00:00,NY Red Bulls,Montreal Impact,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+9,2016-09-25 01:00:00,Portland Timbers,Houston Dynamo,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+17,2016-09-25 01:00:00,Houston Dynamo,Portland Timbers,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+12,2016-09-24 23:00:00,DC United,Orlando City SC,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+14,2016-09-24 23:00:00,Orlando City SC,DC United,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+15,2016-09-25 23:00:00,New England Revolution,Columbus Crew,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+18,2016-09-25 23:00:00,Columbus Crew,New England Revolution,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+20,2016-09-25 15:00:00,Southampton FC,West Ham United,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+26,2016-09-25 15:00:00,West Ham United,Southampton FC,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+21,2016-09-24 14:00:00,Manchester City,Swansea City,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+24,2016-09-24 14:00:00,Swansea City,Manchester City,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+22,2016-09-24 16:30:00,Arsenal FC,Chelsea FC,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+27,2016-09-24 16:30:00,Chelsea FC,Arsenal FC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+23,2016-09-24 14:00:00,Everton FC,Bournemouth AFC,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+34,2016-09-24 14:00:00,Bournemouth AFC,Everton FC,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+25,2016-09-24 14:00:00,West Bromwich Albion,Stoke City,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+28,2016-09-24 14:00:00,Stoke City,West Bromwich Albion,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+29,2016-09-24 14:00:00,Hull City,Liverpool FC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+35,2016-09-24 14:00:00,Liverpool FC,Hull City,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+30,2016-09-24 14:00:00,Middlesbrough FC,Tottenham Hotspur,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+33,2016-09-24 14:00:00,Tottenham Hotspur,Middlesbrough FC,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+31,2016-09-24 11:30:00,Leicester City,Manchester United,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+37,2016-09-24 11:30:00,Manchester United,Leicester City,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+32,2016-09-26 19:00:00,Burnley FC,Watford FC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+36,2016-09-26 19:00:00,Watford FC,Burnley FC,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+38,2016-09-24 14:00:00,Crystal Palace,Sunderland AFC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+39,2016-09-24 14:00:00,Sunderland AFC,Crystal Palace,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+40,2016-09-25 13:30:00,1899 Hoffenheim,FC Schalke 04,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+41,2016-09-25 13:30:00,FC Schalke 04,1899 Hoffenheim,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+42,2016-09-24 13:30:00,Hertha BSC,Eintracht Frankfurt,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+48,2016-09-24 13:30:00,Eintracht Frankfurt,Hertha BSC,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+43,2016-09-23 18:30:00,SC Freiburg,Borussia Dortmund,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+46,2016-09-23 18:30:00,Borussia Dortmund,SC Freiburg,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+44,2016-09-24 13:30:00,Hamburger SV,Bayern Munich,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+55,2016-09-24 13:30:00,Bayern Munich,Hamburger SV,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+45,2016-09-24 13:30:00,Monchengladbach,FC Ingolstadt,0.0,0.0,2.0,1.0,1.0,1.0,0.0
+51,2016-09-24 13:30:00,FC Ingolstadt,Monchengladbach,0.0,0.0,1.0,0.0,0.0,1.0,0.0
+47,2016-09-24 13:30:00,FC Augsburg,SV Darmstadt 98,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+56,2016-09-24 13:30:00,SV Darmstadt 98,FC Augsburg,1.0,0.0,2.0,0.0,0.0,1.0,0.0
+49,2016-09-24 16:30:00,Werder Bremen,VfL Wolfsburg,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+54,2016-09-24 16:30:00,VfL Wolfsburg,Werder Bremen,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+50,2016-09-24 13:30:00,Bayer Leverkusen,1 FSV Mainz 05,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+52,2016-09-24 13:30:00,1 FSV Mainz 05,Bayer Leverkusen,1.0,0.0,3.0,0.0,0.0,1.0,0.0
+53,2016-09-25 15:30:00,RB Leipzig,1 FC Cologne,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+57,2016-09-25 15:30:00,1 FC Cologne,RB Leipzig,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+58,2016-09-21 20:00:00,Granada CF,Athletic Bilbao,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+61,2016-09-21 20:00:00,Athletic Bilbao,Granada CF,1.0,0.0,2.0,0.0,0.0,1.0,0.0
+59,2016-09-22 18:00:00,Espanyol Barcelona,CA Osasuna,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+71,2016-09-22 18:00:00,CA Osasuna,Espanyol Barcelona,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+60,2016-09-22 20:00:00,CD Alaves,Valencia CF,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+72,2016-09-22 20:00:00,Valencia CF,CD Alaves,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+62,2016-09-20 20:00:00,Sevilla FC,Real Betis Balompie,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+68,2016-09-20 20:00:00,Real Betis Balompie,Sevilla FC,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+63,2016-09-22 18:00:00,Deportivo La Coruna,CD Leganes,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+74,2016-09-22 18:00:00,CD Leganes,Deportivo La Coruna,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+64,2016-09-20 18:00:00,Malaga CF,SD Eibar,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+76,2016-09-20 18:00:00,SD Eibar,Malaga CF,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+65,2016-09-21 18:00:00,Celta de Vigo,Sporting Gijon,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+75,2016-09-21 18:00:00,Sporting Gijon,Celta de Vigo,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+66,2016-09-21 20:00:00,Real Sociedad,Las Palmas UD,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+73,2016-09-21 20:00:00,Las Palmas UD,Real Sociedad,1.0,0.0,2.0,0.0,0.0,1.0,0.0
+67,2016-09-21 18:00:00,Real Madrid,Villarreal CF,0.0,0.0,3.0,0.0,0.0,0.0,0.0
+70,2016-09-21 18:00:00,Villarreal CF,Real Madrid,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+69,2016-09-21 20:00:00,FC Barcelona,Atletico Madrid,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+77,2016-09-21 20:00:00,Atletico Madrid,FC Barcelona,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+78,2016-09-25 18:45:00,Olympique Marseille,FC Nantes,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+97,2016-09-25 18:45:00,FC Nantes,Olympique Marseille,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+79,2016-09-24 18:00:00,FC Metz,Montpellier HSC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+84,2016-09-24 18:00:00,Montpellier HSC,FC Metz,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+80,2016-09-25 13:00:00,Lille OSC,AS Saint Etienne,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+85,2016-09-25 13:00:00,AS Saint Etienne,Lille OSC,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+81,2016-09-25 15:00:00,OGC Nice,AS Nancy,0.0,0.0,3.0,1.0,0.0,0.0,0.0
+93,2016-09-25 15:00:00,AS Nancy,OGC Nice,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+82,2016-09-24 18:00:00,SM Caen,FC Girondins Bordeaux,0.0,0.0,1.0,0.0,0.0,0.0,0.0
+92,2016-09-24 18:00:00,FC Girondins Bordeaux,SM Caen,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+83,2016-09-24 18:00:00,SCO Angers,AS Monaco,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+94,2016-09-24 18:00:00,AS Monaco,SCO Angers,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+86,2016-09-24 15:00:00,FC Lorient,Olympique Lyon,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+87,2016-09-24 15:00:00,Olympique Lyon,FC Lorient,0.0,0.0,3.0,0.0,0.0,1.0,0.0
+88,2016-09-24 18:00:00,Dijon FCO,Stade Rennes,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+96,2016-09-24 18:00:00,Stade Rennes,Dijon FCO,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+89,2016-09-24 18:00:00,EA Guingamp,SC Bastia,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+90,2016-09-24 18:00:00,SC Bastia,EA Guingamp,0.0,0.0,2.0,0.0,0.0,1.0,0.0
+91,2016-09-23 18:45:00,Toulouse FC,Paris St Germain,0.0,0.0,2.0,0.0,0.0,0.0,0.0
+95,2016-09-23 18:45:00,Paris St Germain,Toulouse FC,0.0,0.0,3.0,1.0,0.0,0.0,0.0
