@@ -163,10 +163,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
                 opp_goals = cur_game['home_score']
 
     for k, v in game_features.items():
-        if stats:
-            if k == 'goal_attempts_allowed':
-                print(game_features[k])
-
         if len(v) != 0:
             game_features[k] = np.nanmean(np.array(v))
         else:
@@ -398,13 +394,20 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     ratio_ball_safe_to_dangerous_attacks = np.divide(game_features["attacks"], game_features['ball_safe'])
     opp_ratio_ball_safe_to_dangerous_attacks = np.divide(opp_opp_game_features["attacks"], opp_opp_game_features['ball_safe'])
 
+    diff_goal_for = np.subtract(np.square(goals_for), np.square(opp_goals_for))
+    diff_goal_allowed = np.subtract(np.square(goals_against), np.square(opp_goals_against))
+    diff_attacks = np.subtract(np.square(game_features['attacks']), np.square(opp_game_features['attacks']))
+    diff_dangerous_attacks = np.subtract(np.square(game_features['dangerous_attacks']), np.square(opp_game_features['dangerous_attacks']))
+    diff_goal_attempts = np.subtract(np.square(game_features['goal_attempts']), np.square(opp_game_features['goal_attempts']))
+    diff_ball_safe = np.subtract(np.square(game_features['ball_safe']), np.square(opp_game_features['ball_safe']))
+
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
                'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
-               'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for, 'goals_allowed': goals_against,
-               'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
-               'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
-               'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
-               'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks, 'goals': goals, 'points': points }
+               'is_home': is_home, 'current_formation': current_formation, 'diff_goal_for': diff_goal_for,
+               'diff_goal_allowed': diff_goal_allowed, 'diff_attacks': diff_attacks, 'diff_dangerous_attacks': diff_dangerous_attacks,
+               'diff_goal_attempts': diff_goal_attempts, 'diff_ball_safe': diff_ball_safe,
+               'goals_for': goals_for, 'goals_allowed': goals_against,
+               'goals': goals, 'points': points}
                 # 'opp_goals': opp_goals
 
     game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }
