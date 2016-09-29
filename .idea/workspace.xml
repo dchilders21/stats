@@ -2,52 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/points_v1.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/points_v2.ipynb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_01.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_03.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_05.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_05.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_06.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_06.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_09.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_02.npy" afterPath="$PROJECT_DIR$/src/models/27/knn_round_27.pk1_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gmm_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gmm_01.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gmm_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gmm_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gmm_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gmm_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gnb_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gnb_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gnb_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gnb_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gnb_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gnb_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gnb_04.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gnb_04.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/gnb_05.npy" afterPath="$PROJECT_DIR$/src/models/tuned/gnb_05.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn" afterPath="$PROJECT_DIR$/src/models/tuned/knn" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_04.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_04.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_05.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_05.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_06.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_06.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/knn_09.npy" afterPath="$PROJECT_DIR$/src/models/tuned/knn_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/log_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/log_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/log_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/log_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/log_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/log_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/log_04.npy" afterPath="$PROJECT_DIR$/src/models/tuned/log_04.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_04.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_05.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_05.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_06.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_06.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_07.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_07.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_08.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_08.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_09.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_09.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_10.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_10.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_11.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_11.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_12.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_12.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_13.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_13.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_14.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_14.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_15.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_15.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_16.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_16.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_17.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_17.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_18.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_18.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_19.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_19.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_20.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_20.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_21.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_21.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_22.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_22.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_23.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_23.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_24.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_24.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_25.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_25.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_26.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_26.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_27.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_27.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_28.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_28.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_29.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_29.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_30.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_30.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_31.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_31.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_32.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_32.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_33.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_33.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_34.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_34.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_35.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_35.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_36.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_36.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_37.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_37.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_38.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_38.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_39.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_39.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_40.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_40.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_41.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_41.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_42.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_42.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_43.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_43.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_44.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_44.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/randomForest_45.npy" afterPath="$PROJECT_DIR$/src/models/tuned/randomForest_45.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc" afterPath="$PROJECT_DIR$/src/models/tuned/svc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_01.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_01.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_02.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_02.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_03.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_03.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_04.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_04.npy" />
@@ -62,14 +86,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_13.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_13.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/tuned/svc_14.npy" afterPath="$PROJECT_DIR$/src/models/tuned/svc_14.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/new_data.csv" afterPath="$PROJECT_DIR$/src/new_data.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/goals-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/goals-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/predictions_on_ranked_data.csv" afterPath="$PROJECT_DIR$/src/predictions_on_ranked_data.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/points-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/stats/.ipynb_checkpoints/points-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/__init__.py" afterPath="$PROJECT_DIR$/src/stats/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_data.py" afterPath="$PROJECT_DIR$/src/stats/form_data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/goals.ipynb" afterPath="$PROJECT_DIR$/src/stats/goals.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/model_libs.py" afterPath="$PROJECT_DIR$/src/stats/model_libs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/points.ipynb" afterPath="$PROJECT_DIR$/src/stats/points.ipynb" />
     </list>
     <ignored path="stats.iws" />
@@ -118,8 +137,8 @@
           <file leaf-file-name="form_model.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="277">
-                  <caret line="201" column="43" selection-start-line="201" selection-start-column="43" selection-end-line="201" selection-end-column="43" />
+                <state relative-caret-position="403">
+                  <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -989,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="201" column="43" selection-start-line="201" selection-start-column="43" selection-end-line="201" selection-end-column="43" />
+        <state relative-caret-position="403">
+          <caret line="185" column="34" selection-start-line="185" selection-start-column="34" selection-end-line="185" selection-end-column="34" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
