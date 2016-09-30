@@ -25,7 +25,7 @@ def predictions(upcoming_matches):
 
     import mysql.connector
     import pandas as pd
-    from stats import match_stats, model_libs, form_data
+    from stats import match_stats, model_libs, form_data, match_stats_alternate
 
     cnx = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
@@ -33,11 +33,19 @@ def predictions(upcoming_matches):
 
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
+    """columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
                'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_for', 'opp_goals_allowed',
                'goal_efficiency', 'opp_defensive_goal_efficiency', 'ratio_of_attacks', 'opp_ratio_of_attacks',
-               'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi', 'opp_rpi',
+               'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi',
+               'goals', 'points']  # Target Columns - #'goals', 'opp_goals'"""
+
+    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
+               # Non-Feature Columns
+               'is_home', 'current_formation', 'diff_goal_for', 'diff_goal_allowed', 'diff_attacks',
+               'diff_dangerous_attacks',
+               'diff_goal_attempts', 'diff_ball_safe', 'rpi',
+               'goals_for', 'goals_allowed',
                'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     query = "SELECT id, country_code FROM teams"
@@ -57,7 +65,7 @@ def predictions(upcoming_matches):
         if not upcoming_team_matches.empty:
             for i, upcoming_team_match in upcoming_team_matches.iterrows():
                 df = pd.DataFrame([]).append(upcoming_team_match, ignore_index=True)
-                features, game_features = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
+                features, game_features = match_stats_alternate.create_match(team["id"], df, match_details, round_number, False, False)
 
                 if features is not None:
                     for key, value in game_features.items():

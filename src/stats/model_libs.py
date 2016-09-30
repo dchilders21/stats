@@ -219,6 +219,7 @@ def set_rpi_quartile(round_number, data, isCur):
         s = td.loc[:, [team_id, rpi]]
         power_rankings = power_rankings.append(s, ignore_index=False)
         power_rankings = power_rankings.sort_values(rpi, ascending=False)
+
         for i, power in power_rankings.iterrows():
             power_list.append(power)
 
@@ -271,31 +272,17 @@ def quartile_list(ranking, high_best):
 
     if high_best:
         quartiles = [0, .33333, .66666, 1]
-        idx = len(r)
     else:
         quartiles = [1, .66666, .33333, 0]
-        idx = 0
 
-    marker = 0
+    idx = len(r)
 
     for i in range(len(qqs)):
 
-        if high_best:
-            a = np.where(r[0:idx] <= qqs[i])
-            r[a] = quartiles[i]
-            idx = a[0][0]
-            for x in range(len(a[0])):
-                a[0][x] -= (i * 5)
-        else:
-            a = np.where(r[idx:len(r)] <= qqs[i])
-
-            for x in range(len(a[0])):
-                a[0][x] += marker
-
-            ''' Finds the end of the selected array so knows where to look for the next loop  '''
-            marker = a[0][len(a[0]) - 1] + 1
-            idx += len(a[0])
-            r[a] = quartiles[i]
-
+        a = np.where(r[0:idx] <= qqs[i])
+        r[a] = quartiles[i]
+        idx = a[0][0]
+        for x in range(len(a[0])):
+            a[0][x] -= (i * 5)
 
     return r

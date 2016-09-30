@@ -320,12 +320,6 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     sos = np.divide((2 * prev_opp_record) + opp_prev_opp_record, 3)
     rpi = (current_record * .25) + (sos * .75)
 
-    current_opp_record = np.divide(opp_win, (opp_win + opp_loss))
-    opp_opp_record = np.divide(opp_opp_won_total, (opp_opp_won_total + opp_opp_lost_total))
-    opp_opp_opp_record = np.divide(opp_opp_opp_won_total, (opp_opp_opp_won_total + opp_opp_opp_lost_total))
-    opp_sos = np.divide((2 * opp_opp_record) + opp_opp_opp_record, 3)
-    opp_rpi = (current_opp_record * .25) + (opp_sos * .75)
-
     """ There are cases where in the 3 previous matches there is no data for that feature
          so instead taking the average from all the previous games """
     ''' [nan, nan, nan] '''
@@ -380,7 +374,7 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
                'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
                'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
                'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks,
-               'rpi': rpi, 'opp_rpi': opp_rpi, 'goals': goals, 'points': points}
+               'rpi': rpi, 'goals': goals, 'points': points}
                 # 'opp_goals': opp_goals
 
     game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }

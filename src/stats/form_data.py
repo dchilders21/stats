@@ -1,4 +1,4 @@
-from stats import match_stats
+from stats import match_stats, match_stats_alternate
 import mysql.connector
 import pandas as pd
 import numpy as np
@@ -36,10 +36,10 @@ def get_power_rankings(teams, rd):
 
 def get_rankings(teams, rd, side_of_ball, upcoming):
 
-    match_details = get_coverage()
     upcoming_matches, match_details = predict_matches.get_upcoming_matches()
     rankings = pd.DataFrame()
     print('Rankings :: {}'.format(side_of_ball))
+
     for i, team in teams.iterrows():
         cur_match = match_details.loc[
             ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
@@ -89,7 +89,7 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
 
             s = pd.Series([team["id"], features["team_name"], defensive_rank])
             rankings = rankings.append(s, ignore_index=True)
-            rankings = rankings.sort_values(2, ascending=True)
+            rankings = rankings.sort_values(2, ascending=False)
 
         elif side_of_ball == "offensive":
 
@@ -121,6 +121,12 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
             rankings = rankings.append(s, ignore_index=True)
             rankings = rankings.sort_values(2, ascending=False)
 
+        elif side_of_ball == "rpi":
+
+            s = pd.Series([team["id"], features["team_name"], features["rpi"]])
+            rankings = rankings.append(s, ignore_index=True)
+            rankings = rankings.sort_values(2, ascending=False)
+
     return rankings
 
 
@@ -136,11 +142,19 @@ def get_coverage():
 
 def get_columns():
 
-    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
+    """columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
                'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_for', 'opp_goals_allowed',
                'goal_efficiency', 'opp_defensive_goal_efficiency', 'ratio_of_attacks', 'opp_ratio_of_attacks',
                'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi', 'opp_rpi',
+               'goals', 'points']  # Target Columns - #'goals', 'opp_goals"""
+
+    columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
+               # Non-Feature Columns
+               'is_home', 'current_formation', 'diff_goal_for', 'diff_goal_allowed', 'diff_attacks',
+               'diff_dangerous_attacks',
+               'diff_goal_attempts', 'diff_ball_safe',
+               'goals_for', 'goals_allowed', 'rpi',
                'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     return columns
@@ -207,7 +221,7 @@ def run_data():
 
                 for c, cur_match in cur_matches.iterrows():
                     df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-                    features, game_features = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                    features, game_features = match_stats_alternate.create_match(team["id"], df, match_details, i, False, True)
 
                     if features is not None:
                         for key, value in game_features.items():
@@ -220,9 +234,6 @@ def run_data():
     columns = get_columns()
     data = pd.DataFrame(training_list, columns=columns)
 
-    # Replace NaN's with the average of the columns
-    # data = data.fillna(data.mean(), inplace=True)
-    # Above not working for some reason
     data = data.replace(np.nan, data.mean())
 
     return data
