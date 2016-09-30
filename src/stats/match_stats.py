@@ -314,22 +314,6 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         opp_opp_opp_lost_total += opp_opp_opp_loss
 
 
-    '''if stats:
-        print("\nTeam")
-        print(game_features)
-        print("Opponent")
-        print(opp_game_features)
-
-        print("Current Win :: {}".format(win))
-        print("Current Losses :: {}".format(loss))
-        print("Current Teams Previous Opponents Win :: {}".format(prev_opp_won_total))
-        print("Current Teams Previous Opponents Losses :: {}".format(prev_opp_lost_total))
-
-        print("Opp Win :: {}".format(opp_win))
-        print("Opp Loss :: {}".format(opp_loss))
-        print("Opp Opp Win :: {}".format(opp_opp_won_total))
-        print("Opp Opp Loss :: {}".format(opp_opp_lost_total))'''
-
     current_record = np.divide(win, (win + loss))
     prev_opp_record = np.divide(prev_opp_win, (prev_opp_win + prev_opp_loss))
     opp_prev_opp_record = np.divide(opp_prev_opp_won_total, (opp_prev_opp_won_total + opp_prev_opp_lost_total))
@@ -341,15 +325,6 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     opp_opp_opp_record = np.divide(opp_opp_opp_won_total, (opp_opp_opp_won_total + opp_opp_opp_lost_total))
     opp_sos = np.divide((2 * opp_opp_record) + opp_opp_opp_record, 3)
     opp_rpi = (current_opp_record * .25) + (opp_sos * .75)
-
-    '''if stats:
-        print("Current Opponent Record :: {} ".format(current_opp_record))
-        print("Opponents Opponents Record :: {} ".format(opp_opp_record))
-        print("SOS : {}".format(sos))
-
-        print("Current Record :: {} ".format(current_record))
-        print("Current Opponent Record :: {} ".format(current_opp_record))
-        print("OPP SOS : {}".format(opp_sos))'''
 
     """ There are cases where in the 3 previous matches there is no data for that feature
          so instead taking the average from all the previous games """
@@ -401,10 +376,11 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
                'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
                'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for, 'goals_allowed': goals_against,
-               'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
+               'opp_goals_for': opp_goals_for, 'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
                'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
                'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
-               'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks, 'goals': goals, 'points': points }
+               'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks,
+               'rpi': rpi, 'opp_rpi': opp_rpi, 'goals': goals, 'points': points}
                 # 'opp_goals': opp_goals
 
     game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }

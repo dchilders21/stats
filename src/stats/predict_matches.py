@@ -35,10 +35,9 @@ def predictions(upcoming_matches):
 
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
-               'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_allowed', 'goal_efficiency',
-               'opp_defensive_goal_efficiency',
-               'ratio_of_attacks', 'opp_ratio_of_attacks', 'ratio_ball_safe_to_dangerous_attacks',
-               'opp_ratio_ball_safe_to_dangerous_attacks',
+               'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_for', 'opp_goals_allowed',
+               'goal_efficiency', 'opp_defensive_goal_efficiency', 'ratio_of_attacks', 'opp_ratio_of_attacks',
+               'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi', 'opp_rpi',
                'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
 
     query = "SELECT id, country_code FROM teams"
