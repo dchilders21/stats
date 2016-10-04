@@ -313,7 +313,6 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         opp_opp_opp_won_total += opp_opp_opp_win
         opp_opp_opp_lost_total += opp_opp_opp_loss
 
-
     current_record = np.divide(win, (win + loss))
     prev_opp_record = np.divide(prev_opp_win, (prev_opp_win + prev_opp_loss))
     opp_prev_opp_record = np.divide(opp_prev_opp_won_total, (opp_prev_opp_won_total + opp_prev_opp_lost_total))

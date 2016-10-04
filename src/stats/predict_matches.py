@@ -65,7 +65,7 @@ def predictions(upcoming_matches):
         if not upcoming_team_matches.empty:
             for i, upcoming_team_match in upcoming_team_matches.iterrows():
                 df = pd.DataFrame([]).append(upcoming_team_match, ignore_index=True)
-                features, game_features = match_stats_alternate.create_match(team["id"], df, match_details, round_number, False, False)
+                features, game_features = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
 
                 if features is not None:
                     for key, value in game_features.items():
