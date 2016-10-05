@@ -40,15 +40,15 @@ def predictions(upcoming_matches):
                'goals', 'points']
 
     stats_columns = ['current_team_possession', 'current_team_yellow_cards', 'current_team_goal_attempts',
-             'current_team_dangerous_attacks', 'current_team_sec_half_goals', 'current_team_saves',
-             'current_team_corner_kicks', 'current_team_ball_safe', 'current_team_first_half_goals',
-             'current_team_shots_on_target', 'current_team_attacks', 'current_team_goal_attempts_allowed',
-             'current_team_goal_kicks', 'current_team_shots_total',
-             'opp_team_possession', 'opp_team_yellow_cards', 'opp_team_goal_attempts',
-             'opp_team_dangerous_attacks', 'opp_team_sec_half_goals', 'opp_team_saves',
-             'opp_team_corner_kicks', 'opp_team_ball_safe', 'opp_team_first_half_goals',
-             'opp_team_shots_on_target', 'opp_team_attacks', 'opp_team_goal_attempts_allowed',
-             'opp_team_goal_kicks', 'opp_team_shots_total']
+                     'current_team_dangerous_attacks', 'current_team_sec_half_goals', 'current_team_saves',
+                     'current_team_corner_kicks', 'current_team_ball_safe', 'current_team_first_half_goals',
+                     'current_team_shots_on_target', 'current_team_attacks', 'current_team_goal_attempts_allowed',
+                     'current_team_goal_kicks', 'current_team_shots_total',
+                     'opp_team_possession', 'opp_team_yellow_cards', 'opp_team_goal_attempts',
+                     'opp_team_dangerous_attacks', 'opp_team_sec_half_goals', 'opp_team_saves',
+                     'opp_team_corner_kicks', 'opp_team_ball_safe', 'opp_team_first_half_goals',
+                     'opp_team_shots_on_target', 'opp_team_attacks', 'opp_team_goal_attempts_allowed',
+                     'opp_team_goal_kicks', 'opp_team_shots_total']
 
     query = "SELECT id, country_code FROM teams"
     cursor.execute(query)
