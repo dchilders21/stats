@@ -70,8 +70,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
 
             prev_opp.append(game['away_id'])
 
-            #goal_efficiency = np.divide(game['home_score'], game['home_goal_attempts'])
-
             game_features['possession'].append(game['home_possession'])
             game_features['attacks'].append(game['home_attacks'])
             game_features['dangerous_attacks'].append(game['home_dangerous_attacks'])
@@ -113,8 +111,6 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
             opp_formation = game['home_formation']
 
             prev_opp.append(game['home_id'])
-
-            #goal_efficiency = np.divide(game['away_score'], game['away_goal_attempts'])
 
             game_features['possession'].append(game['away_possession'])
             game_features['attacks'].append(game['away_attacks'])
@@ -163,14 +159,11 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
                 opp_goals = cur_game['home_score']
 
     for k, v in game_features.items():
-        if stats:
-            if k == 'goal_attempts_allowed':
-                print(game_features[k])
-
-        if len(v) != 0:
+        game_features[k] = np.sum(np.array(v))
+        """if len(v) != 0:
             game_features[k] = np.nanmean(np.array(v))
         else:
-            game_features[k] = np.nan
+            game_features[k] = np.nan"""
 
 
     if stats:
@@ -275,7 +268,6 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
     if stats:
         print('Opponents of Previous Opponents : {0}'.format(opp_prev_opp))
 
-
     opp_prev_opp_won_total = 0
     opp_prev_opp_lost_total = 0
 
@@ -313,70 +305,25 @@ def create_match(team_id, current_matches, match_details, round_number, stats, t
         opp_opp_opp_won_total += opp_opp_opp_win
         opp_opp_opp_lost_total += opp_opp_opp_loss
 
+    """ //////////////////////////////////////////////////////////////////////////////////////////////////// """
+    """ Collected all the information from relevant matches.  Now send through all what we have. """
+    """ //////////////////////////////////////////////////////////////////////////////////////////////////// """
+    # Only calculate SOS + RPI here since they include previous matches
     current_record = np.divide(win, (win + loss))
+    opp_record = np.divide(opp_win, (opp_win + opp_loss))
     prev_opp_record = np.divide(prev_opp_win, (prev_opp_win + prev_opp_loss))
     opp_prev_opp_record = np.divide(opp_prev_opp_won_total, (opp_prev_opp_won_total + opp_prev_opp_lost_total))
     sos = np.divide((2 * prev_opp_record) + opp_prev_opp_record, 3)
     rpi = (current_record * .25) + (sos * .75)
 
-    """ There are cases where in the 3 previous matches there is no data for that feature
-         so instead taking the average from all the previous games """
-    ''' [nan, nan, nan] '''
-    ''' Also, the zero for 'goal_attempts assuming is an error from the Stats '''
-
-    if np.isnan(game_features['goal_attempts']) or game_features['goal_attempts'] == 0:
-        season_goal_attempts = []
-        for c, match in current_previous_matches.iterrows():
-            if team_id == match['home_id']:
-                season_goal_attempts.append(match["home_goal_attempts"])
-            else:
-                season_goal_attempts.append(match["away_goal_attempts"])
-
-        goal_attempts = np.nanmean(np.array(season_goal_attempts))
-
-    else:
-        goal_attempts = game_features['goal_attempts']
-
-    if goals_for != 0:
-        goal_efficiency = np.divide(np.divide(goals_for, played), goal_attempts)
-    else:
-        goal_efficiency = 0
-
-    """ Same as above """
-    ''' [nan, nan, nan] '''
-    if np.isnan(opp_game_features['goal_attempts_allowed']) or opp_game_features['goal_attempts_allowed'] == 0:
-        season_opp_goal_attempts_allowed = []
-        for c, match in current_previous_matches.iterrows():
-            if opp_team_id == match['home_id']:
-                season_opp_goal_attempts_allowed.append(match["away_goal_attempts"])
-            else:
-                season_opp_goal_attempts_allowed.append(match["home_goal_attempts"])
-
-        opp_goal_attempts_allowed = np.nanmean(np.array(season_opp_goal_attempts_allowed))
-    else:
-        opp_goal_attempts_allowed = opp_game_features['goal_attempts_allowed']
-
-    if opp_goals_against == 0:
-        opp_defensive_goal_efficiency = 1
-    else:
-        opp_defensive_goal_efficiency = np.divide(np.subtract(opp_goal_attempts_allowed, np.divide(opp_goals_against, played)), opp_goal_attempts_allowed)
-
-    ratio_of_attacks = np.divide(game_features["dangerous_attacks"], game_features['attacks'])
-    opp_ratio_of_attacks = np.divide(opp_opp_game_features["dangerous_attacks"], opp_opp_game_features['attacks'])
-    ratio_ball_safe_to_dangerous_attacks = np.divide(game_features["attacks"], game_features['ball_safe'])
-    opp_ratio_ball_safe_to_dangerous_attacks = np.divide(opp_opp_game_features["attacks"], opp_opp_game_features['ball_safe'])
-
     feature = {'match_id': match_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_team_id,
                'opp_name': opp_team_name, 'scheduled': scheduled, 'round': round_number, 'games_played': played,
-               'is_home': is_home, 'current_formation': current_formation, 'goals_for': goals_for, 'goals_allowed': goals_against,
-               'opp_goals_for': opp_goals_for, 'opp_goals_allowed': opp_goals_against, 'goal_efficiency': goal_efficiency,
-               'opp_defensive_goal_efficiency': opp_defensive_goal_efficiency, 'ratio_of_attacks': ratio_of_attacks,
-               'opp_ratio_of_attacks': opp_ratio_of_attacks, 'ratio_ball_safe_to_dangerous_attacks': ratio_ball_safe_to_dangerous_attacks,
-               'opp_ratio_ball_safe_to_dangerous_attacks': opp_ratio_ball_safe_to_dangerous_attacks,
-               'rpi': rpi, 'goals': goals, 'points': points}
-                # 'opp_goals': opp_goals
+               'is_home': is_home, 'current_formation': current_formation, 'current_record': current_record,
+               'opp_record': opp_record, 'goals_for': goals_for, 'opp_goals_for': opp_goals_for,
+               'goals_against': goals_against, 'opp_goals_against': opp_goals_against, 'rpi': rpi,
+               'goals': goals, 'points': points}
 
-    game_features = {'current_team': game_features, 'opp_team': prev_opp_game_features }
+    game_features = {'current_team': game_features, 'opp_team': opp_game_features }
 
     if stats:
         print("//////////////////////////////////////////////////")

@@ -1,0 +1,50 @@
+,match_id,scheduled,home_id,away_id,home_team,away_team
+0,41,2016-09-20 18:00:00,87,99,Malaga CF,SD Eibar
+1,42,2016-09-20 20:00:00,85,91,Sevilla FC,Real Betis Balompie
+2,43,2016-09-21 18:00:00,90,93,Real Madrid,Villarreal CF
+3,44,2016-09-21 18:00:00,88,98,Celta de Vigo,Sporting Gijon
+4,45,2016-09-21 20:00:00,89,96,Real Sociedad,Las Palmas UD
+5,46,2016-09-21 20:00:00,92,100,FC Barcelona,Atletico Madrid
+6,47,2016-09-21 20:00:00,81,84,Granada CF,Athletic Bilbao
+7,48,2016-09-22 18:00:00,94,82,CA Osasuna,Espanyol Barcelona
+8,49,2016-09-22 18:00:00,86,97,Deportivo La Coruna,CD Leganes
+9,50,2016-09-22 20:00:00,95,83,Valencia CF,CD Alaves
+0,894,2016-09-24 00:00:00,24,40,New York City FC,Chicago Fire
+1,895,2016-09-24 21:00:00,34,25,Toronto FC,Philadelphia Union
+2,896,2016-09-24 23:00:00,28,22,Vancouver Whitecaps FC,Colorado Rapids
+3,897,2016-09-24 23:00:00,33,35,DC United,Orlando City SC
+4,898,2016-09-24 23:00:00,31,29,NY Red Bulls,Montreal Impact
+5,899,2016-09-25 01:00:00,38,30,Houston Dynamo,Portland Timbers
+6,900,2016-09-25 01:30:00,23,21,Real Salt Lake,FC Dallas
+7,901,2016-09-25 02:30:00,32,27,San Jose Earthquakes,Sporting Kansas City
+8,902,2016-09-25 20:00:00,26,37,LA Galaxy,Seattle Sounders
+9,903,2016-09-25 23:00:00,39,36,Columbus Crew,New England Revolution
+0,51,2016-09-24 11:30:00,58,52,Manchester United,Leicester City
+1,52,2016-09-24 14:00:00,45,42,Swansea City,Manchester City
+2,53,2016-09-24 14:00:00,60,59,Sunderland AFC,Crystal Palace
+3,54,2016-09-24 14:00:00,56,50,Liverpool FC,Hull City
+4,55,2016-09-24 14:00:00,55,44,Bournemouth AFC,Everton FC
+5,56,2016-09-24 14:00:00,49,46,Stoke City,West Bromwich Albion
+6,57,2016-09-24 14:00:00,51,54,Middlesbrough FC,Tottenham Hotspur
+7,58,2016-09-24 16:30:00,43,48,Arsenal FC,Chelsea FC
+8,59,2016-09-25 15:00:00,47,41,West Ham United,Southampton FC
+9,60,2016-09-26 19:00:00,53,57,Burnley FC,Watford FC
+0,37,2016-09-23 18:30:00,67,64,Borussia Dortmund,SC Freiburg
+1,38,2016-09-24 13:30:00,69,63,Eintracht Frankfurt,Hertha BSC
+2,39,2016-09-24 13:30:00,68,77,FC Augsburg,SV Darmstadt 98
+3,40,2016-09-24 13:30:00,73,71,1 FSV Mainz 05,Bayer Leverkusen
+4,41,2016-09-24 13:30:00,65,76,Hamburger SV,Bayern Munich
+5,42,2016-09-24 13:30:00,66,72,Monchengladbach,FC Ingolstadt
+6,43,2016-09-24 16:30:00,70,75,Werder Bremen,VfL Wolfsburg
+7,44,2016-09-25 13:30:00,61,62,1899 Hoffenheim,FC Schalke 04
+8,45,2016-09-25 15:30:00,78,74,1 FC Cologne,RB Leipzig
+0,61,2016-09-23 18:45:00,114,118,Toulouse FC,Paris St Germain
+1,62,2016-09-24 15:00:00,109,110,FC Lorient,Olympique Lyon
+2,63,2016-09-24 18:00:00,107,102,Montpellier HSC,FC Metz
+3,64,2016-09-24 18:00:00,113,112,SC Bastia,EA Guingamp
+4,65,2016-09-24 18:00:00,117,106,AS Monaco,SCO Angers
+5,66,2016-09-24 18:00:00,115,105,FC Girondins Bordeaux,SM Caen
+6,67,2016-09-24 18:00:00,111,119,Dijon FCO,Stade Rennes
+7,68,2016-09-25 13:00:00,108,103,AS Saint Etienne,Lille OSC
+8,69,2016-09-25 15:00:00,116,104,AS Nancy,OGC Nice
+9,70,2016-09-25 18:45:00,101,120,Olympique Marseille,FC Nantes

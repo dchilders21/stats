@@ -45,7 +45,7 @@ def train_models(round_num, X, y, models):
 
     for i in models:
 
-        model_round = 'models/' + str(round_num) + '/' + str(i) + '_round_' + str(round_num) + '.pk1'
+        model_round = 'models/' + str(i) + '_round_' + str(round_num) + '.pk1'
 
         if i == 'log':
             log = build_model(X, y, i)

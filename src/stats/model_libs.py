@@ -94,6 +94,12 @@ def split(data, test_proportion=0.4):
     return (train, test)
 
 
+def diff_square(a, b):
+
+    return np.subtract(np.square(a), np.square(b))
+
+
+
 def predict_model(model, test, ignore_cols, target_col):
     """ Runs a simple predictor that will predict if we expect a team to
         win.

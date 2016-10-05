@@ -1,40 +1,11 @@
-from stats import match_stats, match_stats_alternate
+from stats import match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
 from stats import model_libs, predict_matches
 
 
-def get_power_rankings(teams, rd):
-
-    match_details = get_coverage()
-    power_rankings = pd.DataFrame()
-
-    for i, team in teams.iterrows():
-        cur_match = match_details.loc[
-            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-            (match_details['round'] == rd)]
-
-        ''' If current team not playing this round simply go to the next round '''
-        if cur_match.empty:
-            cur_match = match_details.loc[
-                ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-                (match_details['round'] == rd + 1)]
-
-        df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-
-        features, _ = match_stats.create_match(team["id"], df, match_details, rd, False, False)
-        sos = features["sos"]
-        win_percentage = features["win_percentage"]
-        rpi = (win_percentage * .25) + (sos * .75)
-        s = pd.Series([team["id"], features["team_name"], rpi])
-        power_rankings = power_rankings.append(s, ignore_index=True)
-        power_rankings = power_rankings.sort_values(2, ascending=False)
-
-    return power_rankings
-
-
-def get_rankings(teams, rd, side_of_ball, upcoming):
+def rank_teams(teams, rd, side_of_ball, upcoming):
 
     upcoming_matches, match_details = predict_matches.get_upcoming_matches()
     rankings = pd.DataFrame()
@@ -62,8 +33,9 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
 
         if side_of_ball == "defensive":
 
-            if np.isnan(game_features['current_team']['goal_attempts_allowed']) or game_features['current_team'][
-                    'goal_attempts_allowed'] == 0:
+            current_team_goal_attempts = game_features['current_team']['goal_attempts']
+
+            if np.isnan(current_team_goal_attempts) or current_team_goal_attempts == 0:
 
                 current_previous_matches = match_details.loc[
                     ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
@@ -81,11 +53,12 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
 
             else:
 
-                goal_attempts_allowed = game_features['current_team']['goal_attempts_allowed']
+                goal_attempts_allowed = current_team_goal_attempts
 
-            goals_allowed_avg = np.divide(features['goals_allowed'], features['games_played'])
+            goal_attempts_allowed_avg = np.divide(goal_attempts_allowed, features['games_played'])
+            goals_allowed_avg = np.divide(features['goals_against'], features['games_played'])
 
-            defensive_rank = (goal_attempts_allowed * .30) + (goals_allowed_avg * .70)
+            defensive_rank = (goal_attempts_allowed_avg * .30) + (goals_allowed_avg * .70)
 
             s = pd.Series([team["id"], features["team_name"], defensive_rank])
             rankings = rankings.append(s, ignore_index=True)
@@ -93,7 +66,9 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
 
         elif side_of_ball == "offensive":
 
-            if np.isnan(game_features['current_team']['goal_attempts']) or game_features['current_team']['goal_attempts'] == 0:
+            current_team_goal_attempts = game_features['current_team']['goal_attempts']
+
+            if np.isnan(current_team_goal_attempts) or current_team_goal_attempts == 0:
 
                 current_previous_matches = match_details.loc[
                     ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
@@ -111,11 +86,12 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
 
             else:
 
-                goal_attempts = game_features['current_team']['goal_attempts']
+                goal_attempts = current_team_goal_attempts
 
+            goal_attempts_avg = np.divide(goal_attempts, features['games_played'])
             goals_for_avg = np.divide(features['goals_for'], features['games_played'])
 
-            offensive_rank = (goal_attempts * .30) + (goals_for_avg * .70)
+            offensive_rank = (goal_attempts_avg * .30) + (goals_for_avg * .70)
 
             s = pd.Series([team["id"], features["team_name"], offensive_rank])
             rankings = rankings.append(s, ignore_index=True)
@@ -127,7 +103,103 @@ def get_rankings(teams, rd, side_of_ball, upcoming):
             rankings = rankings.append(s, ignore_index=True)
             rankings = rankings.sort_values(2, ascending=False)
 
+        elif side_of_ball == "records":
+            s = pd.Series([team["id"], features["team_name"], features["current_record"]])
+            rankings = rankings.append(s, ignore_index=True)
+            rankings = rankings.sort_values(2, ascending=False)
+
     return rankings
+
+
+def set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num):
+    """ Assigning RPI Rankings to the Current Team and the Opponent Team """
+    rpi_rank = rpi_rankings.loc[rpi_rankings[0] == team['id'], "rpi_rankings_quartiled"]
+
+    r_idx = data.loc[(data["team_id"] == team["id"]) & (data["round"] == round_num), "rpi_ranking"].index
+
+    opp_r_idx = data.loc[(data["opp_id"] == team["id"]) & (data["round"] == round_num), "rpi_ranking"].index
+
+    data.loc[r_idx, "rpi_ranking"] = rpi_rank.values[0]
+    data.loc[opp_r_idx, "opp_rpi_ranking"] = rpi_rank.values[0]
+    #data.set_value(r_idx, "rpi_ranking", 1)
+    #data.set_value(opp_r_idx, "opp_rpi_ranking", 1)
+
+    ''' If the team is the team_id then put in their offensive ranking for that game '''
+    offensive_rank = offensive_rankings.loc[
+        offensive_rankings[0] == team['id'], "offensive_rankings_quartiled"]
+    idx = data.loc[(data["team_id"] == team["id"]) & (data["round"] == round_num), "offensive_ranking"].index
+
+    data.loc[idx, "offensive_ranking"] = offensive_rank.values[0]
+    #data.set_value(idx, "offensive_ranking", offensive_rank.values[0])
+
+    ''' If the team is the opp then put in their defensive ranking for that game '''
+    defensive_rank = defensive_rankings.loc[
+        defensive_rankings[0] == team['id'], "defensive_rankings_quartiled"]
+    opp_idx = data.loc[(data["opp_id"] == team["id"]) & (data["round"] == round_num)].index
+
+    data.loc[opp_idx, "opp_defensive_ranking"] = defensive_rank.values[0]
+    #data.set_value(opp_idx, "opp_defensive_ranking", defensive_rank.values[0])
+
+    return data
+
+
+def rank_tables(teams_in_league, i, upcoming):
+
+    rpi_rankings = rank_teams(teams_in_league, i, "rpi", upcoming)
+    r_rankings = model_libs.quartile_list(rpi_rankings, True)
+    rpi_rankings["rpi_rankings_quartiled"] = r_rankings
+    #print(rpi_rankings)
+    print("Finished with RPI Rankings")
+
+    offensive_rankings = rank_teams(teams_in_league, i, "offensive", upcoming)
+    rankings = model_libs.quartile_list(offensive_rankings, True)
+    offensive_rankings["offensive_rankings_quartiled"] = rankings
+    print("Finished with Offensive Rankings")
+    #print(offensive_rankings)
+
+    defensive_rankings = rank_teams(teams_in_league, i, "defensive", upcoming)
+    rankings = model_libs.quartile_list(defensive_rankings, False)
+    defensive_rankings["defensive_rankings_quartiled"] = rankings
+    print("Finished with Defensive Rankings")
+    #print(defensive_rankings)
+
+    return rpi_rankings, offensive_rankings, defensive_rankings
+
+
+def get_rankings(leagues, teams, league_rounds, data, upcoming):
+
+    data["offensive_ranking"] = pd.Series(None, index=data.index)
+    data["opp_defensive_ranking"] = pd.Series(None, index=data.index)
+    data["rpi_ranking"] = pd.Series(None, index=data.index)
+    data["opp_rpi_ranking"] = pd.Series(None, index=data.index)
+
+    """ Going through each League"""
+    for key, value in leagues.iteritems():
+        country_code = leagues[key]
+        round_num = league_rounds[key]
+        teams_in_league = teams[teams["country_code"] == country_code]
+
+        print("ROUND :: {} ".format(round_num))
+
+        if upcoming:
+
+            rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num, upcoming)
+
+            """ Loop through each Team in the League for that round and assign an Offensive Rank """
+            for k, team in teams_in_league.iterrows():
+                ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num)
+
+        else:
+            """ Looping through the Rounds """
+            for i in range(4, round_num):
+
+                rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, i, upcoming)
+
+                """ Loop through each Team in the League for that round and assign an Offensive Rank """
+                for k, team in teams_in_league.iterrows():
+                    ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, i)
+
+    return ranked_data
 
 
 def get_coverage():
@@ -142,22 +214,24 @@ def get_coverage():
 
 def get_columns():
 
-    """columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
-               # Non-Feature Columns
-               'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_for', 'opp_goals_allowed',
-               'goal_efficiency', 'opp_defensive_goal_efficiency', 'ratio_of_attacks', 'opp_ratio_of_attacks',
-               'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi', 'opp_rpi',
-               'goals', 'points']  # Target Columns - #'goals', 'opp_goals"""
-
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
-               'is_home', 'current_formation', 'diff_goal_for', 'diff_goal_allowed', 'diff_attacks',
-               'diff_dangerous_attacks',
-               'diff_goal_attempts', 'diff_ball_safe',
-               'goals_for', 'goals_allowed', 'rpi',
-               'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
+               'is_home', 'current_formation', 'current_record', 'opp_record', 'goals_for', 'opp_goals_for',
+               'goals_against', 'opp_goals_against', 'rpi',
+               'goals', 'points']
 
-    return columns
+    stats_columns = ['current_team_possession', 'current_team_yellow_cards', 'current_team_goal_attempts',
+                     'current_team_dangerous_attacks', 'current_team_sec_half_goals', 'current_team_saves',
+                     'current_team_corner_kicks', 'current_team_ball_safe', 'current_team_first_half_goals',
+                     'current_team_shots_on_target', 'current_team_attacks', 'current_team_goal_attempts_allowed',
+                     'current_team_goal_kicks', 'current_team_shots_total',
+                     'opp_team_possession', 'opp_team_yellow_cards', 'opp_team_goal_attempts',
+                     'opp_team_dangerous_attacks', 'opp_team_sec_half_goals', 'opp_team_saves',
+                     'opp_team_corner_kicks', 'opp_team_ball_safe', 'opp_team_first_half_goals',
+                     'opp_team_shots_on_target', 'opp_team_attacks', 'opp_team_goal_attempts_allowed',
+                     'opp_team_goal_kicks', 'opp_team_shots_total']
+
+    return columns, stats_columns
 
 
 def get_teams():
@@ -221,18 +295,19 @@ def run_data():
 
                 for c, cur_match in cur_matches.iterrows():
                     df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-                    features, game_features = match_stats_alternate.create_match(team["id"], df, match_details, i, False, True)
+                    features, game_features = match_stats.create_match(team["id"], df, match_details, i, False, True)
 
                     if features is not None:
                         for key, value in game_features.items():
                             for k, v in value.items():
                                 new_key = key + '_' + k
+
                                 features[new_key] = v
 
                     training_list.append(features)
 
-    columns = get_columns()
-    data = pd.DataFrame(training_list, columns=columns)
+    columns, stats_columns = get_columns()
+    data = pd.DataFrame(training_list, columns=columns + stats_columns)
 
     data = data.replace(np.nan, data.mean())
 

@@ -25,7 +25,7 @@ def predictions(upcoming_matches):
 
     import mysql.connector
     import pandas as pd
-    from stats import match_stats, model_libs, form_data, match_stats_alternate
+    from stats import match_stats, model_libs, form_data
 
     cnx = mysql.connector.connect(user='root', password='',
                                   host='127.0.0.1',
@@ -33,20 +33,22 @@ def predictions(upcoming_matches):
 
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    """columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
-               # Non-Feature Columns
-               'is_home', 'current_formation', 'goals_for', 'goals_allowed', 'opp_goals_for', 'opp_goals_allowed',
-               'goal_efficiency', 'opp_defensive_goal_efficiency', 'ratio_of_attacks', 'opp_ratio_of_attacks',
-               'ratio_ball_safe_to_dangerous_attacks', 'opp_ratio_ball_safe_to_dangerous_attacks', 'rpi',
-               'goals', 'points']  # Target Columns - #'goals', 'opp_goals'"""
-
     columns = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'round', 'games_played',
                # Non-Feature Columns
-               'is_home', 'current_formation', 'diff_goal_for', 'diff_goal_allowed', 'diff_attacks',
-               'diff_dangerous_attacks',
-               'diff_goal_attempts', 'diff_ball_safe', 'rpi',
-               'goals_for', 'goals_allowed',
-               'goals', 'points']  # Target Columns - #'goals', 'opp_goals'
+               'is_home', 'current_formation', 'current_record', 'opp_record', 'goals_for', 'opp_goals_for',
+               'goals_against', 'opp_goals_against', 'rpi',
+               'goals', 'points']
+
+    stats_columns = ['current_team_possession', 'current_team_yellow_cards', 'current_team_goal_attempts',
+             'current_team_dangerous_attacks', 'current_team_sec_half_goals', 'current_team_saves',
+             'current_team_corner_kicks', 'current_team_ball_safe', 'current_team_first_half_goals',
+             'current_team_shots_on_target', 'current_team_attacks', 'current_team_goal_attempts_allowed',
+             'current_team_goal_kicks', 'current_team_shots_total',
+             'opp_team_possession', 'opp_team_yellow_cards', 'opp_team_goal_attempts',
+             'opp_team_dangerous_attacks', 'opp_team_sec_half_goals', 'opp_team_saves',
+             'opp_team_corner_kicks', 'opp_team_ball_safe', 'opp_team_first_half_goals',
+             'opp_team_shots_on_target', 'opp_team_attacks', 'opp_team_goal_attempts_allowed',
+             'opp_team_goal_kicks', 'opp_team_shots_total']
 
     query = "SELECT id, country_code FROM teams"
     cursor.execute(query)
@@ -63,6 +65,7 @@ def predictions(upcoming_matches):
                     ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
 
         if not upcoming_team_matches.empty:
+
             for i, upcoming_team_match in upcoming_team_matches.iterrows():
                 df = pd.DataFrame([]).append(upcoming_team_match, ignore_index=True)
                 features, game_features = match_stats.create_match(team["id"], df, match_details, round_number, False, False)
@@ -75,6 +78,6 @@ def predictions(upcoming_matches):
 
                 upcoming_list.append(features)
 
-    upcoming_data = pd.DataFrame(upcoming_list, columns=columns)
+    upcoming_data = pd.DataFrame(upcoming_list, columns=columns + stats_columns)
 
     return upcoming_data
