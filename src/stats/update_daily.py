@@ -14,9 +14,9 @@ cursor = cnx.cursor(buffered=True)
 
 API_KEY = "b99x88uxzrfbvm9kxtfmabth"
 VERSION = "t2"
-DATE = "2016/09/26"
+DATE = "2016/10/13"
 
-add_team = ("INSERT INTO matches "
+add_team = ("INSERT INTO matches_mls "
             "(stats_id, status, scheduled, scratched, home_id, away_id, venue_id, round_number, round_week) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
@@ -35,7 +35,7 @@ for match in matches:
     if league["name"] == "Major League Soccer":
         print(match['id'])
 
-        query = ("SELECT id FROM matches "
+        query = ("SELECT id FROM matches_mls "
                  "WHERE stats_id = %(match_id)s")
         cursor.execute(query, {'match_id': match["id"]})
 

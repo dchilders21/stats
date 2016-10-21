@@ -174,7 +174,7 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
     data["opp_rpi_ranking"] = pd.Series(None, index=data.index)
 
     """ Going through each League"""
-    for key, value in leagues.iteritems():
+    for key, value in leagues.items():
         country_code = leagues[key]
         round_num = league_rounds[key]
         teams_in_league = teams[teams["country_code"] == country_code]

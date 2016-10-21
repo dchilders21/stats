@@ -25,6 +25,21 @@ match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 print('INITIALIZED...')
 
 
+@app.route('/')
+def home():
+    leagues_codes = model_libs.get_leagues_country_codes()
+    all_teams = form_data.get_teams()
+    leagues = []
+
+    for key in leagues_codes:
+        leagues.append(key)
+
+    all_teams = all_teams.reset_index()
+    all_teams = all_teams.to_json(orient='index')
+
+    return render_template("index.html", leagues=leagues_codes, teams=all_teams)
+
+
 @app.route('/rankings/<league>/<int:round>')
 def rankings(league, round):
     power_list = []

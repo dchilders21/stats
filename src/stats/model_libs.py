@@ -2,6 +2,7 @@ import statsmodels.api as sm
 import numpy as np
 import pandas as pd
 import random
+from collections import namedtuple
 
 L1_ALPHA = 16.0
 
@@ -184,7 +185,8 @@ def check_category(pred, actual):
 
 
 def get_leagues_rounds():
-    leagues = {"mls": 28, "epl": 6, "bundesliga": 5, "primera_division": 5, "ligue_1": 7}
+    """ Upcoming Rounds (closest round not played yet) """
+    leagues = {"mls": 29, "epl": 8, "bundesliga": 7, "primera_division": 8, "ligue_1": 9}
     return leagues
 
 
@@ -197,15 +199,15 @@ def get_team_round(team_country):
     """ Calls in a Team Country Code and returns the current round that league is in"""
     # Last round 'closed' + 1
     if team_country == 'USA':
-        return 28
+        return 29
     elif team_country == 'ENG':
-        return 6
+        return 8
     elif team_country == 'DEU':
-        return 5
-    elif team_country == 'ESP':
-        return 5
-    elif team_country == 'FRA':
         return 7
+    elif team_country == 'ESP':
+        return 8
+    elif team_country == 'FRA':
+        return 9
 
 
 def set_rpi_quartile(round_number, data, isCur):
@@ -292,3 +294,9 @@ def quartile_list(ranking, high_best):
             a[0][x] -= (i * 5)
 
     return r
+
+
+def iternamedtuples(df):
+    Row = namedtuple('Row', df.columns)
+    for row in df.itertuples():
+        yield Row(*row[1:])

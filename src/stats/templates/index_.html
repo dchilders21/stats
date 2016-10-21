@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8" />
+        <title>STATS</title>
+        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'/>
+        <meta id="team-data" data-name="{{teams}}">
+        <script src="{{ url_for('static', filename='libs/jquery-3.1.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </head>
+    <body>
+
+
+        <div id="wrapper">
+            <div id="sidebar">
+                <h1>Leagues</h1>
+                <select id="league" name="league">
+                     <option value=""></option>
+                  {% for league, code in leagues.items() %}
+                      <option value="{{ code }}">{{ league }}</option>
+                  {% endfor %}
+                </select>
+
+                <h1>Teams</h1>
+                <select id="team" name="team">
+                </select>
+            </div>
+            <div id="main">
+
+            </div>
+        </div>
+   	</body>
+</html>

@@ -5,9 +5,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime, date, time
 import time
 
+""" Does one round at a time.  Select the round (already played) and which league. Run it."""
+
 # ligue_1, epl, primera_division, bundesliga
-rounds = [4]
-leagues = ['primera_division']
+rounds = [8]
+leagues = ['ligue_1']
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',

@@ -14,7 +14,8 @@ def get_upcoming_matches():
         table = str('matches_' + key)
         round_number = leagues[key]
         query = str("SELECT " + table + ".id as 'match_id', " + table + ".scheduled, " + table + ".home_id, " + table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team' FROM " + table + " LEFT JOIN teams teams1 ON " + table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(round_number) + "'")
-        upcoming_matches = upcoming_matches.append(pd.read_sql(query, cnx))
+        match = pd.read_sql(query, cnx)
+        upcoming_matches = upcoming_matches.append(match)
 
     match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 

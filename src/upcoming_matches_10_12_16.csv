@@ -1,0 +1,40 @@
+,match_id,scheduled,home_id,away_id,home_team,away_team
+0,71.0,2016-10-15 11:30:00,48.0,52.0,Chelsea FC,Leicester City
+1,72.0,2016-10-15 14:00:00,42.0,44.0,Manchester City,Everton FC
+2,73.0,2016-10-15 14:00:00,55.0,50.0,Bournemouth AFC,Hull City
+3,74.0,2016-10-15 14:00:00,46.0,54.0,West Bromwich Albion,Tottenham Hotspur
+4,75.0,2016-10-15 14:00:00,43.0,45.0,Arsenal FC,Swansea City
+5,76.0,2016-10-15 14:00:00,49.0,60.0,Stoke City,Sunderland AFC
+6,77.0,2016-10-15 16:30:00,59.0,47.0,Crystal Palace,West Ham United
+7,78.0,2016-10-16 12:30:00,51.0,57.0,Middlesbrough FC,Watford FC
+8,79.0,2016-10-16 15:00:00,41.0,53.0,Southampton FC,Burnley FC
+9,80.0,2016-10-17 19:00:00,56.0,58.0,Liverpool FC,Manchester United
+0,81.0,2016-10-15 18:00:00,107.0,105.0,Montpellier HSC,SM Caen
+1,82.0,2016-10-15 18:00:00,109.0,120.0,FC Lorient,FC Nantes
+2,83.0,2016-10-15 18:00:00,112.0,103.0,EA Guingamp,Lille OSC
+3,84.0,2016-10-15 18:00:00,108.0,111.0,AS Saint Etienne,Dijon FCO
+4,85.0,2016-10-15 18:00:00,113.0,106.0,SC Bastia,SCO Angers
+5,86.0,2016-10-15 18:00:00,116.0,118.0,AS Nancy,Paris St Germain
+6,87.0,2016-10-15 18:00:00,101.0,102.0,Olympique Marseille,FC Metz
+7,88.0,2016-10-15 18:00:00,119.0,115.0,Stade Rennes,FC Girondins Bordeaux
+8,89.0,2016-10-15 18:00:00,104.0,110.0,OGC Nice,Olympique Lyon
+9,90.0,2016-10-15 18:00:00,114.0,117.0,Toulouse FC,AS Monaco
+0,71.0,2016-10-16 17:00:00,98.0,95.0,Sporting Gijon,Valencia CF
+1,72.0,2016-10-16 17:00:00,84.0,89.0,Athletic Bilbao,Real Sociedad
+2,73.0,2016-10-16 17:00:00,96.0,82.0,Las Palmas UD,Espanyol Barcelona
+3,74.0,2016-10-16 17:00:00,91.0,90.0,Real Betis Balompie,Real Madrid
+4,75.0,2016-10-16 17:00:00,83.0,87.0,CD Alaves,Malaga CF
+5,76.0,2016-10-16 17:00:00,99.0,94.0,SD Eibar,CA Osasuna
+6,77.0,2016-10-16 17:00:00,93.0,88.0,Villarreal CF,Celta de Vigo
+7,78.0,2016-10-16 17:00:00,92.0,86.0,FC Barcelona,Deportivo La Coruna
+8,79.0,2016-10-16 17:00:00,100.0,81.0,Atletico Madrid,Granada CF
+9,80.0,2016-10-16 17:00:00,97.0,85.0,CD Leganes,Sevilla FC
+0,55.0,2016-10-14 18:30:00,67.0,63.0,Borussia Dortmund,Hertha BSC
+1,56.0,2016-10-15 13:30:00,78.0,72.0,1 FC Cologne,FC Ingolstadt
+2,57.0,2016-10-15 13:30:00,68.0,62.0,FC Augsburg,FC Schalke 04
+3,58.0,2016-10-15 13:30:00,66.0,65.0,Monchengladbach,Hamburger SV
+4,59.0,2016-10-15 13:30:00,61.0,64.0,1899 Hoffenheim,SC Freiburg
+5,60.0,2016-10-15 13:30:00,69.0,76.0,Eintracht Frankfurt,Bayern Munich
+6,61.0,2016-10-15 16:30:00,70.0,71.0,Werder Bremen,Bayer Leverkusen
+7,62.0,2016-10-16 13:30:00,73.0,77.0,1 FSV Mainz 05,SV Darmstadt 98
+8,63.0,2016-10-16 15:30:00,75.0,74.0,VfL Wolfsburg,RB Leipzig

@@ -12,12 +12,12 @@ cursor = cnx.cursor()
 
 # NA key - b99x88uxzrfbvm9kxtfmabth
 # EU key - au5hqx7j6uag8zrryy5ubh6b
-API_KEY = "b99x88uxzrfbvm9kxtfmabth"
+API_KEY = "au5hqx7j6uag8zrryy5ubh6b"
 VERSION = "t2"
 
 cursor = cnx.cursor(buffered=True)
-query = ("SELECT id, stats_id FROM matches WHERE stats_id='ac24cb5c-77f2-4abb-905f-651c1d8550ce'")
-# query = ("SELECT id, stats_id FROM matches WHERE status='closed'")
+query = ("SELECT id, stats_id FROM matches_mls WHERE stats_id='a7a6f934-8f87-411f-8a5b-f9c81ee19b63'")
+#query = ("SELECT id, stats_id FROM matches WHERE status='closed'")
 cursor.execute(query)
 
 matches = cursor.fetchall()
@@ -34,7 +34,7 @@ for id, stats_id in matches:
         print("Match ID already Exists in DB")
     else:
         time.sleep(2)
-        url = "http://api.sportradar.us/soccer-" + VERSION + "/na/matches/" + stats_id + "/summary.xml?api_key=" + API_KEY
+        url = "http://api.sportradar.us/soccer-" + VERSION + "/eu/matches/" + stats_id + "/summary.xml?api_key=" + API_KEY
         print(url)
         r = requests.get(url)
 
