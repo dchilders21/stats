@@ -22,22 +22,55 @@ cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 
+leagues = model_libs.get_leagues_country_codes()
+rounds = model_libs.get_leagues_rounds()
+
 print('INITIALIZED...')
 
 
 @app.route('/')
 def home():
-    leagues_codes = model_libs.get_leagues_country_codes()
     all_teams = form_data.get_teams()
-    leagues = []
-
-    for key in leagues_codes:
-        leagues.append(key)
-
     all_teams = all_teams.reset_index()
     all_teams = all_teams.to_json(orient='index')
 
-    return render_template("index.html", leagues=leagues_codes, teams=all_teams)
+    upcoming_matches, _ = predict_matches.get_upcoming_matches()
+    upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
+    upcoming_matches = upcoming_matches.reindex(columns=['league', 'home_team', 'away_team', 'scheduled',
+                                                       'home_id', 'away_id'])
+    upcoming_matches = upcoming_matches.to_dict(orient='records')
+
+    return render_template("index.html", leagues=leagues, teams=all_teams, upcoming_matches=upcoming_matches)
+
+
+@app.route('/league/<league>')
+def league(league):
+
+    table = str('matches_' + league)
+    round_number = rounds[league]
+    query = str(
+        "SELECT " + table + ".id as 'match_id', " + table + ".scheduled, " + table + ".home_id, " + table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team', teams1.country_code AS 'country_code' FROM " + table + " LEFT JOIN teams teams1 ON " + table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(
+            round_number) + "'")
+    matches = pd.read_sql(query, cnx)
+
+    matches = matches.reindex(columns=['home_team', 'away_team', 'scheduled', 'home_id', 'away_id'])
+    matches = matches.to_dict(orient='records')
+    return render_template("league.html", leagues=leagues, league=league, matches=matches)
+
+
+@app.route('/team/<int:team_id>')
+def team(team_id):
+    print("team_id :: {}".format(team_id))
+    previous_matches = match_details.loc[
+        ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id))]
+
+    previous_matches = previous_matches[["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
+                                         "away_team", "away_id", "away_score", "away_first_half_score",
+                                         "away_second_half_score"]]
+    previous_matches = previous_matches.iloc[::-1]
+    previous_matches = previous_matches.to_dict(orient='records')
+    print(previous_matches)
+    return render_template("team.html", leagues=leagues, previous_matches=previous_matches)
 
 
 @app.route('/rankings/<league>/<int:round>')
@@ -56,7 +89,6 @@ def rankings(league, round):
     qqs = np.percentile(pr, [20, 40, 60, 80])
 
     return render_template("rankings.html", rankings=power_list)
-
 
 @app.route('/<league>/<int:team_id>/<int:round_num>')
 def team_stats(league, team_id, round_num):
@@ -88,6 +120,7 @@ def team_stats(league, team_id, round_num):
                                               'away_second_half_score', 'away_offsides', 'away_yellow_card'], axis=1)
 
     leagues = model_libs.get_leagues_country_codes()
+
     if league == 'mls':
         teams = pd.read_sql("SELECT id, full_name FROM teams WHERE id < 41", cnx)
 

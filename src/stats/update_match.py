@@ -16,7 +16,7 @@ API_KEY = "au5hqx7j6uag8zrryy5ubh6b"
 VERSION = "t2"
 
 cursor = cnx.cursor(buffered=True)
-query = ("SELECT id, stats_id FROM matches_mls WHERE stats_id='a7a6f934-8f87-411f-8a5b-f9c81ee19b63'")
+query = ("SELECT id, stats_id FROM matches_mls WHERE stats_id='3c2b5f28-097c-4810-bc9f-fc441e26494f'")
 #query = ("SELECT id, stats_id FROM matches WHERE status='closed'")
 cursor.execute(query)
 

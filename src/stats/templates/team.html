@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#">Minton</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+                <h4 class="page-title">Welcome!</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h4 class="text-dark  header-title m-t-0">Previous Matches</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Scheduled</th>
+                            <th>Home Team</th>
+                            <th>Home Score</th>
+                            <th>Home First Half Score</th>
+                            <th>Home Second Half Score</th>
+                            <th>Away Team</th>
+                            <th>Away Score</th>
+                            <th>Away First Half Score</th>
+                            <th>Away Second Half Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for match in previous_matches %}
+                            <tr>
+                                <td>{{ match.scheduled }}</td>
+                                <td><a href="{{ url_for('team', team_id=match.home_id) }}">{{ match.home_team }}</a></td>
+                                <td>{{ match.home_score }}</td>
+                                <td>{{ match.home_first_half_score }}</td>
+                                <td>{{ match.home_second_half_score }}</td>
+                                <td><a href="{{ url_for('team', team_id=match.away_id) }}">{{ match.away_team }}</a></td>
+                                <td>{{ match.away_score }}</td>
+                                <td>{{ match.away_first_half_score }}</td>
+                                <td>{{ match.away_second_half_score }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end col -8 -->
+
+    </div>
+    <!-- end row -->
+{% endblock %}

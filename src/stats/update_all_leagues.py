@@ -9,7 +9,7 @@ import time
 
 # ligue_1, epl, primera_division, bundesliga
 rounds = [8]
-leagues = ['ligue_1']
+leagues = ['bundesliga']
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',

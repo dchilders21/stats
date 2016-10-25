@@ -100,7 +100,6 @@ def diff_square(a, b):
     return np.subtract(np.square(a), np.square(b))
 
 
-
 def predict_model(model, test, ignore_cols, target_col):
     """ Runs a simple predictor that will predict if we expect a team to
         win.
@@ -186,7 +185,7 @@ def check_category(pred, actual):
 
 def get_leagues_rounds():
     """ Upcoming Rounds (closest round not played yet) """
-    leagues = {"mls": 29, "epl": 8, "bundesliga": 7, "primera_division": 8, "ligue_1": 9}
+    leagues = {"mls": 32, "epl": 10, "bundesliga": 9, "primera_division": 10, "ligue_1": 11}
     return leagues
 
 
@@ -195,19 +194,33 @@ def get_leagues_country_codes():
     return leagues
 
 
+def get_league_from_country_code(code):
+
+    if code == "USA":
+        return "MLS"
+    elif code == "ENG":
+        return "English Premiere League"
+    elif code == "DEU":
+        return "Bundesliga"
+    elif code == "ESP":
+        return "Primera Divsion"
+    elif code == "FRA":
+        return "Ligue 1"
+
+
 def get_team_round(team_country):
     """ Calls in a Team Country Code and returns the current round that league is in"""
     # Last round 'closed' + 1
     if team_country == 'USA':
-        return 29
+        return 32
     elif team_country == 'ENG':
-        return 8
+        return 10
     elif team_country == 'DEU':
-        return 7
-    elif team_country == 'ESP':
-        return 8
-    elif team_country == 'FRA':
         return 9
+    elif team_country == 'ESP':
+        return 10
+    elif team_country == 'FRA':
+        return 11
 
 
 def set_rpi_quartile(round_number, data, isCur):

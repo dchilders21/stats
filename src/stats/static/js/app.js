@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var league = $('#league').val();
     var teams = $('#team-data').data();
 
@@ -16,4 +17,5 @@ $(document).ready(function () {
             });
       });
     });
+
 });
