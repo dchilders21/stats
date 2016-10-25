@@ -71,30 +71,70 @@ def team(team_id):
     loss = 0
     draw = 0
 
+    games_played = 0
+
+    season_stats = {'possession': [], 'attacks': [], 'dangerous_attacks': [], 'yellow_cards': [],
+                     'corner_kicks': [], 'shots_on_target': [], 'shots_total': [], 'ball_safe': [],
+                     'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'first_half_goals': [],
+                     'sec_half_goals': [], 'goal_kicks': [], 'goals_for': [], 'goals_allowed': []}
+
     for index, game in previous_matches.iterrows():
-        print(game)
+
+        games_played += 1
+
         if team_id == game['home_id']:
             if game['home_points'] == 3:
                 win += 1
-
             elif game['home_points'] == 1:
                 draw += 1
-
             else:
                 loss += 1
+
+            season_stats['possession'].append(game['home_possession'])
+            season_stats['attacks'].append(game['home_attacks'])
+            season_stats['dangerous_attacks'].append(game['home_dangerous_attacks'])
+            season_stats['yellow_cards'].append(game['home_yellow_card'])
+            season_stats['corner_kicks'].append(game['home_corner_kicks'])
+            season_stats['shots_on_target'].append(game['home_shots_on_target'])
+            season_stats['shots_total'].append(game['home_shots_total'])
+            season_stats['ball_safe'].append(game['home_ball_safe'])
+            season_stats['goal_attempts'].append(game['home_goal_attempts'])
+            season_stats['goal_attempts_allowed'].append(game['away_goal_attempts'])
+            season_stats['saves'].append(game['home_saves'])
+            season_stats['first_half_goals'].append(game['home_first_half_score'])
+            season_stats['sec_half_goals'].append(game['home_second_half_score'])
+            season_stats['goal_kicks'].append(game['home_goal_kicks'])
+            season_stats['goals_for'].append(game['home_score'])
+            season_stats['goals_allowed'].append(game['away_score'])
         else:
+
             if game['away_points'] == 3:
                 win += 1
-
             elif game['away_points'] == 1:
                 draw += 1
-
             else:
                 loss += 1
 
-    print(win)
-    print(draw)
-    print(loss)
+            season_stats['possession'].append(game['away_possession'])
+            season_stats['attacks'].append(game['away_attacks'])
+            season_stats['dangerous_attacks'].append(game['away_dangerous_attacks'])
+            season_stats['yellow_cards'].append(game['away_yellow_card'])
+            season_stats['corner_kicks'].append(game['away_corner_kicks'])
+            season_stats['shots_on_target'].append(game['away_shots_on_target'])
+            season_stats['shots_total'].append(game['away_shots_total'])
+            season_stats['ball_safe'].append(game['away_ball_safe'])
+            season_stats['goal_attempts'].append(game['away_goal_attempts'])
+            season_stats['goal_attempts_allowed'].append(game['home_goal_attempts'])
+            season_stats['saves'].append(game['away_saves'])
+            season_stats['first_half_goals'].append(game['away_first_half_score'])
+            season_stats['sec_half_goals'].append(game['away_second_half_score'])
+            season_stats['goal_kicks'].append(game['away_goal_kicks'])
+            season_stats['goals_for'].append(game['away_score'])
+            season_stats['goals_allowed'].append(game['home_score'])
+
+    for k, v in season_stats.items():
+        season_stats[k] = np.nanmean(np.array(v))
+
     record = {"win": win, "loss": loss, "draw": draw}
 
     previous_matches = previous_matches[["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
@@ -104,13 +144,44 @@ def team(team_id):
     previous_matches = previous_matches.to_dict(orient='records')
 
     upcoming_matches, _ = predict_matches.get_upcoming_matches()
+
     upcoming_matches = upcoming_matches.loc[
         ((upcoming_matches['home_id'] == team_id) | (upcoming_matches['away_id'] == team_id))]
 
     upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
-    upcoming_matches = upcoming_matches.to_dict(orient='records')
 
-    return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], record=record, previous_matches=previous_matches, upcoming_matches=upcoming_matches)
+    round_number = model_libs.get_team_round(upcoming_matches["country_code"].iloc[0])
+
+    df = pd.DataFrame([]).append(upcoming_matches, ignore_index=True)
+    features, game_features = match_stats.create_match(team_id, df, match_details, round_number, False, False)
+
+    if features is not None:
+        for key, value in game_features.items():
+            for k, v in value.items():
+                new_key = key + '_' + k
+                features[new_key] = v
+
+    current_team = {"name": features["team_name"], "goals_for": features["goals_for"], "goals_allowed": features["goals_against"],
+                     "attacks": features["current_team_attacks"], "dangerous_attacks": features["current_team_dangerous_attacks"],
+                     "goal_attempts": features["current_team_goal_attempts"], "ball_safe": features["current_team_ball_safe"], "possession": features["current_team_possession"]}
+
+    opp_team = {"name": features["opp_name"], "goals_for": features["opp_goals_for"],
+                    "goals_allowed": features["opp_goals_against"],
+                    "attacks": features["opp_team_attacks"],
+                    "dangerous_attacks": features["opp_team_dangerous_attacks"],
+                    "goal_attempts": features["opp_team_goal_attempts"],
+                    "ball_safe": features["opp_team_ball_safe"], "possession": features["opp_team_possession"]}
+
+    if features["is_home"] == 1:
+        home_features = current_team
+        away_features = opp_team
+    else:
+        home_features = opp_team
+        away_features = current_team
+
+    upcoming_matches = upcoming_matches.to_dict(orient='records')
+    print(home_features)
+    return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], record=record, previous_matches=previous_matches, upcoming_matches=upcoming_matches, season_stats=season_stats, home_features=home_features, away_features=away_features)
 
 
 @app.route('/rankings/<league>/<int:round>')

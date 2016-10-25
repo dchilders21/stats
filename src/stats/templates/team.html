@@ -21,20 +21,87 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Home Team</th>
-                            <th>Away Team</th>
-                            <th>Scheduled</th>
+                            <th>Teams</th>
+                            <th>Goals For</th>
+                            <th>Goals Allowed</th>
+                            <th>Attacks</th>
+                            <th>Dangerous Attacks</th>
+                            <th>Goal Attempts</th>
+                            <th>Ball Safe</th>
+                            <th>Possession</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for match in upcoming_matches %}
                             <tr>
-                                <td><a href="{{ url_for('team', team_id=match.home_id) }}">{{ match.home_team }}</a></td>
-                                <td><a href="{{ url_for('team', team_id=match.away_id) }}">{{ match.away_team }}</a></td>
-                                <td>{{ match.scheduled }}</td>
-
+                                <td>{{ home_features.name }}</td>
+                                <td>{{ home_features.goals_for }}</td>
+                                <td>{{ home_features.goals_allowed }}</td>
+                                <td>{{ home_features.attacks }}</td>
+                                <td>{{ home_features.dangerous_attacks }}</td>
+                                <td>{{ home_features.goal_attempts }}</td>
+                                <td>{{ home_features.ball_safe }}</td>
+                                <td>{{ home_features.possession }}</td>
                             </tr>
-                        {% endfor %}
+                            <tr>
+                                <td>{{ away_features.name }}</td>
+                                <td>{{ away_features.goals_for }}</td>
+                                <td>{{ away_features.goals_allowed }}</td>
+                                <td>{{ away_features.attacks }}</td>
+                                <td>{{ away_features.dangerous_attacks }}</td>
+                                <td>{{ away_features.goal_attempts }}</td>
+                                <td>{{ away_features.ball_safe }}</td>
+                                <td>{{ away_features.possession }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <br />
+                <br />
+
+                <h4 class="text-dark  header-title m-t-0">Season Stats</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Goals For</th>
+                            <th>Goals Allowed</th>
+                            <th>Attacks</th>
+                            <th>Dangerous Attacks</th>
+                            <th>Yellow Cards</th>
+                            <th>Corner Kicks</th>
+                            <th>Possession</th>
+                            <th>Shots on Target</th>
+                            <th>Shots Total</th>
+                            <th>Ball Safe</th>
+                            <th>Goal Attempts</th>
+                            <th>Goal Attempts Allowed</th>
+                            <th>Saves</th>
+                            <th>Goal Kicks</th>
+                            <th>First Half Goals</th>
+                            <th>Second Half Goals</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ season_stats.goals_for }}</td>
+                            <td>{{ season_stats.goals_allowed }}</td>
+                            <td>{{ season_stats.attacks }}</td>
+                            <td>{{ season_stats.dangerous_attacks }}</td>
+                            <td>{{ season_stats.yellow_cards }}</td>
+                            <td>{{ season_stats.corner_kicks }}</td>
+                            <td>{{ season_stats.possession }}</td>
+                            <td>{{ season_stats.shots_on_target }}</td>
+                            <td>{{ season_stats.shots_total }}</td>
+                            <td>{{ season_stats.ball_safe }}</td>
+                            <td>{{ season_stats.goal_attempts }}</td>
+                            <td>{{ season_stats.goal_attempts_allowed }}</td>
+                            <td>{{ season_stats.saves }}</td>
+                            <td>{{ season_stats.goal_kicks }}</td>
+                            <td>{{ season_stats.first_half_goals }}</td>
+                            <td>{{ season_stats.sec_half_goals }}</td>
+
+                        </tr>
                         </tbody>
                     </table>
                 </div>
