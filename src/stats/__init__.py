@@ -60,17 +60,57 @@ def league(league):
 
 @app.route('/team/<int:team_id>')
 def team(team_id):
-    print("team_id :: {}".format(team_id))
+
+    q = "SELECT * FROM teams WHERE id = '" + str(team_id) + "'"
+    team = pd.read_sql(q, cnx)
+
     previous_matches = match_details.loc[
         ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id))]
+
+    win = 0
+    loss = 0
+    draw = 0
+
+    for index, game in previous_matches.iterrows():
+        print(game)
+        if team_id == game['home_id']:
+            if game['home_points'] == 3:
+                win += 1
+
+            elif game['home_points'] == 1:
+                draw += 1
+
+            else:
+                loss += 1
+        else:
+            if game['away_points'] == 3:
+                win += 1
+
+            elif game['away_points'] == 1:
+                draw += 1
+
+            else:
+                loss += 1
+
+    print(win)
+    print(draw)
+    print(loss)
+    record = {"win": win, "loss": loss, "draw": draw}
 
     previous_matches = previous_matches[["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
                                          "away_team", "away_id", "away_score", "away_first_half_score",
                                          "away_second_half_score"]]
     previous_matches = previous_matches.iloc[::-1]
     previous_matches = previous_matches.to_dict(orient='records')
-    print(previous_matches)
-    return render_template("team.html", leagues=leagues, previous_matches=previous_matches)
+
+    upcoming_matches, _ = predict_matches.get_upcoming_matches()
+    upcoming_matches = upcoming_matches.loc[
+        ((upcoming_matches['home_id'] == team_id) | (upcoming_matches['away_id'] == team_id))]
+
+    upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
+    upcoming_matches = upcoming_matches.to_dict(orient='records')
+
+    return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], record=record, previous_matches=previous_matches, upcoming_matches=upcoming_matches)
 
 
 @app.route('/rankings/<league>/<int:round>')
