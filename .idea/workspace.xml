@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/stats/results.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/actual_results.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions_10_12_16_converted_goals.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions_10_12_16_points.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions_10_12_16_points.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions_converted_goals.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/predictions_points.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ranked_data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ranked_data_10_12_16.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/raw_data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/raw_data_10_12_16.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/__init__bk.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/managers.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/players.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/renders.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/stats.ipynb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/templates/index_.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/templates/random.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/stats/templates/team_stats.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/upcoming_matches.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/upcoming_matches_10_12_16.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/upcoming_ranked_data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/upcoming_ranked_data_10_12_16.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/__init__.py" afterPath="$PROJECT_DIR$/src/stats/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_data.py" afterPath="$PROJECT_DIR$/src/stats/form_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/form_model.py" afterPath="$PROJECT_DIR$/src/stats/form_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/static/js/app.js" afterPath="$PROJECT_DIR$/src/stats/static/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/templates/layout.html" afterPath="$PROJECT_DIR$/src/stats/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/templates/league.html" afterPath="$PROJECT_DIR$/src/stats/templates/league.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/templates/team.html" afterPath="$PROJECT_DIR$/src/stats/templates/team.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/update_match.py" afterPath="$PROJECT_DIR$/src/stats/update_match.py" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,8 +48,8 @@
           <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/stats/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="486">
-                  <caret line="252" column="42" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
+                <state relative-caret-position="756">
+                  <caret line="277" column="64" selection-start-line="277" selection-start-column="64" selection-end-line="277" selection-end-column="64" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
                   </folding>
@@ -265,8 +232,8 @@
         <option value="$PROJECT_DIR$/src/stats/form_model.py" />
         <option value="$PROJECT_DIR$/src/stats/results.py" />
         <option value="$PROJECT_DIR$/src/stats/templates/league.html" />
-        <option value="$PROJECT_DIR$/src/stats/__init__.py" />
         <option value="$PROJECT_DIR$/src/stats/templates/team.html" />
+        <option value="$PROJECT_DIR$/src/stats/__init__.py" />
       </list>
     </option>
   </component>
@@ -1011,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="252" column="42" selection-start-line="252" selection-start-column="42" selection-end-line="252" selection-end-column="42" />
+        <state relative-caret-position="756">
+          <caret line="277" column="64" selection-start-line="277" selection-start-column="64" selection-end-line="277" selection-end-column="64" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
