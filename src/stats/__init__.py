@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import numpy as np
 import mysql.connector
+import datetime
 from flask import render_template, request, url_for
 
 from flask import Flask
@@ -25,44 +26,42 @@ match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 leagues = model_libs.get_leagues_country_codes()
 rounds = model_libs.get_leagues_rounds()
 
+#dt = datetime.date.today().strftime("%m_%d_%y")
+dt = "10_26_16"
 print('INITIALIZED...')
 
 
-@app.route('/')
-def home():
-    all_teams = form_data.get_teams()
-    all_teams = all_teams.reset_index()
-    all_teams = all_teams.to_json(orient='index')
+def get_predictions(team, target, isHome):
+    print(team)
+    if target == "points":
+        prediction_points_csv = 'stats/csv/' + str(dt) + '/predictions_points.csv'
+        prediction_points_data = pd.read_csv(prediction_points_csv)
 
-    upcoming_matches, _ = predict_matches.get_upcoming_matches()
-    upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
-    upcoming_matches = upcoming_matches.reindex(columns=['league', 'home_team', 'away_team', 'scheduled',
-                                                       'home_id', 'away_id'])
-    upcoming_matches = upcoming_matches.to_dict(orient='records')
+        if isHome:
+            matches_points = prediction_points_data.loc[((prediction_points_data["team_name"] == team) & (prediction_points_data["is_home"] == 1))]
+        else:
+            matches_points = prediction_points_data.loc[
+                ((prediction_points_data["team_name"] == team) & (prediction_points_data["is_home"] == 0))]
 
-    return render_template("index.html", leagues=leagues, teams=all_teams, upcoming_matches=upcoming_matches)
+        predictions = matches_points.iloc[0]["log"]
+    else:
+        prediction_goals_csv = 'stats/csv/' + str(dt) + '/predictions_converted_goals.csv'
+        prediction_goals_data = pd.read_csv(prediction_goals_csv)
+
+        if isHome:
+            matches_goals = prediction_goals_data.loc[((prediction_goals_data["team_name"] == team) & (prediction_goals_data["is_home"] == 1))]
+        else:
+            matches_goals = prediction_goals_data.loc[
+                ((prediction_goals_data["team_name"] == team) & (prediction_goals_data["is_home"] == 0))]
+
+        predictions = matches_goals.iloc[0]["log"]
+    print(target)
+    print(predictions)
+
+    return predictions
 
 
-@app.route('/league/<league>')
-def league(league):
-
-    table = str('matches_' + league)
-    round_number = rounds[league]
-    query = str(
-        "SELECT " + table + ".id as 'match_id', " + table + ".scheduled, " + table + ".home_id, " + table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team', teams1.country_code AS 'country_code' FROM " + table + " LEFT JOIN teams teams1 ON " + table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(
-            round_number) + "'")
-    matches = pd.read_sql(query, cnx)
-
-    matches = matches.reindex(columns=['home_team', 'away_team', 'scheduled', 'home_id', 'away_id'])
-    matches = matches.to_dict(orient='records')
-    return render_template("league.html", leagues=leagues, league=league, matches=matches)
-
-
-@app.route('/team/<int:team_id>')
-def team(team_id):
-
-    q = "SELECT * FROM teams WHERE id = '" + str(team_id) + "'"
-    team = pd.read_sql(q, cnx)
+def calculate_stats(team_id):
 
     previous_matches = match_details.loc[
         ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id))]
@@ -74,9 +73,9 @@ def team(team_id):
     games_played = 0
 
     season_stats = {'possession': [], 'attacks': [], 'dangerous_attacks': [], 'yellow_cards': [],
-                     'corner_kicks': [], 'shots_on_target': [], 'shots_total': [], 'ball_safe': [],
-                     'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'first_half_goals': [],
-                     'sec_half_goals': [], 'goal_kicks': [], 'goals_for': [], 'goals_allowed': []}
+                    'corner_kicks': [], 'shots_on_target': [], 'shots_total': [], 'ball_safe': [],
+                    'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'first_half_goals': [],
+                    'sec_half_goals': [], 'goal_kicks': [], 'goals_for': [], 'goals_allowed': []}
 
     for index, game in previous_matches.iterrows():
 
@@ -137,16 +136,79 @@ def team(team_id):
 
     record = {"win": win, "loss": loss, "draw": draw}
 
-    previous_matches = previous_matches[["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
-                                         "away_team", "away_id", "away_score", "away_first_half_score",
-                                         "away_second_half_score"]]
+    previous_matches = previous_matches[
+        ["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
+         "away_team", "away_id", "away_score", "away_first_half_score",
+         "away_second_half_score"]]
     previous_matches = previous_matches.iloc[::-1]
     previous_matches = previous_matches.to_dict(orient='records')
+
+    return previous_matches, record, season_stats
+
+
+
+@app.route('/')
+def home():
+    all_teams = form_data.get_teams()
+    all_teams = all_teams.reset_index()
+    all_teams = all_teams.to_json(orient='index')
+
+    upcoming_matches, _ = predict_matches.get_upcoming_matches()
+    upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
+    upcoming_matches = upcoming_matches.reindex(columns=['league', 'home_team', 'away_team', 'scheduled',
+                                                       'home_id', 'away_id'])
+    upcoming_matches = upcoming_matches.to_dict(orient='records')
+
+    return render_template("index.html", leagues=leagues, teams=all_teams, upcoming_matches=upcoming_matches)
+
+
+@app.route('/league/<league>')
+def league(league):
+
+    table = str('matches_' + league)
+    round_number = rounds[league]
+    query = str(
+        "SELECT " + table + ".id as 'match_id', " + table + ".scheduled, " + table + ".home_id, " + table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team', teams1.country_code AS 'country_code' FROM " + table + " LEFT JOIN teams teams1 ON " + table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(
+            round_number) + "'")
+    matches = pd.read_sql(query, cnx)
+
+    matches = matches.reindex(columns=['home_team', 'away_team', 'scheduled', 'home_id', 'away_id'])
+
+    print(matches)
+    # Fix this
+    matches["predicted_home_points"] = matches.apply(
+        lambda row: get_predictions(row["home_team"], "points", True), axis=1)
+
+    matches["predicted_home_goals"] = matches.apply(
+        lambda row: get_predictions(row["home_team"], "goals", True), axis=1)
+
+    matches["predicted_away_points"] = matches.apply(
+        lambda row: get_predictions(row["away_team"], "points", False), axis=1)
+
+    matches["predicted_away_goals"] = matches.apply(
+        lambda row: get_predictions(row["away_team"], "goals", False), axis=1)
+
+    print(matches)
+    matches = matches.to_dict(orient='records')
+    return render_template("league.html", leagues=leagues, league=league, matches=matches)
+
+
+@app.route('/team/<int:team_id>')
+def team(team_id):
+
+    q = "SELECT * FROM teams WHERE id = '" + str(team_id) + "'"
+    team = pd.read_sql(q, cnx)
+
+    previous_matches, record, season_stats = calculate_stats(team_id)
 
     upcoming_matches, _ = predict_matches.get_upcoming_matches()
 
     upcoming_matches = upcoming_matches.loc[
         ((upcoming_matches['home_id'] == team_id) | (upcoming_matches['away_id'] == team_id))]
+
+    opp_id = upcoming_matches.iloc[0]['away_id'] if upcoming_matches.iloc[0]['home_id'] == team_id else upcoming_matches.iloc[0]['home_id']
+
+    _, opp_record, _ = calculate_stats(opp_id)
 
     upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
 
@@ -175,13 +237,27 @@ def team(team_id):
     if features["is_home"] == 1:
         home_features = current_team
         away_features = opp_team
+        home_record = record
+        away_record = opp_record
     else:
         home_features = opp_team
         away_features = current_team
+        home_record = opp_record
+        away_record = record
 
     upcoming_matches = upcoming_matches.to_dict(orient='records')
-    print(home_features)
-    return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], record=record, previous_matches=previous_matches, upcoming_matches=upcoming_matches, season_stats=season_stats, home_features=home_features, away_features=away_features)
+
+    # Fix this also
+    home_predicted_points = get_predictions(home_features["name"], "points", True)
+    home_predicted_goals = get_predictions(home_features["name"], "goals", True)
+    away_predicted_points = get_predictions(away_features["name"], "points", False)
+    away_predicted_goals = get_predictions(away_features["name"], "goals", False)
+
+    return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], home_record=home_record,
+                           away_record=away_record, previous_matches=previous_matches, upcoming_matches=upcoming_matches,
+                           season_stats=season_stats, home_features=home_features, away_features=away_features,
+                           home_predicted_points=home_predicted_points, away_predicted_points=away_predicted_points,
+                           home_predicted_goals=home_predicted_goals, away_predicted_goals=away_predicted_goals)
 
 
 @app.route('/rankings/<league>/<int:round>')
@@ -200,6 +276,7 @@ def rankings(league, round):
     qqs = np.percentile(pr, [20, 40, 60, 80])
 
     return render_template("rankings.html", rankings=power_list)
+
 
 @app.route('/<league>/<int:team_id>/<int:round_num>')
 def team_stats(league, team_id, round_num):

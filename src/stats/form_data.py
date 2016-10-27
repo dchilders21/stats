@@ -18,14 +18,13 @@ def rank_teams(teams, rd, side_of_ball, upcoming):
 
         ''' If current team not playing this round simply go to the next round '''
         while cur_match.empty:
-            rd += 1
             cur_match = match_details.loc[
                 ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-                (match_details['round'] == rd)]
+                (match_details['round'] == rd + 1)]
 
             if upcoming:
-                cur_match = upcoming_matches.loc[
-                    ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
+                    cur_match = upcoming_matches.loc[
+                        ((upcoming_matches['home_id'] == team["id"]) | (upcoming_matches['away_id'] == team["id"]))]
 
         df = pd.DataFrame([]).append(cur_match, ignore_index=True)
 
@@ -178,10 +177,10 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
         country_code = leagues[key]
         round_num = league_rounds[key]
         teams_in_league = teams[teams["country_code"] == country_code]
-
-        print("ROUND :: {} ".format(round_num))
-
+        print("LEAGUE :: {}".format(country_code))
         if upcoming:
+
+            print("ROUND :: {} ".format(round_num))
 
             rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num, upcoming)
 
@@ -190,8 +189,10 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
                 ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num)
 
         else:
-            """ Looping through the Rounds """
+            """ Looping through the Previous Rounds """
             for i in range(4, round_num):
+
+                print("ROUND :: {} ".format(i))
 
                 rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, i, upcoming)
 

@@ -8,7 +8,6 @@
                     <li><a href="#">{{team_name}}</a></li>
                     <li class="active">Dashboard</li>
                 </ol>
-                <h4 class="page-title">{{ record.win }} - {{ record.loss }} - {{ record.draw }}</h4>
             </div>
         </div>
     </div>
@@ -29,11 +28,13 @@
                             <th>Goal Attempts</th>
                             <th>Ball Safe</th>
                             <th>Possession</th>
+                            <th>Predicted Points</th>
+                            <th>Predicted Goals</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ home_features.name }}</td>
+                                <td>{{ home_features.name }} <small class="text-white">({{ home_record.win }} - {{ home_record.loss }} - {{ home_record.draw }})</small></td>
                                 <td>{{ home_features.goals_for }}</td>
                                 <td>{{ home_features.goals_allowed }}</td>
                                 <td>{{ home_features.attacks }}</td>
@@ -41,9 +42,11 @@
                                 <td>{{ home_features.goal_attempts }}</td>
                                 <td>{{ home_features.ball_safe }}</td>
                                 <td>{{ home_features.possession }}</td>
+                                <td>{{ home_predicted_points }}</td>
+                                <td>{{ home_predicted_goals }}</td>
                             </tr>
                             <tr>
-                                <td>{{ away_features.name }}</td>
+                                <td>{{ away_features.name }} <small class="text-white">({{ away_record.win }} - {{ away_record.loss }} - {{ away_record.draw }})</small></td>
                                 <td>{{ away_features.goals_for }}</td>
                                 <td>{{ away_features.goals_allowed }}</td>
                                 <td>{{ away_features.attacks }}</td>
@@ -51,6 +54,8 @@
                                 <td>{{ away_features.goal_attempts }}</td>
                                 <td>{{ away_features.ball_safe }}</td>
                                 <td>{{ away_features.possession }}</td>
+                                <td>{{ away_predicted_points }}</td>
+                                <td>{{ away_predicted_goals }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -148,4 +153,32 @@
 
     </div>
     <!-- end row -->
+{% endblock %}
+
+{% block scripts %}
+    <!-- Datatable JS -->
+    <script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/buttons.print.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/responsive.bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/dataTables.scroller.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='pages/datatables.init.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+            TableManageButtons.init();
+        });
+    </script>
 {% endblock %}

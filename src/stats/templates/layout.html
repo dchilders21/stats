@@ -492,25 +492,7 @@
         <script src="{{ url_for('static', filename='js/jquery.core.js') }}"></script>
         <script src="{{ url_for('static', filename='js/jquery.app.js') }}"></script>
 
-        <!-- Datatable JS -->
-        <script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/buttons.bootstrap.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/jszip.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/pdfmake.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/vfs_fonts.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/buttons.html5.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/buttons.print.min.js') }}"></script>
-
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.fixedHeader.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/datatables/dataTables.scroller.min.js') }}"></script>
-
-        <script src="{{ url_for('static', filename='pages/datatables.init.js') }}"></script>
-
+        {% block scripts %}{% endblock %}
         
         <script type="text/javascript">
             jQuery(document).ready(function($) {

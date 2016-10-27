@@ -34,52 +34,55 @@ def train_predict(clf, X_train, y_train, X_test, y_test):
     return train_f1_score, test_f1_score
 
 
-def train_models(round_num, X, y, models):
-    if os.path.isdir("/models/" + str(round_num)):
+def train_models(dt, X, y, models):
+
+    if not os.path.isdir('csv/' + str(dt) + '/models/'):
         print('Making New Directory for the Round')
-        os.chdir('/Users/senzari/Machine_Learning/stats/src/models')
-        os.makedirs(str(round_num))
-        os.chdir('/Users/senzari/Machine_Learning/stats/src')
+        os.makedirs('csv/' + str(dt) + '/models/')
+
+        for i in ['knn', 'log', 'svc', 'gnb', 'randomForest']:
+            os.makedirs('csv/' + str(dt) + '/models/' + i)
 
     finished_models = []
 
     for i in models:
 
-        model_round = 'models/' + str(i) + '_round_' + str(round_num) + '.pk1'
+        model_dir = 'csv/' + str(dt) + '/models/' + i + '/' + i
+        print(model_dir)
 
         if i == 'log':
             log = build_model(X, y, i)
-            joblib.dump(log, model_round)
+            joblib.dump(log, model_dir)
             finished_models.append(log)
         elif i == 'svc':
             svc = build_model(X, y, i)
-            joblib.dump(svc, model_round)
+            joblib.dump(svc, model_dir)
             finished_models.append(svc)
         elif i == 'gmm':
             gmm = build_model(X, y, i)
-            joblib.dump(gmm, model_round)
+            joblib.dump(gmm, model_dir)
             finished_models.append(gmm)
         elif i == 'knn':
             kmeans = build_model(X, y, i)
-            joblib.dump(kmeans, model_round)
+            joblib.dump(kmeans, model_dir)
             finished_models.append(kmeans)
         elif i == 'gnb':
             gnb = build_model(X, y, i)
-            joblib.dump(gnb, model_round)
+            joblib.dump(gnb, model_dir)
             finished_models.append(gnb)
         elif i == 'randomForest':
             rF = build_model(X, y, i)
-            joblib.dump(rF, model_round)
+            joblib.dump(rF, model_dir)
             finished_models.append(rF)
 
     return finished_models
 
 
-def load_models(models):
+def load_models(models, dt):
     loaded_models = []
 
     for i in models:
-        model_round = 'models/tuned/' + str(i)
+        model_round = 'csv/' + str(dt) + '/models/' + i + '/' + i
         if i == 'log':
             log = joblib.load(model_round)
             loaded_models.append(log)
@@ -175,11 +178,11 @@ def build_model(X, y, model_type):
         return clf
 
 
-def build_tuned_model(X, y, model_type):
+def build_tuned_model(X, y, model_type, dt):
 
     finished_models = []
 
-    tuned_folder = 'models/tuned/' + str(model_type)
+    tuned_folder = 'csv/' + str(dt) + '/models/' + str(model_type) + '/' + str(model_type)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')

@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    $('#datatable').dataTable();
-    TableManageButtons.init();
-
     var league = $('#league').val();
     var teams = $('#team-data').data();
 

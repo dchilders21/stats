@@ -31,8 +31,8 @@
                         <tbody>
                         {% for match in matches %}
                             <tr>
-                                <td><a href="{{ url_for('team', team_id=match.home_id) }}">{{ match.home_team }}</a></td>
-                                <td><a href="{{ url_for('team', team_id=match.away_id) }}">{{ match.away_team }}</a></td>
+                                <td><a href="{{ url_for('team', team_id=match.home_id) }}">{{ match.home_team }}</a><small class="text-white"> ({{ match.predicted_home_points }}, {{ match.predicted_home_goals }})</small></td>
+                                <td><a href="{{ url_for('team', team_id=match.away_id) }}">{{ match.away_team }}</a><small class="text-white"> ({{ match.predicted_away_points }}, {{ match.predicted_away_goals }})</small></td>
                                 <td>{{ match.scheduled }}</td>
 
                             </tr>
