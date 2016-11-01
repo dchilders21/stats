@@ -1,21 +1,9 @@
-import statsmodels.api as sm
 import numpy as np
 import pandas as pd
 import random
 from collections import namedtuple
 
 L1_ALPHA = 16.0
-
-
-def build_model_logistic(target, data, acc=0.00000001, alpha=L1_ALPHA):
-    """ Trains a logistic regresion model. target is the target.
-        data is a dataframe of samples for training. The length of
-        target must match the number of rows in data.
-    """
-    data = data.copy()
-    logit = sm.Logit(target, data, disp=False)
-    return logit.fit_regularized(maxiter=1024, alpha=alpha, acc=acc, disp=False)
-
 
 def _clone_and_drop(data, drop_cols):
     """ Returns a copy of a dataframe that doesn't have certain columns. """
@@ -183,7 +171,7 @@ def check_category(pred, actual):
             return 0
 
 
-def get_leagues_rounds():
+    def get_leagues_rounds():
     """ Upcoming Rounds (closest round not played yet) """
     leagues = {"mls": 32, "epl": 10, "bundesliga": 9, "primera_division": 10, "ligue_1": 11}
     return leagues
