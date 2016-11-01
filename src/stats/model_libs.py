@@ -171,7 +171,7 @@ def check_category(pred, actual):
             return 0
 
 
-    def get_leagues_rounds():
+def get_leagues_rounds():
     """ Upcoming Rounds (closest round not played yet) """
     leagues = {"mls": 32, "epl": 10, "bundesliga": 9, "primera_division": 10, "ligue_1": 11}
     return leagues
