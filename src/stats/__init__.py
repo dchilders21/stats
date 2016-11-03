@@ -4,9 +4,14 @@ import pandas as pd
 import numpy as np
 import mysql.connector
 import datetime
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, redirect
 
-from flask import Flask
+from flask import Flask, Response
+import flask_login
+from flask_login import UserMixin, login_required
+
+from flask_wtf import FlaskForm
+from wtforms import BooleanField, StringField, PasswordField, validators
 
 from stats import model_libs, match_stats, form_model, form_data, predict_matches
 
@@ -15,6 +20,8 @@ app = Flask(__name__)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_PATH = static_folder_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+
+app.config.from_object('config')
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
@@ -26,13 +33,85 @@ match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 leagues = model_libs.get_leagues_country_codes()
 rounds = model_libs.get_leagues_rounds()
 
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = "login"
+login_manager.login_message_category = "info"
+
 #dt = datetime.date.today().strftime("%m_%d_%y")
 dt = "10_26_16"
 print('INITIALIZED...')
 
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    password = PasswordField('New Password', [
+        validators.DataRequired()
+    ])
+
+
+class User(UserMixin):
+    user_database = {
+        1: {"user": "Guest", "username": "Guest", "password": "guest"},
+        2: {"user": "Admin", "username": "admin", "password": "admin"}
+    }
+
+    def __init__(self, username, password):
+        self.id = '1'
+        self.username = username
+        self.password = password
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+
+@login_manager.user_loader
+def load_user(user_id):
+
+    for k, v in User.user_database.items():
+        if int(user_id) == k:
+            user = User(v["username"], v["password"])
+
+    return user
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    form = LoginForm(request.form)
+    print('here')
+    if form.validate_on_submit():
+        print(form.username.data)
+        print(form.password.data)
+        # check if the user exists and if he/she provided correct password
+        if form.username.data == "Guest" and form.password.data == "guest":
+            user = User(form.username.data, form.password.data)
+            flask_login.login_user(user)
+            return redirect(url_for('home'))
+
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    flask_login.logout_user()
+
+    return redirect(url_for('login'))
+
+
 def get_predictions(team, target, isHome):
-    print(team)
+
     if target == "points":
         prediction_points_csv = 'stats/csv/' + str(dt) + '/predictions_points.csv'
         prediction_points_data = pd.read_csv(prediction_points_csv)
@@ -163,6 +242,7 @@ def home():
 
 
 @app.route('/league/<league>')
+@login_required
 def league(league):
 
     table = str('matches_' + league)
@@ -194,6 +274,7 @@ def league(league):
 
 
 @app.route('/team/<int:team_id>')
+@login_required
 def team(team_id):
 
     q = "SELECT * FROM teams WHERE id = '" + str(team_id) + "'"
@@ -260,19 +341,21 @@ def team(team_id):
                            home_predicted_goals=home_predicted_goals, away_predicted_goals=away_predicted_goals)
 
 
-@app.route('/rankings/<league>/<int:round>')
-def rankings(league, round):
-    power_list = []
+@app.route('/league/<league>/rankings')
+@login_required
+def rankings(league):
+    leagues = model_libs.get_leagues_country_codes()
+    league_rounds = model_libs.get_leagues_rounds()
+    teams = form_data.get_teams()
+    country_code = leagues[league]
+    round_num = league_rounds[league]
+    teams_in_league = teams[teams["country_code"] == country_code]
 
-    if league == 'mls':
-        teams = pd.read_sql("SELECT id, full_name FROM teams WHERE id < 41", cnx)
+    rpi_rankings, offensive_rankings, defensive_rankings = form_data.rank_tables(teams_in_league, round_num, True)
 
-    power_rankings = form_data.get_power_rankings(teams, round)
+    rpi_rankings = rpi_rankings.to_dict(orient='records')
+    offensive_rankings = offensive_rankings.to_dict(orient='records')
+    defensive_rankings = defensive_rankings.to_dict(orient='records')
 
-    for i, power in power_rankings.iterrows():
-        power_list.append(power)
-
-    pr = np.array(power_rankings.loc[:, 2])
-    qqs = np.percentile(pr, [20, 40, 60, 80])
-
-    return render_template("rankings.html", rankings=power_list)
+    return render_template("rankings.html", leagues=leagues, league=league, rpi_rankings=rpi_rankings,
+                           offensive_rankings=offensive_rankings, defensive_rankings=defensive_rankings)

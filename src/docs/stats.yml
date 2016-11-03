@@ -1,4 +1,4 @@
-name: stats
+name: stats_env
 dependencies:
 - decorator=4.0.10=py35_0
 - entrypoints=0.2.2=py35_0

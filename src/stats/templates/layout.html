@@ -176,7 +176,11 @@
                         <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
                             <img  src="{{ url_for('static', filename='images/users/avatar-2.jpg') }}" alt="user-img" class="img-circle">
                             <span class="user-info-span">
-                                <h5 class="m-t-0 m-b-0">John Deo</h5>
+                                <h5 class="m-t-0 m-b-0">
+                                {% if current_user.is_authenticated %}
+                                    {{ current_user.username }}
+                                {% endif %}
+                                </h5>
                                 <p class="text-muted m-b-0">
                                     <small><i class="fa fa-circle text-success"></i> <span>Online</span></small>
                                 </p>
@@ -186,7 +190,7 @@
                             <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                             <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
                             <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                            <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+                            <li><a href="{{ url_for('logout') }}"><i class="md md-settings-power"></i> Logout</a></li>
                         </ul>
 
                     </div>

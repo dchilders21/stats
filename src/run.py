@@ -1,2 +1,2 @@
 from stats import app
-app.run(use_reloader=False)
+app.run(host='0.0.0.0', use_reloader=False)

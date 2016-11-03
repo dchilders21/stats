@@ -1,18 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    	<meta charset="utf-8" />
-        <title>STATS</title>
-        <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0,maximum-scale=1.0, user-scalable=0'/>
+{% extends "layout.html" %}
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#">Minton</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+                <h4 class="page-title">{{ league }} - <a href="{{ url_for('rankings', league=league) }}">Rankings</a></h4>
+            </div>
+        </div>
+    </div>
 
-        <script src="{{ url_for('static', filename='libs/angular.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-    </head>
-    <body>
-        <h1>RPI List</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="text-dark header-title m-t-0">RPI Rankings</h4>
+                <p class="text-muted m-b-25 font-13">{{ league }} League</p>
 
-        {% for ranking in rankings %}
-            <p>{{ ranking.1 }} - {{ ranking.2 }}</p>
-        {% endfor %}
-   	</body>
-</html>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>RPI</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rpi in rpi_rankings %}
+                            <tr>
+                                <td><a href="{{ url_for('team', team_id=rpi.0) }}">{{ rpi.1 }}</a></td>
+                                <td>{{ rpi.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- end col md-4 -->
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="text-dark header-title m-t-0">Offensive Rankings</h4>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>Offensive Rank</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for or in offensive_rankings %}
+                            <tr>
+                                <td><a href="{{ url_for('team', team_id=or.0) }}">{{ or.1 }}</a></td>
+                                <td>{{ or.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- end col md-4 -->
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="text-dark header-title m-t-0">Defensive Rankings</h4>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>Defensive Rank</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for dr in defensive_rankings %}
+                            <tr>
+                                <td><a href="{{ url_for('team', team_id=dr.0) }}">{{ dr.1 }}</a></td>
+                                <td>{{ dr.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- end col md-4 -->
+
+    </div>
+    <!-- end row -->
+{% endblock %}
