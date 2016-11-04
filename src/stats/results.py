@@ -5,13 +5,14 @@ from stats import form_data, match_stats, model_libs, form_model, predict_matche
 from sklearn.metrics import f1_score
 
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played', 'round', 'current_formation']
-all_models = ['knn', 'log', 'svc', 'gnb', 'randomForest']
+all_models = ['gnb', 'randomForest', 'log'] # 'knn' - not working on no_ties for some reason #svc just isn't predicting correctly
 leagues = model_libs.get_leagues_country_codes() # = { "epl": 'ENG' }
 teams = form_data.get_teams()
 league_rounds = model_libs.get_leagues_rounds()
 
-target = "points"  # 'converted_goals' or 'points'
+targets = ["points", "converted_goals", "no_ties"]  # "points", "converted_goals",
 dt = datetime.date.today().strftime("%m_%d_%y")
+dt = '11_02_16'
 data_csv = 'csv/' + str(dt) + '/raw_data.csv'
 
 testing = False
@@ -44,85 +45,53 @@ def run_features(data, drop_data, target, models):
     models = form_model.train_models(dt, X, y, models)
     return models
 
-
+""" See if there are any 'inf' or 'nulls' in the data """
 inds = pd.isnull(ranked_data).any(1).nonzero()[0]
-print(inds)
+#print(inds)
 
 """ Formatting data to convert goals scored to the correct category"""
 formatted_data = ranked_data.copy()
 
-if target == "converted_goals":
-    # Not using points as a target for this version, using goals
-    formatted_data['converted_goals'] = formatted_data.apply(lambda row: model_libs.set_group(row['goals']), axis=1)
-    formatted_data = formatted_data.drop(['points', 'goals'], 1)
-else:
-    formatted_data = formatted_data.drop(['goals'], 1)
+formatted_data['converted_goals'] = formatted_data.apply(lambda row: model_libs.set_group(row['goals']), axis=1)
 
-    """ This is where you manipulate the features as desired """
-""" //////////////////////////////////////////////////////////////////////////////////////////////////// """
-""" Using diff_squared methods for features """
-""" //////////////////////////////////////////////////////////////////////////////////////////////////// """
-formatted_data["diff_goals_for"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["goals_for"], row["opp_goals_for"]), axis=1)
-formatted_data["diff_goals_allowed"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["goals_against"], row["opp_goals_against"]), axis=1)
-formatted_data["diff_attacks"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["current_team_attacks"], row["opp_team_attacks"]), axis=1)
-formatted_data["diff_dangerous_attacks"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["current_team_dangerous_attacks"], row["opp_team_dangerous_attacks"]),
-    axis=1)
-formatted_data["diff_goal_attempts"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["current_team_goal_attempts"], row["opp_team_goal_attempts"]), axis=1)
-formatted_data["diff_ball_safe"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["current_team_ball_safe"], row["opp_team_ball_safe"]), axis=1)
-formatted_data["diff_possession"] = formatted_data.apply(
-    lambda row: model_libs.diff_square(row["current_team_possession"], row["opp_team_possession"]), axis=1)
-# formatted_data["diff_corner_kicks"] = formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_corner_kicks"], row["opp_team_corner_kicks"]), axis=1)
-# formatted_data["diff_goal_kicks"] = formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_goal_kicks"], row["opp_team_goal_kicks"]), axis=1)
-# formatted_data["diff_saves"] = formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_saves"], row["opp_team_saves"]), axis=1)
+
+adjusted_data = model_libs.adjust_features(formatted_data)
+
 
 columns_to_drop = ['current_record', 'opp_record', 'goals_for', 'opp_goals_for', 'goals_against', 'opp_goals_against',
                    'rpi']
 
-_, stats = form_data.get_columns()
+_, stats_columns = form_data.get_columns()
 
-formatted_data = formatted_data.drop(ignore_cols + columns_to_drop + stats, 1)
+adjusted_data = adjusted_data.drop(ignore_cols + columns_to_drop + stats_columns + ["goals"], 1)
 
-#### Running ALL Features
-if target == "converted_goals":
-    models_test_1 = run_features(formatted_data, [], 'converted_goals', ["knn"])
-    (formatted_y, formatted_X) = model_libs._extract_target(formatted_data, 'converted_goals')
-else:
-    models_test_1 = run_features(formatted_data, [], 'points', ["knn"])
-    (formatted_y, formatted_X) = model_libs._extract_target(formatted_data, 'points')
+if testing:
+    ''' Start Modeling Targets'''
+    for target in targets:
+        print(' ================================= ')
+        print("Target :: {}".format(target))
+        target_data = adjusted_data.copy()
+        if target == 'converted_goals':
+            target_data = target_data.drop("points", 1)
+            (target_y, target_X) = model_libs._extract_target(target_data, 'converted_goals')
+        elif target == "points":
+            target_data = target_data.drop("converted_goals", 1)
+            (target_y, target_X) = model_libs._extract_target(target_data, 'points')
+        elif target == "no_ties":
+            target_data = target_data.drop("converted_goals", 1)
+            train_data = target_data[target_data['points'] != 1]
+            (target_y, target_X) = model_libs._extract_target(train_data, 'points')
 
-print(formatted_X.columns)
+        for m in all_models:
+            r = form_model.build_tuned_model(target_X, target_y, m, dt, target)
+            # print(r)
+            # print('Accuracy :: ')
+            # model_libs.check_accuracy(r, target_X, target_y)
 
+prediction_models = {}
 
-# Simple Function to check the accuracy of the models.  Not the Final function
-def check_accuracy(model, data_X, y):
-    actual_y = pd.DataFrame(y.values, columns=['actual'])
-    predictions = pd.concat([pd.DataFrame(model.predict(data_X), columns=['predictions']), actual_y], axis=1)
-    predictions['accuracy'] = predictions.apply(lambda r: model_libs.predictions_diff(r['predictions'], r['actual']),
-                                                axis=1)
-    accuracy = np.divide(predictions['accuracy'].sum(), float(len(predictions['accuracy'])))
-    print(accuracy)
-
-
-for m in models_test_1:
-    check_accuracy(m, formatted_X, formatted_y)
-
-
-model_results = []
-for m in all_models:
-    r = form_model.build_tuned_model(formatted_X, formatted_y, m, dt)
-    model_results.append(r)
-    print('Accuracy :: ')
-    check_accuracy(r[0], formatted_X, formatted_y)
-
-
-prediction_models = form_model.load_models(all_models, dt)
-
+for t in targets:
+    prediction_models[t] = form_model.load_models(all_models, dt, t)
 
 
 print('Upcoming matches')
@@ -133,6 +102,7 @@ upcoming_data = predict_matches.predictions(upcoming_matches)
 upcoming_ranked_data_csv = 'csv/' + str(dt) + '/upcoming_ranked_data.csv'
 
 adjusted_leagues = {"epl": 'ENG', "bundesliga": 'DEU', "primera_division": 'ESP', "ligue_1": 'FRA'}
+
 testing = False
 if testing:
     upcoming_ranked_data = form_data.get_rankings(adjusted_leagues, teams, league_rounds, upcoming_data, True)
@@ -146,66 +116,37 @@ print('Loaded Upcoming Data...')
 """ Formatting data to convert goals scored to the correct category"""
 upcoming_formatted_data = upcoming_ranked_data.copy()
 
-""" //////////////////////////////////////////////////////////////////////////////////////////////////// """
-""" Using diff_squared methods for features """
-""" //////////////////////////////////////////////////////////////////////////////////////////////////// """
-upcoming_formatted_data["diff_goals_for"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["goals_for"], row["opp_goals_for"]), axis=1)
-upcoming_formatted_data["diff_goals_allowed"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["goals_against"], row["opp_goals_against"]), axis=1)
-upcoming_formatted_data["diff_attacks"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_attacks"], row["opp_team_attacks"]), axis=1)
-upcoming_formatted_data["diff_dangerous_attacks"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_dangerous_attacks"], row["opp_team_dangerous_attacks"]), axis=1)
-upcoming_formatted_data["diff_goal_attempts"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_goal_attempts"], row["opp_team_goal_attempts"]), axis=1)
-upcoming_formatted_data["diff_ball_safe"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_ball_safe"], row["opp_team_ball_safe"]), axis=1)
-upcoming_formatted_data["diff_possession"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_possession"], row["opp_team_possession"]), axis=1)
-#upcoming_formatted_data["diff_corner_kicks"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_corner_kicks"], row["opp_team_corner_kicks"]), axis=1)
-#upcoming_formatted_data["diff_goal_kicks"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_goal_kicks"], row["opp_team_goal_kicks"]), axis=1)
-#upcoming_formatted_data["diff_saves"] = upcoming_formatted_data.apply(lambda row: model_libs.diff_square(row["current_team_saves"], row["opp_team_saves"]), axis=1)
+adjusted_upcoming_data = model_libs.adjust_features(upcoming_formatted_data)
 
 columns_to_drop = ['current_record', 'opp_record', 'goals_for', 'opp_goals_for', 'goals_against', 'opp_goals_against', 'rpi']
-_, stats = form_data.get_columns()
 
-upcoming_formatted_data = upcoming_formatted_data.drop(ignore_cols + columns_to_drop + stats + ['points', 'goals'], 1)
+adjusted_upcoming_data = adjusted_upcoming_data.drop(ignore_cols + columns_to_drop + stats_columns + ['points', 'goals'], 1)
 
-print(upcoming_formatted_data.columns)
-
-""" Models we'll use to predict on upcoming matches """
+#print(adjusted_upcoming_data.columns)
 
 # This is all the X values
-upcoming_formatted_data
+adjusted_upcoming_data
 
-rf_preds = prediction_models[4].predict(upcoming_formatted_data)
-print(rf_preds)
+""" Find predictions """
+all_preds = {}
+for t in targets:
+    for index, m in enumerate(all_models):
+        print(str(m) + '_' + str(t) + '_preds')
+        preds = str(m) + '_' + str(t) + '_preds'
+        all_preds[preds] = prediction_models[t][index].predict(adjusted_upcoming_data)
+        print(all_preds[preds])
+        if t == 'no_ties' and m == 'log':
+            probs = pd.DataFrame(prediction_models[t][index].predict_proba(adjusted_upcoming_data))
+            probs = probs.rename(columns={0: 'Probability 0', 1: 'Probability 1'})
 
-knn_preds = prediction_models[0].predict(upcoming_formatted_data)
-print(knn_preds)
-
-svc_preds = prediction_models[2].predict(upcoming_formatted_data)
-print(svc_preds)
-
-log_preds = prediction_models[1].predict(upcoming_formatted_data)
-print(log_preds)
-
-log_prob = prediction_models[1].predict_proba(upcoming_formatted_data)
-probs = pd.DataFrame(log_prob)
-probs = probs.rename(columns={0: 'Probability 0', 1: 'Probability 1', 2: 'Probability 2'})
-#display(probs)
-#probs.to_csv('probs.csv')
-
-gnb_preds = prediction_models[3].predict(upcoming_formatted_data)
-print(gnb_preds)
 
 columns = ['team_name', 'opp_name', 'scheduled', 'is_home']
 # Remove all columns except the ones above
 upcoming_matches = upcoming_data[columns]
 
-if target == 'converted_goals':
-    random_preds = pd.Series(np.random.randint(2, size=len(upcoming_matches.index)), upcoming_matches.index)
-else:
-    random_preds = pd.Series(np.random.randint(3, size=len(upcoming_matches.index)), upcoming_matches.index)
-    random_preds[random_preds == 2] = 3
-
 # Add predictions to the end of that DF
-results = pd.DataFrame({'KNN': knn_preds, 'RandomForest': rf_preds, 'SVC': svc_preds, 'GNB': gnb_preds, 'log': log_preds, 'random': random_preds})
-upcoming_matches = pd.concat([upcoming_matches, results, probs], axis = 1)
+results = pd.DataFrame.from_dict(all_preds)
+upcoming_matches = pd.concat([upcoming_matches, results, probs], axis=1)
 reordered_matches = pd.DataFrame([])
 
 for rows in upcoming_matches.iterrows():
@@ -215,12 +156,7 @@ for rows in upcoming_matches.iterrows():
             reordered_matches = reordered_matches.append(upcoming_matches[upcoming_matches['team_name'].isin([i])])
 
 reordered_matches = reordered_matches.drop_duplicates()
-if target == 'points':
-    columns = ['scheduled', 'team_name', 'opp_name', 'is_home', 'KNN', 'RandomForest', 'SVC', 'GNB', 'log', 'random', 'Probability 0', 'Probability 1', 'Probability 2']
-else:
-    columns = ['scheduled', 'team_name', 'opp_name', 'is_home', 'KNN', 'RandomForest', 'SVC', 'GNB', 'log', 'random', 'Probability 0', 'Probability 1']
 
-reordered_matches = reordered_matches[columns]
 """ To compare when we have actual results"""
 #actual_results = pd.read_csv('actual_results.csv')
 #actual_results = actual_results.rename(columns = {'Unnamed: 0':'idx'})
@@ -228,7 +164,7 @@ reordered_matches = reordered_matches[columns]
 #reordered_matches = pd.concat([reordered_matches, indexed_results], axis=1)
 
 reordered_matches = reordered_matches.reset_index(drop=True)
-predictions_csv = 'csv/' + str(dt) + '/predictions_' + target + '.csv'
+predictions_csv = 'csv/' + str(dt) + '/all_predictions.csv'
 reordered_matches.to_csv(predictions_csv)
 
 

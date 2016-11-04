@@ -8,8 +8,8 @@ import time
 """ Does one round at a time.  Select the round (already played) and which league. Run it."""
 
 # ligue_1, epl, primera_division, bundesliga
-rounds = [8]
-leagues = ['bundesliga']
+rounds = [10]
+leagues = ['primera_division']
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',

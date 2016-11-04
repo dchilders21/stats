@@ -173,7 +173,7 @@ def check_category(pred, actual):
 
 def get_leagues_rounds():
     """ Upcoming Rounds (closest round not played yet) """
-    leagues = {"mls": 32, "epl": 10, "bundesliga": 9, "primera_division": 10, "ligue_1": 11}
+    leagues = {"mls": 32, "epl": 11, "bundesliga": 10, "primera_division": 11, "ligue_1": 12}
     return leagues
 
 
@@ -202,13 +202,13 @@ def get_team_round(team_country):
     if team_country == 'USA':
         return 32
     elif team_country == 'ENG':
-        return 10
-    elif team_country == 'DEU':
-        return 9
-    elif team_country == 'ESP':
-        return 10
-    elif team_country == 'FRA':
         return 11
+    elif team_country == 'DEU':
+        return 10
+    elif team_country == 'ESP':
+        return 11
+    elif team_country == 'FRA':
+        return 12
 
 
 def set_rpi_quartile(round_number, data, isCur):
@@ -301,3 +301,36 @@ def iternamedtuples(df):
     Row = namedtuple('Row', df.columns)
     for row in df.itertuples():
         yield Row(*row[1:])
+
+
+# Simple Function to check the accuracy of the models. Not the Final function
+def check_accuracy(model, data_X, y):
+    actual_y = pd.DataFrame(y.values, columns=['actual'])
+    predictions = pd.concat([pd.DataFrame(model.predict(data_X), columns=['predictions']), actual_y], axis=1)
+    predictions['accuracy'] = predictions.apply(lambda r: predictions_diff(r['predictions'], r['actual']),
+                                                axis=1)
+    accuracy = np.divide(predictions['accuracy'].sum(), float(len(predictions['accuracy'])))
+
+    return accuracy
+
+
+def adjust_features(data):
+    data["diff_goals_for"] = data.apply(
+        lambda row: diff_square(row["goals_for"], row["opp_goals_for"]), axis=1)
+    data["diff_goals_allowed"] = data.apply(
+        lambda row: diff_square(row["goals_against"], row["opp_goals_against"]), axis=1)
+    data["diff_attacks"] = data.apply(
+        lambda row: diff_square(row["current_team_attacks"], row["opp_team_attacks"]), axis=1)
+    data["diff_dangerous_attacks"] = data.apply(
+        lambda row: diff_square(row["current_team_dangerous_attacks"], row["opp_team_dangerous_attacks"]), axis=1)
+    data["diff_goal_attempts"] = data.apply(
+        lambda row: diff_square(row["current_team_goal_attempts"], row["opp_team_goal_attempts"]), axis=1)
+    data["diff_ball_safe"] = data.apply(
+        lambda row: diff_square(row["current_team_ball_safe"], row["opp_team_ball_safe"]), axis=1)
+    data["diff_possession"] = data.apply(
+        lambda row: diff_square(row["current_team_possession"], row["opp_team_possession"]), axis=1)
+    # data["diff_corner_kicks"] = data.apply(lambda row: .diff_square(row["current_team_corner_kicks"], row["opp_team_corner_kicks"]), axis=1)
+    # data["diff_goal_kicks"] = data.apply(lambda row: diff_square(row["current_team_goal_kicks"], row["opp_team_goal_kicks"]), axis=1)
+    # data["diff_saves"] = data.apply(lambda row: diff_square(row["current_team_saves"], row["opp_team_saves"]), axis=1)
+
+    return data

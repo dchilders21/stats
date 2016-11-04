@@ -78,30 +78,13 @@ def train_models(dt, X, y, models):
     return finished_models
 
 
-def load_models(models, dt):
+def load_models(models, dt, t):
     loaded_models = []
 
     for i in models:
-        model_round = 'csv/' + str(dt) + '/models/' + i + '/' + i
-        if i == 'log':
-            log = joblib.load(model_round)
-            loaded_models.append(log)
-        if i == 'svc':
-            svc = joblib.load(model_round)
-            loaded_models.append(svc)
-        elif i == 'gmm':
-            gmm = joblib.load(model_round)
-            loaded_models.append(gmm)
-        elif i == 'knn':
-            kmeans = joblib.load(model_round)
-            loaded_models.append(kmeans)
-        elif i == 'gnb':
-            gnb = joblib.load(model_round)
-            loaded_models.append(gnb)
-        elif i == 'randomForest':
-            rf = joblib.load(model_round)
-            loaded_models.append(rf)
-
+        model = 'csv/' + str(dt) + '/models/' + i + '/' + i + '_' + str(t)
+        model_load = joblib.load(model)
+        loaded_models.append(model_load)
         print("Success :: Loaded - " + str(i))
 
     return loaded_models
@@ -178,11 +161,11 @@ def build_model(X, y, model_type):
         return clf
 
 
-def build_tuned_model(X, y, model_type, dt):
+def build_tuned_model(X, y, model_type, dt, target):
 
     finished_models = []
 
-    tuned_folder = 'csv/' + str(dt) + '/models/' + str(model_type) + '/' + str(model_type)
+    tuned_folder = 'csv/' + str(dt) + '/models/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')

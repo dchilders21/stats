@@ -1,0 +1,40 @@
+,match_id,scheduled,home_id,away_id,home_team,away_team,country_code
+0,82.0,2016-11-04 19:30:00,63.0,66.0,Hertha BSC,Monchengladbach,DEU
+1,83.0,2016-11-05 14:30:00,76.0,61.0,Bayern Munich,1899 Hoffenheim,DEU
+2,84.0,2016-11-05 14:30:00,71.0,77.0,Bayer Leverkusen,SV Darmstadt 98,DEU
+3,85.0,2016-11-05 14:30:00,72.0,68.0,FC Ingolstadt,FC Augsburg,DEU
+4,86.0,2016-11-05 14:30:00,64.0,75.0,SC Freiburg,VfL Wolfsburg,DEU
+5,87.0,2016-11-05 14:30:00,65.0,67.0,Hamburger SV,Borussia Dortmund,DEU
+6,88.0,2016-11-05 17:30:00,69.0,78.0,Eintracht Frankfurt,1 FC Cologne,DEU
+7,89.0,2016-11-06 14:30:00,74.0,73.0,RB Leipzig,1 FSV Mainz 05,DEU
+8,90.0,2016-11-06 16:30:00,62.0,70.0,FC Schalke 04,Werder Bremen,DEU
+0,101.0,2016-11-05 15:00:00,42.0,51.0,Manchester City,Middlesbrough FC,ENG
+1,102.0,2016-11-05 15:00:00,55.0,60.0,Bournemouth AFC,Sunderland AFC,ENG
+2,103.0,2016-11-05 15:00:00,47.0,49.0,West Ham United,Stoke City,ENG
+3,104.0,2016-11-05 15:00:00,53.0,59.0,Burnley FC,Crystal Palace,ENG
+4,105.0,2016-11-05 17:30:00,48.0,44.0,Chelsea FC,Everton FC,ENG
+5,106.0,2016-11-06 12:00:00,43.0,54.0,Arsenal FC,Tottenham Hotspur,ENG
+6,107.0,2016-11-06 14:15:00,50.0,41.0,Hull City,Southampton FC,ENG
+7,108.0,2016-11-06 14:15:00,56.0,57.0,Liverpool FC,Watford FC,ENG
+8,109.0,2016-11-06 15:00:00,45.0,58.0,Swansea City,Manchester United,ENG
+9,110.0,2016-11-06 16:30:00,52.0,46.0,Leicester City,West Bromwich Albion,ENG
+0,101.0,2016-11-06 18:00:00,85.0,92.0,Sevilla FC,FC Barcelona,ESP
+1,102.0,2016-11-06 18:00:00,93.0,91.0,Villarreal CF,Real Betis Balompie,ESP
+2,103.0,2016-11-06 18:00:00,82.0,84.0,Espanyol Barcelona,Athletic Bilbao,ESP
+3,104.0,2016-11-06 18:00:00,94.0,83.0,CA Osasuna,CD Alaves,ESP
+4,105.0,2016-11-06 18:00:00,90.0,97.0,Real Madrid,CD Leganes,ESP
+5,106.0,2016-11-06 18:00:00,89.0,100.0,Real Sociedad,Atletico Madrid,ESP
+6,107.0,2016-11-06 18:00:00,87.0,98.0,Malaga CF,Sporting Gijon,ESP
+7,108.0,2016-11-06 18:00:00,88.0,95.0,Celta de Vigo,Valencia CF,ESP
+8,109.0,2016-11-06 18:00:00,96.0,99.0,Las Palmas UD,SD Eibar,ESP
+9,110.0,2016-11-06 18:00:00,81.0,86.0,Granada CF,Deportivo La Coruna,ESP
+0,111.0,2016-11-05 19:00:00,120.0,114.0,FC Nantes,Toulouse FC,FRA
+1,112.0,2016-11-05 19:00:00,107.0,101.0,Montpellier HSC,Olympique Marseille,FRA
+2,113.0,2016-11-05 19:00:00,111.0,112.0,Dijon FCO,EA Guingamp,FRA
+3,114.0,2016-11-05 19:00:00,117.0,116.0,AS Monaco,AS Nancy,FRA
+4,115.0,2016-11-05 19:00:00,106.0,103.0,SCO Angers,Lille OSC,FRA
+5,116.0,2016-11-05 19:00:00,105.0,104.0,SM Caen,OGC Nice,FRA
+6,117.0,2016-11-05 19:00:00,102.0,108.0,FC Metz,AS Saint Etienne,FRA
+7,118.0,2016-11-05 19:00:00,118.0,119.0,Paris St Germain,Stade Rennes,FRA
+8,119.0,2016-11-05 19:00:00,115.0,109.0,FC Girondins Bordeaux,FC Lorient,FRA
+9,120.0,2016-11-05 19:00:00,110.0,113.0,Olympique Lyon,SC Bastia,FRA
