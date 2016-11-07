@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/__init__.py" afterPath="$PROJECT_DIR$/src/stats/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/csv/11_02_16/all_predictions.csv" afterPath="$PROJECT_DIR$/src/stats/csv/11_02_16/all_predictions.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/results.py" afterPath="$PROJECT_DIR$/src/stats/results.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/static/pages/jquery.flot.init.js" afterPath="$PROJECT_DIR$/src/stats/static/pages/jquery.flot.init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stats/templates/team.html" afterPath="$PROJECT_DIR$/src/stats/templates/team.html" />
-    </list>
+    <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="" />
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,8 +58,8 @@
           <file leaf-file-name="team.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/stats/templates/team.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="505">
-                  <caret line="210" column="53" selection-start-line="210" selection-start-column="53" selection-end-line="210" selection-end-column="53" />
+                <state relative-caret-position="289">
+                  <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                   </folding>
@@ -1064,21 +1057,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stats/templates/team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="210" column="53" selection-start-line="210" selection-start-column="53" selection-end-line="210" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/stats/static/pages/team/jquery.flot.init.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
           <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stats/templates/team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
