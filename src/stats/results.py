@@ -54,9 +54,7 @@ formatted_data = ranked_data.copy()
 
 formatted_data['converted_goals'] = formatted_data.apply(lambda row: model_libs.set_group(row['goals']), axis=1)
 
-
 adjusted_data = model_libs.adjust_features(formatted_data)
-
 
 columns_to_drop = ['current_record', 'opp_record', 'goals_for', 'opp_goals_for', 'goals_against', 'opp_goals_against',
                    'rpi']
@@ -122,8 +120,6 @@ columns_to_drop = ['current_record', 'opp_record', 'goals_for', 'opp_goals_for',
 
 adjusted_upcoming_data = adjusted_upcoming_data.drop(ignore_cols + columns_to_drop + stats_columns + ['points', 'goals'], 1)
 
-#print(adjusted_upcoming_data.columns)
-
 # This is all the X values
 adjusted_upcoming_data
 
@@ -135,10 +131,9 @@ for t in targets:
         preds = str(m) + '_' + str(t) + '_preds'
         all_preds[preds] = prediction_models[t][index].predict(adjusted_upcoming_data)
         print(all_preds[preds])
-        if t == 'no_ties' and m == 'log':
+        if t == 'points' and m == 'log':
             probs = pd.DataFrame(prediction_models[t][index].predict_proba(adjusted_upcoming_data))
-            probs = probs.rename(columns={0: 'Probability 0', 1: 'Probability 1'})
-
+            probs = probs.rename(columns={0: 'Probability 0', 1: 'Probability 1', 2: 'Probability 2'})
 
 columns = ['team_name', 'opp_name', 'scheduled', 'is_home']
 # Remove all columns except the ones above

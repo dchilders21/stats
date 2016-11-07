@@ -13,6 +13,33 @@
     </div>
 
     <div class="row">
+        <div class="col-lg-6">
+            <div class="portlet"><!-- /primary heading -->
+                <div class="portlet-heading">
+                    <h3 class="portlet-title text-dark">
+                        Donut Pie
+                    </h3>
+                    <div class="portlet-widgets">
+                        <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                        <span class="divider"></span>
+                        <a data-toggle="collapse" data-parent="#accordion1" href="#portlet3"><i class="ion-minus-round"></i></a>
+                        <span class="divider"></span>
+                        <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="portlet3" class="panel-collapse collapse in">
+                    <div class="portlet-body">
+                        <div id="donut-chart">
+                            <div id="donut-chart-container" class="flot-chart" style="height: 320px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-12">
             <div class="card-box table-responsive">
                 <h4 class="text-dark  header-title m-t-0">Upcoming Match</h4>
@@ -176,9 +203,33 @@
     <script src="{{ url_for('static', filename='pages/datatables.init.js') }}"></script>
 
     <script type="text/javascript">
+        function getInfo() {
+            var probs = {{ home_predicted_probs|safe }};
+            var home_team = {{ home_features.name|tojson }};
+            var away_team = {{ away_features.name|tojson }};
+
+            var info = { probs: probs, home_team: home_team, away_team: away_team};
+            return info;
+
+        }
+    </script>
+
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.time.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.resize.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.pie.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.selection.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.stack.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/flot-chart/jquery.flot.crosshair.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='pages/team/jquery.flot.init.js') }}"></script>
+
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#datatable').dataTable();
             TableManageButtons.init();
+
         });
     </script>
 {% endblock %}

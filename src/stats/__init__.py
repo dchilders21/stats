@@ -40,7 +40,7 @@ login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
 #dt = datetime.date.today().strftime("%m_%d_%y")
-dt = "10_26_16"
+dt = "11_02_16"
 print('INITIALIZED...')
 
 
@@ -89,10 +89,7 @@ def load_user(user_id):
 def login():
 
     form = LoginForm(request.form)
-    print('here')
     if form.validate_on_submit():
-        print(form.username.data)
-        print(form.password.data)
         # check if the user exists and if he/she provided correct password
         if form.username.data == "Guest" and form.password.data == "guest":
             user = User(form.username.data, form.password.data)
@@ -112,30 +109,18 @@ def logout():
 
 def get_predictions(team, target, isHome):
 
-    if target == "points":
-        prediction_points_csv = 'stats/csv/' + str(dt) + '/predictions_points.csv'
-        prediction_points_data = pd.read_csv(prediction_points_csv)
+    prediction_csv = 'stats/csv/' + str(dt) + '/all_predictions.csv'
+    prediction_data = pd.read_csv(prediction_csv)
 
-        if isHome:
-            matches_points = prediction_points_data.loc[((prediction_points_data["team_name"] == team) & (prediction_points_data["is_home"] == 1))]
-        else:
-            matches_points = prediction_points_data.loc[
-                ((prediction_points_data["team_name"] == team) & (prediction_points_data["is_home"] == 0))]
-
-        predictions = matches_points.iloc[0]["log"]
+    if isHome:
+        match = prediction_data.loc[((prediction_data["team_name"] == team) & (prediction_data["is_home"] == 1))]
     else:
-        prediction_goals_csv = 'stats/csv/' + str(dt) + '/predictions_converted_goals.csv'
-        prediction_goals_data = pd.read_csv(prediction_goals_csv)
+        match = prediction_data.loc[((prediction_data["team_name"] == team) & (prediction_data["is_home"] == 0))]
 
-        if isHome:
-            matches_goals = prediction_goals_data.loc[((prediction_goals_data["team_name"] == team) & (prediction_goals_data["is_home"] == 1))]
-        else:
-            matches_goals = prediction_goals_data.loc[
-                ((prediction_goals_data["team_name"] == team) & (prediction_goals_data["is_home"] == 0))]
-
-        predictions = matches_goals.iloc[0]["log"]
-    print(target)
-    print(predictions)
+    if target == "no_ties":
+        predictions = [match.iloc[0]["Probability 0"], match.iloc[0]["Probability 1"], match.iloc[0]["Probability 2"]]
+    else:
+        predictions = match.iloc[0]["log_" + str(target) + "_preds"]
 
     return predictions
 
@@ -225,7 +210,6 @@ def calculate_stats(team_id):
     return previous_matches, record, season_stats
 
 
-
 @app.route('/')
 def home():
     all_teams = form_data.get_teams()
@@ -260,13 +244,13 @@ def league(league):
         lambda row: get_predictions(row["home_team"], "points", True), axis=1)
 
     matches["predicted_home_goals"] = matches.apply(
-        lambda row: get_predictions(row["home_team"], "goals", True), axis=1)
+        lambda row: get_predictions(row["home_team"], "converted_goals", True), axis=1)
 
     matches["predicted_away_points"] = matches.apply(
         lambda row: get_predictions(row["away_team"], "points", False), axis=1)
 
     matches["predicted_away_goals"] = matches.apply(
-        lambda row: get_predictions(row["away_team"], "goals", False), axis=1)
+        lambda row: get_predictions(row["away_team"], "converted_goals", False), axis=1)
 
     print(matches)
     matches = matches.to_dict(orient='records')
@@ -328,17 +312,20 @@ def team(team_id):
 
     upcoming_matches = upcoming_matches.to_dict(orient='records')
 
+    home_predicted_probs = get_predictions(home_features["name"], "no_ties", True)
+    print(home_predicted_probs)
     # Fix this also
     home_predicted_points = get_predictions(home_features["name"], "points", True)
-    home_predicted_goals = get_predictions(home_features["name"], "goals", True)
+    home_predicted_goals = get_predictions(home_features["name"], "converted_goals", True)
     away_predicted_points = get_predictions(away_features["name"], "points", False)
-    away_predicted_goals = get_predictions(away_features["name"], "goals", False)
+    away_predicted_goals = get_predictions(away_features["name"], "converted_goals", False)
 
     return render_template("team.html", leagues=leagues, team_name=team["full_name"].loc[0], home_record=home_record,
                            away_record=away_record, previous_matches=previous_matches, upcoming_matches=upcoming_matches,
                            season_stats=season_stats, home_features=home_features, away_features=away_features,
                            home_predicted_points=home_predicted_points, away_predicted_points=away_predicted_points,
-                           home_predicted_goals=home_predicted_goals, away_predicted_goals=away_predicted_goals)
+                           home_predicted_goals=home_predicted_goals, away_predicted_goals=away_predicted_goals,
+                           home_predicted_probs=home_predicted_probs)
 
 
 @app.route('/league/<league>/rankings')

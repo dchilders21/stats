@@ -25,7 +25,7 @@
 			series : {
 				pie : {
 					show : true,
-					innerRadius : 0.5
+					innerRadius : 0.75
 				}
 			},
 			legend : {
@@ -55,12 +55,12 @@
 	//initializing various charts and components
 	FlotChart.prototype.init = function() {
 
-        getProbs();
-        console.log('~~~~~~~~');
+        var info = getInfo();
+
 		//Donut pie graph data
-		var donutlabels = ["Series 1", "Series 2", "Series 3"];
-		var donutdatas = [35, 20, 10];
-		var donutcolors = ["#3bafda", "#26c6da", "#80deea"];
+		var donutlabels = [info['away_team'], "Draw", info['home_team']];
+		var donutdatas = info['probs'];
+		var donutcolors = ["#f76397", "#5fbeaa", "#3bafda"];
 		this.createDonutGraph("#donut-chart #donut-chart-container", donutlabels, donutdatas, donutcolors);
 
 	},
@@ -74,7 +74,7 @@
 //initializing flotchart
 function($) {
 	"use strict";
-	//$.FlotChart.init()
+	$.FlotChart.init()
 }(window.jQuery);
 
 $(document).ready(function() {
