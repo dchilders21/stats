@@ -3,6 +3,7 @@ import mysql.connector
 import pandas as pd
 import numpy as np
 from stats import model_libs, predict_matches
+import settings
 
 
 def rank_teams(teams, rd, side_of_ball, upcoming):
@@ -204,9 +205,9 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
 
 
 def get_coverage():
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='127.0.0.1',
-                                  database='mls')
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database=settings.MYSQL_DATABASE)
 
     match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 
@@ -236,9 +237,9 @@ def get_columns():
 
 
 def get_teams():
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='127.0.0.1',
-                                  database='mls')
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database=settings.MYSQL_DATABASE)
 
     teams = pd.read_sql('SELECT id, country_code, full_name FROM teams', cnx)
 
@@ -267,10 +268,9 @@ def create_match(team_id, current_matches, match_details, round_number):
 
 
 def run_data():
-
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='127.0.0.1',
-                                  database='mls')
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database=settings.MYSQL_DATABASE)
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
     match_details = get_coverage()

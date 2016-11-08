@@ -1,9 +1,10 @@
 import mysql.connector
 import xml.etree.ElementTree as ET
+import settings
 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='mls')
+cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                              host=settings.MYSQL_HOST,
+                              database=settings.MYSQL_DATABASE)
 cursor = cnx.cursor()
 
 add_team = ("INSERT INTO teams "

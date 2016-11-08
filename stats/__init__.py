@@ -1,9 +1,7 @@
 import os
-import sys
 import pandas as pd
 import numpy as np
 import mysql.connector
-import datetime
 from flask import render_template, request, url_for, redirect
 
 from flask import Flask, Response
@@ -14,6 +12,7 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, validators
 
 from stats import model_libs, match_stats, form_model, form_data, predict_matches
+import settings
 
 app = Flask(__name__)
 
@@ -23,9 +22,9 @@ STATIC_PATH = static_folder_root = os.path.join(os.path.dirname(os.path.abspath(
 
 app.config.from_object('config')
 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='mls')
+cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                              host=settings.MYSQL_HOST,
+                              database=settings.MYSQL_DATABASE)
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
 match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)

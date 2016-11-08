@@ -2,9 +2,11 @@ def get_upcoming_matches():
     import mysql.connector
     import pandas as pd
     from stats import match_stats, model_libs
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='127.0.0.1',
-                                  database='mls')
+    import settings
+
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database=settings.MYSQL_DATABASE)
 
     leagues = model_libs.get_leagues_rounds()
 
@@ -27,10 +29,11 @@ def predictions(upcoming_matches):
     import mysql.connector
     import pandas as pd
     from stats import match_stats, model_libs, form_data
+    import settings
 
-    cnx = mysql.connector.connect(user='root', password='',
-                                  host='127.0.0.1',
-                                  database='mls')
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database=settings.MYSQL_DATABASE)
 
     cursor = cnx.cursor(dictionary=True, buffered=True)
 

@@ -1,0 +1,4 @@
+MYSQL_USER = 'admin'
+MYSQL_PASSWORD = '1Qaz@wsx'
+MYSQL_HOST = '0.0.0.0'
+MYSQL_DATABASE = 'mls'
