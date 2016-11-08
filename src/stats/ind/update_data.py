@@ -1,33 +1,37 @@
+#!/anaconda/envs/stats/bin/python3 python
+
 import mysql.connector
 import requests
-import xml.etree.ElementTree as ET
+import pandas as pd
 from bs4 import BeautifulSoup
-from datetime import datetime, date, time
 import time
 
-""" Does one round at a time.  Select the round (already played) and which league. Run it."""
-
-# ligue_1, epl, primera_division, bundesliga
-rounds = [10]
-leagues = ['primera_division']
+''' Finds the most current round '''
+leagues = ['primera_division', 'ligue_1', 'primera_division', 'bundesliga']
 
 cnx = mysql.connector.connect(user='root', password='',
                               host='127.0.0.1',
                               database='mls')
 cursor = cnx.cursor(buffered=True)
 
+rounds = []
+
+for l in leagues:
+    matches_table = 'matches_' + l
+    q = "SELECT MIN(round_number) as round FROM " + matches_table + " WHERE status = 'scheduled'"
+
+    matches = pd.read_sql(q, cnx)
+    rounds.append(matches.iloc[0]['round'])
+
 API_KEY = "au5hqx7j6uag8zrryy5ubh6b"
 VERSION = "t2"
 
 for r in range(len(rounds)):
-    print(leagues[r])
     table = 'matches_' + leagues[r]
-    #print(table)
 
-    # Will eventually need a date check just in case a match hasn't happened yet
     query = ("SELECT id, stats_id FROM " + table + " WHERE round_number = %(round)s AND status = 'scheduled'")
 
-    cursor.execute(query, {'round': rounds[r]})
+    cursor.execute(query, {'round': float(rounds[r])})
 
     coverage_table = 'match_coverage_' + leagues[r]
     home_manager_table = str('home_manager_' + leagues[r])
@@ -37,8 +41,6 @@ for r in range(len(rounds)):
 
     matches = cursor.fetchall()
     for id, stats_id in matches:
-
-        #print(id)
 
         # Checking to see if the match (match_id) has already been added to match_coverage
         query = ("SELECT id FROM " + coverage_table + " "
@@ -58,7 +60,7 @@ for r in range(len(rounds)):
             #soup = BeautifulSoup(open("./xml/game_summary.xml"), "html.parser")
             #print(r.content)
 
-            ### Match_Coverage
+            # Match_Coverage
             add_coverage = ("INSERT INTO " + coverage_table + " "
                         "(lineups, tactical_lineups, corner_facts, extended_facts, deep_facts, statistics, referee_id, match_id) "
                         "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
@@ -81,8 +83,7 @@ for r in range(len(rounds)):
             cursor.execute(add_coverage, data_coverage)
             cnx.commit()
 
-            ### Home/Away Managers
-
+            # Home/Away Managers
             home = soup.find('home')
             away = soup.find('away')
 
@@ -110,8 +111,7 @@ for r in range(len(rounds)):
 
                 cnx.commit()
 
-            ### Home/Away Coverage
-
+            # Home/Away Coverage
             home_halves = home.find_all("half")
             home_stats = home.find("statistics")
             away_halves = away.find_all("half")
@@ -129,8 +129,6 @@ for r in range(len(rounds)):
                 away_winner = 1
             elif away["winner"] == "draw":
                 away_winner = 2
-
-
 
             add_home_team_coverage = ("INSERT INTO " + home_team_coverage_table + " "
                             "(stats_id, formation, score, regular_score, penalty_score, winner, first_half_score, second_half_score, attacks, ball_safe, "
