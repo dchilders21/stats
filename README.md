@@ -8,6 +8,8 @@ http://conda.pydata.org/docs/using/envs.html
 3. The only lib that I had trouble installing with pip was the 'mysql-connector'.  Need to go through the below steps in order to get that installed correctly.
 http://stackoverflow.com/questions/31748278/how-do-you-install-mysql-connector-python-development-version-through-pip
 
+NOTE: Download and install (the steps above) in the pkgs folder ('anaconda3/pkgs').  Once the step in the link have been taken. You will still need to install through the environment (conda install mysql-connector-python)
+
 4. Go into 'src'> 'stats' and open  'goals.ipynb' and run the first box.  If everything is working correctly you should see 'INITIALIZED...'
 
 5. The PDF report can be found in 'scr' > 'docs'.  'ML – Capstone Project' is the report and 'Features_SP' is supporting data.
