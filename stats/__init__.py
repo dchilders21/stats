@@ -103,7 +103,7 @@ def login():
 def logout():
     flask_login.logout_user()
 
-    return redirect(url_for('login'))
+    return redirect(url_for('login'), _external=True)
 
 
 def get_predictions(team, target, isHome):
