@@ -93,7 +93,7 @@ def login():
         if form.username.data == "Guest" and form.password.data == "guest":
             user = User(form.username.data, form.password.data)
             flask_login.login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('home'), _external=True)
 
     return render_template('login.html', form=form)
 
