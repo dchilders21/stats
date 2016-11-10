@@ -8,7 +8,7 @@ from flask import Flask, Response
 import flask_login
 from flask_login import UserMixin, login_required
 
-from flask_wtf import FlaskForm
+from flask_wtf import Form as FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, validators
 
 from stats import model_libs, match_stats, form_model, form_data, predict_matches
