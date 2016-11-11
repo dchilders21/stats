@@ -1,17 +1,18 @@
-#!/anaconda/envs/stats/bin/python3 python
+#!/anaconda3/envs/stats/bin/python3 python
 
 import mysql.connector
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import time
+import settings
 
 ''' Finds the most current round '''
 leagues = ['primera_division', 'ligue_1', 'primera_division', 'bundesliga']
 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='mls')
+cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                              host=settings.MYSQL_HOST,
+                              database=settings.MYSQL_DATABASE)
 cursor = cnx.cursor(buffered=True)
 
 rounds = []

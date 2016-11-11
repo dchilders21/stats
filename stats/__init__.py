@@ -93,7 +93,7 @@ def login():
         if form.username.data == "Guest" and form.password.data == "guest":
             user = User(form.username.data, form.password.data)
             flask_login.login_user(user)
-            return redirect(url_for('home'), _external=True)
+            return redirect(url_for('home', _external=True))
 
     return render_template('login.html', form=form)
 
@@ -103,7 +103,7 @@ def login():
 def logout():
     flask_login.logout_user()
 
-    return redirect(url_for('login'), _external=True)
+    return redirect(url_for('login', _external=True))
 
 
 def get_predictions(team, target, isHome):
@@ -210,6 +210,7 @@ def calculate_stats(team_id):
 
 
 @app.route('/')
+@login_required
 def home():
     all_teams = form_data.get_teams()
     all_teams = all_teams.reset_index()
