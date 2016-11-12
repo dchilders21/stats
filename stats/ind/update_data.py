@@ -5,14 +5,13 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 import time
-import settings
 
 ''' Finds the most current round '''
-leagues = ['primera_division', 'ligue_1', 'primera_division', 'bundesliga']
+leagues = ['primera_division', 'ligue_1', 'epl', 'bundesliga']
 
-cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
-                              host=settings.MYSQL_HOST,
-                              database=settings.MYSQL_DATABASE)
+cnx = mysql.connector.connect(user='admin', password='1Qaz@wsx',
+                              host='0.0.0.0',
+                              database='mls')
 cursor = cnx.cursor(buffered=True)
 
 rounds = []
@@ -24,10 +23,12 @@ for l in leagues:
     matches = pd.read_sql(q, cnx)
     rounds.append(matches.iloc[0]['round'])
 
+print(rounds)
+
 API_KEY = "au5hqx7j6uag8zrryy5ubh6b"
 VERSION = "t2"
 
-for r in range(len(rounds)):
+"""for r in range(len(rounds)):
     table = 'matches_' + leagues[r]
 
     query = ("SELECT id, stats_id FROM " + table + " WHERE round_number = %(round)s AND status = 'scheduled'")
@@ -169,7 +170,7 @@ for r in range(len(rounds)):
 
             cursor.execute(query, {'stats_id': stats_id})
 
-            cnx.commit()
+            cnx.commit()"""
 
 
 
