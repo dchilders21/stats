@@ -28,7 +28,7 @@ print(rounds)
 API_KEY = "au5hqx7j6uag8zrryy5ubh6b"
 VERSION = "t2"
 
-"""for r in range(len(rounds)):
+for r in range(len(rounds)):
     table = 'matches_' + leagues[r]
 
     query = ("SELECT id, stats_id FROM " + table + " WHERE round_number = %(round)s AND status = 'scheduled'")
@@ -170,7 +170,7 @@ VERSION = "t2"
 
             cursor.execute(query, {'stats_id': stats_id})
 
-            cnx.commit()"""
+            cnx.commit()
 
 
 
