@@ -8,15 +8,22 @@ def get_upcoming_matches():
                                   host=settings.MYSQL_HOST,
                                   database=settings.MYSQL_DATABASE)
 
-    leagues = model_libs.get_leagues_rounds()
+    leagues = ['primera_division', 'ligue_1', 'epl', 'bundesliga']
 
     upcoming_matches = pd.DataFrame([])
 
-    for key in leagues:
-        table = str('matches_' + key)
-        round_number = leagues[key]
-        query = str("SELECT " + table + ".id as 'match_id', " + table + ".scheduled, " + table + ".home_id, " + table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team', teams1.country_code AS 'country_code' FROM " + table + " LEFT JOIN teams teams1 ON " + table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(round_number) + "'")
+    for l in leagues:
+        matches_table = 'matches_' + l
+
+        q = "SELECT MIN(round_number) as round FROM " + matches_table + " WHERE status = 'scheduled'"
+        rounds = pd.read_sql(q, cnx)
+        rnd = rounds.iloc[0]['round']
+
+        query = str(
+            "SELECT " + matches_table + ".id as 'match_id', " + matches_table + ".scheduled, " + matches_table + ".home_id, " + matches_table + ".away_id, teams1.full_name AS 'home_team', teams2.full_name AS 'away_team', teams1.country_code AS 'country_code' FROM " + matches_table + " LEFT JOIN teams teams1 ON " + matches_table + ".home_id = teams1.id LEFT JOIN teams teams2 ON " + matches_table + ".away_id = teams2.id WHERE status = 'scheduled' AND round_number = '" + str(
+                rnd) + "'")
         match = pd.read_sql(query, cnx)
+
         upcoming_matches = upcoming_matches.append(match)
 
     match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
