@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generation started @ 2016-11-13 15:29:31 +0000 -->
+<team xmlns="http://feed.elasticstats.com/schema/basketball/team-v2.0.xsd" id="583ecb8f-fb46-11e1-82cb-f4ce4684ea4c" name="Hawks" alias="ATL" market="Atlanta" founded="1946">
+  <venue id="fd21f639-8a47-51ac-a5dd-590629d445cf" name="Philips Arena" capacity="18118" address="One Philips Drive" city="Atlanta" state="GA" zip="30303" country="USA"/>
+  <hierarchy>
+    <league id="4353138d-4c22-4396-95d8-5f587d2df25c" name="NBA" alias="NBA"/>
+    <conference id="3960cfac-7361-4b30-bc25-8d393de6f62f" name="EASTERN CONFERENCE" alias="EASTERN"/>
+    <division id="54dc7348-c1d2-40d8-88b3-c4c0138e085d" name="Southeast" alias="SOUTHEAST"/>
+  </hierarchy>
+  <coaches>
+    <coach id="6c9c23f1-d87d-4aca-8414-3d86b0b3993e" full_name="Mike Budenholzer" first_name="Mike" last_name="Budenholzer" position="Head Coach" experience="1"/>
+  </coaches>
+  <players>
+    <player id="1a072572-763d-4839-b920-82b48d8e296a" status="ACT" full_name="Kris Humphries" first_name="Kris" last_name="Humphries" abbr_name="K.Humphries" height="81" weight="235" position="F" primary_position="PF" jersey_number="43" experience="12" college="Minnesota" birth_place="Minneapolis, MN, USA" birthdate="1985-02-06" updated="2016-10-21T17:44:29+00:00">
+      <draft team_id="583ece50-fb46-11e1-82cb-f4ce4684ea4c" year="2004" round="1" pick="14"/>
+    </player>
+    <player id="2b93904c-7655-46fe-992e-66a6501edaac" status="ACT" full_name="Ryan Kelly" first_name="Ryan" last_name="Kelly" abbr_name="R.Kelly" height="83" weight="230" position="F" primary_position="PF" jersey_number="30" experience="2" college="Duke" birth_place="Carmel, NY, USA" birthdate="1991-04-09" updated="2016-11-13T15:29:04+00:00">
+      <draft team_id="583ecae2-fb46-11e1-82cb-f4ce4684ea4c" year="2013" round="2" pick="48"/>
+    </player>
+    <player id="2c157857-fffd-4eb5-8e2a-b28ebea8da77" status="ACT" full_name="Kent Bazemore" first_name="Kent" last_name="Bazemore" abbr_name="K.Bazemore" height="77" weight="201" position="F-G" primary_position="SF" jersey_number="24" experience="4" college="Old Dominion" birth_place="Kelford, NC, USA" birthdate="1989-07-01" updated="2016-10-21T17:41:51+00:00">
+      <draft year="2012"/>
+    </player>
+    <player id="35cd1338-c56b-4247-b53c-264585c59883" status="ACT" full_name="Tim Hardaway Jr." first_name="Tim" last_name="Hardaway Jr." abbr_name="T.Hardaway Jr." height="78" weight="205" position="G" primary_position="SG" jersey_number="10" experience="3" college="Michigan" birth_place="Miami, FL, USA" birthdate="1992-03-16" updated="2016-10-21T17:43:36+00:00">
+      <draft team_id="583ec70e-fb46-11e1-82cb-f4ce4684ea4c" year="2013" round="1" pick="24"/>
+    </player>
+    <player id="4f80cdb1-1b10-4669-9774-045bc8a99c99" status="ACT" full_name="Taurean Prince" first_name="Taurean" last_name="Prince" abbr_name="T.Prince" height="80" weight="220" position="F" primary_position="SF" jersey_number="12" experience="0" college="Baylor" birth_place="San Antonio, TX, USA" birthdate="1994-03-22" updated="2016-10-21T17:48:41+00:00">
+      <draft team_id="583ece50-fb46-11e1-82cb-f4ce4684ea4c" year="2016" round="1" pick="12"/>
+    </player>
+    <player id="59f6f688-7000-4cf5-a27f-a1980dd86d93" status="ACT" full_name="Paul Millsap" first_name="Paul" last_name="Millsap" abbr_name="P.Millsap" height="80" weight="246" position="F" primary_position="PF" jersey_number="4" experience="10" college="Louisiana Tech" birth_place="Monroe, LA, USA" birthdate="1985-02-10" updated="2016-10-21T17:47:22+00:00">
+      <draft team_id="583ece50-fb46-11e1-82cb-f4ce4684ea4c" year="2006" round="2" pick="47"/>
+    </player>
+    <player id="7c636961-816a-4b44-8991-671df9d91d9c" status="ACT" full_name="Mike Muscala" first_name="Mike" last_name="Muscala" abbr_name="M.Muscala" height="83" weight="240" position="F-C" primary_position="PF" jersey_number="31" experience="3" college="Bucknell" birth_place="Roseville, MN, USA" birthdate="1991-07-01" updated="2016-10-25T15:58:37+00:00">
+      <draft team_id="583ecf50-fb46-11e1-82cb-f4ce4684ea4c" year="2013" round="2" pick="44"/>
+    </player>
+    <player id="8140bd84-2642-4929-8365-e21b4524cefa" status="ACT" full_name="Malcolm Delaney" first_name="Malcolm" last_name="Delaney" abbr_name="M.Delaney" height="75" weight="190" position="G" primary_position="PG" jersey_number="5" experience="0" college="Virginia Tech" birth_place="Baltimore, MD, USA" birthdate="1989-03-11" updated="2016-10-12T15:48:13+00:00">
+    </player>
+    <player id="8c81dcdb-fec1-4186-98ce-310f9f55bb0a" status="ACT" full_name="Tiago Splitter" first_name="Tiago" last_name="Splitter" abbr_name="T.Splitter" height="83" weight="245" position="C-F" primary_position="C" jersey_number="11" experience="6" college="Saski Baskonia" birth_place="Joinville,, BRA" birthdate="1985-01-01" updated="2016-10-21T17:50:53+00:00">
+      <draft team_id="583ecd4f-fb46-11e1-82cb-f4ce4684ea4c" year="2007" round="1" pick="28"/>
+      <injuries>
+        <injury id="0e26be30-a832-4183-91f3-d2341c475292" comment="Splitter will not play in Saturday's (Nov. 12) game against the 76ers, according to a report from NBA.com." desc="Hamstring" status="Out" start_date="2016-10-12" update_date="2016-11-12"/>
+      </injuries>
+    </player>
+    <player id="a2c6a907-282f-4172-9d60-42d03987da0e" status="ACT" full_name="Dennis Schroder" first_name="Dennis" last_name="Schroder" abbr_name="D.Schroder" height="73" weight="172" position="G" primary_position="PG" jersey_number="17" experience="3" birth_place="Braunschweig,, DEU" birthdate="1993-09-15" updated="2016-10-21T17:49:11+00:00">
+      <draft team_id="583ecb8f-fb46-11e1-82cb-f4ce4684ea4c" year="2013" round="1" pick="17"/>
+    </player>
+    <player id="ad0aa3eb-81c3-4688-b769-e0375cdb5c13" status="ACT" full_name="Thabo Sefolosha" first_name="Thabo" last_name="Sefolosha" abbr_name="T.Sefolosha" height="79" weight="220" position="F" primary_position="SF" jersey_number="25" experience="10" college="Angelico Biella" birth_place="Vevey,, CHE" birthdate="1984-05-02" updated="2016-10-25T15:58:54+00:00">
+      <draft team_id="583ec87d-fb46-11e1-82cb-f4ce4684ea4c" year="2006" round="1" pick="13"/>
+    </player>
+    <player id="ae8df356-5e57-43e7-be4d-5ec7663312bd" status="ACT" full_name="Dwight Howard" first_name="Dwight" last_name="Howard" abbr_name="D.Howard" height="83" weight="265" position="C" primary_position="C" jersey_number="8" experience="12" college="SW Atlanta Christian Academy (GA)" birth_place="Atlanta, GA, USA" birthdate="1985-12-08" updated="2016-10-21T17:44:01+00:00">
+      <draft team_id="583ed157-fb46-11e1-82cb-f4ce4684ea4c" year="2004" round="1" pick="1"/>
+    </player>
+    <player id="ba1b12c1-ee81-47d2-9f02-56110ff2a318" status="ACT" full_name="Kyle Korver" first_name="Kyle" last_name="Korver" abbr_name="K.Korver" height="79" weight="212" position="G" primary_position="SG" jersey_number="26" experience="13" college="Creighton" birth_place="Lakewood, CA, USA" birthdate="1981-03-17" updated="2016-10-25T15:58:19+00:00">
+      <draft team_id="583ec9d6-fb46-11e1-82cb-f4ce4684ea4c" year="2003" round="2" pick="51"/>
+    </player>
+    <player id="db42a3d8-e493-4f0e-aa9f-149397877fea" status="ACT" full_name="DeAndre Bembry" first_name="DeAndre" last_name="Bembry" abbr_name="D.Bembry" height="78" weight="210" position="F-G" primary_position="SF" jersey_number="95" experience="0" college="Saint Joseph's" birth_place="Charlotte, NC, USA" birthdate="1994-07-04" updated="2016-10-25T15:58:01+00:00">
+      <draft team_id="583ecb8f-fb46-11e1-82cb-f4ce4684ea4c" year="2016" round="1" pick="21"/>
+    </player>
+    <player id="e3c8bfbe-086f-4bbf-be9b-38accc5d5037" status="ACT" full_name="Mike Scott" first_name="Mike" last_name="Scott" abbr_name="M.Scott" height="80" weight="237" position="F" primary_position="PF" jersey_number="32" experience="4" college="Virginia" birth_place="Chesapeake, VA, USA" birthdate="1988-07-16" updated="2016-10-21T17:49:34+00:00">
+      <draft team_id="583ecb8f-fb46-11e1-82cb-f4ce4684ea4c" year="2012" round="2" pick="43"/>
+      <injuries>
+        <injury id="245d5db1-62cb-4f2d-a74c-74e9fac51dd7" comment="The Hawks announced that Scott will miss an estimated four weeks to undergo a series of non-surgical procedures for his left knee soreness." desc="Knee" status="Out" start_date="2016-10-27" update_date="2016-10-31"/>
+      </injuries>
+    </player>
+  </players>
+</team>
+<!-- Generation ended @ 2016-11-13 15:29:31 +0000 -->
