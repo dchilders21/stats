@@ -163,6 +163,13 @@ def build_model(X, y, model_type):
 
 def build_tuned_model(X, y, model_type, dt, target):
 
+    if not os.path.isdir('csv/' + str(dt) + '/models/'):
+        print('Making New Directory for the Round')
+        os.makedirs('csv/' + str(dt) + '/models/')
+
+        for i in ['knn', 'log', 'svc', 'gnb', 'randomForest']:
+            os.makedirs('csv/' + str(dt) + '/models/' + i)
+
     finished_models = []
 
     tuned_folder = 'csv/' + str(dt) + '/models/' + str(model_type) + '/' + str(model_type) + '_' + str(target)

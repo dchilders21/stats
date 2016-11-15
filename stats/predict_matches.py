@@ -69,7 +69,6 @@ def predictions(upcoming_matches):
     match_details = form_data.get_coverage()
 
     for team in cursor:
-
         round_number = model_libs.get_team_round(team["country_code"])
 
         upcoming_team_matches = upcoming_matches.loc[

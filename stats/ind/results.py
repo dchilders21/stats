@@ -2,20 +2,19 @@ import numpy as np
 import pandas as pd
 import datetime
 from stats import form_data, match_stats, model_libs, form_model, predict_matches
-from sklearn.metrics import f1_score
 
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played', 'round', 'current_formation']
 all_models = ['gnb', 'randomForest', 'log'] # 'knn' - not working on no_ties for some reason #svc just isn't predicting correctly
 leagues = model_libs.get_leagues_country_codes() # = { "epl": 'ENG' }
 teams = form_data.get_teams()
-league_rounds = model_libs.get_leagues_rounds()
+league_rounds = model_libs.get_leagues_rounds(leagues)
 
 targets = ["points", "converted_goals", "no_ties"]  # "points", "converted_goals",
 dt = datetime.date.today().strftime("%m_%d_%y")
-dt = '11_02_16'
+dt = '11_15_16' # This will be every previous Tuesday for Soccer unless they didn't have league games last week
 data_csv = 'csv/' + str(dt) + '/raw_data.csv'
 
-testing = False
+testing = False # True if you need to formulate all of the csv's
 if testing:
     raw_data = form_data.run_data()
     raw_data.to_csv(data_csv)
@@ -26,7 +25,6 @@ else:
 print('Data Loaded...')
 print("Dataset size :: {}".format(raw_data.shape))
 
-testing = False
 ranked_data_csv = 'csv/' + str(dt) + '/ranked_data.csv'
 if testing:
     ranked_data = form_data.get_rankings(leagues, teams, league_rounds, raw_data, False)
@@ -47,7 +45,7 @@ def run_features(data, drop_data, target, models):
 
 """ See if there are any 'inf' or 'nulls' in the data """
 inds = pd.isnull(ranked_data).any(1).nonzero()[0]
-#print(inds)
+print(inds)
 
 """ Formatting data to convert goals scored to the correct category"""
 formatted_data = ranked_data.copy()
@@ -100,10 +98,10 @@ upcoming_data = predict_matches.predictions(upcoming_matches)
 upcoming_ranked_data_csv = 'csv/' + str(dt) + '/upcoming_ranked_data.csv'
 
 adjusted_leagues = {"epl": 'ENG', "bundesliga": 'DEU', "primera_division": 'ESP', "ligue_1": 'FRA'}
-
-testing = False
+adjusted_league_rounds = model_libs.get_leagues_rounds(adjusted_leagues)
+testing = True
 if testing:
-    upcoming_ranked_data = form_data.get_rankings(adjusted_leagues, teams, league_rounds, upcoming_data, True)
+    upcoming_ranked_data = form_data.get_rankings(adjusted_leagues, teams, adjusted_league_rounds, upcoming_data, True)
     upcoming_ranked_data.to_csv(upcoming_ranked_data_csv)
 else:
     upcoming_ranked_data = pd.read_csv(upcoming_ranked_data_csv)
@@ -120,8 +118,10 @@ columns_to_drop = ['current_record', 'opp_record', 'goals_for', 'opp_goals_for',
 
 adjusted_upcoming_data = adjusted_upcoming_data.drop(ignore_cols + columns_to_drop + stats_columns + ['points', 'goals'], 1)
 
-# This is all the X values
+# This are all the X values
 adjusted_upcoming_data
+inds = pd.isnull(adjusted_upcoming_data).any(1).nonzero()[0]
+print(inds)
 
 """ Find predictions """
 all_preds = {}

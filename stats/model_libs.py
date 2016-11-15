@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import random
 from collections import namedtuple
+import mysql.connector
 
 L1_ALPHA = 16.0
 
@@ -171,10 +172,31 @@ def check_category(pred, actual):
             return 0
 
 
-def get_leagues_rounds():
+def get_leagues_rounds(leagues):
     """ Upcoming Rounds (closest round not played yet) """
-    leagues = {"mls": 32, "epl": 11, "bundesliga": 10, "primera_division": 11, "ligue_1": 12}
-    return leagues
+    # leagues = {"mls": 32, "epl": 11, "bundesliga": 10, "primera_division": 11, "ligue_1": 12}
+
+    ''' Finds the current round of a league '''
+    cnx = mysql.connector.connect(user='admin', password='1Qaz@wsx',
+                                  host='0.0.0.0',
+                                  database='mls')
+
+    league_rounds = {}
+
+    for l, v in leagues.items():
+        matches_table = 'matches_' + l
+        q = "SELECT MIN(round_number) as round FROM " + matches_table + " WHERE status = 'scheduled'"
+
+        matches = pd.read_sql(q, cnx)
+
+        if matches.iloc[0]['round'] is None:
+            rnd = 32
+        else:
+            rnd = matches.iloc[0]['round']
+
+        league_rounds[l] = rnd
+
+    return league_rounds
 
 
 def get_leagues_country_codes():
@@ -196,19 +218,23 @@ def get_league_from_country_code(code):
         return "Ligue 1"
 
 
-def get_team_round(team_country):
+def get_team_round(country_code):
     """ Calls in a Team Country Code and returns the current round that league is in"""
     # Last round 'closed' + 1
-    if team_country == 'USA':
-        return 32
-    elif team_country == 'ENG':
-        return 11
-    elif team_country == 'DEU':
-        return 10
-    elif team_country == 'ESP':
-        return 11
-    elif team_country == 'FRA':
-        return 12
+    country_codes = get_leagues_country_codes()
+
+    league_rounds = get_leagues_rounds(country_codes)
+
+    if country_code == 'USA':
+        return league_rounds['mls']
+    elif country_code == 'ENG':
+        return league_rounds['epl']
+    elif country_code == 'DEU':
+        return league_rounds['bundesliga']
+    elif country_code == 'ESP':
+        return league_rounds['primera_division']
+    elif country_code == 'FRA':
+        return league_rounds['ligue_1']
 
 
 def set_rpi_quartile(round_number, data, isCur):

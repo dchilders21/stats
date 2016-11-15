@@ -30,7 +30,7 @@ cursor = cnx.cursor(dictionary=True, buffered=True)
 match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
 
 leagues = model_libs.get_leagues_country_codes()
-rounds = model_libs.get_leagues_rounds()
+rounds = model_libs.get_leagues_rounds(leagues)
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
@@ -39,7 +39,7 @@ login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
 #dt = datetime.date.today().strftime("%m_%d_%y")
-dt = "11_02_16"
+dt = "11_15_16"
 print('INITIALIZED...')
 print('V 1.0')
 
@@ -332,7 +332,7 @@ def team(team_id):
 @login_required
 def rankings(league):
     leagues = model_libs.get_leagues_country_codes()
-    league_rounds = model_libs.get_leagues_rounds()
+    league_rounds = model_libs.get_leagues_rounds(leagues)
     teams = form_data.get_teams()
     country_code = leagues[league]
     round_num = league_rounds[league]

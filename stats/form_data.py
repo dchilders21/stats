@@ -179,6 +179,7 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
         round_num = league_rounds[key]
         teams_in_league = teams[teams["country_code"] == country_code]
         print("LEAGUE :: {}".format(country_code))
+
         if upcoming:
 
             print("ROUND :: {} ".format(round_num))
