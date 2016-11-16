@@ -124,4 +124,6 @@ for row in cursor.fetchall():
         ''' Change the status of the game to closed now that we have all the data'''
         query = ("UPDATE games SET status = 'closed' WHERE stats_id = %(game_id)s")
         cursor.execute(query, {'game_id': game_id})
+        cnx.commit()
+        print('Closing Game')
 
