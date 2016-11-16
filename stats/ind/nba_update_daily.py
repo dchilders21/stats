@@ -1,13 +1,12 @@
 import mysql.connector
 import requests
 from bs4 import BeautifulSoup
-import settings
 import datetime
 import time
 import pytz
 
-cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
-                              host=settings.MYSQL_HOST,
+cnx = mysql.connector.connect(user='admin', password='1Qaz@wsx',
+                              host='0.0.0.0',
                               database='nba')
 cursor = cnx.cursor(buffered=True)
 
@@ -35,12 +34,9 @@ def tz2ntz(date_obj, tz, ntz):
     return False
 
 today = tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
-day = datetime.timedelta(days=1)
-yester_date = today - day
-yester_date = yester_date.strftime('%Y-%m-%d')
-
-query = ("SELECT * FROM games WHERE scheduled_pst = %(yester_date)s")
-cursor.execute(query, {'yester_date': yester_date})
+today = today.strftime('%Y-%m-%d')
+query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
+cursor.execute(query, {'today': today})
 
 for row in cursor.fetchall():
     game_id = row[1]
@@ -59,65 +55,73 @@ for row in cursor.fetchall():
 
     teams = soup.findAll('team')
 
-    """ Loop through both teams"""
-    for t in teams:
+    ''' Do a quick check to make sure entry isn't already in DB'''
+    query = ("SELECT id FROM team_totals "
+             "WHERE game_id = %(game_id)s")
+    cursor.execute(query, {'game_id': row[0]})
 
-        query = ("SELECT id FROM teams "
-                 "WHERE stats_id = %(team_id)s")
-        cursor.execute(query, {'team_id': t.get('id')})
+    if (cursor.rowcount != 0):
+        print("Match ID already Exists in DB")
+    else:
+        """ Loop through both teams"""
+        for t in teams:
 
-        for id in cursor:
-            team_id = id[0]
-
-        if t.get('id') == home_team:
-            is_home = 1
-        else:
-            is_home = 0
-
-        ts = t.find('statistics')
-        quarters = t.findAll('quarter')
-
-        data_totals = (
-            row[0], team_id, is_home,
-            ts.get('field_goals_made'), ts.get('field_goals_att'), ts.get('three_points_made'),
-            ts.get('three_points_att'),
-            ts.get('free_throws_made'), ts.get('free_throws_att'),
-            ts.get('offensive_rebounds'), ts.get('defensive_rebounds'), ts.get('assists'), ts.get('steals'),
-            ts.get('blocks'), ts.get('turnovers'), ts.get('personal_fouls'),
-            quarters[0].get('points'), quarters[1].get('points'), quarters[2].get('points'), quarters[3].get('points'),
-            ts.get('points'), ts.get('fast_break_pts'), ts.get('paint_pts'),
-            ts.get('points_off_turnovers'), ts.get('second_chance_pts'))
-
-        cursor.execute(add_totals, data_totals)
-        cnx.commit()
-
-        """ Loop through the players """
-        players = soup.findAll('player')
-
-        for p in players:
-
-            query = ("SELECT id FROM players "
-                     "WHERE stats_id = %(player_id)s")
-            cursor.execute(query, {'player_id': p.get('id')})
+            query = ("SELECT id FROM teams "
+                     "WHERE stats_id = %(team_id)s")
+            cursor.execute(query, {'team_id': t.get('id')})
 
             for id in cursor:
-                player_id = id[0]
+                team_id = id[0]
 
-            s = p.find('statistics')
+            if t.get('id') == home_team:
+                is_home = 1
+            else:
+                is_home = 0
 
-            data_stats = (
-                row[0], team_id, is_home, player_id, s.get('minutes'),
-                s.get('field_goals_made'), s.get('field_goals_att'), s.get('three_points_made'),
-                s.get('three_points_att'),
-                s.get('free_throws_made'), s.get('free_throws_att'),
-                s.get('offensive_rebounds'), s.get('defensive_rebounds'), s.get('assists'), s.get('steals'),
-                s.get('blocks'), s.get('turnovers'), s.get('personal_fouls'),
-                s.get('pls_min'), s.get('points'))
+            ts = t.find('statistics')
+            quarters = t.findAll('quarter')
 
-            cursor.execute(add_stats, data_stats)
+            data_totals = (
+                row[0], team_id, is_home,
+                ts.get('field_goals_made'), ts.get('field_goals_att'), ts.get('three_points_made'),
+                ts.get('three_points_att'),
+                ts.get('free_throws_made'), ts.get('free_throws_att'),
+                ts.get('offensive_rebounds'), ts.get('defensive_rebounds'), ts.get('assists'), ts.get('steals'),
+                ts.get('blocks'), ts.get('turnovers'), ts.get('personal_fouls'),
+                quarters[0].get('points'), quarters[1].get('points'), quarters[2].get('points'), quarters[3].get('points'),
+                ts.get('points'), ts.get('fast_break_pts'), ts.get('paint_pts'),
+                ts.get('points_off_turnovers'), ts.get('second_chance_pts'))
+
+            cursor.execute(add_totals, data_totals)
             cnx.commit()
 
-    ''' Change the status of the game to closed now that we have all the data'''
-    query = ("UPDATE games SET status = 'closed' WHERE stats_id = %(game_id)s")
-    cursor.execute(query, {'game_id': game_id})
+            """ Loop through the players """
+            players = soup.findAll('player')
+
+            for p in players:
+
+                query = ("SELECT id FROM players "
+                         "WHERE stats_id = %(player_id)s")
+                cursor.execute(query, {'player_id': p.get('id')})
+
+                for id in cursor:
+                    player_id = id[0]
+
+                s = p.find('statistics')
+
+                data_stats = (
+                    row[0], team_id, is_home, player_id, s.get('minutes'),
+                    s.get('field_goals_made'), s.get('field_goals_att'), s.get('three_points_made'),
+                    s.get('three_points_att'),
+                    s.get('free_throws_made'), s.get('free_throws_att'),
+                    s.get('offensive_rebounds'), s.get('defensive_rebounds'), s.get('assists'), s.get('steals'),
+                    s.get('blocks'), s.get('turnovers'), s.get('personal_fouls'),
+                    s.get('pls_min'), s.get('points'))
+
+                cursor.execute(add_stats, data_stats)
+                cnx.commit()
+
+        ''' Change the status of the game to closed now that we have all the data'''
+        query = ("UPDATE games SET status = 'closed' WHERE stats_id = %(game_id)s")
+        cursor.execute(query, {'game_id': game_id})
 
