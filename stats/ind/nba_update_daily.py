@@ -38,6 +38,9 @@ today = today.strftime('%Y-%m-%d')
 query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
 cursor.execute(query, {'today': today})
 
+if cursor.rowcount == 0:
+    print("No Games Found on ... {}".format(today))
+
 for row in cursor.fetchall():
     game_id = row[1]
 
@@ -60,8 +63,8 @@ for row in cursor.fetchall():
              "WHERE game_id = %(game_id)s")
     cursor.execute(query, {'game_id': row[0]})
 
-    if (cursor.rowcount != 0):
-        print("Match ID already Exists in DB")
+    if cursor.rowcount != 0:
+        print("Game ID already Exists in DB")
     else:
         """ Loop through both teams"""
         for t in teams:
