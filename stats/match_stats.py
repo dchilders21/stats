@@ -191,7 +191,7 @@ def calculate_stats(team_id, current_matches, prev_matches, stats, targets):
            goals_for, goals_against, goal_diff, goal_efficiency, played, win, loss, recent_wins, recent_losses, prev_opp, \
            current_opp, points, goals, opp_goals, current_formation, opp_formation, game_features
 
-
+''' This can be the game class'''
 # Assuming a team only plays once in the previous 7 days
 def create_match(team_id, current_matches, match_details, round_number, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous rounds"""
