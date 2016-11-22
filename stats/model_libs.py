@@ -189,8 +189,9 @@ def get_leagues_rounds(leagues):
 
         matches = pd.read_sql(q, cnx)
 
+        # Check to see if league is over
         if matches.iloc[0]['round'] is None:
-            rnd = 32
+            rnd = 0
         else:
             rnd = matches.iloc[0]['round']
 
@@ -205,7 +206,6 @@ def get_leagues_country_codes():
 
 
 def get_league_from_country_code(code):
-
     if code == "USA":
         return "MLS"
     elif code == "ENG":

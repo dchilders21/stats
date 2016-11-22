@@ -82,7 +82,7 @@ def load_models(models, dt, t):
     loaded_models = []
 
     for i in models:
-        model = 'csv/' + str(dt) + '/models/' + i + '/' + i + '_' + str(t)
+        model = '../models/soccer/' + str(dt) + '/' + i + '/' + i + '_' + str(t)
         model_load = joblib.load(model)
         loaded_models.append(model_load)
         print("Success :: Loaded - " + str(i))
@@ -163,16 +163,16 @@ def build_model(X, y, model_type):
 
 def build_tuned_model(X, y, model_type, dt, target):
 
-    if not os.path.isdir('csv/' + str(dt) + '/models/'):
+    if not os.path.isdir('../models/soccer/' + str(dt) + '/'):
         print('Making New Directory for the Round')
-        os.makedirs('csv/' + str(dt) + '/models/')
+        os.makedirs('../models/soccer/' + str(dt) + '/')
 
         for i in ['knn', 'log', 'svc', 'gnb', 'randomForest']:
-            os.makedirs('csv/' + str(dt) + '/models/' + i)
+            os.makedirs('../models/soccer/' + str(dt) + '/' + i)
 
     finished_models = []
 
-    tuned_folder = 'csv/' + str(dt) + '/models/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
+    tuned_folder = '../models/soccer/' + str(dt) + '/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')

@@ -1,0 +1,40 @@
+,match_id,scheduled,home_id,away_id,home_team,away_team,country_code
+0,121,2016-11-27 18:00:00,99,91,SD Eibar,Real Betis Balompie,ESP
+1,122,2016-11-27 18:00:00,87,86,Malaga CF,Deportivo La Coruna,ESP
+2,123,2016-11-27 18:00:00,82,97,Espanyol Barcelona,CD Leganes,ESP
+3,124,2016-11-27 18:00:00,93,83,Villarreal CF,CD Alaves,ESP
+4,125,2016-11-27 18:00:00,85,95,Sevilla FC,Valencia CF,ESP
+5,126,2016-11-27 18:00:00,96,84,Las Palmas UD,Athletic Bilbao,ESP
+6,127,2016-11-27 18:00:00,88,81,Celta de Vigo,Granada CF,ESP
+7,128,2016-11-27 18:00:00,89,92,Real Sociedad,FC Barcelona,ESP
+8,129,2016-11-27 18:00:00,90,98,Real Madrid,Sporting Gijon,ESP
+9,130,2016-11-27 18:00:00,94,100,CA Osasuna,Atletico Madrid,ESP
+0,131,2016-11-26 19:00:00,102,109,FC Metz,FC Lorient,FRA
+1,132,2016-11-26 19:00:00,120,103,FC Nantes,Lille OSC,FRA
+2,133,2016-11-26 19:00:00,115,111,FC Girondins Bordeaux,Dijon FCO,FRA
+3,134,2016-11-26 19:00:00,105,112,SM Caen,EA Guingamp,FRA
+4,135,2016-11-26 19:00:00,110,118,Olympique Lyon,Paris St Germain,FRA
+5,136,2016-11-26 19:00:00,107,116,Montpellier HSC,AS Nancy,FRA
+6,137,2016-11-26 19:00:00,106,108,SCO Angers,AS Saint Etienne,FRA
+7,138,2016-11-26 19:00:00,104,113,OGC Nice,SC Bastia,FRA
+8,139,2016-11-26 19:00:00,119,114,Stade Rennes,Toulouse FC,FRA
+9,140,2016-11-26 19:00:00,117,101,AS Monaco,Olympique Marseille,FRA
+0,121,2016-11-26 12:30:00,53,42,Burnley FC,Manchester City,ENG
+1,122,2016-11-26 15:00:00,52,51,Leicester City,Middlesbrough FC,ENG
+2,123,2016-11-26 15:00:00,50,46,Hull City,West Bromwich Albion,ENG
+3,124,2016-11-26 15:00:00,56,60,Liverpool FC,Sunderland AFC,ENG
+4,125,2016-11-26 15:00:00,45,59,Swansea City,Crystal Palace,ENG
+5,126,2016-11-26 17:30:00,48,54,Chelsea FC,Tottenham Hotspur,ENG
+6,127,2016-11-27 12:00:00,57,49,Watford FC,Stoke City,ENG
+7,128,2016-11-27 14:15:00,43,55,Arsenal FC,Bournemouth AFC,ENG
+8,129,2016-11-27 16:30:00,58,47,Manchester United,West Ham United,ENG
+9,130,2016-11-27 16:30:00,41,44,Southampton FC,Everton FC,ENG
+0,100,2016-11-25 19:30:00,64,74,SC Freiburg,RB Leipzig,DEU
+1,101,2016-11-26 14:30:00,78,68,1 FC Cologne,FC Augsburg,DEU
+2,102,2016-11-26 14:30:00,72,75,FC Ingolstadt,VfL Wolfsburg,DEU
+3,103,2016-11-26 14:30:00,69,67,Eintracht Frankfurt,Borussia Dortmund,DEU
+4,104,2016-11-26 14:30:00,65,70,Hamburger SV,Werder Bremen,DEU
+5,105,2016-11-26 14:30:00,66,61,Monchengladbach,1899 Hoffenheim,DEU
+6,106,2016-11-26 17:30:00,76,71,Bayern Munich,Bayer Leverkusen,DEU
+7,107,2016-11-27 14:30:00,62,77,FC Schalke 04,SV Darmstadt 98,DEU
+8,108,2016-11-27 16:30:00,63,73,Hertha BSC,1 FSV Mainz 05,DEU

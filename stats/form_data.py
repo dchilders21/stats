@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 from stats import model_libs, predict_matches
 import settings
+from datetime import datetime, timedelta
+import os
 
 
 def rank_teams(teams, rd, side_of_ball, upcoming):
@@ -166,7 +168,7 @@ def rank_tables(teams_in_league, i, upcoming):
     return rpi_rankings, offensive_rankings, defensive_rankings
 
 
-def get_rankings(leagues, teams, league_rounds, data, upcoming):
+def get_rankings(leagues, teams, league_rounds, data, prev_week, upcoming):
 
     data["offensive_ranking"] = pd.Series(None, index=data.index)
     data["opp_defensive_ranking"] = pd.Series(None, index=data.index)
@@ -181,7 +183,6 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
         print("LEAGUE :: {}".format(country_code))
 
         if upcoming:
-
             print("ROUND :: {} ".format(round_num))
 
             rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num, upcoming)
@@ -191,18 +192,23 @@ def get_rankings(leagues, teams, league_rounds, data, upcoming):
                 ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num)
 
         else:
-            """ Looping through the Previous Rounds """
-            for i in range(4, round_num):
+            print("ROUND :: {} ".format(round_num-1))
 
-                print("ROUND :: {} ".format(i))
+            if (round_num-1) != -1:
 
-                rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, i, upcoming)
+                rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num-1, upcoming)
 
-                """ Loop through each Team in the League for that round and assign an Offensive Rank """
+                """ Loop through each Team in the League for that round and assign rank """
                 for k, team in teams_in_league.iterrows():
-                    ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, i)
+                    ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num-1)
 
-    return ranked_data
+    last_week_data = pd.read_csv("../csv/soccer/" + prev_week + "/ranked_data.csv")
+    last_week_data = last_week_data.drop(last_week_data.columns[[0]], axis=1)
+
+    """ Joins all previous matches with current matches calculated """
+    result = pd.concat([last_week_data, ranked_data], axis=0)
+
+    return result
 
 
 def get_coverage():
@@ -284,33 +290,31 @@ def run_data():
     for team in cursor:
 
         round_number = model_libs.get_team_round(team["country_code"])
+        round_number -= 1
 
-        for i in range(4, round_number+1):
+        cur_matches = match_details.loc[
+            ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
+            (match_details['round'] == round_number)]
 
-            cur_matches = match_details.loc[
-                ((match_details['home_id'] == team["id"]) | (match_details['away_id'] == team["id"])) &
-                (match_details['round'] == i)]
+        if not cur_matches.empty:
 
-            if not cur_matches.empty:
+            print("ROUND {} :: TEAM ID {} :: {}".format(round_number, team["id"], team["country_code"]))
 
-                print("ROUND {} :: TEAM ID {}".format(i, team["id"]))
+            for c, cur_match in cur_matches.iterrows():
+                df = pd.DataFrame([]).append(cur_match, ignore_index=True)
+                features, game_features = match_stats.create_match(team["id"], df, match_details, round_number, False, True)
 
-                for c, cur_match in cur_matches.iterrows():
-                    df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-                    features, game_features = match_stats.create_match(team["id"], df, match_details, i, False, True)
+                if features is not None:
+                    for key, value in game_features.items():
+                        for k, v in value.items():
+                            new_key = key + '_' + k
 
-                    if features is not None:
-                        for key, value in game_features.items():
-                            for k, v in value.items():
-                                new_key = key + '_' + k
+                            features[new_key] = v
 
-                                features[new_key] = v
-
-                    training_list.append(features)
+                training_list.append(features)
 
     columns, stats_columns = get_columns()
     data = pd.DataFrame(training_list, columns=columns + stats_columns)
-
     data = data.replace(np.nan, data.mean())
 
     return data
