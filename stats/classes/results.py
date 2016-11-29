@@ -24,7 +24,6 @@ class FormulatePredictions(object):
         self.prev_week = kwrargs.get('prev_week')
 
     def modeling(self, target_X, target_y, target):
-        print("Begin modeling...")
         for each in self.all_models:
             args = (target_X, target_y, each, self.td.strftime('%m_%d_%y'), target)
             r = self.__build_tuned_model(*args)

@@ -318,3 +318,82 @@ def run_data():
     data = data.replace(np.nan, data.mean())
 
     return data
+
+
+def nba_run_data(today_date):
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database='nba')
+    cursor = cnx.cursor(dictionary=True, buffered=True)
+
+    prev_day = (today_date - timedelta(days=1)).strftime('%Y-%m-%d')
+
+    query = str("SELECT id, name FROM teams LIMIT 1")
+
+    cursor.execute(query)
+
+    for team in cursor:
+        games = pd.read_sql("SELECT * "
+                    "FROM games "
+                    "WHERE status = 'closed' "
+                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
+                    "ORDER BY scheduled_pst;", cnx)
+
+        for i, game in games.iterrows():
+            if i > 2:
+                current_game = games.iloc[i]
+                previous_games = games.iloc[i-3:i]
+                print(previous_games)
+                print(' ========= ')
+                #previous_games
+                #team_d
+                #df = pd.DataFrame([]).append(cur_match, ignore_index=True)
+                #prev_day
+
+
+            print(i)
+            #print(game)
+
+
+
+
+
+
+
+class RunData(object):
+    def __init__(self, sport_category, today_date):
+        self.sport_category = sport_category
+        self.today_date = today_date
+
+    def run(self):
+        cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                      host=settings.MYSQL_HOST,
+                                      database=self.sport_category)
+
+        cursor = cnx.cursor(dictionary=True, buffered=True)
+
+        prev_day = (self.today_date - timedelta(days=1)).strftime('%Y-%m-%d')
+
+        query = str("SELECT * FROM games WHERE scheduled_pst LIKE '" + prev_day + "%' LIMIT 1")
+
+        cursor.execute(query)
+
+        for game in cursor:
+
+            home_id = game["home_id"]
+            away_id = game["away_id"]
+
+            home_games = pd.read_sql('SELECT * FROM games '
+                                     'LEFT OUTER JOIN team_totals '
+                                     'ON games.id = team_totals.game_id '
+                                     'WHERE team_totals.team_id = ' + str(home_id), cnx)
+            away_games = pd.read_sql('SELECT * FROM games '
+                                     'LEFT OUTER JOIN team_totals '
+                                     'ON games.id = team_totals.game_id '
+                                     'WHERE team_totals.team_id = ' + str(away_id), cnx)
+
+
+            print(home_games)
+            print(away_games)
+
+        return pd.read_sql(query, cnx)
