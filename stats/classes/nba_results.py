@@ -12,10 +12,12 @@ class NBAPredictions(FormulatePredictions, object):
         self.testing = kwrargs.get('testing') or False
         self.today_date = kwrargs.get('today_date')
         self.prev_day = kwrargs.get('prev_day')
+        self.__data_frame = kwrargs.get('data_frame')
 
     def run(self):
         """ Pull in data and assign rankings """
         self.init_raw_data()
+        self.init_ranked_data()
 
 
 ignore_cols = ['match_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played', 'round', 'current_formation']
@@ -30,7 +32,6 @@ sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
-
 
 # Leagues skip a week at times so will not always be the previous week
 while not os.path.isdir("../csv/{}/".format(sport_category) + prev_day):
@@ -48,8 +49,9 @@ nba_params = dict(
     testing=True,
     today_date=today_date,
     prev_day=prev_day,
-    get_data=form_data.nba_run_data(today_date),
-    data_frame=pd.DataFrame
+    get_data=form_data.nba_run_data,
+    data_frame=pd.DataFrame,
+    data_csv='../csv/nba/{}/raw_data.csv'.format(today),
 )
 
 a = NBAPredictions(**nba_params)

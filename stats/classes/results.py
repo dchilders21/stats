@@ -81,7 +81,8 @@ class FormulatePredictions(object):
 
     def init_raw_data(self):
         if self.testing:
-            self.raw_data = self.__get_data()
+            # Adding today_date won't work for soccer results
+            self.raw_data = self.__get_data(self.today_date)
             self.raw_data.to_csv(self.data_csv)
         else:
             self.raw_data = self.__read_data(self.data_csv)

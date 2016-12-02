@@ -1,4 +1,4 @@
-from stats import match_stats
+from stats import match_stats, nba_match_stats
 import mysql.connector
 import pandas as pd
 import numpy as np
@@ -321,6 +321,7 @@ def run_data():
 
 
 def nba_run_data(today_date):
+
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
                                   host=settings.MYSQL_HOST,
                                   database='nba')
@@ -328,36 +329,47 @@ def nba_run_data(today_date):
 
     prev_day = (today_date - timedelta(days=1)).strftime('%Y-%m-%d')
 
-    query = str("SELECT id, name FROM teams LIMIT 1")
+    query = str("SELECT id, name FROM teams")
 
     cursor.execute(query)
+
+    training_list = []
 
     for team in cursor:
         games = pd.read_sql("SELECT * "
                     "FROM games "
                     "WHERE status = 'closed' "
-                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
                     "ORDER BY scheduled_pst;", cnx)
 
-        for i, game in games.iterrows():
-            if i > 2:
-                current_game = games.iloc[i]
-                previous_games = games.iloc[i-3:i]
-                print(previous_games)
-                print(' ========= ')
-                #previous_games
-                #team_d
-                #df = pd.DataFrame([]).append(cur_match, ignore_index=True)
-                #prev_day
+        upcoming_games = pd.read_sql("SELECT * "
+                    "FROM games "
+                    "WHERE status = 'scheduled' "
+                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
+                    "ORDER BY scheduled_pst LIMIT 1;", cnx)
 
 
-            print(i)
-            #print(game)
+        team_totals = pd.read_sql("SELECT * "
+                                     "FROM team_totals ",
+                                     cnx)
 
+        next_game = upcoming_games.iloc[0]
 
+        print("GAME ID {}  :: TEAM NAME {}".format(next_game['id'], team["name"]))
 
+        features, game_features = nba_match_stats.create_game(team["id"], next_game, games, team_totals, False, True)
 
+        if features is not None:
+            for key, value in game_features.items():
+                for k, v in value.items():
+                    new_key = key + '_' + k
 
+                    features[new_key] = v
+
+        training_list.append(features)
+
+    data = pd.DataFrame(training_list)
+
+    return data
 
 
 class RunData(object):
