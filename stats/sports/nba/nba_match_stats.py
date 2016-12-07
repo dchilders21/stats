@@ -15,9 +15,9 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
     played = float(0)
 
     game_features = {"FGM": [], "FGA": [], "3PM": [], "3PA": [], "FTM": [], "FTA": [], "OREB": [], "DREB": [], "AST": [],
-                "STL": [], "BLK": [], "turnovers": [], "PF": [], "1st_qtr": [], "2nd_qtr": [], "3rd_qtr": [], "4th_qtr": [],
-                "total_pts": [], "fast_break_points": [], "points_in_paint": [], "points_off_turnovers": [],
-                "second_chance_points": []}
+        "STL": [], "BLK": [], "turnovers": [], "PF": [], "1st_qtr": [], "2nd_qtr": [], "3rd_qtr": [], "4th_qtr": [],
+        "total_pts": [], "fast_break_points": [], "points_in_paint": [], "points_off_turnovers": [],
+        "second_chance_points": []}
 
     # Targets
     points = 0
@@ -99,12 +99,14 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
 
 def create_game(team_id, current_game, games, team_totals, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous rounds"""
-
+    print(current_game.iloc[0])
     previous_games = games.loc[
-        ((games['home_id'] == team_id) | (games['away_id'] == team_id))]
+        games['scheduled'] < current_game.iloc[3]]
 
     # Only take the previous 3 matches and sum those stats together
     previous_games = previous_games.iloc[-3:]
+
+    print(previous_games)
 
     # Find CUR_TEAM's stats
     game_id, team_id, team_name, scheduled, is_home, \
@@ -121,7 +123,7 @@ def create_game(team_id, current_game, games, team_totals, stats, targets):
     # Only take the previous 3 matches and sum those stats together
     opp_previous_games = opp_previous_games.iloc[-3:]
 
-    game_id, opp_id, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, opp_id, opp_game_features = \
+    game_id, _, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, _, opp_game_features = \
         calculate_stats(opp_id, current_game, opp_previous_games, team_totals, stats, targets)
 
     if stats:

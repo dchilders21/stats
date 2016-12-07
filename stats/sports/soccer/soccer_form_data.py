@@ -5,7 +5,6 @@ import numpy as np
 from stats import model_libs, predict_matches
 import settings
 from datetime import datetime, timedelta
-import os
 
 
 def rank_teams(teams, rd, side_of_ball, upcoming):
@@ -211,6 +210,49 @@ def get_rankings(leagues, teams, league_rounds, data, prev_week, upcoming):
     return result
 
 
+def get_rankings_NBA(leagues, teams, league_rounds, data, prev_week, upcoming):
+
+    data["offensive_ranking"] = pd.Series(None, index=data.index)
+    data["opp_defensive_ranking"] = pd.Series(None, index=data.index)
+    data["rpi_ranking"] = pd.Series(None, index=data.index)
+    data["opp_rpi_ranking"] = pd.Series(None, index=data.index)
+
+    """ Going through each League"""
+    for key, value in leagues.items():
+        country_code = leagues[key]
+        round_num = league_rounds[key]
+        teams_in_league = teams[teams["country_code"] == country_code]
+        print("LEAGUE :: {}".format(country_code))
+
+        if upcoming:
+            print("ROUND :: {} ".format(round_num))
+
+            rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num, upcoming)
+
+            """ Loop through each Team in the League for that round and assign an Offensive Rank """
+            for k, team in teams_in_league.iterrows():
+                ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num)
+
+        else:
+            print("ROUND :: {} ".format(round_num-1))
+
+            if (round_num-1) != -1:
+
+                rpi_rankings, offensive_rankings, defensive_rankings = rank_tables(teams_in_league, round_num-1, upcoming)
+
+                """ Loop through each Team in the League for that round and assign rank """
+                for k, team in teams_in_league.iterrows():
+                    ranked_data = set_rank(team, data, rpi_rankings, offensive_rankings, defensive_rankings, round_num-1)
+
+    last_week_data = pd.read_csv("../csv/soccer/" + prev_week + "/ranked_data.csv")
+    last_week_data = last_week_data.drop(last_week_data.columns[[0]], axis=1)
+
+    """ Joins all previous matches with current matches calculated """
+    result = pd.concat([last_week_data, ranked_data], axis=0)
+
+    return result
+
+
 def get_coverage():
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
                                   host=settings.MYSQL_HOST,
@@ -320,92 +362,48 @@ def run_data():
     return data
 
 
-def nba_run_data(today_date):
+def nba_run_data():
 
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
                                   host=settings.MYSQL_HOST,
                                   database='nba')
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    prev_day = (today_date - timedelta(days=1)).strftime('%Y-%m-%d')
-
     query = str("SELECT id, name FROM teams")
 
     cursor.execute(query)
 
+    team_totals = pd.read_sql("SELECT * "
+                              "FROM team_totals ",
+                              cnx)
     training_list = []
 
     for team in cursor:
+
         games = pd.read_sql("SELECT * "
                     "FROM games "
                     "WHERE status = 'closed' "
+                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
                     "ORDER BY scheduled_pst;", cnx)
 
-        upcoming_games = pd.read_sql("SELECT * "
-                    "FROM games "
-                    "WHERE status = 'scheduled' "
-                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
-                    "ORDER BY scheduled_pst LIMIT 1;", cnx)
+        # once we have all the games, will change this to just the last game played
+        for i in range(3, len(games)):
 
+            print("GAME ID {}  :: TEAM NAME {}".format(games.iloc[i]['id'], team["name"]))
 
-        team_totals = pd.read_sql("SELECT * "
-                                     "FROM team_totals ",
-                                     cnx)
+            features, game_features = nba_match_stats.create_game(team["id"], games.iloc[i], games, team_totals, False, True)
 
-        next_game = upcoming_games.iloc[0]
+            if features is not None:
+                for key, value in game_features.items():
+                    for k, v in value.items():
+                        new_key = key + '_' + k
 
-        print("GAME ID {}  :: TEAM NAME {}".format(next_game['id'], team["name"]))
+                        features[new_key] = v
 
-        features, game_features = nba_match_stats.create_game(team["id"], next_game, games, team_totals, False, True)
-
-        if features is not None:
-            for key, value in game_features.items():
-                for k, v in value.items():
-                    new_key = key + '_' + k
-
-                    features[new_key] = v
-
-        training_list.append(features)
+            training_list.append(features)
 
     data = pd.DataFrame(training_list)
 
     return data
 
 
-class RunData(object):
-    def __init__(self, sport_category, today_date):
-        self.sport_category = sport_category
-        self.today_date = today_date
-
-    def run(self):
-        cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
-                                      host=settings.MYSQL_HOST,
-                                      database=self.sport_category)
-
-        cursor = cnx.cursor(dictionary=True, buffered=True)
-
-        prev_day = (self.today_date - timedelta(days=1)).strftime('%Y-%m-%d')
-
-        query = str("SELECT * FROM games WHERE scheduled_pst LIKE '" + prev_day + "%' LIMIT 1")
-
-        cursor.execute(query)
-
-        for game in cursor:
-
-            home_id = game["home_id"]
-            away_id = game["away_id"]
-
-            home_games = pd.read_sql('SELECT * FROM games '
-                                     'LEFT OUTER JOIN team_totals '
-                                     'ON games.id = team_totals.game_id '
-                                     'WHERE team_totals.team_id = ' + str(home_id), cnx)
-            away_games = pd.read_sql('SELECT * FROM games '
-                                     'LEFT OUTER JOIN team_totals '
-                                     'ON games.id = team_totals.game_id '
-                                     'WHERE team_totals.team_id = ' + str(away_id), cnx)
-
-
-            print(home_games)
-            print(away_games)
-
-        return pd.read_sql(query, cnx)

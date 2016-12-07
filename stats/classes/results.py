@@ -81,8 +81,7 @@ class FormulatePredictions(object):
 
     def init_raw_data(self):
         if self.testing:
-            # Adding today_date won't work for soccer results
-            self.raw_data = self.__get_data(self.today_date)
+            self.raw_data = self.__get_data()
             self.raw_data.to_csv(self.data_csv)
         else:
             self.raw_data = self.__read_data(self.data_csv)
@@ -93,7 +92,11 @@ class FormulatePredictions(object):
 
     def init_ranked_data(self):
         if self.testing:
-            args = (self.leagues, self.teams, self.rounds, self.raw_data, self.prev_week, False)
+            # !!! How do I call in different functions and add parameters that are necessary
+            if self.sport == "nba":
+                args = ()
+            else:
+                args = (self.leagues, self.teams, self.rounds, self.raw_data, self.prev_week, False)
             self.ranked_data = self.__get_rankings(*args)
             self.ranked_data.to_csv(self.ranked_data_csv)
         else:

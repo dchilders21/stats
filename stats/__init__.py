@@ -11,7 +11,7 @@ from flask_login import UserMixin, login_required
 from flask_wtf import Form as FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, validators
 
-from stats import model_libs, match_stats, form_model, form_data, predict_matches
+from stats import model_libs, form_model, predict_matches
 import settings
 
 app = Flask(__name__)
@@ -41,7 +41,7 @@ login_manager.login_message_category = "info"
 #dt = datetime.date.today().strftime("%m_%d_%y")
 dt = "11_15_16"
 print('INITIALIZED...')
-print('V 1.0')
+print('V 2.0')
 
 class LoginForm(FlaskForm):
     username = StringField('Username', [validators.Length(min=4, max=25)])

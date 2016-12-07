@@ -1,7 +1,6 @@
 def get_upcoming_matches():
     import mysql.connector
     import pandas as pd
-    from stats import match_stats, model_libs
     import settings
 
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
