@@ -345,7 +345,7 @@ def nba_run_data():
 
             print("GAME ID {}  :: TEAM NAME {}".format(games.iloc[i]['id'], team["name"]))
 
-            features, game_features = nba_match_stats.create_game(team["id"], games.iloc[i], games, team_totals, True, True)
+            features, game_features = nba_match_stats.create_game(team["id"], games.iloc[i], games, team_totals, False, True)
 
             if features is not None:
                 for key, value in game_features.items():

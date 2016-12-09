@@ -78,11 +78,11 @@ def train_models(dt, X, y, models):
     return finished_models
 
 
-def load_models(models, dt, t):
+def load_models(models, dt, t, sport):
     loaded_models = []
 
     for i in models:
-        model = '../models/soccer/' + str(dt) + '/' + i + '/' + i + '_' + str(t)
+        model = '../../models/{}'.format(sport) + '/'+ str(dt) + '/' + i + '/' + i + '_' + str(t)
         model_load = joblib.load(model)
         loaded_models.append(model_load)
         print("Success :: Loaded - " + str(i))
@@ -161,18 +161,18 @@ def build_model(X, y, model_type):
         return clf
 
 
-def build_tuned_model(X, y, model_type, dt, target):
-
-    if not os.path.isdir('../models/soccer/' + str(dt) + '/'):
+def build_tuned_model(X, y, model_type, dt, target, sport):
+    print(os.getcwd())
+    if not os.path.isdir('../../models/{}'.format(sport) + '/' + str(dt) + '/'):
         print('Making New Directory for the Round')
-        os.makedirs('../models/soccer/' + str(dt) + '/')
+        os.makedirs('../../models/{}/'.format(sport) + str(dt) + '/')
 
-        for i in ['knn', 'log', 'svc', 'gnb', 'randomForest']:
-            os.makedirs('../models/soccer/' + str(dt) + '/' + i)
+        for i in ['knn', 'log', 'svc', 'gnb', 'randomForest', 'linear_regression']:
+            os.makedirs('../../models/{}'.format(sport) + '/' + str(dt) + '/' + i)
 
     finished_models = []
 
-    tuned_folder = '../models/soccer/' + str(dt) + '/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
+    tuned_folder = '../../models/{}'.format(sport) + '/' +  str(dt) + '/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')
@@ -272,5 +272,18 @@ def build_tuned_model(X, y, model_type, dt, target):
         print('Finished LOG REG Modeling')
         joblib.dump(logreg, tuned_folder)
         finished_models.append(logreg)
+
+    elif model_type == 'linear_regression':
+        print('Training Linear Regression Model')
+        lin_reg = linear_model.LinearRegression()
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        lin_reg.fit(X_train, y_train)
+        train_scores = lin_reg.score(X_train, y_train)
+        print('Score on Training Set :: {}'.format(train_scores))
+        test_scores = lin_reg.score(X_test, y_test)
+        print('Score on Test Set :: {}'.format(test_scores))
+        print('Finished LOG REG Modeling')
+        joblib.dump(lin_reg, tuned_folder)
+        finished_models.append(lin_reg)
 
     return finished_models

@@ -40,7 +40,7 @@ class SoccerPredictions(FormulatePredictions, object):
         self.init_ranked_data()
 
         """ Formatting data to convert goals scored to the correct category"""
-        self.formatted_data = self.ranked_data.copy()
+        self.formatted_data = self.raw_data.copy()
         self.formatted_data['converted_goals'] = self.formatted_data.apply(self.__convert_goal, axis=1)
 
         """ Squares the difference between a team's feature and the opponents feature

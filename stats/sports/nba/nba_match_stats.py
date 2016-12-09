@@ -99,14 +99,11 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
 
 def create_game(team_id, current_game, games, team_totals, stats, targets):
     """Finds the matches needed for the given week, opponents and the previous rounds"""
-    print(current_game.iloc[0])
     previous_games = games.loc[
         games['scheduled'] < current_game.iloc[3]]
 
     # Only take the previous 3 matches and sum those stats together
     previous_games = previous_games.iloc[-3:]
-
-    print(previous_games)
 
     # Find CUR_TEAM's stats
     game_id, team_id, team_name, scheduled, is_home, \

@@ -25,19 +25,18 @@ class FormulatePredictions(object):
 
     def modeling(self, target_X, target_y, target):
         for each in self.all_models:
-            args = (target_X, target_y, each, self.td.strftime('%m_%d_%y'), target)
+            args = (target_X, target_y, each, self.td.strftime('%m_%d_%y'), target, self.sport)
             r = self.__build_tuned_model(*args)
 
     def prediction(self):
         for target in self.targets:
-            self.prediction_models[target] = self.__load_models(self.all_models, self.td.strftime('%m_%d_%y'), target)
+            self.prediction_models[target] = self.__load_models(self.all_models, self.td.strftime('%m_%d_%y'), target, self.sport)
 
     def find_predictions(self):
         """ Find predictions """
         for target in self.targets:
             for index, method in enumerate(self.all_models):
                 preds = str(method) + '_' + str(target) + '_preds'
-                print(preds)
                 self.all_preds[preds] = self.prediction_models[target][index].predict(self.adjusted_upcoming_data)
                 print(self.all_preds[preds])
 
