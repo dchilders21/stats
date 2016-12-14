@@ -37,6 +37,7 @@ today = tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
 today = today.strftime('%Y-%m-%d')
 query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
 cursor.execute(query, {'today': today})
+print('Updating {} Games'.format(today))
 
 if cursor.rowcount == 0:
     print("No Games Found on ... {}".format(today))

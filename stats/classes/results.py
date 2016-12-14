@@ -77,7 +77,8 @@ class FormulatePredictions(object):
         print('Prediction CSV saved')
 
     def init_raw_data(self):
-        if self.testing:
+        testing = False
+        if testing:
             self.raw_data = self.__get_data()
             self.raw_data.to_csv(self.data_csv)
         else:
@@ -89,7 +90,6 @@ class FormulatePredictions(object):
 
     def init_ranked_data(self):
         if self.testing:
-            # !!! How do I call in different functions and add parameters that are necessary
             if self.sport == "nba":
                 args = ()
             else:

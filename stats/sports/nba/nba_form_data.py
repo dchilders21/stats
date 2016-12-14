@@ -323,7 +323,7 @@ def nba_run_data():
                                   database='nba')
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
-    query = str("SELECT id, name FROM teams LIMIT 1")
+    query = str("SELECT id, name FROM teams")
 
     cursor.execute(query)
 

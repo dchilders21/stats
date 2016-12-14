@@ -27,10 +27,9 @@ cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_
                               database=settings.MYSQL_DATABASE)
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
-match_details = pd.read_sql('SELECT * FROM home_away_coverage_all', cnx)
+teams = pd.read_sql("SELECT id, name FROM teams", cnx)
 
-leagues = model_libs.get_leagues_country_codes()
-rounds = model_libs.get_leagues_rounds(leagues)
+leagues = ['NBA']
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
@@ -39,7 +38,7 @@ login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
 #dt = datetime.date.today().strftime("%m_%d_%y")
-dt = "11_15_16"
+dt = "12_01_16"
 print('INITIALIZED...')
 print('V 2.0')
 
@@ -106,123 +105,14 @@ def logout():
     return redirect(url_for('login', _external=True))
 
 
-def get_predictions(team, target, isHome):
-
-    prediction_csv = 'stats/csv/' + str(dt) + '/all_predictions.csv'
-    prediction_data = pd.read_csv(prediction_csv)
-
-    if isHome:
-        match = prediction_data.loc[((prediction_data["team_name"] == team) & (prediction_data["is_home"] == 1))]
-    else:
-        match = prediction_data.loc[((prediction_data["team_name"] == team) & (prediction_data["is_home"] == 0))]
-
-    if target == "no_ties":
-        predictions = [match.iloc[0]["Probability 0"], match.iloc[0]["Probability 1"], match.iloc[0]["Probability 2"]]
-    else:
-        predictions = match.iloc[0]["log_" + str(target) + "_preds"]
-
-    return predictions
-
-
-def calculate_stats(team_id):
-
-    previous_matches = match_details.loc[
-        ((match_details['home_id'] == team_id) | (match_details['away_id'] == team_id))]
-
-    win = 0
-    loss = 0
-    draw = 0
-
-    games_played = 0
-
-    season_stats = {'possession': [], 'attacks': [], 'dangerous_attacks': [], 'yellow_cards': [],
-                    'corner_kicks': [], 'shots_on_target': [], 'shots_total': [], 'ball_safe': [],
-                    'goal_attempts': [], 'goal_attempts_allowed': [], 'saves': [], 'first_half_goals': [],
-                    'sec_half_goals': [], 'goal_kicks': [], 'goals_for': [], 'goals_allowed': []}
-
-    for index, game in previous_matches.iterrows():
-
-        games_played += 1
-
-        if team_id == game['home_id']:
-            if game['home_points'] == 3:
-                win += 1
-            elif game['home_points'] == 1:
-                draw += 1
-            else:
-                loss += 1
-
-            season_stats['possession'].append(game['home_possession'])
-            season_stats['attacks'].append(game['home_attacks'])
-            season_stats['dangerous_attacks'].append(game['home_dangerous_attacks'])
-            season_stats['yellow_cards'].append(game['home_yellow_card'])
-            season_stats['corner_kicks'].append(game['home_corner_kicks'])
-            season_stats['shots_on_target'].append(game['home_shots_on_target'])
-            season_stats['shots_total'].append(game['home_shots_total'])
-            season_stats['ball_safe'].append(game['home_ball_safe'])
-            season_stats['goal_attempts'].append(game['home_goal_attempts'])
-            season_stats['goal_attempts_allowed'].append(game['away_goal_attempts'])
-            season_stats['saves'].append(game['home_saves'])
-            season_stats['first_half_goals'].append(game['home_first_half_score'])
-            season_stats['sec_half_goals'].append(game['home_second_half_score'])
-            season_stats['goal_kicks'].append(game['home_goal_kicks'])
-            season_stats['goals_for'].append(game['home_score'])
-            season_stats['goals_allowed'].append(game['away_score'])
-        else:
-
-            if game['away_points'] == 3:
-                win += 1
-            elif game['away_points'] == 1:
-                draw += 1
-            else:
-                loss += 1
-
-            season_stats['possession'].append(game['away_possession'])
-            season_stats['attacks'].append(game['away_attacks'])
-            season_stats['dangerous_attacks'].append(game['away_dangerous_attacks'])
-            season_stats['yellow_cards'].append(game['away_yellow_card'])
-            season_stats['corner_kicks'].append(game['away_corner_kicks'])
-            season_stats['shots_on_target'].append(game['away_shots_on_target'])
-            season_stats['shots_total'].append(game['away_shots_total'])
-            season_stats['ball_safe'].append(game['away_ball_safe'])
-            season_stats['goal_attempts'].append(game['away_goal_attempts'])
-            season_stats['goal_attempts_allowed'].append(game['home_goal_attempts'])
-            season_stats['saves'].append(game['away_saves'])
-            season_stats['first_half_goals'].append(game['away_first_half_score'])
-            season_stats['sec_half_goals'].append(game['away_second_half_score'])
-            season_stats['goal_kicks'].append(game['away_goal_kicks'])
-            season_stats['goals_for'].append(game['away_score'])
-            season_stats['goals_allowed'].append(game['home_score'])
-
-    for k, v in season_stats.items():
-        season_stats[k] = np.nanmean(np.array(v))
-
-    record = {"win": win, "loss": loss, "draw": draw}
-
-    previous_matches = previous_matches[
-        ["scheduled", "home_team", "home_id", "home_score", "home_first_half_score", "home_second_half_score",
-         "away_team", "away_id", "away_score", "away_first_half_score",
-         "away_second_half_score"]]
-    previous_matches = previous_matches.iloc[::-1]
-    previous_matches = previous_matches.to_dict(orient='records')
-
-    return previous_matches, record, season_stats
-
-
 @app.route('/')
 @login_required
 def home():
-    all_teams = form_data.get_teams()
-    all_teams = all_teams.reset_index()
-    all_teams = all_teams.to_json(orient='index')
 
-    upcoming_matches, _ = predict_matches.get_upcoming_matches()
-    upcoming_matches['league'] = upcoming_matches.apply(lambda row: model_libs.get_league_from_country_code(row["country_code"]), axis=1)
-    upcoming_matches = upcoming_matches.reindex(columns=['league', 'home_team', 'away_team', 'scheduled',
-                                                       'home_id', 'away_id'])
-    upcoming_matches = upcoming_matches.to_dict(orient='records')
+    prediction_csv = 'stats/csv/nba/' + str(dt) + '/all_predictions.csv'
+    prediction_data = pd.read_csv(prediction_csv)
 
-    return render_template("index.html", leagues=leagues, teams=all_teams, upcoming_matches=upcoming_matches)
+    return render_template("index.html", leagues=leagues, teams=teams, upcoming_data=prediction_data)
 
 
 @app.route('/league/<league>')

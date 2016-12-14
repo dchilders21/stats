@@ -32,16 +32,7 @@ class NBAPredictions(FormulatePredictions, object):
         adjusted_data = self.raw_data.copy()
         self.adjusted_data = adjusted_data.drop(self.to_drop, 1)
 
-        for b in basic_features:
-            self.adjusted_data["diff_" + b] = self.adjusted_data.apply(
-                lambda row: model_libs.diff_square(row["current_team_" + b], row["opp_team_" + b]), axis=1)
-
-            self.adjusted_data = self.adjusted_data.drop('current_team_' + b, 1)
-            self.adjusted_data = self.adjusted_data.drop('opp_team_' + b, 1)
-
-        for p in points_features:
-            self.adjusted_data = self.adjusted_data.drop('current_team_' + p, 1)
-            self.adjusted_data = self.adjusted_data.drop('opp_team_' + p, 1)
+        self.adjusted_data = self.adjust_features(self.adjusted_data)
 
         #######################
 
@@ -68,31 +59,38 @@ class NBAPredictions(FormulatePredictions, object):
         self.init_upcoming_data()
         #self.init_ranked_upcoming_matches_data()
 
-        self.upcoming_data.to_csv('upcoming_data_temp.csv')
         """ Formatting data specific to the sport """
         self.upcoming_formatted_data = self.upcoming_data.copy()
         self.upcoming_formatted_data = self.upcoming_formatted_data.drop(self.to_drop, 1)
 
-        for b in basic_features:
-            self.upcoming_formatted_data["diff_" + b] = self.upcoming_formatted_data.apply(
-                lambda row: model_libs.diff_square(row["current_team_" + b], row["opp_team_" + b]), axis=1)
+        self.upcoming_formatted_data = self.adjust_features(self.upcoming_formatted_data)
 
-            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('current_team_' + b, 1)
-            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('opp_team_' + b, 1)
-
-        for p in points_features:
-            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('current_team_' + p, 1)
-            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('opp_team_' + p, 1)
+        print(self.upcoming_formatted_data.columns.values)
 
         _, self.upcoming_formatted_data_X = self.__extract_target(self.upcoming_formatted_data, 'final_score')
 
         self.find_predictions()
-        self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id'])
+        self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id', 'team_id', 'opp_id'])
         self.predictions_save()
 
     def target__total_pts(self):
         target_data = self.adjusted_data.copy()
         return self.__extract_target(target_data, 'final_score')
+
+    def adjust_features(self, data):
+        for b in basic_features:
+
+            data["diff_" + b] = data.apply(
+                lambda row: model_libs.diff_square(row["current_team_" + b], row["opp_team_" + b]), axis=1)
+
+            data = data.drop('current_team_' + b, 1)
+            data = data.drop('opp_team_' + b, 1)
+
+        for p in points_features:
+            data = data.drop('current_team_' + p, 1)
+            data = data.drop('opp_team_' + p, 1)
+
+        return data
 
 
 ignore_cols = ['game_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled_pst', 'games_played', 'rpi']
@@ -103,7 +101,7 @@ points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3P
 basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL', 'turnovers']
 
 """ this is designed to run once a day for updated games that were pulled in """
-today = "11_16_16"
+today = "12_01_16"
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
@@ -140,7 +138,8 @@ nba_params = dict(
     upcoming_matches=upcoming_games,
     upcoming_matches_csv='../../csv/nba/{}/upcoming_matches.csv'.format(today),
     adjust_features=model_libs.adjust_features,
-    concat_data=pd.concat
+    concat_data=pd.concat,
+    read_data=pd.read_csv
 )
 
 a = NBAPredictions(**nba_params)
