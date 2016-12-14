@@ -101,7 +101,8 @@ points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3P
 basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL', 'turnovers']
 
 """ this is designed to run once a day for updated games that were pulled in """
-today = "12_01_16"
+#today = "12_13_16"
+today = datetime.now().strftime("%m_%d_%y")
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
@@ -114,7 +115,7 @@ while not os.path.isdir("../../csv/{}/".format(sport_category) + prev_day):
 
 # Creating this weeks folder
 if not os.path.isdir('../../csv/{}/'.format(sport_category) + today + '/'):
-    print('Making New Directory for the CSV')
+    print('Making New Directory {} for the CSV'.format(today))
     os.makedirs('../../csv/{}/'.format(sport_category) + today + '/')
 
 r = nba_form_data.RunData(sport_category, today_date)
@@ -123,7 +124,7 @@ nba_params = dict(
     testing=True,
     today_date=today_date,
     prev_day=prev_day,
-    get_data=nba_form_data.nba_run_data,
+    get_data=nba_form_data.nba_run_single_data, #nba_run_data
     data_frame=pd.DataFrame,
     data_csv='../../csv/nba/{}/raw_data.csv'.format(today),
     get_rankings=nba_form_data.get_rankings_NBA,

@@ -316,7 +316,7 @@ def create_match(team_id, current_matches, match_details, round_number):
     return training_list
 
 
-def nba_run_data():
+def nba_run_data(today_date):
 
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
                                   host=settings.MYSQL_HOST,
@@ -344,7 +344,7 @@ def nba_run_data():
 
         games = closed_games.loc[((closed_games['home_id'] == team["id"]) | (closed_games['away_id'] == team["id"]))]
 
-        # once we have all the games, will change this to just the last game played
+        # once we have all the games, will change this to just the games played on the today_date
         for i in range(3, len(games)):
 
             print("GAME ID {}  :: TEAM NAME {}".format(games.iloc[i]['id'], team["name"]))
@@ -363,6 +363,63 @@ def nba_run_data():
     data = pd.DataFrame(training_list)
 
     return data
+
+
+def nba_run_single_data(today_date):
+
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database='nba')
+
+    team_totals = pd.read_sql("SELECT * "
+                              "FROM team_totals ",
+                              cnx)
+
+    closed_games = pd.read_sql("SELECT * "
+                               "FROM games "
+                               "WHERE status = 'closed' "
+                               "ORDER BY scheduled_pst;", cnx)
+
+    teams = pd.read_sql("SELECT id, name FROM teams", cnx)
+
+    prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
+    prev_day_data = pd.read_csv("../../csv/nba/" + prev_day + "/raw_data.csv")
+    prev_day_data = prev_day_data.drop(prev_day_data.columns[[0]], axis=1)
+
+    prev_day = datetime.strptime(prev_day, '%m_%d_%y')
+
+    training_list = []
+
+    for i, team in teams.iterrows():
+
+        current_games = closed_games.loc[((closed_games['home_id'] == team.loc['id']) | (closed_games['away_id'] == team.loc['id']))]
+        current_game = current_games.loc[
+            ((current_games['scheduled_pst'] > prev_day) & (current_games['scheduled_pst'] < today_date))].squeeze()
+
+        if current_game.empty:
+            print("No Games for TEAM {}".format(team.loc["name"]))
+
+        else:
+            print("GAME ID {}  :: TEAM {}".format(current_game.loc['id'], team.loc["name"]))
+
+            features, game_features = nba_match_stats.create_game(team.loc['id'], teams, current_game, closed_games,
+                                                                  team_totals, False, True)
+
+            if features is not None:
+                for key, value in game_features.items():
+                    for k, v in value.items():
+                        new_key = key + '_' + k
+
+                        features[new_key] = v
+
+            training_list.append(features)
+
+            data = pd.DataFrame(training_list)
+
+    """ Joins all previous matches with current matches calculated """
+    result = pd.concat([prev_day_data, data], axis=0)
+
+    return result
 
 
 class RunData(object):

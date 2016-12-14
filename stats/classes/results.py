@@ -77,9 +77,9 @@ class FormulatePredictions(object):
         print('Prediction CSV saved')
 
     def init_raw_data(self):
-        testing = False
+        testing = True
         if testing:
-            self.raw_data = self.__get_data()
+            self.raw_data = self.__get_data(self.today_date)
             self.raw_data.to_csv(self.data_csv)
         else:
             self.raw_data = self.__read_data(self.data_csv)

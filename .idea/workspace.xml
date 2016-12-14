@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/services/nba_update_daily.py" afterPath="$PROJECT_DIR$/stats/services/nba_update_daily.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_01_16/linear_regression/linear_regression_total_pts_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/classes/results.py" afterPath="$PROJECT_DIR$/stats/classes/results.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/csv/nba/12_01_16/upcoming_matches.csv" afterPath="$PROJECT_DIR$/stats/csv/nba/12_01_16/upcoming_matches.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/sports/nba/nba_form_data.py" afterPath="$PROJECT_DIR$/stats/sports/nba/nba_form_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/sports/nba/nba_results.py" afterPath="$PROJECT_DIR$/stats/sports/nba/nba_results.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py" afterPath="$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,41 +33,33 @@
     <splitter split-orientation="horizontal" split-proportion="0.48940864">
       <split-first>
         <leaf>
-          <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
+          <file leaf-file-name="results.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="470">
-                  <caret line="173" column="16" selection-start-line="173" selection-start-column="16" selection-end-line="173" selection-end-column="16" />
+                <state relative-caret-position="306">
+                  <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/stats/__init__.py">
+          <file leaf-file-name="nba_form_data.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_form_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="713">
-                  <caret line="131" column="14" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
-                  <folding />
+                <state relative-caret-position="227">
+                  <caret line="386" column="66" selection-start-line="386" selection-start-column="66" selection-end-line="386" selection-end-column="66" />
+                  <folding>
+                    <element signature="e#0#44#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
+          <file leaf-file-name="soccer_form_data.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="nba_update_daily.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
-                  <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+                <state relative-caret-position="691">
+                  <caret line="332" column="0" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -68,18 +68,8 @@
           <file leaf-file-name="nba_match_stats.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_match_stats.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="105" column="24" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="results.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+                <state relative-caret-position="83">
+                  <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -92,8 +82,8 @@
           <file leaf-file-name="predict_matches.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/stats/predict_matches.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+                <state relative-caret-position="281">
+                  <caret line="32" column="22" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -102,19 +92,11 @@
           <file leaf-file-name="nba_results.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_results.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="108">
-                  <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="soccer_results.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_results.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="295">
-                  <caret line="129" column="4" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="26" />
-                  <folding />
+                <state relative-caret-position="306">
+                  <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -176,18 +158,18 @@
         <option value="$PROJECT_DIR$/stats/classes/nba_results.py" />
         <option value="$PROJECT_DIR$/stats/nba_match_stats.py" />
         <option value="$PROJECT_DIR$/stats/form_data.py" />
-        <option value="$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py" />
         <option value="$PROJECT_DIR$/stats/form_model.py" />
         <option value="$PROJECT_DIR$/stats/sports/soccer/soccer_results.py" />
         <option value="$PROJECT_DIR$/stats/predict_matches.py" />
         <option value="$PROJECT_DIR$/stats/sports/nba/nba_match_stats.py" />
-        <option value="$PROJECT_DIR$/stats/sports/nba/nba_form_data.py" />
         <option value="$PROJECT_DIR$/stats/templates/layout.html" />
         <option value="$PROJECT_DIR$/stats/__init__.py" />
-        <option value="$PROJECT_DIR$/stats/classes/results.py" />
-        <option value="$PROJECT_DIR$/stats/sports/nba/nba_results.py" />
         <option value="$PROJECT_DIR$/stats/templates/index.html" />
         <option value="$PROJECT_DIR$/stats/services/nba_update_daily.py" />
+        <option value="$PROJECT_DIR$/stats/classes/results.py" />
+        <option value="$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py" />
+        <option value="$PROJECT_DIR$/stats/sports/nba/nba_form_data.py" />
+        <option value="$PROJECT_DIR$/stats/sports/nba/nba_results.py" />
       </list>
     </option>
   </component>
@@ -403,7 +385,7 @@
       <recent name="$PROJECT_DIR$/src/static/js" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.nba_update_daily">
+  <component name="RunManager" selected="Python.nba_results (1)">
     <configuration default="false" name="nba_results (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -632,9 +614,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.nba_update_daily" />
-        <item index="1" class="java.lang.String" itemvalue="Python.run" />
-        <item index="2" class="java.lang.String" itemvalue="Python.nba_results (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.nba_results (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.nba_update_daily" />
+        <item index="2" class="java.lang.String" itemvalue="Python.run" />
         <item index="3" class="java.lang.String" itemvalue="Python.__init__" />
         <item index="4" class="java.lang.String" itemvalue="Python.form_model" />
       </list>
@@ -918,14 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="917">
-          <caret line="408" column="0" selection-start-line="408" selection-start-column="0" selection-end-line="408" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/classes/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -970,16 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_form_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="341" column="0" selection-start-line="341" selection-start-column="0" selection-end-line="341" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1012,6 +976,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/predict_matches.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stats/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
@@ -1030,57 +1018,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_match_stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="105" column="24" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/predict_matches.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="83">
+          <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
+        <state relative-caret-position="2016">
           <caret line="129" column="4" selection-start-line="129" selection-start-column="4" selection-end-line="129" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="332" column="0" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="306">
+          <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_form_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="386" column="66" selection-start-line="386" selection-start-column="66" selection-end-line="386" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
