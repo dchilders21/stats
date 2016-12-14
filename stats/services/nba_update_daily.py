@@ -37,10 +37,10 @@ today = tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
 today = today.strftime('%Y-%m-%d')
 query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
 cursor.execute(query, {'today': today})
-print('Updating {} Games'.format(today))
+print('Updating Games on {}'.format(today))
 
 if cursor.rowcount == 0:
-    print("No Games Found on ... {}".format(today))
+    print("No Games Found")
 
 for row in cursor.fetchall():
     game_id = row[1]
@@ -66,6 +66,13 @@ for row in cursor.fetchall():
 
     if cursor.rowcount != 0:
         print("Game ID already Exists in DB")
+
+    elif game.get('status') == 'postponed':
+        print("Game Postponed")
+        query = ("UPDATE games SET status = 'postponed' WHERE stats_id = %(game_id)s")
+        cursor.execute(query, {'game_id': game_id})
+        cnx.commit()
+        print('Closing Game')
     else:
         """ Loop through both teams"""
         for t in teams:
