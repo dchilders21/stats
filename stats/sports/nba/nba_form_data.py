@@ -330,22 +330,26 @@ def nba_run_data():
     team_totals = pd.read_sql("SELECT * "
                               "FROM team_totals ",
                               cnx)
+
+    closed_games = pd.read_sql("SELECT * "
+                               "FROM games "
+                               "WHERE status = 'closed' "
+                               "ORDER BY scheduled_pst;", cnx)
+
+    teams = pd.read_sql("SELECT id, name FROM teams", cnx)
+
     training_list = []
 
     for team in cursor:
 
-        games = pd.read_sql("SELECT * "
-                    "FROM games "
-                    "WHERE status = 'closed' "
-                    "AND (home_id = " + str(team['id']) + " OR away_id = " + str(team['id']) + ") "
-                    "ORDER BY scheduled_pst;", cnx)
+        games = closed_games.loc[((closed_games['home_id'] == team["id"]) | (closed_games['away_id'] == team["id"]))]
 
         # once we have all the games, will change this to just the last game played
         for i in range(3, len(games)):
 
             print("GAME ID {}  :: TEAM NAME {}".format(games.iloc[i]['id'], team["name"]))
 
-            features, game_features = nba_match_stats.create_game(team["id"], games.iloc[i], games, team_totals, False, True)
+            features, game_features = nba_match_stats.create_game(team["id"], teams, games.iloc[i], closed_games, team_totals, False, True)
 
             if features is not None:
                 for key, value in game_features.items():

@@ -20,6 +20,9 @@ class NBAPredictions(FormulatePredictions, object):
         self.__extract_target = kwrargs.get('extract_target')
         self.td = kwrargs.get('today_date')
         self.all_models = kwrargs.get('all_models')
+        self.__predictions = kwrargs.get('predictions')
+        self.__adjust_features = kwrargs.get('adjust_features')
+        self.predictions_csv = kwrargs.get('predictions_csv')
 
     def run(self):
         """ Pull in data and assign rankings """
@@ -51,36 +54,61 @@ class NBAPredictions(FormulatePredictions, object):
 
             self.modeling(target_X, target_y, target)
 
-        self.prediction()
+        self.predictions()
 
         #######################
 
         print('Upcoming matches')
 
         """ Print a CSV for the previous weeks results """
+        # Will use this when we have previous predictions from the previous games
+        #columns = ['team_name', 'opp_name', 'scheduled', 'is_home', 'match_id', 'points', 'goals']
+        #self.predictions_compare()
 
+        self.init_upcoming_data()
+        #self.init_ranked_upcoming_matches_data()
 
+        self.upcoming_data.to_csv('upcoming_data_temp.csv')
+        """ Formatting data specific to the sport """
+        self.upcoming_formatted_data = self.upcoming_data.copy()
+        self.upcoming_formatted_data = self.upcoming_formatted_data.drop(self.to_drop, 1)
+
+        for b in basic_features:
+            self.upcoming_formatted_data["diff_" + b] = self.upcoming_formatted_data.apply(
+                lambda row: model_libs.diff_square(row["current_team_" + b], row["opp_team_" + b]), axis=1)
+
+            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('current_team_' + b, 1)
+            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('opp_team_' + b, 1)
+
+        for p in points_features:
+            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('current_team_' + p, 1)
+            self.upcoming_formatted_data = self.upcoming_formatted_data.drop('opp_team_' + p, 1)
+
+        _, self.upcoming_formatted_data_X = self.__extract_target(self.upcoming_formatted_data, 'final_score')
+
+        self.find_predictions()
+        self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id'])
+        self.predictions_save()
 
     def target__total_pts(self):
         target_data = self.adjusted_data.copy()
-        target_data = target_data.drop("opp_team_total_pts", 1)
-        return self.__extract_target(target_data, 'current_team_total_pts')
+        return self.__extract_target(target_data, 'final_score')
 
 
-ignore_cols = ['game_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled', 'games_played', 'rpi']
+ignore_cols = ['game_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled_pst', 'games_played', 'rpi']
 
 points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3PM',
-                   'fast_break_points', 'points_in_paint', 'points_off_turnovers', 'second_chance_points']
+                   'fast_break_points', 'points_in_paint', 'points_off_turnovers', 'second_chance_points', 'total_pts']
 
 basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL', 'turnovers']
 
-upcoming_matches, match_details = predict_matches.get_upcoming_matches()
-
-""" this is designed to run once a day for new games that were pulled in """
+""" this is designed to run once a day for updated games that were pulled in """
 today = "11_16_16"
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
+
+upcoming_games = predict_matches.get_upcoming_games(today_date)
 
 # Leagues skip a week at times so will not always be the previous week
 while not os.path.isdir("../../csv/{}/".format(sport_category) + prev_day):
@@ -106,9 +134,13 @@ nba_params = dict(
     extract_target=model_libs._extract_target,
     all_models=['linear_regression'],
     build_tuned_model=form_model.build_tuned_model,
-    predictions_csv='../csv/nba/{}/all_predictions.csv'.format(today),
-    predictions=predict_matches.predictions,
+    predictions_csv='../../csv/nba/{}/all_predictions.csv'.format(today),
+    predictions=predict_matches.predictions_nba,
     load_models=form_model.load_models,
+    upcoming_matches=upcoming_games,
+    upcoming_matches_csv='../../csv/nba/{}/upcoming_matches.csv'.format(today),
+    adjust_features=model_libs.adjust_features,
+    concat_data=pd.concat
 )
 
 a = NBAPredictions(**nba_params)

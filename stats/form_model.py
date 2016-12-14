@@ -82,7 +82,7 @@ def load_models(models, dt, t, sport):
     loaded_models = []
 
     for i in models:
-        model = '../../models/{}'.format(sport) + '/'+ str(dt) + '/' + i + '/' + i + '_' + str(t)
+        model = '../../models/{}'.format(sport) + '/' + str(dt) + '/' + i + '/' + i + '_' + str(t)
         model_load = joblib.load(model)
         loaded_models.append(model_load)
         print("Success :: Loaded - " + str(i))

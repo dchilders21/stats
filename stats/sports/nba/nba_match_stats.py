@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def calculate_stats(team_id, current_game, previous_games, team_totals, stats, targets):
+def calculate_stats(team_id, teams, current_game, previous_games, team_totals, stats, targets):
     """ Calculates the stats of the the current team in the current game
          and the opponent team in the current game.  Also calculates the
          previous games for the current team"""
@@ -11,6 +11,7 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
     loss = 0
     prev_opp = []
     total_points = 0
+    final_score = 0
     count = 1
     played = float(0)
 
@@ -53,9 +54,9 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
         for key, value in game_features.items():
             game_features[key].append(current_team_stats.iloc[0][key])
 
-        game_id = game.loc['id']
-        scheduled = game.loc['scheduled_pst']
-
+    game_id = current_game.loc['id']
+    scheduled = current_game.loc['scheduled_pst']
+    team_name = teams['name'].loc[teams['id'] == team_id].iloc[0]
     # this is info for the current game
     if current_game['home_id'] == team_id:
         is_home = True
@@ -64,7 +65,8 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
 
         if targets:
             # Targets
-            points = game_totals.loc[game_totals['team_id'] == home_id]
+            final_score = team_totals['total_pts'].loc[(team_totals['game_id'] == game_id) & (team_totals['team_id'] == home_id)].iloc[0]
+
 
     else:
 
@@ -74,7 +76,7 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
 
         if targets:
             # Targets
-            points = game_totals.loc[game_totals['team_id'] == away_id]
+            final_score = team_totals['total_pts'].loc[(team_totals['game_id'] == game_id) & (team_totals['team_id'] == away_id)].iloc[0]
 
     if stats:
         print(" ========================== ")
@@ -91,37 +93,37 @@ def calculate_stats(team_id, current_game, previous_games, team_totals, stats, t
     for k, v in game_features.items():
         game_features[k] = np.sum(np.array(v))
 
-    team_name = "temp"
-
     return game_id, team_id, team_name, scheduled, int(is_home == True), played, win, loss, prev_opp, \
-           current_opp, game_features
+           current_opp, final_score, game_features
 
 
-def create_game(team_id, current_game, games, team_totals, stats, targets):
+def create_game(team_id, teams, current_game, closed_games, team_totals, stats, targets):
+
     """Finds the matches needed for the given week, opponents and the previous rounds"""
-    previous_games = games.loc[
-        games['scheduled'] < current_game.iloc[3]]
+    previous_games = closed_games.loc[((closed_games['home_id'] == team_id) | (closed_games['away_id'] == team_id))
+                                      & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
     # Only take the previous 3 matches and sum those stats together
     previous_games = previous_games.iloc[-3:]
 
     # Find CUR_TEAM's stats
     game_id, team_id, team_name, scheduled, is_home, \
-        played, win, loss, prev_opp, opp_id, game_features = \
-        calculate_stats(team_id, current_game, previous_games, team_totals, stats, targets)
+        played, win, loss, prev_opp, opp_id, final_score, game_features = \
+        calculate_stats(team_id, teams, current_game, previous_games, team_totals, stats, targets)
 
     # Calculate the OPPONENTS stats
     if stats:
         print('Current Opponent ID : {0}'.format(opp_id))
 
-    opp_previous_games = games.loc[
-        ((games['home_id'] == opp_id) | (games['away_id'] == opp_id))]
+    opp_previous_games = closed_games.loc[
+        ((closed_games['home_id'] == opp_id) | (closed_games['away_id'] == opp_id))
+            & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
     # Only take the previous 3 matches and sum those stats together
     opp_previous_games = opp_previous_games.iloc[-3:]
 
-    game_id, _, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, _, opp_game_features = \
-        calculate_stats(opp_id, current_game, opp_previous_games, team_totals, stats, targets)
+    _, _, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, _, _, opp_game_features = \
+        calculate_stats(opp_id, teams, current_game, opp_previous_games, team_totals, stats, targets)
 
     if stats:
         print('Previous Opponents of Current Team : {0}'.format(prev_opp))
@@ -129,18 +131,24 @@ def create_game(team_id, current_game, games, team_totals, stats, targets):
     prev_opp_won_total = 0
     prev_opp_lost_total = 0
 
+    opp_prev_opps = []
+
     for prev_opp_id in prev_opp:
-        prev_opp_previous_matches = games.loc[
-            ((games['home_id'] == prev_opp_id) | (games['away_id'] == prev_opp_id))]
+        prev_opp_previous_matches = closed_games.loc[
+            ((closed_games['home_id'] == prev_opp_id) | (closed_games['away_id'] == prev_opp_id))
+            & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
         # Only take the previous 3 matches and sum those stats together
         prev_opp_previous_matches = prev_opp_previous_matches.iloc[-3:]
 
-        _, _, _, _, _, prev_opp_played, prev_opp_win, prev_opp_loss, opp_prev_opp, _, prev_opp_game_features = \
-            calculate_stats(prev_opp_id, current_game, prev_opp_previous_matches, team_totals, False, False)
+        _, _, _, _, _, prev_opp_played, prev_opp_win, prev_opp_loss, opp_prev_opp, _, _, prev_opp_game_features = \
+            calculate_stats(prev_opp_id, teams, current_game, prev_opp_previous_matches, team_totals, False, False)
 
         prev_opp_won_total += prev_opp_win
         prev_opp_lost_total += prev_opp_loss
+
+        opp_prev_opps += opp_prev_opp
+
 
     if stats:
         print('Previous Opponents of Opponent : {0}'.format(opp_opp))
@@ -148,53 +156,61 @@ def create_game(team_id, current_game, games, team_totals, stats, targets):
     opp_opp_won_total = 0
     opp_opp_lost_total = 0
 
+    opp_opp_opps = []
+
     # Calculate OPPONENTS of the OPPONENTS stats
     for opp_opp_id in opp_opp:
-        opp_opp_previous_matches = games.loc[
-            ((games['home_id'] == opp_opp_id) | (games['away_id'] == opp_opp_id))]
+        opp_opp_previous_matches = closed_games.loc[
+            ((closed_games['home_id'] == opp_opp_id) | (closed_games['away_id'] == opp_opp_id))
+            & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
         # Only take the previous 3 matches and sum those stats together
         opp_opp_previous_matches = opp_opp_previous_matches.iloc[-3:]
 
-        _, _, _, _, _, opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_opp, _, opp_opp_game_features = \
-            calculate_stats(opp_opp_id, current_game, opp_opp_previous_matches, team_totals, False, False)
+        _, _, _, _, _, opp_opp_played, opp_opp_win, opp_opp_loss, opp_opp_opp, _, _, opp_opp_game_features = \
+            calculate_stats(opp_opp_id, teams, current_game, opp_opp_previous_matches, team_totals, False, False)
 
         opp_opp_won_total += opp_opp_win
         opp_opp_lost_total += opp_opp_loss
 
+        opp_opp_opps += opp_opp_opp
+
     if stats:
-        print('Opponents of Previous Opponents : {0}'.format(opp_prev_opp))
+        print('Opponents of Previous Opponents : {0}'.format(opp_prev_opps))
 
     opp_prev_opp_won_total = 0
     opp_prev_opp_lost_total = 0
 
     # Calculate OPPONENTS of the PREVIOUS OPPONENTS stats
-    for opp_prev_opp_id in opp_prev_opp:
-        opp_prev_opp_previous_matches = games.loc[
-            ((games['home_id'] == opp_prev_opp_id) | (games['away_id'] == opp_prev_opp_id))]
+    for opp_prev_opp_id in opp_prev_opps:
+
+        opp_prev_opp_previous_matches = closed_games.loc[
+            ((closed_games['home_id'] == opp_prev_opp_id) | (closed_games['away_id'] == opp_prev_opp_id))
+            & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
         # Only take the previous 3 matches and sum those stats together
         opp_prev_opp_previous_matches = opp_prev_opp_previous_matches.iloc[-3:]
 
-        _, _, _, _, _, opp_prev_opp_played, opp_prev_opp_win, opp_prev_opp_loss, _, _, opp_prev_opp_game_features = \
-            calculate_stats(opp_prev_opp_id, current_game, opp_prev_opp_previous_matches, team_totals, False, False)
+        _, _, _, _, _, opp_prev_opp_played, opp_prev_opp_win, opp_prev_opp_loss, _, _, _, opp_prev_opp_game_features = \
+            calculate_stats(opp_prev_opp_id, teams, current_game, opp_prev_opp_previous_matches, team_totals, False, False)
 
         opp_prev_opp_won_total += opp_prev_opp_win
         opp_prev_opp_lost_total += opp_prev_opp_loss
 
     if stats:
-        print('Opponents of Opponents Previous Opponents : {0}'.format(opp_opp_opp))
+        print('Opponents of Opponents Previous Opponents : {0}'.format(opp_opp_opps))
 
     opp_opp_opp_won_total = 0
     opp_opp_opp_lost_total = 0
 
     # Calculate OPPONENTS of the OPPONENTS' OPPONENTS' stats
-    for opp_opp_opp_id in opp_opp_opp:
-        opp_opp_opp_previous_matches = games.loc[
-            ((games['home_id'] == opp_opp_opp_id) | (games['away_id'] == opp_opp_opp_id))]
+    for opp_opp_opp_id in opp_opp_opps:
+        opp_opp_opp_previous_matches = closed_games.loc[
+            ((closed_games['home_id'] == opp_opp_opp_id) | (closed_games['away_id'] == opp_opp_opp_id))
+            & (closed_games['scheduled_pst'] < current_game['scheduled_pst'])]
 
-        _, _, _, _, _, opp_opp_opp_played, opp_opp_opp_win, opp_opp_opp_loss, _, _, opp_opp_opp_game_features = \
-            calculate_stats(opp_opp_opp_id, current_game, opp_opp_opp_previous_matches, team_totals, False, False)
+        _, _, _, _, _, opp_opp_opp_played, opp_opp_opp_win, opp_opp_opp_loss, _, _, _, opp_opp_opp_game_features = \
+            calculate_stats(opp_opp_opp_id, teams, current_game, opp_opp_opp_previous_matches, team_totals, False, False)
 
         opp_opp_opp_won_total += opp_opp_opp_win
         opp_opp_opp_lost_total += opp_opp_opp_loss
@@ -211,9 +227,9 @@ def create_game(team_id, current_game, games, team_totals, stats, targets):
     rpi = (current_record * .25) + (sos * .75)
 
     feature = {'game_id': game_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_id,
-               'opp_name': opp_team_name, 'scheduled': scheduled, 'games_played': played,
+               'opp_name': opp_team_name, 'scheduled_pst': scheduled, 'games_played': played,
                'is_home': is_home, 'current_record': current_record, 'rpi': rpi,
-               'opp_record': opp_record}
+               'opp_record': opp_record, 'final_score': final_score}
 
     game_features = {'current_team': game_features, 'opp_team': opp_game_features }
 

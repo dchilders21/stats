@@ -28,7 +28,7 @@ class FormulatePredictions(object):
             args = (target_X, target_y, each, self.td.strftime('%m_%d_%y'), target, self.sport)
             r = self.__build_tuned_model(*args)
 
-    def prediction(self):
+    def predictions(self):
         for target in self.targets:
             self.prediction_models[target] = self.__load_models(self.all_models, self.td.strftime('%m_%d_%y'), target, self.sport)
 
@@ -37,20 +37,19 @@ class FormulatePredictions(object):
         for target in self.targets:
             for index, method in enumerate(self.all_models):
                 preds = str(method) + '_' + str(target) + '_preds'
-                self.all_preds[preds] = self.prediction_models[target][index].predict(self.adjusted_upcoming_data)
+                self.all_preds[preds] = self.prediction_models[target][index].predict(self.upcoming_formatted_data_X)
                 print(self.all_preds[preds])
 
                 if target == 'points' and method == 'log':
-                    self.probs = self.__data_frame(self.prediction_models[target][index].predict_proba(self.adjusted_upcoming_data))
+                    self.probs = self.__data_frame(self.prediction_models[target][index].predict_proba(self.upcoming_formatted_data_X))
                     self.probs = self.probs.rename(columns={0: 'Probability 0', 1: 'Probability 1', 2: 'Probability 2'})
 
-    def predictions_reorder(self):
-        columns = ['team_name', 'opp_name', 'scheduled', 'is_home', 'match_id']
+    def predictions_reorder(self, columns):
         upcoming_matches = self.upcoming_data[columns]
 
         # Add predictions to the end of that DF
         results = self.__data_frame.from_dict(self.all_preds)
-        upcoming_matches = self.__concat_data([upcoming_matches, results, self.probs], axis=1)
+        upcoming_matches = self.__concat_data([upcoming_matches, results], axis=1)
         self.reordered_matches = self.__data_frame([])
 
         for rows in upcoming_matches.iterrows():
@@ -61,16 +60,15 @@ class FormulatePredictions(object):
 
         self.reordered_matches = self.reordered_matches.drop_duplicates()
 
-    def predictions_compare(self):
-        """ To compare when we have actual results"""
+    def predictions_compare(self, sport, columns):
+        """ To compare when we have actual results to the previous week """
         actual_results = self.__read_data(self.data_csv)
         actual_results = actual_results.rename(columns={'Unnamed: 0': 'idx'})
         indexed_results = actual_results.set_index('idx')
-        columns = ['team_name', 'opp_name', 'scheduled', 'is_home', 'match_id', 'points', 'goals']
         indexed_results = indexed_results[columns]
-        self.previous_week_predictions = self.__read_data('../csv/soccer/{}/all_predictions.csv'.format(self.prev_week))
+        self.previous_week_predictions = self.__read_data('../csv/{}/{}/all_predictions.csv'.format(sport, self.prev_week))
         self.previous_week_predictions = self.__concat_data([self.previous_week_predictions, indexed_results], axis=1)
-        self.previous_week_predictions.to_csv('../csv/soccer/{}/actual_results.csv'.format(self.td.strftime('%m_%d_%y')))
+        self.previous_week_predictions.to_csv('../csv/{}/{}/actual_results.csv'.format(sport, self.td.strftime('%m_%d_%y')))
         print('Actual Results compared with Last Weeks Predictions printed...')
 
     def predictions_save(self):
@@ -103,7 +101,7 @@ class FormulatePredictions(object):
             self.ranked_data = self.ranked_data.drop(self.ranked_data.columns[[0]], axis=1)
         print('Ranked Data Loaded...')
 
-    def init_upcoming_matches_data(self):
+    def init_upcoming_data(self):
         self.upcoming_matches = self.upcoming_matches
         self.upcoming_matches.to_csv(self.upcoming_matches_csv)
         self.upcoming_data = self.__predictions(self.upcoming_matches)

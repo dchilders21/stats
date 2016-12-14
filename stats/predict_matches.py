@@ -30,6 +30,80 @@ def get_upcoming_matches():
     return upcoming_matches, match_details
 
 
+def get_upcoming_games(todays_date):
+    import mysql.connector
+    import pandas as pd
+    import settings
+    from datetime import datetime, timedelta
+
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database='nba')
+
+    today = todays_date.strftime('%Y-%m-%d')
+
+    upcoming_games = pd.read_sql("SELECT * FROM games WHERE scheduled_pst LIKE '" + today + "%'", cnx)
+
+    return upcoming_games
+
+
+def predictions_nba(upcoming_games):
+
+    import mysql.connector
+    import pandas as pd
+    from stats.sports.nba import nba_match_stats, nba_form_data
+    import settings
+
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database='nba')
+
+    cursor = cnx.cursor(dictionary=True, buffered=True)
+
+    query = "SELECT id FROM teams"
+
+    cursor.execute(query)
+
+    team_totals = pd.read_sql("SELECT * "
+                              "FROM team_totals ",
+                              cnx)
+
+    teams = pd.read_sql("SELECT id, name FROM teams", cnx)
+
+    closed_games = pd.read_sql("SELECT * "
+                               "FROM games "
+                               "WHERE status = 'closed' "
+                               "ORDER BY scheduled_pst;", cnx)
+
+    upcoming_list = []
+
+    for i, upcoming in upcoming_games.iterrows():
+
+        for a in range(2):
+            if a == 0:
+                team_id = 'home_id'
+            else:
+                team_id = 'away_id'
+
+            print("GAME ID {}  :: TEAM NAME {}".format(upcoming['id'], upcoming[team_id]))
+
+            features, game_features = nba_match_stats.create_game(upcoming[team_id], teams, upcoming, closed_games, team_totals, True,
+                                                                  False)
+
+            if features is not None:
+                for key, value in game_features.items():
+                    for k, v in value.items():
+                        new_key = key + '_' + k
+
+                        features[new_key] = v
+
+            upcoming_list.append(features)
+
+    upcoming_data = pd.DataFrame(upcoming_list)
+
+    return upcoming_data
+
+
 def predictions(upcoming_matches):
 
     import mysql.connector
