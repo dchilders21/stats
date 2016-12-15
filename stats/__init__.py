@@ -7,6 +7,7 @@ from flask import render_template, request, url_for, redirect
 from flask import Flask, Response
 import flask_login
 from flask_login import UserMixin, login_required
+from datetime import datetime, timedelta
 
 from flask_wtf import Form as FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, validators
@@ -37,8 +38,12 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
-#dt = datetime.date.today().strftime("%m_%d_%y")
-dt = "12_01_16"
+todays_date = datetime.now()
+#todays_date = datetime.now().strftime("%B %d,%Y")
+today = datetime.now().strftime('%m_%d_%y')
+
+
+#today = "12_01_16"
 print('INITIALIZED...')
 print('V 2.0')
 
@@ -109,10 +114,26 @@ def logout():
 @login_required
 def home():
 
-    prediction_csv = 'stats/csv/nba/' + str(dt) + '/all_predictions.csv'
+    prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
-    return render_template("index.html", leagues=leagues, teams=teams, upcoming_data=prediction_data)
+    columns = ['is_home', 'linear_regression_total_pts_preds', 'opp_id', 'opp_name', 'team_id', 'team_name']
+
+    prediction_data = prediction_data[columns]
+    # Need to reorganize the data for visual display, will eventually do this when creating the 'all_predictions' CSV
+    home_team = pd.DataFrame(prediction_data.iloc[::2].values, columns=columns)
+    home_team = home_team.rename(index=str, columns={"team_name": "home_team", "team_id": "home_id",
+                                                     "linear_regression_total_pts_preds": "home_pts_preds"})
+    away_team = pd.DataFrame(prediction_data.iloc[1::2].values, columns=columns)
+    away_team = away_team.rename(index=str, columns={"team_name": "away_team", "team_id": "away_id",
+                                                     "linear_regression_total_pts_preds": "away_pts_preds"})
+    home_team = home_team[['home_team', 'home_id', 'home_pts_preds']]
+    away_team = away_team[['away_team', 'away_id', 'away_pts_preds']]
+
+    pred_data = pd.concat([home_team, away_team], axis=1)
+
+    return render_template("index.html", leagues=leagues, teams=teams, pred_data=pred_data,
+                           today=todays_date.strftime("%B %d, %Y"))
 
 
 @app.route('/league/<league>')
