@@ -16,6 +16,9 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 
+from os.path import dirname, abspath
+
+
 
 def train_classifier(clf, X_train, y_train):
     clf.fit(X_train, y_train)
@@ -162,17 +165,18 @@ def build_model(X, y, model_type):
 
 
 def build_tuned_model(X, y, model_type, dt, target, sport):
-    print(os.getcwd())
-    if not os.path.isdir('../../models/{}'.format(sport) + '/' + str(dt) + '/'):
+
+    current_path = dirname(abspath(__file__))
+    if not os.path.isdir(current_path + '/models/{}'.format(sport) + '/' + str(dt) + '/'):
         print('Making New Directory for the Round')
         os.makedirs('../../models/{}/'.format(sport) + str(dt) + '/')
 
         for i in ['knn', 'log', 'svc', 'gnb', 'randomForest', 'linear_regression']:
-            os.makedirs('../../models/{}'.format(sport) + '/' + str(dt) + '/' + i)
+            os.makedirs(current_path + '/models/{}'.format(sport) + '/' + str(dt) + '/' + i)
 
     finished_models = []
 
-    tuned_folder = '../../models/{}'.format(sport) + '/' +  str(dt) + '/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
+    tuned_folder = current_path + '/models/{}'.format(sport) + '/' +  str(dt) + '/' + str(model_type) + '/' + str(model_type) + '_' + str(target)
 
     if model_type == 'svc':
         print('Training and Tuning SVC Model')
