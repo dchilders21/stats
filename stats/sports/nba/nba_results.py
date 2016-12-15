@@ -102,7 +102,7 @@ basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL'
 
 """ this is designed to run once a day for updated games that were pulled in """
 #today = "12_13_16"
-today = datetime.now().strftime("%m_%d_%y")
+today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')

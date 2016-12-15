@@ -7,7 +7,7 @@ from flask import render_template, request, url_for, redirect
 from flask import Flask, Response
 import flask_login
 from flask_login import UserMixin, login_required
-from datetime import datetime, timedelta
+import datetime
 
 from flask_wtf import Form as FlaskForm
 from wtforms import BooleanField, StringField, PasswordField, validators
@@ -38,14 +38,13 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
-todays_date = datetime.now()
-#todays_date = datetime.now().strftime("%B %d,%Y")
-today = datetime.now().strftime('%m_%d_%y')
-
+todays_date = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
+today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime('%m_%d_%y')
 
 #today = "12_01_16"
 print('INITIALIZED...')
 print('V 2.0')
+
 
 class LoginForm(FlaskForm):
     username = StringField('Username', [validators.Length(min=4, max=25)])

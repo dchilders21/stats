@@ -3,6 +3,8 @@ import pandas as pd
 import random
 from collections import namedtuple
 import mysql.connector
+import datetime
+import pytz
 
 L1_ALPHA = 16.0
 
@@ -360,3 +362,15 @@ def adjust_features(data):
     # data["diff_saves"] = data.apply(lambda row: diff_square(row["current_team_saves"], row["opp_team_saves"]), axis=1)
 
     return data
+
+
+def tz2ntz(date_obj, tz, ntz):
+    """
+    :param date_obj: datetime object
+    :param tz: old timezone
+    :param ntz: new timezone
+    """
+    if isinstance(date_obj, datetime.date) and tz and ntz:
+        date_obj = date_obj.replace(tzinfo=pytz.timezone(tz))
+        return date_obj.astimezone(pytz.timezone(ntz))
+    return False

@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import time
-import pytz
+from stats import model_libs
 
 cnx = mysql.connector.connect(user='admin', password='1Qaz@wsx',
                               host='0.0.0.0',
@@ -22,18 +22,7 @@ add_totals = ("INSERT INTO team_totals "
              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
 
-def tz2ntz(date_obj, tz, ntz):
-    """
-    :param date_obj: datetime object
-    :param tz: old timezone
-    :param ntz: new timezone
-    """
-    if isinstance(date_obj, datetime.date) and tz and ntz:
-        date_obj = date_obj.replace(tzinfo=pytz.timezone(tz))
-        return date_obj.astimezone(pytz.timezone(ntz))
-    return False
-
-today = tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
+today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
 today = today.strftime('%Y-%m-%d')
 query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
 cursor.execute(query, {'today': today})
