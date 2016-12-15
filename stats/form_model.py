@@ -18,6 +18,8 @@ from sklearn.ensemble import RandomForestClassifier
 
 from os.path import dirname, abspath
 
+current_path = dirname(abspath(__file__))
+
 
 
 def train_classifier(clf, X_train, y_train):
@@ -85,7 +87,7 @@ def load_models(models, dt, t, sport):
     loaded_models = []
 
     for i in models:
-        model = '../../models/{}'.format(sport) + '/' + str(dt) + '/' + i + '/' + i + '_' + str(t)
+        model = current_path + '/models/{}'.format(sport) + '/' + str(dt) + '/' + i + '/' + i + '_' + str(t)
         model_load = joblib.load(model)
         loaded_models.append(model_load)
         print("Success :: Loaded - " + str(i))
@@ -166,10 +168,9 @@ def build_model(X, y, model_type):
 
 def build_tuned_model(X, y, model_type, dt, target, sport):
 
-    current_path = dirname(abspath(__file__))
     if not os.path.isdir(current_path + '/models/{}'.format(sport) + '/' + str(dt) + '/'):
         print('Making New Directory for the Round')
-        os.makedirs('../../models/{}/'.format(sport) + str(dt) + '/')
+        os.makedirs(current_path + '/models/{}/'.format(sport) + str(dt) + '/')
 
         for i in ['knn', 'log', 'svc', 'gnb', 'randomForest', 'linear_regression']:
             os.makedirs(current_path + '/models/{}'.format(sport) + '/' + str(dt) + '/' + i)

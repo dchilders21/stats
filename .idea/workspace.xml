@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/linear_regression/linear_regression_result" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/linear_regression/linear_regression_result" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/linear_regression/linear_regression_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/linear_regression/linear_regression_total_pts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_02.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_result_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_02.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/12_15_16/log/log_total_pts_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/form_model.py" afterPath="$PROJECT_DIR$/stats/form_model.py" />
     </list>
     <ignored path="stats.iws" />
@@ -87,8 +74,8 @@
           <file leaf-file-name="results.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1566">
-                  <caret line="87" column="22" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="22" />
+                <state relative-caret-position="173">
+                  <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -147,8 +134,8 @@
           <file leaf-file-name="form_model.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/stats/form_model.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="569">
-                  <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+                <state relative-caret-position="281">
+                  <caret line="101" column="30" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -645,7 +632,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -993,14 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="87" column="22" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1029,10 +1008,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+        <state relative-caret-position="281">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="30" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
