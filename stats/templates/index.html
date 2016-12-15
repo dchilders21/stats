@@ -26,24 +26,37 @@
                             <th>Team</th>
                             <th>Prediction Win %</th>
                             <th>Prediction Score</th>
-                            <th>Bovada Line</th>
+                            <th>Line</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for index, game in pred_data.iterrows() %}
                                 <tr>
                                     <td><a href="{{ url_for('team', team_id=game['away_id']) }}">{{ game['away_team'] }}</a></td>
-                                    <td> 50% </td>
+
+                                    {% if game['away_result_preds'] == 1 %}
+                                    <td class="warning"> {{ game['home_prob_1'] }}</td>
+                                    {% else %}
+                                    <td class="info">{{ game['home_prob_0'] }}</td>
+                                    {% endif %}
+
                                     {% if game['away_pts_preds'] > game['home_pts_preds'] %}
                                     <td class="danger">{{ game['away_pts_preds'] }}</td>
                                     {% else %}
                                     <td>{{ game['away_pts_preds'] }}</td>
                                     {% endif %}
+
                                     <td> -3 </td>
                                 </tr>
                                 <tr style="border-bottom: 2px solid grey">
                                     <td><a href="{{ url_for('team', team_id=game['home_id']) }}">{{ game['home_team'] }}</a></td>
-                                    <td> 50% </td>
+
+                                    {% if game['home_result_preds'] == 1 %}
+                                    <td class="warning"> {{ game['home_prob_1'] }}</td>
+                                    {% else %}
+                                    <td class="info">{{ game['home_prob_0'] }}</td>
+                                    {% endif %}
+
                                     {% if game['home_pts_preds'] > game['away_pts_preds'] %}
                                     <td class="danger">{{ game['home_pts_preds'] }}</td>
                                     {% else %}

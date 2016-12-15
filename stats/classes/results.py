@@ -11,7 +11,6 @@ class FormulatePredictions(object):
         self.__load_models = kwrargs.get('load_models')
 
         self.prediction_models = {}
-        self.all_preds = {}
         self.upcoming_matches = kwrargs.get('upcoming_matches')
         self.upcoming_matches_csv = kwrargs.get('upcoming_matches_csv')
         self.__predictions = kwrargs.get('predictions')
@@ -34,21 +33,30 @@ class FormulatePredictions(object):
 
     def find_predictions(self):
         """ Find predictions """
+        all_preds = {}
         for target in self.targets:
             for index, method in enumerate(self.all_models):
-                preds = str(method) + '_' + str(target) + '_preds'
-                self.all_preds[preds] = self.prediction_models[target][index].predict(self.upcoming_formatted_data_X)
-                print(self.all_preds[preds])
 
-                if target == 'points' and method == 'log':
+                preds = str(method) + '_' + str(target) + '_preds'
+
+                if preds not in ['linear_regression_result_preds', 'log_total_pts_preds']:
+                    all_preds[preds] = self.prediction_models[target][index].predict(self.upcoming_formatted_data_X)
+
+                self.all_preds = self.__data_frame.from_dict(all_preds)
+
+                if target == 'result' and method == 'log':
                     self.probs = self.__data_frame(self.prediction_models[target][index].predict_proba(self.upcoming_formatted_data_X))
-                    self.probs = self.probs.rename(columns={0: 'Probability 0', 1: 'Probability 1', 2: 'Probability 2'})
+                    self.probs = self.probs.rename(columns={0: 'Probability 0', 1: 'Probability 1'})
+
+                    self.all_preds = self.__concat_data([self.all_preds, self.probs], axis=1)
+
 
     def predictions_reorder(self, columns):
-        upcoming_matches = self.upcoming_data[columns]
 
+        upcoming_matches = self.upcoming_data[columns]
         # Add predictions to the end of that DF
-        results = self.__data_frame.from_dict(self.all_preds)
+        # results = self.__data_frame.from_dict(self.all_preds)
+        results = self.all_preds
         upcoming_matches = self.__concat_data([upcoming_matches, results], axis=1)
         self.reordered_matches = self.__data_frame([])
 

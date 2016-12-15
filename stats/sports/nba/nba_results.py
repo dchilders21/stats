@@ -65,9 +65,7 @@ class NBAPredictions(FormulatePredictions, object):
 
         self.upcoming_formatted_data = self.adjust_features(self.upcoming_formatted_data)
 
-        print(self.upcoming_formatted_data.columns.values)
-
-        _, self.upcoming_formatted_data_X = self.__extract_target(self.upcoming_formatted_data, 'final_score')
+        self.upcoming_formatted_data_X = self.upcoming_formatted_data.drop(['final_score', 'result'], 1)
 
         self.find_predictions()
         self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id', 'team_id', 'opp_id'])
@@ -75,7 +73,13 @@ class NBAPredictions(FormulatePredictions, object):
 
     def target__total_pts(self):
         target_data = self.adjusted_data.copy()
+        target_data = target_data.drop("result", 1)
         return self.__extract_target(target_data, 'final_score')
+
+    def target__result(self):
+        target_data = self.adjusted_data.copy()
+        target_data = target_data.drop("final_score", 1)
+        return self.__extract_target(target_data, 'result')
 
     def adjust_features(self, data):
         for b in basic_features:
@@ -93,7 +97,8 @@ class NBAPredictions(FormulatePredictions, object):
         return data
 
 
-ignore_cols = ['game_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled_pst', 'games_played', 'rpi']
+ignore_cols = ['game_id', 'team_id', 'team_name', 'opp_id', 'opp_name', 'scheduled_pst', 'games_played',
+               'rpi', 'opp_final_score']
 
 points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3PM',
                    'fast_break_points', 'points_in_paint', 'points_off_turnovers', 'second_chance_points', 'total_pts']
@@ -102,7 +107,7 @@ basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL'
 
 """ this is designed to run once a day for updated games that were pulled in """
 #today = "12_13_16"
-today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
+today = model_libs.tz2ntz(datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
@@ -118,8 +123,6 @@ if not os.path.isdir('../../csv/{}/'.format(sport_category) + today + '/'):
     print('Making New Directory {} for the CSV'.format(today))
     os.makedirs('../../csv/{}/'.format(sport_category) + today + '/')
 
-r = nba_form_data.RunData(sport_category, today_date)
-
 nba_params = dict(
     testing=True,
     today_date=today_date,
@@ -129,9 +132,9 @@ nba_params = dict(
     data_csv='../../csv/nba/{}/raw_data.csv'.format(today),
     get_rankings=nba_form_data.get_rankings_NBA,
     sport='nba',
-    targets=['total_pts'],
+    targets=['total_pts', 'result'],
     extract_target=model_libs._extract_target,
-    all_models=['linear_regression'],
+    all_models=['linear_regression', 'log'],
     build_tuned_model=form_model.build_tuned_model,
     predictions_csv='../../csv/nba/{}/all_predictions.csv'.format(today),
     predictions=predict_matches.predictions_nba,

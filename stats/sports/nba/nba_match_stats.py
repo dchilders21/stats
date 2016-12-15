@@ -122,7 +122,7 @@ def create_game(team_id, teams, current_game, closed_games, team_totals, stats, 
     # Only take the previous 3 matches and sum those stats together
     opp_previous_games = opp_previous_games.iloc[-3:]
 
-    _, _, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, _, _, opp_game_features = \
+    _, _, opp_team_name, _, _, played, opp_win, opp_loss, opp_opp, _, opp_final_score, opp_game_features = \
         calculate_stats(opp_id, teams, current_game, opp_previous_games, team_totals, stats, targets)
 
     if stats:
@@ -226,12 +226,19 @@ def create_game(team_id, teams, current_game, closed_games, team_totals, stats, 
     sos = np.divide((2 * prev_opp_record) + opp_prev_opp_record, 3)
     rpi = (current_record * .25) + (sos * .75)
 
+    # 1 if the current team wins, 0 if the current team loses
+    if final_score > opp_final_score:
+        result = 1
+    else:
+        result = 0
+
     feature = {'game_id': game_id, 'team_id': team_id, 'team_name': team_name, 'opp_id': opp_id,
                'opp_name': opp_team_name, 'scheduled_pst': scheduled, 'games_played': played,
                'is_home': is_home, 'current_record': current_record, 'rpi': rpi,
-               'opp_record': opp_record, 'final_score': final_score}
+               'opp_record': opp_record, 'final_score': final_score, 'opp_final_score': opp_final_score,
+               'result': result}
 
-    game_features = {'current_team': game_features, 'opp_team': opp_game_features }
+    game_features = {'current_team': game_features, 'opp_team': opp_game_features}
 
     if stats:
         print("//////////////////////////////////////////////////")

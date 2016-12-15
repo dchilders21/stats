@@ -116,18 +116,27 @@ def home():
     prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
-    columns = ['is_home', 'linear_regression_total_pts_preds', 'opp_id', 'opp_name', 'team_id', 'team_name']
+    columns = ['is_home', 'linear_regression_total_pts_preds', 'opp_id', 'opp_name', 'team_id', 'team_name',
+               'Probability 0', 'Probability 1', 'log_result_preds']
 
     prediction_data = prediction_data[columns]
     # Need to reorganize the data for visual display, will eventually do this when creating the 'all_predictions' CSV
     home_team = pd.DataFrame(prediction_data.iloc[::2].values, columns=columns)
     home_team = home_team.rename(index=str, columns={"team_name": "home_team", "team_id": "home_id",
-                                                     "linear_regression_total_pts_preds": "home_pts_preds"})
+                                                     "linear_regression_total_pts_preds": "home_pts_preds",
+                                                     "log_result_preds": "home_result_preds",
+                                                     'Probability 0': 'home_prob_0', 'Probability 1': 'home_prob_1'})
     away_team = pd.DataFrame(prediction_data.iloc[1::2].values, columns=columns)
     away_team = away_team.rename(index=str, columns={"team_name": "away_team", "team_id": "away_id",
-                                                     "linear_regression_total_pts_preds": "away_pts_preds"})
-    home_team = home_team[['home_team', 'home_id', 'home_pts_preds']]
-    away_team = away_team[['away_team', 'away_id', 'away_pts_preds']]
+                                                     "linear_regression_total_pts_preds": "away_pts_preds",
+                                                     "log_result_preds": "away_result_preds",
+                                                     'Probability 0': 'away_prob_0', 'Probability 1': 'away_prob_1'})
+
+    print(home_team)
+    print(away_team)
+
+    home_team = home_team[['home_team', 'home_id', 'home_pts_preds', 'home_prob_0', 'home_prob_1', 'home_result_preds']]
+    away_team = away_team[['away_team', 'away_id', 'away_pts_preds', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
 
     pred_data = pd.concat([home_team, away_team], axis=1)
 

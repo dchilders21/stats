@@ -342,7 +342,8 @@ def nba_run_data(today_date):
 
     for team in cursor:
 
-        games = closed_games.loc[((closed_games['home_id'] == team["id"]) | (closed_games['away_id'] == team["id"]))]
+        games = closed_games.loc[((closed_games['home_id'] == team["id"]) | (closed_games['away_id'] == team["id"]))
+            & (closed_games['scheduled_pst'] < today_date)]
 
         # once we have all the games, will change this to just the games played on the today_date
         for i in range(3, len(games)):
@@ -420,39 +421,3 @@ def nba_run_single_data(today_date):
     result = pd.concat([prev_day_data, data], axis=0)
 
     return result
-
-
-class RunData(object):
-
-    def __init__(self, sport_category, today_date):
-        self.sport_category = sport_category
-        self.today_date = today_date
-
-    def run(self):
-        cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
-                                      host=settings.MYSQL_HOST,
-                                      database=self.sport_category)
-
-        cursor = cnx.cursor(dictionary=True, buffered=True)
-
-        prev_day = (self.today_date - timedelta(days=1)).strftime('%Y-%m-%d')
-
-        query = str("SELECT * FROM games WHERE scheduled_pst LIKE '" + prev_day + "%' LIMIT 1")
-
-        cursor.execute(query)
-
-        for game in cursor:
-
-            home_id = game["home_id"]
-            away_id = game["away_id"]
-
-            home_games = pd.read_sql('SELECT * FROM games '
-                                     'LEFT OUTER JOIN team_totals '
-                                     'ON games.id = team_totals.game_id '
-                                     'WHERE team_totals.team_id = ' + str(home_id), cnx)
-            away_games = pd.read_sql('SELECT * FROM games '
-                                     'LEFT OUTER JOIN team_totals '
-                                     'ON games.id = team_totals.game_id '
-                                     'WHERE team_totals.team_id = ' + str(away_id), cnx)
-
-        return pd.read_sql(query, cnx)
