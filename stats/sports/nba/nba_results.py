@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from stats.sports.nba import nba_form_data
 from stats import predict_matches, model_libs, form_model
 from stats.classes.results import FormulatePredictions
+from os.path import dirname, abspath
 
 
 class NBAPredictions(FormulatePredictions, object):
@@ -113,15 +114,17 @@ today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
 
 upcoming_games = predict_matches.get_upcoming_games(today_date)
+current_path = dirname(dirname(dirname(abspath(__file__))))
 
-# Leagues skip a week at times so will not always be the previous week
-while not os.path.isdir("../../csv/{}/".format(sport_category) + prev_day):
+print(current_path)
+# Games skip days at times so will not always be the previous week
+while not os.path.isdir(current_path + "/csv/{}/".format(sport_category) + prev_day):
     prev_day = (datetime.strptime(prev_day, '%m_%d_%y') - timedelta(days=1)).strftime('%m_%d_%y')
 
-# Creating this weeks folder
-if not os.path.isdir('../../csv/{}/'.format(sport_category) + today + '/'):
+# Creating todays folder
+if not os.path.isdir(current_path + '/csv/{}/'.format(sport_category) + today + '/'):
     print('Making New Directory {} for the CSV'.format(today))
-    os.makedirs('../../csv/{}/'.format(sport_category) + today + '/')
+    os.makedirs(current_path + '/csv/{}/'.format(sport_category) + today + '/')
 
 nba_params = dict(
     testing=True,
