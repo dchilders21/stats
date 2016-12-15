@@ -5,6 +5,7 @@ import numpy as np
 from stats import model_libs, predict_matches
 from datetime import datetime, timedelta
 import settings
+from os.path import dirname, abspath
 
 
 def rank_teams(teams, rd, side_of_ball, upcoming):
@@ -382,9 +383,9 @@ def nba_run_single_data(today_date):
                                "ORDER BY scheduled_pst;", cnx)
 
     teams = pd.read_sql("SELECT id, name FROM teams", cnx)
-
+    current_path = dirname(dirname(dirname(abspath(__file__))))
     prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
-    prev_day_data = pd.read_csv("../../csv/nba/" + prev_day + "/raw_data.csv")
+    prev_day_data = pd.read_csv(current_path + "/csv/nba/" + prev_day + "/raw_data.csv")
     prev_day_data = prev_day_data.drop(prev_day_data.columns[[0]], axis=1)
 
     prev_day = datetime.strptime(prev_day, '%m_%d_%y')
