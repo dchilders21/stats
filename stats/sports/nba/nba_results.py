@@ -117,7 +117,7 @@ upcoming_games = predict_matches.get_upcoming_games(today_date)
 current_path = dirname(dirname(dirname(abspath(__file__))))
 
 print(current_path)
-# Games skip days at times so will not always be the previous week
+# Games skip days at times so will not always be the previous game day
 while not os.path.isdir(current_path + "/csv/{}/".format(sport_category) + prev_day):
     prev_day = (datetime.strptime(prev_day, '%m_%d_%y') - timedelta(days=1)).strftime('%m_%d_%y')
 

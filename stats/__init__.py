@@ -112,7 +112,6 @@ def logout():
 @app.route('/')
 @login_required
 def home():
-
     prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
@@ -120,6 +119,7 @@ def home():
                'Probability 0', 'Probability 1', 'log_result_preds']
 
     prediction_data = prediction_data[columns]
+
     # Need to reorganize the data for visual display, will eventually do this when creating the 'all_predictions' CSV
     home_team = pd.DataFrame(prediction_data.iloc[::2].values, columns=columns)
     home_team = home_team.rename(index=str, columns={"team_name": "home_team", "team_id": "home_id",
@@ -132,13 +132,29 @@ def home():
                                                      "log_result_preds": "away_result_preds",
                                                      'Probability 0': 'away_prob_0', 'Probability 1': 'away_prob_1'})
 
-    print(home_team)
-    print(away_team)
-
     home_team = home_team[['home_team', 'home_id', 'home_pts_preds', 'home_prob_0', 'home_prob_1', 'home_result_preds']]
     away_team = away_team[['away_team', 'away_id', 'away_pts_preds', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
 
     pred_data = pd.concat([home_team, away_team], axis=1)
+
+    line_csv = 'stats/csv/pinnacle/' + str(today) + '/pinnacle_lines.csv'
+    line_data = pd.read_csv(line_csv)
+
+    def lines_to_preds(home_team, line_data, type):
+        for i, l in line_data.iterrows():
+            if home_team in l['team_2']:
+                if type == 'spread':
+                    return l['spread']
+                else:
+                    return l['over_under']
+
+    pred_data["spread"] = pred_data.apply(
+        lambda row: lines_to_preds(row['home_team'], line_data, 'spread'), axis=1)
+
+    pred_data["over_under"] = pred_data.apply(
+        lambda row: lines_to_preds(row['home_team'], line_data, 'over_under'), axis=1)
+
+    print(pred_data)
 
     return render_template("index.html", leagues=leagues, teams=teams, pred_data=pred_data,
                            today=todays_date.strftime("%B %d, %Y"))
