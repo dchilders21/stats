@@ -110,7 +110,7 @@ class FormulatePredictions(object):
         print('Ranked Data Loaded...')
 
     def init_upcoming_data(self):
-        self.upcoming_matches = self.upcoming_matches
+        print(self.upcoming_matches)
         self.upcoming_matches.to_csv(self.upcoming_matches_csv)
         self.upcoming_data = self.__predictions(self.upcoming_matches)
 

@@ -391,6 +391,7 @@ def nba_run_single_data(today_date):
     prev_day = datetime.strptime(prev_day, '%m_%d_%y')
 
     training_list = []
+    data = pd.DataFrame()
 
     for i, team in teams.iterrows():
 

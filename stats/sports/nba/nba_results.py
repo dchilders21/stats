@@ -32,7 +32,6 @@ class NBAPredictions(FormulatePredictions, object):
 
         adjusted_data = self.raw_data.copy()
         self.adjusted_data = adjusted_data.drop(self.to_drop, 1)
-
         self.adjusted_data = self.adjust_features(self.adjusted_data)
 
         #######################
@@ -60,17 +59,20 @@ class NBAPredictions(FormulatePredictions, object):
         self.init_upcoming_data()
         #self.init_ranked_upcoming_matches_data()
 
-        """ Formatting data specific to the sport """
-        self.upcoming_formatted_data = self.upcoming_data.copy()
-        self.upcoming_formatted_data = self.upcoming_formatted_data.drop(self.to_drop, 1)
+        """ Makes sure there are games for the day """
+        if not self.upcoming_data.empty:
 
-        self.upcoming_formatted_data = self.adjust_features(self.upcoming_formatted_data)
+            """ Formatting data specific to the sport """
+            self.upcoming_formatted_data = self.upcoming_data.copy()
+            self.upcoming_formatted_data = self.upcoming_formatted_data.drop(self.to_drop, 1)
 
-        self.upcoming_formatted_data_X = self.upcoming_formatted_data.drop(['final_score', 'result'], 1)
+            self.upcoming_formatted_data = self.adjust_features(self.upcoming_formatted_data)
 
-        self.find_predictions()
-        self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id', 'team_id', 'opp_id'])
-        self.predictions_save()
+            self.upcoming_formatted_data_X = self.upcoming_formatted_data.drop(['final_score', 'result'], 1)
+
+            self.find_predictions()
+            self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id', 'team_id', 'opp_id'])
+            self.predictions_save()
 
     def target__total_pts(self):
         target_data = self.adjusted_data.copy()
@@ -107,8 +109,8 @@ points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3P
 basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL', 'turnovers']
 
 """ this is designed to run once a day for updated games that were pulled in """
-#today = "12_13_16"
-today = model_libs.tz2ntz(datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
+today = "12_27_16"
+#today = model_libs.tz2ntz(datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
@@ -116,7 +118,6 @@ prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
 upcoming_games = predict_matches.get_upcoming_games(today_date)
 current_path = dirname(dirname(dirname(abspath(__file__))))
 
-print(current_path)
 # Games skip days at times so will not always be the previous game day
 while not os.path.isdir(current_path + "/csv/{}/".format(sport_category) + prev_day):
     prev_day = (datetime.strptime(prev_day, '%m_%d_%y') - timedelta(days=1)).strftime('%m_%d_%y')

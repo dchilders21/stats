@@ -43,6 +43,7 @@ today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strft
 
 #today = "12_01_16"
 print('INITIALIZED...')
+print(todays_date)
 print('V 2.0')
 
 

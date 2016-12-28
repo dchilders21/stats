@@ -24,6 +24,7 @@ add_totals = ("INSERT INTO team_totals "
 
 today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
 today = today.strftime('%Y-%m-%d')
+today = "2016_12_27"
 query = "SELECT * FROM games WHERE scheduled_pst < %(today)s AND status = 'scheduled'"
 cursor.execute(query, {'today': today})
 print('Updating Games on {}'.format(today))

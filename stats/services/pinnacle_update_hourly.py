@@ -24,7 +24,7 @@ if not os.path.isdir(current_path + '/csv/pinnacle/' + t + '/'):
 df = pd.DataFrame([], columns=['team_1', 'team_2', 'over_under', 'spread'])
 
 for line in json['Leagues'][0]['Events']:
-    print(line)
+
     # Period Number 0 are the lines used on the guest site
     if line['PeriodNumber'] == 0:
         d = line['DateAndTime'].split('T', 1)[0]
