@@ -109,8 +109,8 @@ points_features = ['1st_qtr', '2nd_qtr', '3rd_qtr', '4th_qtr', 'FGM', 'FTM', '3P
 basic_features = ['BLK', '3PA', 'AST', 'DREB', 'FGA', 'FTA', 'OREB', 'PF', 'STL', 'turnovers']
 
 """ this is designed to run once a day for updated games that were pulled in """
-today = "12_27_16"
-#today = model_libs.tz2ntz(datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
+#today = "01_01_17"
+today = model_libs.tz2ntz(datetime.utcnow(), 'UTC', 'US/Pacific').strftime("%m_%d_%y")
 sport_category = "nba"
 today_date = datetime.strptime(today, '%m_%d_%y')
 prev_day = (today_date - timedelta(days=1)).strftime('%m_%d_%y')
