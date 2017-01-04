@@ -30,7 +30,7 @@
                         <tbody>
                         {% for index, game in pred_data.iterrows() %}
                                 <tr>
-                                    <td><a href="{{ url_for('team', team_id=game['away_id']) }}">{{ game['away_team'] }}</a></td>
+                                    <td>{{ game['away_team'] }}</td>
 
                                     {% if game['away_result_preds'] == 1 %}
                                     <td class="warning"> {{ game['home_prob_1'] }}</td>
@@ -48,7 +48,7 @@
 
                                 </tr>
                                 <tr style="border-bottom: 2px solid grey">
-                                    <td><a href="{{ url_for('team', team_id=game['home_id']) }}">{{ game['home_team'] }}</a></td>
+                                    <td>{{ game['home_team'] }}</td>
 
                                     {% if game['home_result_preds'] == 1 %}
                                     <td class="warning"> {{ game['home_prob_1'] }}</td>
