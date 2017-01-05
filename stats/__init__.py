@@ -38,12 +38,7 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 
-todays_date = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
-today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime('%m_%d_%y')
-
-#today = "12_01_16"
 print('INITIALIZED...')
-print(todays_date)
 print('V 2.0')
 
 
@@ -113,6 +108,9 @@ def logout():
 @app.route('/')
 @login_required
 def home():
+    todays_date = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
+    today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime('%m_%d_%y')
+
     prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
@@ -161,6 +159,9 @@ def home():
 
 @app.route('/api', methods=['GET'])
 def api():
+    todays_date = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific')
+    today = model_libs.tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime('%m_%d_%y')
+
     prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
