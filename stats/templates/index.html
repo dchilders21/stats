@@ -30,7 +30,7 @@
                         <tbody>
                         {% for index, game in pred_data.iterrows() %}
                                 <tr>
-                                    <td>{{ game['away_team'] }}</td>
+                                    <td>{{ game['away_market'] }} {{ game['away_team'] }}</td>
 
                                     {% if game['away_result_preds'] == 1 %}
                                     <td class="warning"> {{ game['home_prob_1'] }}</td>
@@ -48,7 +48,7 @@
 
                                 </tr>
                                 <tr style="border-bottom: 2px solid grey">
-                                    <td>{{ game['home_team'] }}</td>
+                                    <td>{{ game['home_market'] }} {{ game['home_team'] }}</td>
 
                                     {% if game['home_result_preds'] == 1 %}
                                     <td class="warning"> {{ game['home_prob_1'] }}</td>

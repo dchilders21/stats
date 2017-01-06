@@ -114,8 +114,8 @@ def home():
     prediction_csv = 'stats/csv/nba/' + str(today) + '/all_predictions.csv'
     prediction_data = pd.read_csv(prediction_csv)
 
-    columns = ['is_home', 'linear_regression_total_pts_preds', 'opp_id', 'opp_name', 'team_id', 'team_name',
-               'Probability 0', 'Probability 1', 'log_result_preds']
+    columns = ['is_home', 'linear_regression_total_pts_preds', 'opp_id', 'opp_name', 'opp_market', 'team_id',
+               'team_name', 'team_market', 'Probability 0', 'Probability 1', 'log_result_preds']
 
     prediction_data = prediction_data[columns]
 
@@ -135,7 +135,8 @@ def home():
 
     home_team = home_team[
         ['home_team', 'home_id', 'home_market', 'home_pts_preds', 'home_prob_0', 'home_prob_1', 'home_result_preds']]
-    away_team = away_team[['away_team', 'away_id', 'away_market', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
+    away_team = away_team[
+        ['away_team', 'away_id', 'away_market', 'away_pts_preds', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
 
     pred_data = pd.concat([home_team, away_team], axis=1)
 
@@ -185,7 +186,7 @@ def api():
                                                      'Probability 0': 'away_prob_0', 'Probability 1': 'away_prob_1'})
 
     home_team = home_team[['home_team', 'home_id', 'home_market', 'home_pts_preds', 'home_prob_0', 'home_prob_1', 'home_result_preds']]
-    away_team = away_team[['away_team', 'away_id', 'away_market', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
+    away_team = away_team[['away_team', 'away_id', 'away_market', 'away_pts_preds', 'away_prob_0', 'away_prob_1', 'away_result_preds']]
 
     pred_data = pd.concat([home_team, away_team], axis=1)
 
