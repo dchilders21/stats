@@ -72,6 +72,7 @@ class NBAPredictions(FormulatePredictions, object):
 
             self.find_predictions()
             self.predictions_reorder(['team_name', 'opp_name', 'scheduled_pst', 'is_home', 'game_id', 'team_id', 'opp_id'])
+            self.post_predictions()
             self.predictions_save()
 
     def target__total_pts(self):
@@ -147,7 +148,8 @@ nba_params = dict(
     upcoming_matches_csv=current_path + '/csv/nba/{}/upcoming_matches.csv'.format(today),
     adjust_features=model_libs.adjust_features,
     concat_data=pd.concat,
-    read_data=pd.read_csv
+    read_data=pd.read_csv,
+    post_preds=nba_form_data.nba_add_market
 )
 
 a = NBAPredictions(**nba_params)

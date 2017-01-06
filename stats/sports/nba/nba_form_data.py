@@ -367,6 +367,23 @@ def nba_run_data(today_date):
     return data
 
 
+def nba_add_market(df):
+
+    cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
+                                  host=settings.MYSQL_HOST,
+                                  database='nba')
+
+    teams = pd.read_sql("SELECT id, market FROM teams", cnx)
+
+    df['team_market'] = df.apply(lambda r: teams.loc[teams['id'] == r['team_id']].iloc[0]['market'],
+                                                axis=1)
+
+    df['opp_market'] = df.apply(lambda r: teams.loc[teams['id'] == r['opp_id']].iloc[0]['market'],
+                                 axis=1)
+
+    return df
+
+
 def nba_run_single_data(today_date):
 
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,

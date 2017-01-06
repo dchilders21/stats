@@ -22,6 +22,8 @@ class FormulatePredictions(object):
         self.previous_week_predictions = self.__data_frame()
         self.prev_week = kwrargs.get('prev_week')
 
+        self.__post_preds = kwrargs.get('post_preds')
+
     def modeling(self, target_X, target_y, target):
         for each in self.all_models:
             args = (target_X, target_y, each, self.td.strftime('%m_%d_%y'), target, self.sport)
@@ -50,9 +52,7 @@ class FormulatePredictions(object):
 
                     self.all_preds = self.__concat_data([self.all_preds, self.probs], axis=1)
 
-
     def predictions_reorder(self, columns):
-
         upcoming_matches = self.upcoming_data[columns]
         # Add predictions to the end of that DF
         # results = self.__data_frame.from_dict(self.all_preds)
@@ -79,13 +79,16 @@ class FormulatePredictions(object):
         self.previous_week_predictions.to_csv('../csv/{}/{}/actual_results.csv'.format(sport, self.td.strftime('%m_%d_%y')))
         print('Actual Results compared with Last Weeks Predictions printed...')
 
-    def predictions_save(self):
+    def post_predictions(self):
         self.reordered_matches = self.reordered_matches.reset_index(drop=True)
+        self.post_data = self.__post_preds(self.reordered_matches)
+
+    def predictions_save(self):
         self.reordered_matches.to_csv(self.predictions_csv)
         print('Prediction CSV saved')
 
     def init_raw_data(self):
-        testing = True
+        testing = False
         if testing:
             self.raw_data = self.__get_data(self.today_date)
             self.raw_data.to_csv(self.data_csv)
@@ -110,7 +113,6 @@ class FormulatePredictions(object):
         print('Ranked Data Loaded...')
 
     def init_upcoming_data(self):
-        print(self.upcoming_matches)
         self.upcoming_matches.to_csv(self.upcoming_matches_csv)
         self.upcoming_data = self.__predictions(self.upcoming_matches)
 
