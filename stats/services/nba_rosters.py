@@ -25,7 +25,7 @@ for id in cursor.fetchall():
     stats_id = id[1]
     time.sleep(5)
     r = requests.get(
-        "https://api.sportradar.us/nba-t3/teams/" + stats_id + "/profile.xml?api_key=fpv4k3jksvyd9mzjbfu5myxb")
+        "https://api.sportradar.us/nba-t3/teams/" + stats_id + "/profile.xml?api_key=u87kvnfukh8392duutyvc3en")
 
     soup = BeautifulSoup(r.content, "html.parser")
     # soup = BeautifulSoup(open("../../xml/nba_team_roster.xml"), "html.parser")

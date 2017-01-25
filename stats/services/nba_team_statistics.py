@@ -31,7 +31,7 @@ for row in cursor.fetchall():
     print(' =====  ')
     time.sleep(3)
     r = requests.get(
-        "https://api.sportradar.us/nba-t3/games/" + game_id + "/summary.xml?api_key=fpv4k3jksvyd9mzjbfu5myxb")
+        "https://api.sportradar.us/nba-t3/games/" + game_id + "/summary.xml?api_key=u87kvnfukh8392duutyvc3en")
 
     soup = BeautifulSoup(r.content, "html.parser")
     # soup = BeautifulSoup(open("../../xml/nba_game_summary_example.xml"), "html.parser")
