@@ -1,18 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
-@import url(https://fonts.googleapis.com/css?family=Poppins:500,600);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,400,700);
 /*
 Template Name: Minton Dashboard
 Author: CoderThemes
 Email: coderthemes@gmail.com
 File: Topbar,Left-sidebar,Right-sidebar
 */
+/*#wrapper {
+  max-width: 1170px;
+  min-height: 1140px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  box-shadow: -2px 3px 25px rgba(0, 0, 0, 0.07);
+}*/
 .topbar {
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 999;
+  margin: 0 auto;
+  /* max-width: 1170px; */
 }
 .topbar .topbar-left {
   background: #3bafda;
@@ -81,7 +89,7 @@ File: Topbar,Left-sidebar,Right-sidebar
 }
 .notifi-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
   font-weight: 400;
   padding: 5px 0px 10px;
@@ -198,7 +206,7 @@ input.app-search-input:-ms-input-placeholder {
   z-index: 2;
 }
 .side-menu.left {
-  background: #323b44;
+  background: #2a3142;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   position: absolute;
   top: 70px;
@@ -398,7 +406,7 @@ body.fixed-left .side-menu.left {
   padding-left: 10px;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu > ul > li > a:hover {
-  background-color: #272e35 !important;
+  background-color: #202532 !important;
 }
 #wrapper.enlarged .left.side-menu span.pull-right {
   display: none !important;
@@ -408,7 +416,7 @@ body.fixed-left .side-menu.left {
   white-space: nowrap;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li:hover > a {
-  background: #272e35;
+  background: #202532;
   position: relative;
   width: 260px;
 }
@@ -420,7 +428,7 @@ body.fixed-left .side-menu.left {
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li:hover > ul a {
   background: #ffffff;
-  color: rgba(50, 59, 68, 0.8);
+  color: rgba(42, 49, 66, 0.8);
   border: none;
   box-shadow: none;
   padding-left: 15px;
@@ -466,12 +474,11 @@ body.fixed-left .side-menu.left {
   margin-right: 20px !important;
   margin-left: 5px;
   font-size: 20px;
-  color: #a2acae;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li:hover > a {
   position: relative;
   width: 260px;
-  background: #272e35;
+  background: #202532;
   color: #ffffff;
   border-color: #3bafda;
 }
@@ -519,10 +526,7 @@ body.fixed-left .side-menu.left {
   display: none;
 }
 #wrapper.enlarged #sidebar-menu ul ul li.active a {
-  color: #3bafda;
-}
-#wrapper.enlarged .footer {
-  left: 70px;
+  color: #3bafda !important;
 }
 #wrapper.right-bar-enabled .right-bar {
   right: 0;
@@ -542,7 +546,7 @@ body.fixed-left .side-menu.left {
 .side-bar {
   -moz-transition: all 200ms ease-out;
   -webkit-transition: all 200ms ease-out;
-  background-color: #272e35;
+  background-color: #ffffff;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.1);
   display: block;
   overflow-y: auto;
@@ -553,13 +557,12 @@ body.fixed-left .side-menu.left {
 .side-bar .nav.nav-tabs + .tab-content {
   margin-bottom: 0px;
   padding: 20px;
-  background-color: transparent;
-  border: 0;
 }
 .side-bar .tabs li.tab a {
   font-weight: 600;
 }
 .right-bar {
+  background: #ffffff !important;
   position: fixed !important;
   z-index: 99 !important;
 }
@@ -596,7 +599,7 @@ body.fixed-left .side-menu.left {
   width: 100%;
 }
 .contacts-list .list-group-item span.name {
-  color: rgba(255, 255, 255, 0.6);
+  color: #707780;
   display: inline-block;
   float: left;
   overflow: hidden;

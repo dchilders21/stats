@@ -1,30 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="statsApp">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
-        <meta id="team-data" data-name="{{teams}}">
 
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
         <title>Minton - Responsive Admin Dashboard Template</title>
-        <script src="{{ url_for('static', filename='libs/jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
-        <link href="{{ url_for('static', filename='plugins/switchery/switchery.min.css') }}" rel="stylesheet" />
-        <link href="{{ url_for('static', filename='plugins/jquery-circliful/css/jquery.circliful.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="static/plugins/switchery/switchery.min.css">
+        <link rel="stylesheet" type="text/css" href="static/plugins/jquery-circliful/css/jquery.circliful.css">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/core.css">
+        <link rel="stylesheet" type="text/css" href="static/css/icons.css">
+        <link rel="stylesheet" type="text/css" href="static/css/components.css">
+        <link rel="stylesheet" type="text/css" href="static/css/pages.css">
+        <link rel="stylesheet" type="text/css" href="static/css/menu.css">
+        <link rel="stylesheet" type="text/css" href="static/css/responsive.css">
 
-        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/core.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/components.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/pages.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/menu.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" type="text/css">
+        <script src="/static/js/modernizr.min.js"></script>
 
-        <script src="{{ url_for('static', filename='js/modernizr.min.js') }}"></script>
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -171,12 +169,10 @@
                 <div class="user-detail">
                     <div class="dropup">
                         <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
-                            <img  src="{{ url_for('static', filename='images/users/avatar-2.jpg') }}" alt="user-img" class="img-circle">
+                            <img src="static/images/users/avatar-2.jpg" alt="user-img" class="img-circle">
                             <span class="user-info-span">
                                 <h5 class="m-t-0 m-b-0">
-                                {% if current_user.is_authenticated %}
-                                    {{ current_user.username }}
-                                {% endif %}
+
                                 </h5>
                                 <p class="text-muted m-b-0">
                                     <small><i class="fa fa-circle text-success"></i> <span>Online</span></small>
@@ -203,8 +199,7 @@
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
-                    <div class="container">
-                        {% block content %}{% endblock %}
+                    <div class="container" ng-view>
                     </div>
                     <!-- end container -->
                 </div>
@@ -299,7 +294,7 @@
                         <div class="tab-pane fade" id="profile-2">
                             <div class="contact-list nicescroll">
                                 <ul class="list-group contacts-list">
-                                    <li class="list-group-item">
+                                    <!-- <li class="list-group-item">
                                         <a href="#">
                                             <div class="avatar">
                                                 <img src="{{ url_for('static', filename='images/users/avatar-1.jpg') }}" alt="">
@@ -398,7 +393,7 @@
                                             <i class="fa fa-circle offline"></i>
                                         </a>
                                         <span class="clearfix"></span>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -455,74 +450,56 @@
 
         </div>
         <!-- END wrapper -->
-
-
     
         <script>
             var resizefunc = [];
         </script>
 
+
+
         <!-- Plugins  -->
-        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/detect.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/fastclick.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery.blockUI.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/waves.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery.nicescroll.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery.scrollTo.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/switchery/switchery.min.js') }}"></script>
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/detect.js"></script>
+        <script src="/static/js/fastclick.js"></script>
+        <script src="/static/js/jquery.slimscroll.js"></script>
+        <script src="/static/js/jquery.blockUI.js"></script>
+        <!-- <script src="/static/js/waves.js"></script> -->
+        <script src="/static/js/wow.min.js"></script>
+        <script src="/static/js/jquery.nicescroll.js"></script>
+        <script src="/static/js/jquery.scrollTo.min.js"></script>
+        <script src="/static/plugins/switchery/switchery.min.js"></script>
+
 
         <!-- Counter Up  -->
-        <script src="{{ url_for('static', filename='plugins/waypoints/lib/jquery.waypoints.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/counterup/jquery.counterup.min.js') }}"></script>
+        <script src="/static/plugins/waypoints/lib/jquery.waypoints.js"></script>
+        <script src="/static/plugins/counterup/jquery.counterup.min.js"></script>
 
         <!-- circliful Chart -->
-        <script src="{{ url_for('static', filename='plugins/jquery-circliful/js/jquery.circliful.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+        <script src="/static/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>
+        <script src="/static/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
         <!-- skycons -->
-        <script src="{{ url_for('static', filename='plugins/skyicons/skycons.min.js') }}"></script>
+        <script src="/static/plugins/skyicons/skycons.min.js"></script>
 
         <!-- Page js  -->
-        <script src="{{ url_for('static', filename='pages/jquery.dashboard.js') }}"></script>
+        <!-- <script src="/static/pages/jquery.dashboard.js"></script> -->
+
+        <!-- <script src="/static/libs/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular-route.min.js"></script> -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+		<script src="http://code.angularjs.org/1.5.3/angular-route.min.js"></script>
+        <script src="/static/libs/jquery-3.1.1.min.js"></script>
+
 
         <!-- Custom main Js -->
-        <script src="{{ url_for('static', filename='js/jquery.core.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/jquery.app.js') }}"></script>
+        <script src="/static/js/jquery.core.js"></script>
+        <script src="/static/scripts/app.js"></script>
 
-        {% block scripts %}{% endblock %}
-        
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $('.counter').counterUp({
-                    delay: 100,
-                    time: 1200
-                });
-                $('.circliful-chart').circliful();
-            });
+        <script src="/static/scripts/controllers/main.js"></script>
 
-            // BEGIN SVG WEATHER ICON
-            if (typeof Skycons !== 'undefined'){
-            var icons = new Skycons(
-                {"color": "#3bafda"},
-                {"resizeClear": true}
-                ),
-                    list  = [
-                        "clear-day", "clear-night", "partly-cloudy-day",
-                        "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                        "fog"
-                    ],
-                    i;
-
-                for(i = list.length; i--; )
-                icons.set(list[i], list[i]);
-                icons.play();
-            };
-
-        </script>
     
     </body>
 </html>

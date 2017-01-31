@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#">Minton</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+                <h4 class="page-title">NBA Predictions for {{ today }}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Prediction Win %</th>
+                            <th>Prediction Score</th>
+                            <th>Line</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for index, game in pred_data.iterrows() %}
+                                <tr>
+                                    <td><a href="{{ url_for('team', team_id=game['away_id']) }}">{{ game['away_market'] }} {{ game['away_team'] }}</a></td>
+
+                                    {% if game['away_result_preds'] == 1 %}
+                                    <td class="warning"> {{ game['home_prob_1'] }}</td>
+                                    {% else %}
+                                    <td class="info">{{ game['home_prob_0'] }}</td>
+                                    {% endif %}
+
+                                    {% if game['away_pts_preds'] > game['home_pts_preds'] %}
+                                    <td class="danger">{{ game['away_pts_preds'] }}</td>
+                                    {% else %}
+                                    <td>{{ game['away_pts_preds'] }}</td>
+                                    {% endif %}
+
+                                    <td>{{ game['spread'] }}</td>
+
+                                </tr>
+                                <tr style="border-bottom: 2px solid grey">
+                                    <td><a href="{{ url_for('team', team_id=game['home_id']) }}">{{ game['home_market'] }} {{ game['home_team'] }}</a></td>
+
+                                    {% if game['home_result_preds'] == 1 %}
+                                    <td class="warning"> {{ game['home_prob_1'] }}</td>
+                                    {% else %}
+                                    <td class="info">{{ game['home_prob_0'] }}</td>
+                                    {% endif %}
+
+                                    {% if game['home_pts_preds'] > game['away_pts_preds'] %}
+                                    <td class="danger">{{ game['home_pts_preds'] }}</td>
+                                    {% else %}
+                                    <td>{{ game['home_pts_preds'] }}</td>
+                                    {% endif %}
+                                    <td>{{ game['over_under'] }}</td>
+
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end col -8 -->
+
+    </div>
+    <!-- end row -->
+{% endblock %}

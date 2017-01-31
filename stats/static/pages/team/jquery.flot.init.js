@@ -1,3 +1,9 @@
+/**
+ * Theme: Minton Admin Template
+ * Author: Coderthemes
+ * Module/App: Flot-Chart
+ */
+
 ! function($) {
 	"use strict";
 
@@ -6,62 +12,107 @@
 		this.$realData = []
 	};
 
-	//creates Pie Chart
-	FlotChart.prototype.createDonutGraph = function(selector, labels, datas, colors) {
-		var data = [{
+	//creates plot graph
+	FlotChart.prototype.createPlotGraph = function(selector, data1, data2, labels, colors, borderColor, bgColor) {
+		//shows tooltip
+		function showTooltip(x, y, contents) {
+			$('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css({
+				position : 'absolute',
+				top : y + 5,
+				left : x + 5
+			}).appendTo("body").fadeIn(200);
+		}
+
+
+		$.plot($(selector), [{
+			data : data1,
 			label : labels[0],
-			data : datas[0]
+			color : colors[0]
 		}, {
+			data : data2,
 			label : labels[1],
-			data : datas[1]
-		}, {
-			label : labels[2],
-			data : datas[2]
-		}, {
-			label : labels[3],
-			data : datas[3]
-		}];
-		var options = {
+			color : colors[1]
+		}], {
 			series : {
-				pie : {
+				lines : {
 					show : true,
-					innerRadius : 0.75
-				}
-			},
-			legend : {
-				show : true,
-				labelFormatter : function(label, series) {
-					return '<div style="font-size:14px;">&nbsp;' + label + '</div>'
+					fill : true,
+					lineWidth : 1,
+					fillColor : {
+						colors : [{
+							opacity : 0.5
+						}, {
+							opacity : 0.5
+						}]
+					}
 				},
-				labelBoxBorderColor : null,
-				margin : 50,
-				width : 20,
-				padding : 1
+				points : {
+					show : true
+				},
+				shadowSize : 0
 			},
+
 			grid : {
 				hoverable : true,
-				clickable : true
+				clickable : true,
+				borderColor : borderColor,
+				tickColor : "#f9f9f9",
+				borderWidth : 1,
+				labelMargin : 10,
+				backgroundColor : bgColor
 			},
-			colors : colors,
+			legend : {
+				position : "ne",
+				margin : [0, -24],
+				noColumns : 0,
+				labelBoxBorderColor : null,
+				labelFormatter : function(label, series) {
+					// just add some space to labes
+					return '' + label + '&nbsp;&nbsp;';
+				},
+				width : 30,
+				height : 2
+			},
+			yaxis : {
+				tickColor : '#f5f5f5',
+				font : {
+					color : '#bdbdbd'
+				}
+			},
+			xaxis : {
+				tickColor : '#f5f5f5',
+				font : {
+					color : '#bdbdbd'
+				}
+			},
 			tooltip : true,
 			tooltipOpts : {
-				content : "%s, %p.0%"
+				content : '%s: Value of %x is %y',
+				shifts : {
+					x : -60,
+					y : 25
+				},
+				defaultTheme : false
 			}
-		};
-
-		$.plot($(selector), data, options);
+		});
 	},
+	//end plot graph
 
 	//initializing various charts and components
 	FlotChart.prototype.init = function() {
 
-        var info = getInfo();
+	    var info = getInfo();
+        console.log(info)
 
-		//Donut pie graph data
-		var donutlabels = [info['away_team'], "Draw", info['home_team']];
-		var donutdatas = info['probs'];
-		var donutcolors = ["#f76397", "#5fbeaa", "#3bafda"];
-		this.createDonutGraph("#donut-chart #donut-chart-container", donutlabels, donutdatas, donutcolors);
+
+		//plot graph data
+		var uploads = info['features']['FGM'];
+		var downloads = info['opp_features']['FGM'];
+		var plabels = ["Visits", "Pages/Visit"];
+		var pcolors = ['#00b19d', '#3bafda'];
+		var borderColor = '#f5f5f5';
+		var bgColor = '#fff';
+		this.createPlotGraph("#website-stats", uploads, downloads, plabels, pcolors, borderColor, bgColor);
 
 	},
 
@@ -78,7 +129,10 @@ function($) {
 }(window.jQuery);
 
 $(document).ready(function() {
+    var features = {{ features | safe }};
+    var opp_features = {{ opp_features | safe }};
 
-
+    var info = { features: features, opp_features: opp_features};
+    console.log(info);
 });
 

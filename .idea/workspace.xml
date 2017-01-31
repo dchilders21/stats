@@ -2,10 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/static/libs/angular-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/index_copy.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stats/static/css/elements.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_result" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_result" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_total_pts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_04.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_01.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_02.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_03.npy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_04.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/__init__.py" afterPath="$PROJECT_DIR$/stats/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/csv/nba/01_01_17/all_predictions.csv" afterPath="$PROJECT_DIR$/stats/csv/nba/01_01_17/all_predictions.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/csv/nba/01_01_17/upcoming_matches.csv" afterPath="$PROJECT_DIR$/stats/csv/nba/01_01_17/upcoming_matches.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/components.css" afterPath="$PROJECT_DIR$/stats/static/css/components.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/core.css" afterPath="$PROJECT_DIR$/stats/static/css/core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/icons.css" afterPath="$PROJECT_DIR$/stats/static/css/icons.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/menu.css" afterPath="$PROJECT_DIR$/stats/static/css/menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/menu_light.css" afterPath="$PROJECT_DIR$/stats/static/css/menu_light.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/pages.css" afterPath="$PROJECT_DIR$/stats/static/css/pages.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/variables.css" afterPath="$PROJECT_DIR$/stats/static/css/variables.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/libs/angular.min.js" afterPath="$PROJECT_DIR$/stats/static/libs/angular.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" afterPath="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/index.html" afterPath="$PROJECT_DIR$/stats/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/layout.html" afterPath="$PROJECT_DIR$/stats/templates/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/team.html" afterPath="$PROJECT_DIR$/stats/templates/team.html" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,33 +53,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nba_results.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_results.py">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+            <state relative-caret-position="36">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="results.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stats/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+            <state relative-caret-position="200">
+              <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="team.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/templates/team.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="846">
+              <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,18 +90,68 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1340">
-              <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
+            <state relative-caret-position="515">
+              <caret line="498" column="54" selection-start-line="498" selection-start-column="54" selection-end-line="498" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/scripts/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="angular-ui.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/libs/angular-ui.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="1655" selection-start-line="7" selection-start-column="1655" selection-end-line="7" selection-end-column="1655" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.flot.init.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+            <state relative-caret-position="288">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,18 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/stats/form_model.py" />
-        <option value="$PROJECT_DIR$/src/stats/results.py" />
-        <option value="$PROJECT_DIR$/src/stats/__init__.py" />
-        <option value="$PROJECT_DIR$/src/stats/static/pages/jquery.flot.init.js" />
-        <option value="$PROJECT_DIR$/src/stats/templates/team.html" />
-        <option value="$PROJECT_DIR$/src/stats/static/pages/team/jquery.flot.init.js" />
-        <option value="$PROJECT_DIR$/src/stats/temp.py" />
-        <option value="$PROJECT_DIR$/src/stats/update_data.py" />
-        <option value="$PROJECT_DIR$/src/stats/update_all_leagues.py" />
-        <option value="$PROJECT_DIR$/src/stats/ind/update_data.py" />
-        <option value="$PROJECT_DIR$/run.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/stats/teams.py" />
         <option value="$PROJECT_DIR$/test.py" />
@@ -137,19 +204,31 @@
         <option value="$PROJECT_DIR$/stats/form_model.py" />
         <option value="$PROJECT_DIR$/stats/services/pinnacle_update_daily.py" />
         <option value="$PROJECT_DIR$/stats/services/pinnacle_update_hourly.py" />
-        <option value="$PROJECT_DIR$/stats/classes/results.py" />
         <option value="$PROJECT_DIR$/stats/predict_matches.py" />
         <option value="$PROJECT_DIR$/stats/sports/nba/nba_form_data.py" />
         <option value="$PROJECT_DIR$/stats/sports/nba/nba_results.py" />
+        <option value="$PROJECT_DIR$/stats/classes/results.py" />
         <option value="$PROJECT_DIR$/stats/services/nba_update_daily.py" />
-        <option value="$PROJECT_DIR$/stats/templates/layout.html" />
+        <option value="$PROJECT_DIR$/stats/services/nba_team_statistics.py" />
+        <option value="$PROJECT_DIR$/stats/services/nba_rosters.py" />
+        <option value="$PROJECT_DIR$/stats/static/css/menu.css" />
+        <option value="$PROJECT_DIR$/stats/static/css/core.css" />
+        <option value="$PROJECT_DIR$/stats/static/pages/jquery.flot.init.js" />
+        <option value="$PROJECT_DIR$/stats/templates/team.html" />
+        <option value="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" />
         <option value="$PROJECT_DIR$/stats/templates/index.html" />
+        <option value="$PROJECT_DIR$/stats/app.js" />
         <option value="$PROJECT_DIR$/stats/__init__.py" />
+        <option value="$PROJECT_DIR$/stats/static/partials/main.html" />
+        <option value="$PROJECT_DIR$/stats/static/partials/angular-ui.min.js" />
+        <option value="$PROJECT_DIR$/stats/static/scripts/app.js" />
+        <option value="$PROJECT_DIR$/stats/templates/layout.html" />
+        <option value="$PROJECT_DIR$/stats/static/scripts/controllers/main.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="888" />
+    <option name="x" value="856" />
     <option name="y" value="23" />
     <option name="width" value="1644" />
     <option name="height" value="1413" />
@@ -243,7 +322,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -261,7 +344,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sports" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,47 +370,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nba" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,7 +382,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../stats_blog" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/senzari/Machine_Learning/stats/src/stats/adjusted_match_stats.py" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/senzari/Machine_Learning/stats/stats/app.js" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -343,21 +394,22 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/stats/services" />
-      <recent name="$PROJECT_DIR$/stats" />
-      <recent name="$PROJECT_DIR$/stats/ind" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/stats" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stats/static/libs" />
       <recent name="$PROJECT_DIR$/src/stats" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/static/js" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stats/templates" />
+      <recent name="$PROJECT_DIR$/stats/services" />
+      <recent name="$PROJECT_DIR$/stats" />
+      <recent name="$PROJECT_DIR$/stats/ind" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.__init__">
+  <component name="RunManager" selected="Python.run">
     <configuration default="false" name="nba_results (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -587,9 +639,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.run" />
-        <item index="1" class="java.lang.String" itemvalue="Python.__init__" />
+        <item index="1" class="java.lang.String" itemvalue="Python.nba_update_daily" />
         <item index="2" class="java.lang.String" itemvalue="Python.nba_results (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.nba_update_daily" />
+        <item index="3" class="java.lang.String" itemvalue="Python.__init__" />
         <item index="4" class="java.lang.String" itemvalue="Python.pinnacle_update_hourly" />
       </list>
     </recent_temporary>
@@ -620,7 +672,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="888" y="23" width="1644" height="1413" extended-state="0" />
+    <frame x="856" y="23" width="1644" height="1413" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18557337" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
@@ -628,7 +680,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43892047" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31037092" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38304314" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24140625" sideWeight="0.5056818" order="2" side_tool="true" content_ui="tabs" />
@@ -660,35 +712,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_rosters.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/teams.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_test.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/tz2ntz.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_schedule_change.py" />
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_team_statistics.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/update_match.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_results.py" />
-    <entry file="file://$PROJECT_DIR$/stats/games.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/results_class.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/results_class.py" />
-    <entry file="file://$PROJECT_DIR$/stats/delete" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/results_old.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/results.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/soccer_results.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/update_daily.py" />
     <entry file="file://$PROJECT_DIR$/stats/ind/nba_schedule.py" />
     <entry file="file://$PROJECT_DIR$/stats/ind/nba_update_daily.py" />
     <entry file="file://$PROJECT_DIR$/stats/ind/update_data.py" />
@@ -697,35 +720,6 @@
     <entry file="file://$PROJECT_DIR$/stats/classes/nba_results.py" />
     <entry file="file://$PROJECT_DIR$/stats/match_stats.py" />
     <entry file="file://$PROJECT_DIR$/stats/form_data.py" />
-    <entry file="file://$PROJECT_DIR$/stats/classes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templates/league.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templates/team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="63" column="85" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/templates/rankings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -740,32 +734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_match_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///anaconda/envs/stats/lib/python3.5/site-packages/pandas/core/generic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="2657" column="0" selection-start-line="2657" selection-start-column="0" selection-end-line="2657" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,46 +745,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/services/update_daily.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_match_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1908">
-          <caret line="106" column="40" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/services/pinnacle_update_daily.py" />
-    <entry file="file://$PROJECT_DIR$/stats/services/pinnacle_update_hourly.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/form_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_form_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="823">
-          <caret line="401" column="29" selection-start-line="401" selection-start-column="29" selection-end-line="401" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/services/update_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -820,70 +756,313 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/model_libs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/predict_matches.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        <state relative-caret-position="494">
+          <caret line="152" column="41" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
+    <entry file="file://$PROJECT_DIR$/stats/classes/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/model_libs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2412">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="145" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_results.py">
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_team_statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+        <state relative-caret-position="594">
+          <caret line="33" column="108" selection-start-line="33" selection-start-column="108" selection-end-line="33" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#22#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_schedule_change.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#22#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_rosters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="109" selection-start-line="27" selection-start-column="109" selection-end-line="27" selection-end-column="109" />
+          <folding>
+            <element signature="e#0#22#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_schedule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#22#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/pinnacle_update_hourly.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/css/menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/css/core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/classes/results.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="846">
+          <caret line="92" column="60" selection-start-line="92" selection-start-column="60" selection-end-line="92" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/__init__.py">
+    <entry file="file://$PROJECT_DIR$/stats/services/teams.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        <state relative-caret-position="108">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
+    <entry file="file://$PROJECT_DIR$/stats/form_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1340">
-          <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
+        <state relative-caret-position="569">
+          <caret line="129" column="34" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///anaconda/envs/stats/lib/python3.5/site-packages/pandas/io/parsers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="1212" column="0" selection-start-line="1212" selection-start-column="0" selection-end-line="1212" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/pages/jquery.flot.init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="35" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/update_daily.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-249">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_form_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-687">
+          <caret line="321" column="32" selection-start-line="321" selection-start-column="32" selection-end-line="321" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_match_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5217">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/services/update_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3510">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#22#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/soccer/soccer_form_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="339" column="0" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/league.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/sports/nba/nba_match_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/index_copy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+        <state relative-caret-position="288">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/libs/angular-ui.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="1655" selection-start-line="7" selection-start-column="1655" selection-end-line="7" selection-end-column="1655" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="498" column="54" selection-start-line="498" selection-start-column="54" selection-end-line="498" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
