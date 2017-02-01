@@ -1,9 +1,8 @@
 import os
 import pandas as pd
-import numpy as np
 import mysql.connector
 from flask import send_file, render_template, request, url_for, redirect, jsonify
-
+import json
 from flask import Flask, Response
 import datetime
 
@@ -93,7 +92,7 @@ def get_data():
     return todays_date, pred_data
 
 
-@app.route('/team/<int:team_id>')
+@app.route('/api/team/<int:team_id>')
 def team(team_id):
 
     cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
@@ -121,8 +120,6 @@ def team(team_id):
                     'total_pts': [], 'fast_break_points': [], 'points_in_paint': [],
                     'points_off_turnovers': [], 'second_chance_points': []}
 
-    print(df.columns.values)
-
     for i in range(len(df.index)):
         if (i % 2 != 0):
             game_df = df.iloc[i-1:i+1]
@@ -132,12 +129,14 @@ def team(team_id):
 
             for key, value in features.items():
 
-                opp_features[key].append([count, opp_df.iloc[0][key]])
-                features[key].append([count, team_df.iloc[0][key]])
+                opp_features[key].append([count, int(opp_df.iloc[0][key])])
+                features[key].append([count, int(team_df.iloc[0][key])])
 
-    print(features)
+    #print(features)
 
-    return render_template("team.html", leagues=leagues, teams=teams, features=features, opp_features=opp_features)
+    data = {'features': features, 'opp_features': opp_features}
+
+    return jsonify(data)
 
 
 @app.route('/api', methods=['GET'])

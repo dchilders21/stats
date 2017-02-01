@@ -2,37 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ff6c867-0602-40e8-a4e4-bff8d80c7b35" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/static/libs/angular-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/templates/index_copy.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stats/static/css/elements.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_result" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_result" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/linear_regression/linear_regression_total_pts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_02.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_result_04.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_01.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_01.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_02.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_02.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_03.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_03.npy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_04.npy" afterPath="$PROJECT_DIR$/stats/models/nba/01_01_17/log/log_total_pts_04.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/static/partials/team.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats/static/scripts/controllers/team.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stats/templates/index_copy.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/__init__.py" afterPath="$PROJECT_DIR$/stats/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/csv/nba/01_01_17/all_predictions.csv" afterPath="$PROJECT_DIR$/stats/csv/nba/01_01_17/all_predictions.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/csv/nba/01_01_17/upcoming_matches.csv" afterPath="$PROJECT_DIR$/stats/csv/nba/01_01_17/upcoming_matches.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/components.css" afterPath="$PROJECT_DIR$/stats/static/css/components.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/core.css" afterPath="$PROJECT_DIR$/stats/static/css/core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/icons.css" afterPath="$PROJECT_DIR$/stats/static/css/icons.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/menu.css" afterPath="$PROJECT_DIR$/stats/static/css/menu.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/menu_light.css" afterPath="$PROJECT_DIR$/stats/static/css/menu_light.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/pages.css" afterPath="$PROJECT_DIR$/stats/static/css/pages.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/css/variables.css" afterPath="$PROJECT_DIR$/stats/static/css/variables.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/libs/angular.min.js" afterPath="$PROJECT_DIR$/stats/static/libs/angular.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" afterPath="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/index.html" afterPath="$PROJECT_DIR$/stats/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/partials/main.html" afterPath="$PROJECT_DIR$/stats/static/partials/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/scripts/app.js" afterPath="$PROJECT_DIR$/stats/static/scripts/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/static/scripts/controllers/main.js" afterPath="$PROJECT_DIR$/stats/static/scripts/controllers/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/layout.html" afterPath="$PROJECT_DIR$/stats/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templates/team.html" afterPath="$PROJECT_DIR$/stats/templates/team.html" />
     </list>
     <ignored path="stats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,35 +32,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+            <state relative-caret-position="702">
+              <caret line="131" column="30" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="team.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/templates/team.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,18 +47,8 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="498" column="54" selection-start-line="498" selection-start-column="54" selection-end-line="498" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+              <caret line="1" column="22" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -110,8 +57,30 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/static/scripts/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+            <state relative-caret-position="162">
+              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="team.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/partials/team.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="39" column="60" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -120,18 +89,18 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+            <state relative-caret-position="180">
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular-ui.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/static/libs/angular-ui.min.js">
+      <file leaf-file-name="team.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/team.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="1655" selection-start-line="7" selection-start-column="1655" selection-end-line="7" selection-end-column="1655" />
+            <state relative-caret-position="162">
+              <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -140,18 +109,8 @@
       <file leaf-file-name="jquery.flot.init.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="389">
+              <caret line="137" column="36" selection-start-line="137" selection-start-column="36" selection-end-line="137" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -173,9 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/stats/teams.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/stats/results.py" />
         <option value="$PROJECT_DIR$/stats/ind/teams.py" />
         <option value="$PROJECT_DIR$/stats/ind/nba_schedule.py" />
@@ -215,20 +171,23 @@
         <option value="$PROJECT_DIR$/stats/static/css/core.css" />
         <option value="$PROJECT_DIR$/stats/static/pages/jquery.flot.init.js" />
         <option value="$PROJECT_DIR$/stats/templates/team.html" />
-        <option value="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" />
         <option value="$PROJECT_DIR$/stats/templates/index.html" />
         <option value="$PROJECT_DIR$/stats/app.js" />
-        <option value="$PROJECT_DIR$/stats/__init__.py" />
-        <option value="$PROJECT_DIR$/stats/static/partials/main.html" />
         <option value="$PROJECT_DIR$/stats/static/partials/angular-ui.min.js" />
+        <option value="$PROJECT_DIR$/stats/templates/index_copy.html" />
+        <option value="$PROJECT_DIR$/stats/static/partials/main.html" />
         <option value="$PROJECT_DIR$/stats/static/scripts/app.js" />
-        <option value="$PROJECT_DIR$/stats/templates/layout.html" />
         <option value="$PROJECT_DIR$/stats/static/scripts/controllers/main.js" />
+        <option value="$PROJECT_DIR$/stats/templates/layout.html" />
+        <option value="$PROJECT_DIR$/stats/__init__.py" />
+        <option value="$PROJECT_DIR$/stats/static/partials/team.html" />
+        <option value="$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js" />
+        <option value="$PROJECT_DIR$/stats/static/scripts/controllers/team.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="856" />
+    <option name="x" value="888" />
     <option name="y" value="23" />
     <option name="width" value="1644" />
     <option name="height" value="1413" />
@@ -322,6 +281,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -374,6 +351,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -402,11 +401,11 @@
       <recent name="$PROJECT_DIR$/src/static/js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stats/static/scripts/controllers" />
+      <recent name="$PROJECT_DIR$/stats/static/partials" />
       <recent name="$PROJECT_DIR$/stats/templates" />
       <recent name="$PROJECT_DIR$/stats/services" />
       <recent name="$PROJECT_DIR$/stats" />
-      <recent name="$PROJECT_DIR$/stats/ind" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -672,7 +671,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="856" y="23" width="1644" height="1413" extended-state="0" />
+    <frame x="888" y="23" width="1644" height="1413" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18557337" sideWeight="0.4943182" order="0" side_tool="false" content_ui="combo" />
@@ -680,7 +679,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43892047" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38304314" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329296" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24140625" sideWeight="0.5056818" order="2" side_tool="true" content_ui="tabs" />
@@ -712,9 +711,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_schedule.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/nba_update_daily.py" />
-    <entry file="file://$PROJECT_DIR$/stats/ind/update_data.py" />
     <entry file="file://$PROJECT_DIR$/stats/classes/soccer_results.py" />
     <entry file="file://$PROJECT_DIR$/stats/nba_match_stats.py" />
     <entry file="file://$PROJECT_DIR$/stats/classes/nba_results.py" />
@@ -876,14 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/pages/jquery.flot.init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats/services/nba_update_daily.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
@@ -966,26 +954,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js">
+    <entry file="file://$PROJECT_DIR$/stats/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+        <state relative-caret-position="324">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
+    <entry file="file://$PROJECT_DIR$/stats/static/libs/angular-ui.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="7" column="1655" selection-start-line="7" selection-start-column="1655" selection-end-line="7" selection-end-column="1655" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/templates/index_copy.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state relative-caret-position="850">
+          <caret line="63" column="69" selection-start-line="52" selection-start-column="36" selection-end-line="63" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -1000,69 +988,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/templates/team.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
+        <state relative-caret-position="-528">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/app.js">
+    <entry file="file://$PROJECT_DIR$/stats/static/pages/jquery.flot.init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="373">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
+    <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/libs/angular-ui.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="1655" selection-start-line="7" selection-start-column="1655" selection-end-line="7" selection-end-column="1655" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="498" column="54" selection-start-line="498" selection-start-column="54" selection-end-line="498" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        <state relative-caret-position="36">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+        <state relative-caret-position="702">
+          <caret line="131" column="30" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/partials/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="39" column="60" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/partials/team.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="14" column="58" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/plugins/flot-chart/jquery.flot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3474">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/pages/team/jquery.flot.init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="137" column="36" selection-start-line="137" selection-start-column="36" selection-end-line="137" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/static/scripts/controllers/team.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

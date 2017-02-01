@@ -1,0 +1,49 @@
+    <!-- Page-Title -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="#"></a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="portlet"><!-- /primary heading -->
+                <div class="portlet-heading">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false"> Stats <span class="caret"></span> </button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="f in team.features"><a ng-click="team.changeFlot(f)">{{f}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="portlet-widgets">
+                        <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                        <span class="divider"></span>
+                        <a data-toggle="collapse" data-parent="#accordion1" href="#portlet1"><i class="ion-minus-round"></i></a>
+                        <span class="divider"></span>
+                        <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="portlet1" class="panel-collapse collapse in">
+                    <div class="portlet-body">
+                        <div id="website-stats" style="height: 320px;" class="flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/plugins/flot-chart/jquery.flot.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.time.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.resize.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.pie.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.selection.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.stack.js"></script>
+    <script src="/static/plugins/flot-chart/jquery.flot.crosshair.js"></script>
+    <script src="/static/pages/team/jquery.flot.init.js"></script>

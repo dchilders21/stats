@@ -101,18 +101,20 @@
 	//initializing various charts and components
 	FlotChart.prototype.init = function() {
 
-	    var info = getInfo();
-        console.log(info)
+	    var appElement = document.querySelector('[ng-app=statsApp]');
+        var appScope = angular.element(appElement).scope();
+        var controllerScope = appScope.$$childHead;
+        var data = controllerScope.team.data.data;
 
-
-		//plot graph data
-		var uploads = info['features']['FGM'];
-		var downloads = info['opp_features']['FGM'];
+        //plot graph data
+        // Default will be 'total_pts'
+        var stats = data['features']['total_pts'];
+		var opp_stats = data['opp_features']['total_pts'];
 		var plabels = ["Visits", "Pages/Visit"];
 		var pcolors = ['#00b19d', '#3bafda'];
 		var borderColor = '#f5f5f5';
 		var bgColor = '#fff';
-		this.createPlotGraph("#website-stats", uploads, downloads, plabels, pcolors, borderColor, bgColor);
+		this.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor);
 
 	},
 
@@ -124,15 +126,42 @@
 
 //initializing flotchart
 function($) {
-	"use strict";
-	$.FlotChart.init()
+	//"use strict";
+	//$.FlotChart.init()
 }(window.jQuery);
 
-$(document).ready(function() {
-    var features = {{ features | safe }};
-    var opp_features = {{ opp_features | safe }};
+var initFlot = function($) {
+    "use strict";
+	$.FlotChart.init()
+};
 
-    var info = { features: features, opp_features: opp_features};
-    console.log(info);
+var changeFlot = function(feature, $) {
+    console.log(feature)
+
+    "use strict";
+
+    var appElement = document.querySelector('[ng-app=statsApp]');
+    var appScope = angular.element(appElement).scope();
+    var controllerScope = appScope.$$childHead;
+    var data = controllerScope.team.data.data;
+    // Default will be 'total_pts'
+    var stats = data['features'][feature];
+    var opp_stats = data['opp_features'][feature];
+    var plabels = ["Visits", "Pages/Visit"];
+    var pcolors = ['#00b19d', '#3bafda'];
+    var borderColor = '#f5f5f5';
+    var bgColor = '#fff';
+    $.FlotChart.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor);
+
+    /*$.plot("#website-stats", [{
+        data : [[1.0, 38], [2.0, 32], [3.0, 35], [4.0, 36], [5.0, 43]]
+    }, {
+        data : [[1.0, 21], [2.0, 19], [3.0, 16], [4.0, 13], [5.0, 14]]
+    }]);*/
+
+}
+
+$(document).ready(function() {
+
 });
 

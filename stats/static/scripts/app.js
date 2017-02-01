@@ -12,12 +12,12 @@ statsApp.config(['$routeProvider',
                  controller: 'MainCtrl',
                  controllerAs: 'main'
              }).
+             when('/team/:teamId', {
+                 templateUrl: '/static/partials/team.html',
+                 controller: 'TeamCtrl',
+                 controllerAs: 'team'
+             }).
              otherwise({
                  redirectTo: '/'
              });
     }]);
-
-/*statsApp.controller("MainCtrl", function ($scope) {
-    console.log('we in here');
-    $scope.msg = "I love London";
-});*/
