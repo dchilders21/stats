@@ -31,8 +31,7 @@ angular.module('statsApp')
           }
 
 
-
-          $http.get('http://0.0.0.0:5000/api/team/' + $routeParams.teamId)
+          $http.get('/api/team/' + $routeParams.teamId)
           .then(function (resp)
 			{
 

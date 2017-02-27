@@ -16,7 +16,8 @@ angular.module('statsApp')
             console.log('failed');
           };
 
-          $http.get('http://0.0.0.0:5000/api')
+          //$http.get('http://0.0.0.0:5000/api')
+          $http.get('/api')
           .then(done, fail);
 
           console.log('we definitely in here');
