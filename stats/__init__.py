@@ -4,7 +4,13 @@ import mysql.connector
 from flask import send_file, render_template, request, url_for, redirect, jsonify
 import json
 from flask import Flask, Response
+import flask_login
+from flask_login import UserMixin, login_required
+
 import datetime
+
+from flask_wtf import Form as FlaskForm
+from wtforms import BooleanField, StringField, PasswordField, validators
 
 from stats import model_libs, form_model, predict_matches
 import settings
@@ -19,18 +25,90 @@ app.config.from_object('config')
 
 cnx = mysql.connector.connect(user=settings.MYSQL_USER, password=settings.MYSQL_PASSWORD,
                               host=settings.MYSQL_HOST,
-                              database=settings.MYSQL_DATABASE)
+                              database='nba')
 cursor = cnx.cursor(dictionary=True, buffered=True)
 
-teams = pd.read_sql("SELECT id, name FROM teams", cnx)
+teams = pd.read_sql("SELECT id, name, market FROM teams", cnx)
 
 leagues = ['NBA']
+
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+
+login_manager.login_view = "login"
+login_manager.login_message_category = "info"
+
+
 
 print('INITIALIZED...')
 print('V 2.0')
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    password = PasswordField('New Password', [
+        validators.DataRequired()
+    ])
+
+
+class User(UserMixin):
+    user_database = {
+        1: {"user": "Guest", "username": "Guest", "password": "guest"},
+        2: {"user": "Admin", "username": "admin", "password": "admin"}
+    }
+
+    def __init__(self, username, password):
+        self.id = '1'
+        self.username = username
+        self.password = password
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+
+@login_manager.user_loader
+def load_user(user_id):
+
+    for k, v in User.user_database.items():
+        if int(user_id) == k:
+            user = User(v["username"], v["password"])
+
+    return user
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    form = LoginForm(request.form)
+    if form.validate_on_submit():
+        # check if the user exists and if he/she provided correct password
+        if form.username.data == "Guest" and form.password.data == "guest":
+            user = User(form.username.data, form.password.data)
+            flask_login.login_user(user)
+            return redirect(url_for('home', _external=True))
+
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    flask_login.logout_user()
+
+    return redirect(url_for('login', _external=True))
+
+
 
 @app.route('/')
+@login_required
 def home():
 
     todays_date, pred_data = get_data()
@@ -99,10 +177,12 @@ def team(team_id):
                                   host=settings.MYSQL_HOST,
                                   database='nba')
 
-    games = pd.read_sql("SELECT game_id FROM team_totals WHERE team_id = %(team_id)s ORDER BY game_id DESC LIMIT 5",
+    games = pd.read_sql("SELECT game_id FROM team_totals WHERE team_id = %(team_id)s ORDER BY game_id DESC LIMIT 10",
                         cnx, params={'team_id': team_id})
 
     game_ids = ", ".join(list(map(str, games['game_id'].values.tolist())))
+
+    print(game_ids)
 
     cursor = cnx.cursor(dictionary=True, buffered=True)
 
@@ -116,9 +196,10 @@ def team(team_id):
                 'points_off_turnovers': [], 'second_chance_points': []}
     opp_features = {'FGM': [], 'FGA': [], '3PM': [], '3PA': [], 'FTM': [], 'FTA': [], 'OREB': [], 'DREB': [], 'AST': [],
                     'STL': [], 'BLK': [], 'turnovers': [], 'PF': [], '1st_qtr': [], '2nd_qtr': [], '3rd_qtr': [],
-                    '4th_qtr': [],
-                    'total_pts': [], 'fast_break_points': [], 'points_in_paint': [],
+                    '4th_qtr': [], 'total_pts': [], 'fast_break_points': [], 'points_in_paint': [],
                     'points_off_turnovers': [], 'second_chance_points': []}
+
+    opp_ids = []
 
     for i in range(len(df.index)):
         if (i % 2 != 0):
@@ -126,15 +207,24 @@ def team(team_id):
             count = (i + 1)/2
             opp_df = game_df[game_df['team_id'] != team_id]
             team_df = game_df[game_df['team_id'] == team_id]
+            opp_ids.append(opp_df.iloc[0]['team_id'])
 
             for key, value in features.items():
 
                 opp_features[key].append([count, int(opp_df.iloc[0][key])])
                 features[key].append([count, int(team_df.iloc[0][key])])
 
-    #print(features)
 
-    data = {'features': features, 'opp_features': opp_features}
+    opp = []
+
+    for id in opp_ids:
+        t = teams[teams['id'] == id]
+        opp.append(t.iloc[0]['market'] + ' ' + t.iloc[0]['name'])
+        #opp[str(id)] = t.iloc[0]['market'] + ' ' + t.iloc[0]['name']
+
+    team = teams[teams['id'] == team_id].iloc[0]['market'] + ' ' + teams[teams['id'] == team_id].iloc[0]['name']
+
+    data = {'features': features, 'opp_features': opp_features, 'opp': opp, 'team': team }
 
     return jsonify(data)
 

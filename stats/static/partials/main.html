@@ -26,7 +26,7 @@
                         </thead>
                         <tbody ng-repeat="d in data">
                             <tr>
-                                <td><a href="">{{ d['away_market'] }} {{ d['away_team'] }}</a></td>
+                                <td><a ng-href="#/team/{{d['away_id']}}">{{ d['away_market'] }} {{ d['away_team'] }}</a></td>
                                 <td class="warning" ng-if="d['away_result_preds'] == 1"> {{ d['home_prob_1'] }}</td>
                                 <td class="info" ng-if="d['away_result_preds'] != 1">{{ d['home_prob_0'] }}</td>
 
@@ -37,7 +37,7 @@
                                 <td>{{ d['spread'] }}</td>
                             </tr>
                             <tr style="border-bottom: 2px solid grey">
-                                <td><a href="">{{ d['home_market'] }} {{ d['home_team'] }}</a></td>
+                                <td><a ng-href="#/team/{{d['home_id']}}">{{ d['home_market'] }} {{ d['home_team'] }}</a></td>
 
                                 <td class="warning" ng-if="d['home_result_preds'] == 1"> {{ d['home_prob_1'] }}</td>
                                 <td class="info" ng-if="d['home_result_preds'] != 1">{{ d['home_prob_0'] }}</td>

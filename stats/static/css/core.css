@@ -217,6 +217,10 @@ a:focus {
   animation: dropdownOpen 0.3s ease-out;
   border: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+  /*--- DC ---*/
+  height: 350px;
+  overflow: scroll;
 }
 .dropdown-menu > li > a {
   padding: 6px 20px;

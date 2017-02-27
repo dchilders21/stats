@@ -6,6 +6,7 @@
                     <li><a href="#"></a></li>
                     <li class="active">Dashboard</li>
                 </ol>
+                <h4 class="page-title">{{team.team}}</h4>
             </div>
         </div>
     </div>
@@ -15,17 +16,10 @@
             <div class="portlet"><!-- /primary heading -->
                 <div class="portlet-heading">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false"> Stats <span class="caret"></span> </button>
+                        <button type="button" class="btn btn-default dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false"> {{team.stat}} <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li ng-repeat="f in team.features"><a ng-click="team.changeFlot(f)">{{f}}</a></li>
                         </ul>
-                    </div>
-                    <div class="portlet-widgets">
-                        <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
-                        <span class="divider"></span>
-                        <a data-toggle="collapse" data-parent="#accordion1" href="#portlet1"><i class="ion-minus-round"></i></a>
-                        <span class="divider"></span>
-                        <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
                     </div>
                     <div class="clearfix"></div>
                 </div>

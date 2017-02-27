@@ -13,7 +13,7 @@
 	};
 
 	//creates plot graph
-	FlotChart.prototype.createPlotGraph = function(selector, data1, data2, labels, colors, borderColor, bgColor) {
+	FlotChart.prototype.createPlotGraph = function(selector, data1, data2, labels, colors, borderColor, bgColor, opps) {
 		//shows tooltip
 		function showTooltip(x, y, contents) {
 			$('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css({
@@ -67,7 +67,7 @@
 				noColumns : 0,
 				labelBoxBorderColor : null,
 				labelFormatter : function(label, series) {
-					// just add some space to labes
+					// just add some space to labels
 					return '' + label + '&nbsp;&nbsp;';
 				},
 				width : 30,
@@ -87,7 +87,17 @@
 			},
 			tooltip : true,
 			tooltipOpts : {
-				content : '%s: Value of %x is %y',
+				//content : '%s: Value of %x is %y',
+				content : function(label, xval, yval, flotItem) {
+
+                  if (label == 'Opponents') {
+                    var content = opps[flotItem.dataIndex] + " : %y";
+                  } else {
+                    var content = label + " : %y";
+                  }
+
+                  return content;
+                },
 				shifts : {
 					x : -60,
 					y : 25
@@ -105,16 +115,19 @@
         var appScope = angular.element(appElement).scope();
         var controllerScope = appScope.$$childHead;
         var data = controllerScope.team.data.data;
-
+        console.log(data)
         //plot graph data
         // Default will be 'total_pts'
-        var stats = data['features']['total_pts'];
-		var opp_stats = data['opp_features']['total_pts'];
-		var plabels = ["Visits", "Pages/Visit"];
-		var pcolors = ['#00b19d', '#3bafda'];
+        var opps = data.opp
+        var stats = data['features'][controllerScope.team.stat];
+		var opp_stats = data['opp_features'][controllerScope.team.stat];
+		console.log(data['features']);
+        console.log(data['opp_features']);
+		var plabels = [data['team'], "Opponents"];
+		var pcolors = [controllerScope.team.teamColor, '#3bafda'];
 		var borderColor = '#f5f5f5';
 		var bgColor = '#fff';
-		this.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor);
+		this.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor, opps);
 
 	},
 
@@ -144,20 +157,15 @@ var changeFlot = function(feature, $) {
     var appScope = angular.element(appElement).scope();
     var controllerScope = appScope.$$childHead;
     var data = controllerScope.team.data.data;
-    // Default will be 'total_pts'
+    controllerScope.team.stat = feature;
+    var opps = data.opp
     var stats = data['features'][feature];
     var opp_stats = data['opp_features'][feature];
-    var plabels = ["Visits", "Pages/Visit"];
-    var pcolors = ['#00b19d', '#3bafda'];
+    var plabels = [data['team'], "Opponents"];
+    var pcolors = [controllerScope.team.teamColor, '#3bafda'];
     var borderColor = '#f5f5f5';
     var bgColor = '#fff';
-    $.FlotChart.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor);
-
-    /*$.plot("#website-stats", [{
-        data : [[1.0, 38], [2.0, 32], [3.0, 35], [4.0, 36], [5.0, 43]]
-    }, {
-        data : [[1.0, 21], [2.0, 19], [3.0, 16], [4.0, 13], [5.0, 14]]
-    }]);*/
+    $.FlotChart.createPlotGraph("#website-stats", stats, opp_stats, plabels, pcolors, borderColor, bgColor, opps);
 
 }
 
